@@ -1,5 +1,5 @@
 export const CONFIG = Object.freeze({
-  BASE_URL: 'https://dua-jiwa-satu-lentera.clear-anole-7404.chatgpt.site',
+  BASE_URL: 'https://dua-jiwa-satu-lentera.bifariachmad.chatgpt.site',
   APPS_SCRIPT_URL: '',
   BGM_SRC: '',
   MAX_GUESTS: 5,
