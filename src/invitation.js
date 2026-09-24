@@ -25,7 +25,7 @@ export async function renderInvitation(app) {
  count.addEventListener('input',()=>{touchedCount=true;validity();});
  for(const [id,delta] of [['minus',-1],['plus',1]])$('#'+id).onclick=()=>{count.value=Math.max(1,Math.min(CONFIG.MAX_GUESTS,(Number(count.value)||1)+delta));touchedCount=true;validity();sound('tick');};
  const edit=()=>{host.hidden=true;form.hidden=false;$('.reservation-intro').hidden=false;name.value=ticket.name;count.value=ticket.guests;$('#recall-ticket').hidden=false;status.textContent='';validity();name.focus();};
- const showTicket=async()=>{if(!ticket)return;form.hidden=true;$('.reservation-intro').hidden=true;$('#recall-ticket').hidden=true;await renderTicket(host,ticket,edit);$('.sticky-reserve').hidden=true;};
+ const showTicket=async()=>{if(!ticket)return;form.hidden=true;$('.reservation-intro').hidden=true;$('#recall-ticket').hidden=true;await renderTicket(host,ticket,edit);};
  $('#recall-ticket').onclick=showTicket;
  if(ticket){name.value=ticket.name;count.value=ticket.guests;$('#recall-ticket').hidden=false;}
  form.addEventListener('submit',async event=>{
@@ -38,12 +38,9 @@ export async function renderInvitation(app) {
  validity();
  function tick(){const delta=Math.max(0,new Date(e.start).getTime()-Date.now());if(delta===0){$('#countdown-digits').hidden=true;$('#countdown-arrived').hidden=false;return;}const s=Math.floor(delta/1000),values=[Math.floor(s/86400),Math.floor(s/3600)%24,Math.floor(s/60)%60,s%60];values.forEach((v,i)=>{const d=$(`[data-digit="${i}"]`),text=String(v).padStart(2,'0');if(d.textContent!==text){d.textContent=text;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&$('#countdown').classList.contains('is-visible'))d.animate([{transform:'translateY(-12px)',opacity:.3},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});}});}
  tick();setInterval(tick,1000);
- const sticky=$('.sticky-reserve');
- const visibility=new IntersectionObserver(entries=>{for(const entry of entries)entry.target.classList.toggle('is-visible',entry.isIntersecting);sticky.hidden=!!ticket||window.scrollY<$('#greeting').offsetTop-150||$('#reservation').classList.contains('is-visible')||$('#closing').classList.contains('is-visible');});
- document.querySelectorAll('.scene').forEach(s=>visibility.observe(s));
- $('#swatch').onclick=()=>{const pressed=$('#swatch').getAttribute('aria-pressed')!=='true';$('#swatch').setAttribute('aria-pressed',String(pressed));sound('page');};
  $('#share').onclick=async()=>{const data={title:e.title,text:'Undangan pernikahan Achmad Bifari & Syafira Aulia · Sabtu, 31 Oktober 2026',url:invitationUrl()};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(`${data.text}\n${data.url}`);$('#share-status').textContent='Tautan disalin.';}}catch(error){if(error.name!=='AbortError')$('#share-status').textContent='Gagal membagikan. Coba lagi.';}};
- await hydrateArt();const open=initMotion();
- $('#open-gate').onclick=async()=>{await startAudio();sound('gate');setTimeout(()=>sound('chain'),350);open();};
- if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'stage_reservation',title:'Siapkan reservasi',description:'Fill the reservation form for review. Does not submit or reserve a seat.',inputSchema:{type:'object',properties:{name:{type:'string',minLength:2,maxLength:60},guests:{type:'integer',minimum:1,maximum:CONFIG.MAX_GUESTS}},required:['name','guests'],additionalProperties:false},annotations:{readOnlyHint:false},execute:async input=>{if(typeof input?.name!=='string'||typeof input?.guests!=='number'||validate(input.name,input.guests))throw new Error('Invalid reservation');if(ticket)edit();name.value=input.name.trim();count.value=input.guests;touchedName=touchedCount=true;validity();$('#reservation').scrollIntoView();return {staged:true,name:name.value,guests:Number(count.value),submitted:false};}});}catch{}}
+ await hydrateArt();const journey=initMotion();
+ $('#nav-next').onclick=()=>{void startAudio();void journey.next();};
+ $('#nav-back').onclick=()=>journey.back();
+ if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'stage_reservation',title:'Siapkan reservasi',description:'Fill the reservation form for review. Does not submit or reserve a seat.',inputSchema:{type:'object',properties:{name:{type:'string',minLength:2,maxLength:60},guests:{type:'integer',minimum:1,maximum:CONFIG.MAX_GUESTS}},required:['name','guests'],additionalProperties:false},annotations:{readOnlyHint:false},execute:async input=>{if(typeof input?.name!=='string'||typeof input?.guests!=='number'||validate(input.name,input.guests))throw new Error('Invalid reservation');if(ticket)edit();name.value=input.name.trim();count.value=input.guests;touchedName=touchedCount=true;validity();await journey.goTo('reservation');return {staged:true,name:name.value,guests:Number(count.value),submitted:false};}});}catch{}}
 }

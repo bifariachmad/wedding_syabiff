@@ -1,5 +1,6 @@
 import './style.css';
 import './raster.css';
+import './novel.css';
 const app=document.querySelector('#app');
 if(location.pathname.replace(/\/$/,'')==='/admin'){
   await import('./admin.css');

@@ -4,8 +4,14 @@ export function art(name, cls = '', layer = '') {
 }
 export function icon(name) { return `<img class="icon" src="/assets/png/icon-${name}.png" alt="" width="24" height="24"/>`; }
 export async function hydrateArt(root=document) {
+  if(document.querySelector('.visual-novel')){
+    const images=[...root.querySelectorAll(root===document?'.vn-world img, #gate img':'img')];
+    for(const img of images){if(img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;}img.loading='eager';}
+    await Promise.all(images.filter(img=>img.getAttribute('src')).map(img=>img.decode().catch(()=>{})));
+    return;
+  }
   const deferred=[...root.querySelectorAll('img[data-src]')];
-  const observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){const img=e.target;img.src=img.dataset.src;delete img.dataset.src;observer.unobserve(img);}},{rootMargin:'350px'});
+  const observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){const img=e.target;if(img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;}observer.unobserve(img);}},{rootMargin:'350px'});
   deferred.forEach(img=>observer.observe(img));
   const top=[...root.querySelectorAll('#gate img')];
   top.forEach(img=>img.loading='eager');

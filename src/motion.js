@@ -1,49 +1,75 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { hydrateArt } from './art.js';
 import { sound } from './audio.js';
-gsap.registerPlugin(ScrollTrigger);
+
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 export function initMotion(){
- const media=gsap.matchMedia();
- media.add('(prefers-reduced-motion: no-preference)',()=>{
-   const loops=new Map();
-   const loop=(section,selector,vars)=>{const targets=document.querySelectorAll(selector);if(!targets.length)return;const t=gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',paused:true,...vars});if(!loops.has(section))loops.set(section,[]);loops.get(section).push(t);};
-   loop('gate','.gate-lantern',{rotation:3,transformOrigin:'50% 0%',duration:3.5});
-   loop('gate','.gate-raven',{rotation:-5,transformOrigin:'50% 80%',duration:4});
-   loop('gate','.fog',{xPercent:12,opacity:.1,duration:7,stagger:1});
-   loop('cover','.cover-bat',{x:520,y:-35,rotation:12,duration:3,yoyo:false,repeatDelay:9});
-   loop('cover','.cover-petal',{y:65,x:30,rotation:50,opacity:0,duration:8});
-   loop('greeting','.greeting-rose',{rotation:2,duration:5,transformOrigin:'50% 100%'});
-   loop('countdown','.clock-pendulum',{rotation:12,transformOrigin:'50% 0%',duration:1.3});
-   loop('location','.map-pin',{y:-5,scale:1.08,duration:2});
-   loop('rundown','.timeline-art',{rotation:2,duration:5,stagger:.5,transformOrigin:'50% 0%'});
-   loop('rundown','.timeline-candle',{scaleY:.9,duration:12,transformOrigin:'50% 100%'});
-   loop('dresscode','.cloth-art',{rotation:2,scaleX:1.025,duration:4});
-   loop('dresscode','.falling-petal',{y:150,x:35,rotation:160,opacity:0,duration:8,yoyo:false});
-   loop('reservation','.reservation-lantern',{rotation:-3,opacity:.8,duration:4,transformOrigin:'50% 0%'});
-   loop('closing','.closing-raven',{x:580,y:-55,duration:6,repeatDelay:6,yoyo:false});
-   loop('closing','.closing-star',{opacity:.4,duration:5,stagger:.7});
-   const observer=new IntersectionObserver(entries=>entries.forEach(e=>(loops.get(e.target.id)||[]).forEach(t=>e.isIntersecting&&!document.hidden?t.resume():t.pause())));
-   document.querySelectorAll('.scene').forEach(s=>observer.observe(s));
-   const handleVisibility=()=>{for(const [id,list]of loops){const r=document.getElementById(id).getBoundingClientRect();list.forEach(t=>!document.hidden&&r.bottom>0&&r.top<innerHeight?t.resume():t.pause());}};
-   document.addEventListener('visibilitychange',handleVisibility);
-   gsap.from('#cover h1 span',{y:28,opacity:0,stagger:.25,duration:1,scrollTrigger:{trigger:'#cover h1',start:'top 90%',once:true}});
-   gsap.from('.cover-seal',{scale:1.9,rotation:-14,opacity:0,duration:.75,scrollTrigger:{trigger:'.cover-seal',start:'top 90%',once:true,onEnter:()=>sound('seal')}});
-   gsap.to('.cover-couple',{y:-22,ease:'none',scrollTrigger:{trigger:'#cover',start:'top bottom',end:'bottom top',scrub:1}});
-   const text=document.querySelector('.greeting-copy'),original=text.textContent;text.textContent='';const readable=document.createElement('span');readable.className='sr-only';readable.textContent=original;text.append(readable);
-   for(const word of original.split(' ')){const wrap=document.createElement('span');wrap.className='ink-word';wrap.setAttribute('aria-hidden','true');for(const char of word){const s=document.createElement('span');s.textContent=char;wrap.append(s);}text.append(wrap,document.createTextNode(' '));}
-   gsap.from('.ink-word>span',{opacity:0,duration:.3,stagger:.004,scrollTrigger:{trigger:'#greeting',start:'top 60%',once:true}});
-   gsap.from('.route-reveal',{scaleX:0,transformOrigin:'left',duration:1.1,scrollTrigger:{trigger:'.map-stage',start:'top 70%',once:true}});
-   document.querySelectorAll('.timeline-row').forEach(row=>{gsap.from(row.querySelector('.timeline-rule'),{scaleY:0,transformOrigin:'top',duration:.9,scrollTrigger:{trigger:row,start:'top 85%',once:true}});gsap.from(row.querySelectorAll('.timeline-copy,.timeline-art'),{y:20,opacity:0,duration:.8,stagger:.12,scrollTrigger:{trigger:row,start:'top 85%',once:true}});});
-   gsap.from('.closing-star',{opacity:0,duration:.6,stagger:.1,scrollTrigger:{trigger:'#closing',start:'top 70%',once:true}});
-   gsap.from('.closing-moon',{y:80,opacity:0,duration:1.2,scrollTrigger:{trigger:'#closing',start:'top 70%',once:true}});
-   gsap.to('.closing-lantern',{opacity:.45,ease:'none',scrollTrigger:{trigger:'#closing',start:'top 50%',end:'bottom bottom',scrub:1}});
-   return()=>{observer.disconnect();document.removeEventListener('visibilitychange',handleVisibility);text.textContent=original;};
- });
- let opened=false;
- return()=>{if(opened){document.querySelector('#cover').scrollIntoView({behavior:reduced()?'instant':'smooth'});return;}opened=true;
-   if(reduced()){gsap.to('.gate-leaf',{opacity:0,duration:.25});document.querySelector('#cover').scrollIntoView({behavior:'instant'});return;}
-   gsap.timeline().to('.gate-chain',{y:180,rotation:35,opacity:0,duration:.65}).to('.gate-left',{rotationY:-76,transformOrigin:'0% 50%',duration:1.2,ease:'power2.inOut'},.2).to('.gate-right',{rotationY:76,transformOrigin:'100% 50%',duration:1.2,ease:'power2.inOut'},.2).to('.light-bloom',{opacity:.4,scale:2,duration:.65},.65).to('.light-bloom',{opacity:0,duration:.65},1.3).call(()=>document.querySelector('#cover').scrollIntoView({behavior:'smooth'}),[],1.6);
- };
+ const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
+ const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
+ let index=0,busy=false,ambient=[];
+ const controls=()=>{back.disabled=busy||index===0;next.disabled=busy||index===scenes.length-1;root.dataset.scene=String(index);root.dataset.travelling=String(busy);};
+ function atmosphere(){
+  ambient.forEach(t=>t.kill());ambient=[];if(reduced())return;
+  const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
+  loop('.hanging-lantern,.final-lantern',{rotation:4,duration:4,transformOrigin:'50% 0%'});
+  loop('.flying-raven',{y:-9,rotation:3,duration:3});
+  loop('.floating-key,.near-petal',{y:-12,rotation:10,duration:5});
+  loop('.pendulum-hero',{rotation:12,duration:1.4,transformOrigin:'50% 0%'});
+ }
+ document.addEventListener('visibilitychange',()=>ambient.forEach(t=>document.hidden?t.pause():t.resume()));
+ function finish(from,to,target){
+  from.classList.remove('is-active','is-visible','is-travelling');
+  from.setAttribute('aria-hidden','true');from.inert=true;
+  to.classList.remove('is-travelling');to.classList.add('is-active','is-visible');
+  to.removeAttribute('aria-hidden');to.inert=false;
+  index=target;busy=false;controls();
+  root.querySelector('#journey-position').innerHTML=`${String(index+1).padStart(2,'0')} <small>/ ${scenes.length}</small>`;
+  root.querySelector('#journey-announcement').textContent=`${index+1} dari ${scenes.length}. ${to.querySelector('h1,h2').textContent}`;
+  atmosphere();
+  // Warm only the adjacent pages; distant chapters do not delay the first scene.
+  for(const near of [scenes[index-1],scenes[index+1]])if(near)hydrateArt(near);
+  if(document.activeElement?.disabled)(index===scenes.length-1?back:next).focus({preventScroll:true});
+ }
+ async function goTo(target){
+  if(typeof target==='string')target=scenes.findIndex(s=>s.id===target);
+  if(busy||target<0||target>=scenes.length||target===index)return false;
+  busy=true;controls();
+  const from=scenes[index],to=scenes[target],direction=target>index?1:-1;
+  ambient.forEach(t=>t.kill());ambient=[];
+  await hydrateArt(to);
+  from.inert=true;to.inert=true;to.classList.add('is-travelling');
+  const oldArt=from.querySelector('.vn-artwork'),newArt=to.querySelector('.vn-artwork');
+  const oldText=from.querySelector('.vn-dialogue'),newText=to.querySelector('.vn-dialogue');
+  gsap.set([oldArt,newArt,oldText,newText],{clearProps:'transform,opacity,visibility'});
+  gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
+  if(to.id==='gate')gsap.set('.gate-leaf,.gate-chain',{clearProps:'all'});
+  return new Promise(resolve=>{
+   const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
+   if(reduced()){
+    timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
+   }else{
+    sound(index===0?'gate':'page');
+    const gate=index===0&&direction===1,travel=gate?.72:0;
+    if(gate){
+     timeline.to('.gate-chain',{y:120,rotation:-70,opacity:0,duration:.55},0)
+      .to('.gate-left',{rotationY:-87,transformOrigin:'0% 50%',duration:1.15,ease:'power2.inOut'},.15)
+      .to('.gate-right',{rotationY:87,transformOrigin:'100% 50%',duration:1.15,ease:'power2.inOut'},.15)
+      .call(()=>sound('chain'),[],.2);
+    }
+    timeline.to(oldText,{opacity:0,y:12,duration:.22},0)
+     .to(from.querySelectorAll('[data-depth]'),{z:(_i,el)=>direction*(680+Number(el.dataset.depth)*.65),duration:1.2,ease:'power2.inOut'},travel)
+     .to(oldArt,{opacity:0,duration:.5},travel+.55)
+     .fromTo(to.querySelectorAll('[data-depth]'),{z:(_i,el)=>-direction*(1000+Number(el.dataset.depth)*1.5)},{z:0,duration:1.45,ease:'power3.out'},travel+.4)
+     .from(newArt,{opacity:0,duration:.65},travel+.4)
+     .fromTo('.vn-travel-frame',{z:-direction*200,opacity:.28},{z:direction*430,opacity:.55,duration:1.35,ease:'power2.inOut'},travel)
+     .to('.vn-landscape',{scale:1+target*.018,yPercent:-target*.35,duration:1.6,ease:'power2.inOut'},travel)
+     .fromTo('.vn-haze',{opacity:1},{opacity:.45,duration:1.3},travel+.1)
+     .from(newText,{opacity:0,y:12,duration:.42},travel+1.2);
+   }
+   timeline.to('#journey-progress',{scaleX:(target+1)/scenes.length,duration:.3},0);
+  });
+ }
+ controls();atmosphere();
+ return {goTo,next:()=>goTo(index+1),back:()=>goTo(index-1)};
 }
-export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:20,opacity:0,duration:.7});gsap.from('.ticket-seal',{scale:2,rotation:-15,opacity:0,duration:.8});gsap.fromTo('.stamp-petal',{opacity:1,x:0,y:0},{x:i=>(i-1)*90,y:160,rotation:i=>i*75,opacity:0,duration:1.5,stagger:.12});sound('seal');ScrollTrigger.refresh();}
+export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:10,opacity:0,duration:.5});sound('seal');}

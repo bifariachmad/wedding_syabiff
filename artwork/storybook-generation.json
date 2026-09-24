@@ -1,0 +1,74 @@
+{
+  "created_date": "2026-09-24",
+  "tool": "built-in image_gen.imagegen",
+  "generation_strategy": "One independent request per asset, all three requests in one parallel batch; no variants or retries.",
+  "reference_role": "Style references inspected visually before generation; supplied images were not edit targets.",
+  "inspected_reference_paths": [
+    "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+    "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 24, 2026, 05_31_52 PM.png",
+    "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 24, 2026, 05_31_58 PM.png",
+    "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 24, 2026, 05_32_03 PM.png",
+    "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/invitation/public/assets/png/arch-roses.png"
+  ],
+  "output_directory": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/storybook-artwork",
+  "alpha_notes": "Original generated RGBA bytes preserved unchanged. Each file has alpha extrema 0-254 and true fully transparent pixels. RGB beneath transparent pixels contains dark gradients; raw image viewers may show that RGB instead of compositing alpha. Gate has a larger population of low-alpha background pixels; check compositing on the site's cream background. No checkerboard background was generated and no cleanup was performed.",
+  "assets": [
+    {
+      "name": "storybook-stage",
+      "prompt": "Use case: illustration-story.\nAsset type: standalone raster cutout for a playful adult wedding storybook website, not a webpage mockup.\nPrimary request: a wide open antique pop-up book with ivory and warm cream paper pages, a few small folded paper garden hills near the rear and outer sides, and a dusty maroon ribbon bookmark. The broad central spread must stay clear and unobstructed so existing couple and garden-gate artwork can be layered over it.\nStyle/medium: adult hand-inked storybook illustration with precise angular ink contours, subtle scratchy pencil hatching, layered paper-cutout planes and warm parchment grain; stylish and romantic, slightly eccentric rather than childish.\nComposition/framing: wide landscape, complete book visible with generous clear margin, front view slightly from above; an open book presented as one isolated stage object. Folded details remain low and sparse. No characters and no gate within this asset.\nLighting/mood: light, airy, whimsical daylight; welcoming and romantic.\nColor palette: ivory, cream, warm parchment and restrained dusty maroon. Dark brown fine ink outlines only, minimal solid black.\nBackground/output: genuine fully transparent PNG alpha background around the object, including negative spaces; preserve clean natural edges. No visible checkerboard pattern, no white canvas, no scene background, no floor, no cast shadow outside the cutout.\nConstraints: no lettering, no words, no numerals, no logos, no watermark; no horror imagery, no skulls, no candles, no faces, no heavy dark masses.",
+      "source_path": "C:/Users/bifar/.codex/generated_images/01a0d36a-0a22-7530-92d1-9ea9a68f3a5d/exec-6e5dce9d-4013-4571-a87d-3bad7d2be6f0.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2476282,
+      "alpha_0": 677236,
+      "alpha_1_to_10": 17195,
+      "alpha_11_to_249": 18619,
+      "alpha_250_to_254": 859814,
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/storybook-artwork/storybook-stage.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "name": "storybook-gate",
+      "prompt": "Use case: illustration-story.\nAsset type: standalone portrait raster cutout for an interactive playful adult wedding storybook website.\nPrimary request: a whimsical airy tall double garden gate under a lightly curling rose arch. Use cream-painted thin wrought iron with dusty maroon accents and sparse pale cream and maroon roses. The gate is clearly CLOSED: two equally sized symmetric leaves meet exactly at the vertical center, with a clean seam so the two halves can be animated separately. The thin ironwork remains open and airy.\nStyle/medium: adult hand-inked storybook illustration with crisp slightly angular ink contours, restrained scratchy hatching, layered paper-cutout feeling, warm paper texture, elegant ornamental curls.\nComposition/framing: centered straight-on full front elevation; complete arch, posts and both symmetric closed gate leaves visible; tall portrait silhouette with clear margins; strong readable shape. Transparent negative space through all ironwork.\nLighting/mood: romantic bright daytime, whimsical and welcoming.\nColor palette: predominantly ivory/cream painted iron, warm parchment edge shading, subtle dusty maroon flourishes and sparse roses. Fine dark-brown outlines, very little solid black.\nBackground/output: genuine fully transparent PNG alpha background around and THROUGH the gate ironwork; preserve the generated alpha. No checkerboard pattern, no white canvas, no opaque backdrop, no ground or external shadow.\nConstraints: one gate only; no people, no characters, no book, no buildings, no scenery, no text, no lettering, no watermark; no heavy black iron, no horror, no thorns dominating the silhouette.",
+      "source_path": "C:/Users/bifar/.codex/generated_images/01a0d36a-0a22-7530-92d1-9ea9a68f3a5d/exec-1aaf2f53-552f-4ab5-9c6d-98bf32272ce8.png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2881539,
+      "alpha_0": 552412,
+      "alpha_1_to_10": 359643,
+      "alpha_11_to_249": 443699,
+      "alpha_250_to_254": 217110,
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/storybook-artwork/storybook-gate.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "name": "raven-messenger",
+      "prompt": "Use case: illustration-story.\nAsset type: isolated raster cutout for a playful adult wedding storybook website.\nPrimary request: a charming elegant raven flying with its wings gracefully spread, carrying a sealed cream invitation envelope tied with a dusty maroon ribbon. Make the beak clearly hold the ribbon so the envelope hangs naturally beneath. A plain maroon wax seal with no lettering.\nStyle/medium: adult hand-inked angular storybook illustration; expressive precise ink contours, elongated elegant feather shapes, subtle scratchy hatching and paper-cutout planes, lightly worn parchment texture. Whimsical sophisticated companion to an ink-drawn wedding couple.\nComposition/framing: landscape-ish balanced flying silhouette, full raven and full invitation visible with clear margins; the envelope is legible as an object; wings and ribbon arranged to avoid covering the envelope.\nLighting/mood: friendly, romantic, playful daylight; elegant curiosity, no menace.\nColor palette: raven charcoal and warm brown-black with cream feather highlights, ivory envelope, dusty maroon ribbon and seal; avoid large featureless black areas.\nBackground/output: genuine fully transparent PNG alpha background around the entire bird, ribbon and envelope and in all gaps; preserve clean edges and alpha. No checkerboard pattern, no white canvas, no scenery or external cast shadow.\nConstraints: no human characters, no text, no writing, no logos, no watermark, no horror, no skulls, no extra birds or objects.",
+      "source_path": "C:/Users/bifar/.codex/generated_images/01a0d36a-0a22-7530-92d1-9ea9a68f3a5d/exec-f6e4ff70-dbd1-488d-a8df-d5b2d3b25e50.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2545641,
+      "alpha_0": 868602,
+      "alpha_1_to_10": 44129,
+      "alpha_11_to_249": 53949,
+      "alpha_250_to_254": 606184,
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/storybook-artwork/raven-messenger.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    }
+  ]
+}

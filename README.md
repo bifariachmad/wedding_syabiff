@@ -1,6 +1,8 @@
 # Dua Jiwa, Satu Lentera
 
-Mobile wedding invitation for Achmad Bifari & Syafira Aulia, 31 October 2026, 09:30–13:40 WIB, Lumbung Kuliner. Vite, vanilla JavaScript, GSAP, and original PNG artwork in the supplied Biff reference style.
+Full-screen visual-novel wedding invitation for Achmad Bifari & Syafira Aulia, 31 October 2026, 09:30–13:40 WIB, Lumbung Kuliner. Vite, vanilla JavaScript, GSAP, and original dark PNG artwork in the supplied Biff reference style.
+
+The story has 16 scenes. **Kembali** and **Lanjut** are the only story navigation, fixed at the bottom. The gate opens before the camera advances through it; foreground cutouts and distant scenery travel at different depths. Each rundown item is its own scene. Wheel and swipe do not advance the story. Reduced motion uses short fades. Form/ticket overflow is contained inside the dialogue for small screens and the on-screen keyboard; the page itself does not scroll. Reservation, Maps, music and download buttons remain functional actions.
 
 ## Run locally
 
@@ -66,6 +68,6 @@ invitation/
 
 ## Tests and asset maintenance
 
-`npm test` executes the actual `Code.gs` using in-memory Google service adapters. With the dev server running, `npm run verify` checks all nine sections at three widths, validation, QR, ticket PNG, calendar, updates, recall, network failure, admin, and motion. Test API interception exists only in the test runner. See `VERIFICATION.md` for results and limitations.
+`npm test` executes the actual `Code.gs` using in-memory Google service adapters. With the dev server running, `npm run verify` checks all 16 scenes forward/back at three widths, two-button navigation, no page scrolling, inactive-scene focus isolation, depth motion, validation, QR, ticket PNG, calendar, updates, recall, network failure and admin. Test API interception exists only in the test runner. `node scripts/review-novel.mjs` captures mobile, short-screen and desktop scene reviews. See `VERIFICATION.md` for results and limitations.
 
 Final PNGs are committed; normal builds need no image-generation service. `npm run assets` repeats cleanup and procedural generation on the original machine. `artwork/sources.json` records full prompts and source paths; on another machine use the committed PNGs or update those paths. `npm run assets:review` refreshes the contact sheet. With the dev server running, `node scripts/generate-og.mjs` regenerates the share image. Browser scripts use a Windows Chrome path; adjust it on another OS.
