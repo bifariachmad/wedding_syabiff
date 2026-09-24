@@ -1,0 +1,359 @@
+[
+  {
+    "file": "png/arch-roses.png",
+    "depicts": "Adult Biff-inspired groom and original adult bride beneath roses",
+    "section": "1,5",
+    "layers": "cover-couple, timeline-art",
+    "bytes": 153130
+  },
+  {
+    "file": "png/bare-tree.png",
+    "depicts": "Ink tree silhouette",
+    "section": "8",
+    "layers": "closing-tree",
+    "bytes": 36117
+  },
+  {
+    "file": "png/bat.png",
+    "depicts": "Flying bat",
+    "section": "1",
+    "layers": "cover-bat",
+    "bytes": 17562
+  },
+  {
+    "file": "png/book-quill.png",
+    "depicts": "Open book and feather quill",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 28963
+  },
+  {
+    "file": "png/candle.png",
+    "depicts": "Taper candle and holder",
+    "section": "5",
+    "layers": "wax-drip, timeline-art",
+    "bytes": 15508
+  },
+  {
+    "file": "png/chains.png",
+    "depicts": "Chain and padlock",
+    "section": "0",
+    "layers": "chain",
+    "bytes": 9191
+  },
+  {
+    "file": "png/clock.png",
+    "depicts": "Antique clock showing arrival time",
+    "section": "3",
+    "layers": "face",
+    "bytes": 30563
+  },
+  {
+    "file": "png/cloth-swatch.png",
+    "depicts": "Draped maroon cloth",
+    "section": "6",
+    "layers": "cloth",
+    "bytes": 36921
+  },
+  {
+    "file": "png/curtain.png",
+    "depicts": "Maroon stage curtains",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 39420
+  },
+  {
+    "file": "png/fold-lines.png",
+    "depicts": "Faint paper creases",
+    "section": "All paper scenes",
+    "layers": "static texture",
+    "bytes": 9505
+  },
+  {
+    "file": "png/frame-border.png",
+    "depicts": "Alternate ornate frame",
+    "section": "Asset kit",
+    "layers": "static alternate",
+    "bytes": 27223
+  },
+  {
+    "file": "png/gate-environment.png",
+    "depicts": "Painted nocturnal courtyard",
+    "section": "0",
+    "layers": "static environment",
+    "bytes": 255819
+  },
+  {
+    "file": "png/gate.png",
+    "depicts": "Cutout iron gate",
+    "section": "0,5",
+    "layers": "gate-left, gate-right",
+    "bytes": 142064
+  },
+  {
+    "file": "png/icon-calendar.png",
+    "depicts": "calendar UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 919
+  },
+  {
+    "file": "png/icon-check.png",
+    "depicts": "check UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 1163
+  },
+  {
+    "file": "png/icon-close.png",
+    "depicts": "close UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 844
+  },
+  {
+    "file": "png/icon-download.png",
+    "depicts": "download UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 802
+  },
+  {
+    "file": "png/icon-minus.png",
+    "depicts": "minus UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 445
+  },
+  {
+    "file": "png/icon-music-off.png",
+    "depicts": "music off UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 1461
+  },
+  {
+    "file": "png/icon-music-on.png",
+    "depicts": "music on UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 1459
+  },
+  {
+    "file": "png/icon-pin.png",
+    "depicts": "pin UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 2417
+  },
+  {
+    "file": "png/icon-plus.png",
+    "depicts": "plus UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 603
+  },
+  {
+    "file": "png/icon-share.png",
+    "depicts": "share UI symbol",
+    "section": "Controls",
+    "layers": "static icon",
+    "bytes": 1777
+  },
+  {
+    "file": "png/ink-splatter.png",
+    "depicts": "Procedural ink flecks",
+    "section": "Asset kit",
+    "layers": "static texture",
+    "bytes": 2970
+  },
+  {
+    "file": "png/iron-fence.png",
+    "depicts": "Repeating wrought iron fence",
+    "section": "Asset kit",
+    "layers": "static alternate",
+    "bytes": 11984
+  },
+  {
+    "file": "png/key.png",
+    "depicts": "Ornate key",
+    "section": "2",
+    "layers": "greeting-key",
+    "bytes": 12400
+  },
+  {
+    "file": "png/lantern.png",
+    "depicts": "Warm hanging lantern",
+    "section": "0,7,8",
+    "layers": "lantern-body, glow, reservation-lantern, closing-lantern",
+    "bytes": 13718
+  },
+  {
+    "file": "png/long-table.png",
+    "depicts": "Banquet table with candles",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 28104
+  },
+  {
+    "file": "png/map-card.png",
+    "depicts": "Decorative venue map",
+    "section": "4",
+    "layers": "map-art; separate route-path and pin",
+    "bytes": 93045
+  },
+  {
+    "file": "png/mask-torn-edge.png",
+    "depicts": "Procedural torn-paper strip",
+    "section": "Asset kit",
+    "layers": "static mask",
+    "bytes": 4610
+  },
+  {
+    "file": "png/moon.png",
+    "depicts": "Crescent moon",
+    "section": "8",
+    "layers": "closing-moon",
+    "bytes": 27107
+  },
+  {
+    "file": "png/ornament-corner.png",
+    "depicts": "Rose corner ornament",
+    "section": "1",
+    "layers": "top-left, top-right",
+    "bytes": 14565
+  },
+  {
+    "file": "png/ornament-divider.png",
+    "depicts": "Symmetric ink divider",
+    "section": "1,2,5",
+    "layers": "divider",
+    "bytes": 6843
+  },
+  {
+    "file": "png/paper-filter.png",
+    "depicts": "Seeded fine paper grain",
+    "section": "All paper scenes",
+    "layers": "static texture",
+    "bytes": 52383
+  },
+  {
+    "file": "png/pendulum.png",
+    "depicts": "Separate clock pendulum",
+    "section": "3",
+    "layers": "pendulum",
+    "bytes": 7641
+  },
+  {
+    "file": "png/petal.png",
+    "depicts": "Maroon rose petal",
+    "section": "1,6,7",
+    "layers": "cover-petal, petal-1, stamp-petal",
+    "bytes": 21700
+  },
+  {
+    "file": "png/photo-frame-camera.png",
+    "depicts": "Vintage frame and camera",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 42387
+  },
+  {
+    "file": "png/raven-flight.png",
+    "depicts": "Raven in flight",
+    "section": "5,8",
+    "layers": "raven-wing",
+    "bytes": 20537
+  },
+  {
+    "file": "png/raven.png",
+    "depicts": "Perched raven",
+    "section": "0,5",
+    "layers": "raven-head, timeline-art",
+    "bytes": 36052
+  },
+  {
+    "file": "png/rose-wilted.png",
+    "depicts": "Wilted rose",
+    "section": "2,6",
+    "layers": "greeting-rose, dresscode-rose",
+    "bytes": 30821
+  },
+  {
+    "file": "png/scanner-frame.png",
+    "depicts": "PNG camera scan corners",
+    "section": "Admin",
+    "layers": "scanner-overlay",
+    "bytes": 2212
+  },
+  {
+    "file": "png/stain-coffee.png",
+    "depicts": "Faint old-paper ring stain",
+    "section": "2",
+    "layers": "static texture",
+    "bytes": 11220
+  },
+  {
+    "file": "png/stars.png",
+    "depicts": "Eight paper stars in six independently revealed regions",
+    "section": "8",
+    "layers": "stars-0 through stars-5",
+    "bytes": 5395
+  },
+  {
+    "file": "png/ticket.png",
+    "depicts": "Empty ticket composition template",
+    "section": "Asset kit",
+    "layers": "live ticket is rendered with HTML and canvas",
+    "bytes": 6915
+  },
+  {
+    "file": "png/violin.png",
+    "depicts": "Acoustic violin",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 34336
+  },
+  {
+    "file": "png/wax-seal.png",
+    "depicts": "Maroon B & S wax seal",
+    "section": "1,7",
+    "layers": "cover-seal, ticket-seal",
+    "bytes": 42119
+  },
+  {
+    "file": "png/wine-glass.png",
+    "depicts": "Maroon welcome-drink glass",
+    "section": "5",
+    "layers": "timeline-art",
+    "bytes": 21678
+  },
+  {
+    "file": "favicon-32.png",
+    "depicts": "Lantern brand icon",
+    "section": "Metadata",
+    "layers": "static",
+    "bytes": 920
+  },
+  {
+    "file": "apple-touch-icon-180.png",
+    "depicts": "Lantern brand icon",
+    "section": "Metadata",
+    "layers": "static",
+    "bytes": 6347
+  },
+  {
+    "file": "icon-512.png",
+    "depicts": "Lantern brand icon",
+    "section": "Metadata",
+    "layers": "static",
+    "bytes": 35424
+  },
+  {
+    "file": "og-image.png",
+    "depicts": "1200 × 630 illustrated share preview",
+    "section": "Metadata",
+    "layers": "static",
+    "bytes": 526770
+  }
+]

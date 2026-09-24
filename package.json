@@ -1,0 +1,29 @@
+{
+  "name": "dua-jiwa-satu-lentera",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "assets": "node scripts/import-art.mjs && node scripts/generate-ui.mjs",
+    "test": "node --test tests/backend.test.mjs",
+    "verify": "node tests/browser.mjs",
+    "assets:review": "node scripts/review-raster.mjs"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "qr-scanner": "^1.4.2",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@fontsource/im-fell-english": "^5.2.5",
+    "@fontsource/special-elite": "^5.2.5",
+    "@fontsource/unifrakturcook": "^5.2.5",
+    "lighthouse": "^12.8.2",
+    "playwright": "^1.55.0",
+    "sharp": "^0.34.3",
+    "vite": "^7.1.7"
+  }
+}
