@@ -1,3 +1,4 @@
+import {maproomArtwork,maproomDialogue} from './maproom-markup.js';
 import {clockroomArtwork,clockroomDialogue} from './clockroom-markup.js';
 import { CONFIG } from './config.js';
 import { art, icon } from './art.js';
@@ -16,10 +17,10 @@ export function invitationMarkup(){
  <button class="music-toggle" id="music-toggle" aria-label="Nyalakan musik">${icon('music-off')}</button>
  <div class="vn-stage">
  ${scene('gate','KAMU',courtyardArtwork(),`<p id="recipient" class="recipient" hidden></p><p id="courtyard-line" aria-hidden="true">Di mana ini…? Udara pagi terasa hangat.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Udara pagi terasa hangat.</span>`)}
- ${scene('cover','Part II · The Wedding',courtyardCover(),`<span class="courtyard-wedding">The Wedding</span><h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1><p class="vn-narration courtyard-date">Sabtu,<br>31 Oktober 2026.</p>`)}
+ ${scene('cover','Part II · The Wedding',courtyardCover(),`<span class="courtyard-wedding">The Wedding</span><h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1>`)}
  ${scene('greeting','KAMU',welcomeArtwork(),welcomeDialogue())}
  ${scene('countdown','BIFARI',clockroomArtwork(),clockroomDialogue())}
- ${scene('location','Bab IV · Tempat kita bertemu',`${sprite('map-card','map-hero',10)}${sprite('icon-pin','map-marker',150)}${sprite('key','floating-key',180)}`,`<h2 id="location-title">${e.venue}</h2><p class="vn-narration">Tamu diminta hadir mulai pukul 09:30 WIB.</p><a class="vn-action" href="${e.maps}" target="_blank" rel="noopener noreferrer">Buka di Google Maps ↗</a>`)}
+ ${scene('location','SYAFIRA',maproomArtwork(),maproomDialogue())}
  ${CONFIG.RUNDOWN.map(([time,title,note,asset,extra],i)=>scene(`rundown-${i}`,'Bab V · Rangkaian acara',`${sprite(asset,'rundown-hero asset-'+asset,0)}${extra?sprite(extra,'rundown-accent',200):''}`,`<span class="vn-event-number">${String(i+1).padStart(2,'0')} / 08</span><time>${time} WIB</time><h2 id="rundown-${i}-title">${title}</h2><p class="vn-narration">${note}</p>`,'vn-rundown')).join('')}
  ${scene('dresscode','Bab VI · Sehelai maroon',`${sprite('cloth-swatch','cloth-hero',20)}${sprite('rose-wilted','rose-hero',160)}${sprite('petal','near-petal',200)}`,`<h2 id="dresscode-title">Dresscode & Tema</h2><p class="vn-narration">Kenakan warna maroon.</p><p>Dekorasi bernuansa gothic: remang, hangat, sedikit misterius.</p>`)}
  ${scene('reservation','Bab VII · Sebuah kursi untukmu',`${sprite('book-quill','reservation-hero',0)}${sprite('lantern','hanging-lantern',120)}`,`<h2 id="reservation-title">Reservasi</h2><div class="vn-form-content"><p class="reservation-intro">Bantu kami menyiapkan kursimu. Isi nama dan jumlah tamu untuk melanjutkan.</p>

@@ -133,7 +133,7 @@ export function initPrologue(onExit){
   const frame=$('.arrival-paper-frame'),paper=$('.arrival-burning-paper'),edge=$('.arrival-burn-edge');
   const card=frame.getBoundingClientRect(),bounds=section.getBoundingClientRect();
   gsap.set($('.arrival-portal'),{left:card.x+card.width/2-bounds.x,top:card.y+card.height/2-bounds.y,autoAlpha:0,scale:.06});
-  gsap.set($('.arrival-portal-window'),{opacity:0});
+  gsap.set($('.arrival-portal-window'),{opacity:1,filter:'brightness(0)'});
   burnPaper(paper,edge,0);
   const burn={progress:0},burnStart=.35,burnDuration=reduced()?1:3.2,portalStart=burnStart+burnDuration+.9;
   return run(t=>{
@@ -145,10 +145,10 @@ export function initPrologue(onExit){
     .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:innerHeight*.4,duration:.5,ease:'power2.in'},burnStart+burnDuration+.2)
     .call(()=>{section.dataset.burn='portal';$('#arrival-description').textContent='Setelah kertas habis, sebuah portal terbuka di hadapanmu.';sound('portal');},[],portalStart);
    if(reduced()){
-    t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:.25},portalStart).to($('.arrival-portal-window'),{opacity:1,duration:.4},portalStart+.15).to(section,{opacity:0,duration:.35},portalStart+.65);
+    t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:.25},portalStart).to($('.arrival-portal-window'),{filter:'brightness(1)',duration:.6},portalStart+.15).to(section,{opacity:0,duration:.35},portalStart+.8);
    }else{
     t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:1.4,ease:'power2.in'},portalStart)
-     .to($('.arrival-portal-window'),{opacity:1,duration:1.5,ease:'sine.inOut'},portalStart+.45)
+     .to($('.arrival-portal-window'),{filter:'brightness(1)',duration:1.8,ease:'sine.inOut'},portalStart+.65)
      .to($('.arrival-ink-ring'),{rotation:210,duration:3.8,ease:'power1.in'},portalStart)
      .to($('.arrival-camera'),{scale:1.3,duration:3},portalStart)
      .to($('.arrival-portal'),{scale:8,duration:2.1,ease:'power3.in'},portalStart+1.4)

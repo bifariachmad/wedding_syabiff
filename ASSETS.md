@@ -109,3 +109,6 @@ Exterior facade: scene3-artwork-v2/manor-exterior.png. Front-facing medium-heigh
 # Clock-room and motion assets
 
 Built-in ImageGen sources: ../scene4-artwork. Installed PNGs in public/assets/png/clockroom: clock-room, garden-shrub, bifari-speaking, syafira-speaking, plus composited speaking-closed frames. Exact prompts and mouth-patch verification: artwork/clockroom-generation.json. Matched facade and door leaves were extracted from the original facade without redrawing; registration and reconstruction proof: artwork/matching-door-layers.json and ../scene3-door-layers. These new layers replace the unrelated opening door artwork.
+# Map-room and raven frames
+
+Built-in ImageGen sources in ../scene5-artwork: raven-up.png, raven-down.png (aligned1024x1024 alpha sprites), map-room.png (1024x1536 opaque). Exact prompts: artwork/maproom-generation.json. Installed under public/assets/png/maproom. Ground shadows derive from existing character alpha silhouettes; import-maproom.mjs reproduces the assets. Full-canvas gate PNGs are exact source partitions from ../scene2-gate-layers; hinge metadata in artwork/gate-layer-registration.json.

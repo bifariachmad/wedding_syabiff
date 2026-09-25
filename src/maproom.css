@@ -1,0 +1,18 @@
+.maproom-active .vn-header{display:none}
+#location .vn-artwork{inset:0;overflow:clip}
+.maproom-camera{position:absolute;inset:0;transform-origin:50% 55%}
+.maproom-background{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+#location .welcome-couple{top:auto;bottom:24%;height:48%;width:min(100%,850px)}
+#location .welcome-character{width:40%}#location .character-syafira{left:0;right:auto}#location .character-bifari{right:0;left:auto}
+#location .vn-dialogue{width:min(720px,calc(100% - 36px));bottom:15px;translate:-50% 0;background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;padding:18px 24px;box-shadow:none;min-height:128px;max-height:48%;overflow:visible}
+#location .vn-dialogue:before,#location .vn-dialogue:after{display:none}
+#location .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
+#location .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
+.maproom-venue{padding:0 0 12px;margin-bottom:12px;border-bottom:1px solid #dcb89955}
+.maproom-venue>span{font:11px var(--ui);letter-spacing:1.5px;color:#debc9b}
+.visual-novel .maproom-venue h3{font:30px/1.15 var(--body);margin:8px 0;color:#fff0d5}
+#location .maproom-venue p{font:16px/1.4 var(--body);min-height:0;margin:5px 0 10px}
+#location .maproom-link{font:14px var(--ui);min-height:38px;display:inline-flex;align-items:center;color:#f4d0a6;margin:0;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:600px){#location .vn-dialogue{padding:14px 12px;max-height:55%;min-height:120px}#location .vn-dialogue p{font-size:19px;min-height:54px}#location .maproom-venue p{font-size:14px;min-height:0}.visual-novel .maproom-venue h3{font-size:26px}.maproom-venue{padding-bottom:8px;margin-bottom:8px}#location .welcome-couple{bottom:31%;height:45%;width:100%}}
+@media(max-height:700px) and (max-width:600px){#location .vn-dialogue{max-height:62%;padding:12px 10px}#location .vn-dialogue p{font-size:17px;min-height:48px}#location .maproom-venue p{font-size:13px;min-height:0}.maproom-venue{padding-bottom:4px;margin-bottom:6px}.visual-novel .maproom-venue h3{font-size:24px;margin:4px 0}#location .maproom-link{font-size:13px;min-height:32px}#location .welcome-couple{bottom:34%;height:43%}}
+@media(max-height:500px) and (min-width:600px){#location .vn-dialogue{left:auto;right:18px;translate:0;transform:none!important;width:48%;bottom:14px;max-height:84%;padding:8px 12px}#location .vn-dialogue p{font-size:17px;min-height:45px}#location .maproom-venue p{font-size:13px;min-height:0}.maproom-venue{padding-bottom:3px;margin-bottom:5px}.visual-novel .maproom-venue h3{font-size:25px;margin:3px 0}#location .welcome-heading{left:25px;right:auto;top:15px}#location .welcome-heading h2{font-size:24px}#location .welcome-couple{left:25%;width:45%;height:68%;bottom:4%}.maproom-background{object-position:center 65%}}

@@ -63,3 +63,6 @@ Scene 1 replay samples every animation frame during envelope pickup and letter r
 # Scenes 1–4 journey revision
 
 Clock-room tests cover four reading stops, talking-mouth opacity alternation, live ticking countdown, entrance-door layers, returning to restored host positions, and four viewports without dialogue/countdown overlap. Gate tests verify +102/-102 degree inward hinges, visible crossing raven during the six-step walk, and unchanged final title framing. Arrival regression and 48-screenshot full navigation/reservation harness passed. Door-layer source reconstruction is exact (zero differing pixels); generated mouth frames differ only inside their recorded mouth rectangles. No live backend deployment is implied by harness tests.
+# Scene 5 follow-up
+
+tests/maproom.mjs verifies portal brightness starts at zero and passes through intermediate brightness, both raven PNG frames alternate, title date is absent and heading is maroon, opening door zoom begins concurrently, the room is empty before hosts appear, Syafira is left, four map-room stops replay in both directions, Maps URL remains the configured venue URL, and dialogue fits 360x640, 430x932, 1440x900 and 844x390. Browser/asset errors: none. Grounded clock composition inspected in artifacts/maproom/grounded-clock.png. Gate extraction reconstructs original RGBA exactly with zero differing pixels.

@@ -23,7 +23,7 @@ export function initWelcome(){
  function pose(){
   gsap.set(scene.querySelectorAll('.welcome-character'),{xPercent:0,y:0,scale:1});scene.dataset.speaking='false';
   gsap.set($('.welcome-camera'),{scale:step>=2?1.18:1,x:0,y:0,rotation:0});
-  gsap.set($('.welcome-couple'),{opacity:1});
+  gsap.set($('.welcome-couple'),{autoAlpha:step?1:0});
   gsap.set($('.welcome-exterior'),{autoAlpha:step===0?1:0,scale:1});
   gsap.set($('.welcome-door-left'),{rotationY:step?102:0});gsap.set($('.welcome-door-right'),{rotationY:step?-102:0});
   gsap.set($('.vn-dialogue'),{opacity:1,y:0});copy();controls();
@@ -37,11 +37,18 @@ export function initWelcome(){
    t.to($('.vn-dialogue'),{opacity:0,duration:.15});
    if(reduced()){t.call(()=>{step=target;pose();busy=true;controls();});}
    else if(target===0||step===0){
-    if(!target)t.set($('.welcome-exterior'),{scale:1,autoAlpha:1});
-    t.call(()=>{sound('latch');sound('door');})
-     .to($('.welcome-door-left'),{rotationY:target?102:0,duration:1.8,ease:'power2.inOut'})
-     .to($('.welcome-door-right'),{rotationY:target?-102:0,duration:2,ease:'power2.inOut'},'<.12');
-    if(target){const at=t.duration();t.call(()=>sound('footstep'),[],at).to($('.welcome-exterior'),{scale:1.9,duration:1.3,ease:'sine.inOut'},at).call(()=>sound('footstep'),[],at+.6).to($('.welcome-exterior'),{autoAlpha:0,duration:.6},at+.65);}
+    if(!target)t.set($('.welcome-exterior'),{scale:1.9,autoAlpha:1}).set($('.welcome-couple'),{autoAlpha:0});
+    const at=t.duration();
+    t.call(()=>{sound('latch');sound('door');},[],at)
+     .to($('.welcome-door-left'),{rotationY:target?102:0,duration:1.8,ease:'power2.inOut'},at)
+     .to($('.welcome-door-right'),{rotationY:target?-102:0,duration:2,ease:'power2.inOut'},at+.12)
+     .to($('.welcome-exterior'),{scale:target?1.9:1,duration:2.8,ease:'sine.inOut'},at)
+     .call(()=>sound('footstep'),[],at+.65).call(()=>sound('footstep'),[],at+1.45);
+    if(target){t.to($('.welcome-exterior'),{autoAlpha:0,duration:.6},at+2.2)
+     .call(()=>{scene.dataset.arrival='empty';$('#welcome-description').textContent='Ruangan masih kosong. Kamu melangkah masuk.';},[],at+2.8)
+     .fromTo(scene.querySelectorAll('.welcome-character'),{xPercent:i=>i?-18:18},{xPercent:0,duration:.8,ease:'sine.out'},at+3.8)
+     .to($('.welcome-couple'),{autoAlpha:1,duration:.65},at+3.8)
+     .call(()=>{scene.dataset.arrival='hosts';},[],at+4.6);}
    }else if(target===2&&step===1||target===1&&step===2){
     const at=t.duration(),toward=target===2;
     for(let i=0;i<2;i++){

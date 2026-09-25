@@ -32,8 +32,8 @@ export function initCourtyard(){
     timeline.set($('.courtyard-left'),{rotationY:target===2?102:0}).set($('.courtyard-right'),{rotationY:target===2?-102:0});
    }else if(target===2||step===2){
     timeline.call(()=>{sound('latch');sound('gate');})
-     .to($('.courtyard-left'),{rotationY:target===2?102:0,duration:1.9,ease:'power2.inOut'})
-     .to($('.courtyard-right'),{rotationY:target===2?-102:0,duration:2.1,ease:'power2.inOut'},'<.1');
+     .to($('.courtyard-left'),{rotationY:target===2?102:0,duration:1.8,ease:'power2.inOut'})
+     .to($('.courtyard-right'),{rotationY:target===2?-102:0,duration:2,ease:'power2.inOut'},'<.12');
    }else{
     const at=timeline.duration();
     walk(timeline,target?[1.045,1.09]:[1.045,1],0,at);

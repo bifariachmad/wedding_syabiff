@@ -20,3 +20,10 @@
 @media(min-height:501px){#countdown .welcome-couple{top:12%;height:45%}}
 @media(max-height:700px) and (max-width:600px){#countdown .welcome-couple{top:4%;height:62%}.clockroom-countdown{top:38%;padding:2px 8px;border-width:12px}.clockroom-countdown>p{font-size:14px;line-height:1.3;margin:2px 0}.clockroom-countdown>p span{font-size:13px}#countdown .digit{font-size:20px}#countdown .digit-label{font-size:10px}#countdown .countdown-grid{margin:0}}
 @media(max-height:500px) and (min-width:600px){#countdown .vn-dialogue{transform:none!important}#countdown .welcome-couple{left:75%;width:42%;top:0;height:62%}.clockroom-background{object-position:center 25%}.clockroom-countdown{left:25%;width:36%;top:27%;padding:4px 8px;border-width:12px}.clockroom-countdown>p{margin:2px 0;font-size:14px;line-height:1.3}#countdown .countdown-grid>div{padding:2px 0}}
+/* Feet sit on the foreground floor; camera motion moves floor and hosts together. */
+#countdown .welcome-couple{top:auto;bottom:23%;height:48%;width:min(98%,860px)}
+#countdown .character-syafira{left:3%;right:auto}#countdown .character-bifari{right:3%;left:auto}
+.clockroom-countdown{top:17%}
+@media(max-width:600px){#countdown .welcome-couple{top:auto;bottom:23%;height:48%;width:100%}.clockroom-countdown{top:16%}}
+@media(max-height:700px) and (max-width:600px){#countdown .welcome-couple{top:auto;bottom:28%;height:44%}.clockroom-countdown{top:17%}}
+@media(max-height:500px) and (min-width:600px){#countdown .welcome-couple{top:auto;bottom:6%;height:75%;left:75%;width:42%}.clockroom-countdown{top:27%}}

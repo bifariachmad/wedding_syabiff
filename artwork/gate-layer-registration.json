@@ -1,0 +1,31 @@
+{
+  "source": "invitation/public/assets/png/courtyard/gate-pair.png",
+  "source_sha256": "c588dcbe43d9e92721f43395ba3d5a4a5f53d6385a52947d2ba34b779e08b99a",
+  "canvas": {
+    "width": 1000,
+    "height": 1000
+  },
+  "center_seam_x_px": 500,
+  "center_seam_x_normalized": 0.5,
+  "hinges": {
+    "left": {
+      "x_px": 42,
+      "y_px": 500.0,
+      "x_normalized": 0.042,
+      "y_normalized": 0.5
+    },
+    "right": {
+      "x_px": 957,
+      "y_px": 500.0,
+      "x_normalized": 0.957,
+      "y_normalized": 0.5
+    }
+  },
+  "hinge_description": "Axis through the center of each outermost vertical iron rail, not canvas edge or half-wrapper edge.",
+  "composition_proof": {
+    "max_channel_difference": 0,
+    "different_pixels": 0,
+    "compared_channels": "RGBA"
+  },
+  "integration": "Render both images on the exact same full square canvas. Rotate each full-canvas image about its own normalized hinge. Do not put images into half-width clipping wrappers. Preserve source alpha, including any very faint source background."
+}

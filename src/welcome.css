@@ -11,7 +11,7 @@
 .welcome-entrance .welcome-door-left{transform-origin:24.90234375% 44.40104167%}
 .welcome-entrance .welcome-door-right{transform-origin:75.09765625% 44.40104167%}
 .welcome-character{position:absolute;top:0;width:62%;height:100%;filter:brightness(.42) saturate(.65);transition:filter .35s ease;transform-origin:50% 95%}
-.character-bifari{left:-4%}.character-syafira{right:-4%}
+.character-syafira{left:-4%;right:auto}.character-bifari{right:-4%;left:auto}
 .character-syafira img{animation-delay:-2.5s}
 .welcome-character.is-speaking{filter:brightness(1.12) saturate(1.08);z-index:1}
 .host-speaking{position:absolute;inset:0;opacity:0;transform-origin:50% 95%}
@@ -21,7 +21,7 @@
 .host-open{opacity:0}
 .vn-scene[data-speaking='true'] .welcome-character.is-speaking .host-open{animation:mouth-flap .28s steps(1,end) infinite}
 @keyframes mouth-flap{0%,46%{opacity:1}47%,100%{opacity:0}}
-@keyframes welcome-talk{from{transform:translateY(0) rotate(-.45deg)}to{transform:translateY(-5px) rotate(.6deg)}}
+@keyframes welcome-talk{from{transform:rotate(-.35deg)}to{transform:rotate(.35deg)}}
 .welcome-doors{position:absolute;left:50%;translate:-50% 0;top:7%;height:94%;width:min(96vw,810px);perspective:1100px;transform-style:preserve-3d}
 .welcome-door{position:absolute;top:0;width:50%;height:100%;overflow:clip;filter:drop-shadow(0 3px 8px #080405)}
 .welcome-door-left{left:0;transform-origin:0 50%}.welcome-door-right{right:0;transform-origin:100% 50%}
@@ -35,9 +35,10 @@
 #greeting .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
 #greeting .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
 @keyframes welcome-glow{to{filter:drop-shadow(0 0 20px #e6a052a0)}}
-@keyframes welcome-breathe{to{transform:translateY(-3px) rotate(.25deg)}}
+@keyframes welcome-breathe{to{transform:scaleY(1.008)}}
 #greeting:not(.is-visible) .welcome-candle,#greeting:not(.is-visible) .welcome-couple img{animation-play-state:paused}
 @media(max-width:600px){.welcome-couple{top:19%;width:96%;height:63%}.welcome-doors{width:118%;top:10%;height:91%}.welcome-candle{height:22%;bottom:22%;width:15%}.candle-left{left:0}.candle-right{right:0}#greeting .vn-dialogue{padding:14px 12px;min-height:122px}#greeting .vn-dialogue p{font-size:19px;min-height:54px}}
 @media(max-height:700px) and (max-width:600px){.welcome-couple{top:18%;height:57%}.welcome-heading{top:18px}.visual-novel .welcome-heading h2{font-size:24px}#greeting .vn-dialogue{bottom:10px}}
 @media(max-height:500px) and (min-width:600px){.welcome-couple{left:28%;top:12%;height:85%;width:40%}.welcome-doors{height:105%;top:0;width:60%}.welcome-heading{left:25px;right:auto;top:14px;max-width:45%}.visual-novel .welcome-heading h2{font-size:24px}.welcome-heading img{display:none}#greeting .vn-dialogue{left:auto;right:18px;translate:0;width:45%;bottom:24px;padding:12px;min-height:125px}#greeting .vn-dialogue p{font-size:18px}.welcome-candle{height:40%;width:10%}.candle-right{display:none}}
 @media(prefers-reduced-motion:reduce){.welcome-candle,.welcome-couple img,.vn-scene[data-speaking='true'] .welcome-character.is-speaking .host-speaking,.vn-scene[data-speaking='true'] .welcome-character.is-speaking .host-open{animation:none}.welcome-character{transition:none}}
+.welcome-character .host-ground{position:absolute;left:10%;bottom:1%;width:80%;height:5%;object-fit:fill;animation:none!important;opacity:.8;filter:blur(2px);transform:none}
