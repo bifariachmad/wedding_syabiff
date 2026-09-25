@@ -52,3 +52,5 @@ The new opening first scored 77. Deferring the later gate imagery improved initi
 - Development-only Lighthouse/sharp dependency trees currently have npm advisories; those packages are not included in the static guest bundle. The production dependency audit is clear.
 
 Owner actions: deploy the supplied Apps Script in a private Sheet, set/record the PIN, paste its `/exec` URL into config, deploy to Vercel or choose the final guest domain, update `BASE_URL`, optionally replace music, then repeat the live two-device reservation/check-in check. Exact steps are in README.md.
+
+Scene 2 follow-up: tests/courtyard.mjs additionally samples camera rise/settle across steps, compares the outgoing and title garden bounds (all differences below 1px), and verifies the actual GALVANIZED font is loaded. The four viewport navigation/replay checks pass with no browser or asset errors. Build passes.

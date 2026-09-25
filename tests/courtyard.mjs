@@ -24,12 +24,17 @@ try{
  await p.screenshot({path:'artifacts/courtyard/opening.png'});await settled();
  assert.equal(await p.locator('#gate').getAttribute('data-courtyard-step'),'2');
  await p.screenshot({path:'artifacts/courtyard/open.png'});
+ await p.evaluate(()=>{window.walkSamples=[];const sample=()=>{const c=document.querySelector('.courtyard-camera'),m=new DOMMatrix(getComputedStyle(c).transform);window.walkSamples.push({scale:m.a,y:m.m42});if(document.querySelector('#invitation').dataset.scene==='0')requestAnimationFrame(sample);};requestAnimationFrame(sample);});
  await p.locator('#nav-next').click();await p.waitForTimeout(1100);
  assert.ok(await p.locator('.courtyard-camera').evaluate(e=>getComputedStyle(e).transform!=='none'));
  await p.screenshot({path:'artifacts/courtyard/walking.png'});await settled();
  assert.equal(await p.locator('#invitation').getAttribute('data-scene'),'1');
  assert.equal(await p.locator('.courtyard-wedding').textContent(),'The Wedding');
  assert.equal((await p.locator('#cover-title').textContent()).replace(/\s/g,''),'AchmadBifari&SyafiraAulia');
+ const framing=await p.evaluate(()=>{const a=document.querySelector('#gate .courtyard-landscape').getBoundingClientRect(),b=document.querySelector('.courtyard-title-garden').getBoundingClientRect();return ['x','y','width','height'].map(k=>Math.abs(a[k]-b[k]));});
+ assert.ok(framing.every(d=>d<1),`no background zoom reset: ${framing}`);
+ const gait=await p.evaluate(()=>{const a=walkSamples;let turns=0,last=0;for(let i=1;i<a.length;i++){const delta=a[i].y-a[i-1].y;if(Math.abs(delta)<.02)continue;const sign=Math.sign(delta);if(last&&sign!==last)turns++;last=sign;}return turns;});assert.ok(gait>=6,'camera rises and settles across footsteps');
+ assert.ok(await p.locator('#cover-title').evaluate(e=>getComputedStyle(e).fontFamily.startsWith('GALVANIZED')&&document.fonts.check('40px GALVANIZED')),'real GALVANIZED font loaded');
  await p.screenshot({path:'artifacts/courtyard/title.png'});
  await next();assert.equal(await p.locator('#invitation').getAttribute('data-scene'),'2');
  await back();await back();assert.equal(await p.locator('#gate').getAttribute('data-courtyard-step'),'2');

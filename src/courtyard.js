@@ -15,7 +15,8 @@ export function initCourtyard(){
  }
  function caption(){ $('#courtyard-line').textContent=lines[step];$('#courtyard-description').textContent=lines[step]; }
  function pose(){
-  gsap.set($('.courtyard-camera'),{scale:step?1.09:1,y:0,opacity:1});
+  gsap.set($('.courtyard-camera'),{scale:step?1.09:1,x:0,y:0,rotation:0,opacity:1});
+  gsap.set($('.courtyard-heading'),{opacity:1});
   gsap.set($('.courtyard-left'),{rotationY:step===2?-102:0});
   gsap.set($('.courtyard-right'),{rotationY:step===2?102:0});
   gsap.set($('.vn-dialogue'),{opacity:1,y:0});caption();controls();
@@ -34,7 +35,8 @@ export function initCourtyard(){
      .to($('.courtyard-left'),{rotationY:target===2?-102:0,duration:1.9,ease:'power2.inOut'})
      .to($('.courtyard-right'),{rotationY:target===2?102:0,duration:2.1,ease:'power2.inOut'},'<.1');
    }else{
-    timeline.call(()=>sound('step')).to($('.courtyard-camera'),{scale:target?1.09:1,y:0,duration:1.35,ease:'power2.inOut'});
+    const at=timeline.duration();
+    walk(timeline,target?[1.045,1.09]:[1.045,1],0,at);
    }
    const cursor={letters:0},text=lines[target];
    timeline.call(()=>{step=target;$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';})
@@ -42,11 +44,23 @@ export function initCourtyard(){
     .to(cursor,{letters:text.length,duration:reduced()?0:text.length*.027,ease:'none',onUpdate:()=>{$('#courtyard-line').textContent=text.slice(0,Math.ceil(cursor.letters));}});
   });
  }
+ function walk(t,scales,endY,at=0){
+  const camera=$('.courtyard-camera');
+  scales.forEach((scale,i)=>{
+   const start=at+i*.56,landing=endY*(i+1)/scales.length,side=i%2?1:-1;
+   t.to(camera,{scale,duration:.52,ease:'sine.inOut'},start)
+    .to(camera,{y:landing-10,x:side*2,rotation:side*.12,duration:.25,ease:'sine.out'},start)
+    .to(camera,{y:landing,x:0,rotation:0,duration:.27,ease:'sine.inOut'},start+.25)
+    .call(()=>sound('footstep'),[],start+.4);
+  });
+ }
  function pass(t){
-  t.call(()=>sound('step'),[],.1).call(()=>sound('step'),[],.85).call(()=>sound('morning'),[],1.4)
-   .to($('.courtyard-camera'),{scale:2.65,y:36,duration:2.5,ease:'power2.in'},0)
-   .to($('.courtyard-tree-left'),{xPercent:-85,duration:1.8,ease:'power2.in'},.25)
-   .to($('.courtyard-tree-right'),{xPercent:85,duration:1.8,ease:'power2.in'},.25);
+  gate.dataset.walk='walking';
+  walk(t,[1.22,1.41,1.65,1.94,2.27,2.65],36);
+  t.to($('.courtyard-heading'),{opacity:0,duration:.3},0)
+   .to($('.courtyard-tree-left'),{xPercent:-85,duration:3.3,ease:'sine.inOut'},0)
+   .to($('.courtyard-tree-right'),{xPercent:85,duration:3.3,ease:'sine.inOut'},0)
+   .call(()=>{gate.dataset.walk='complete';sound('morning');},[],3.36);
  }
  function resetTrees(){gsap.set(gate.querySelectorAll('.courtyard-tree'),{xPercent:0});}
  return {get step(){return step;},get busy(){return busy;},controls,show:(at)=>{resetTrees();show(at);},next:()=>move(step+1),back:()=>move(step-1),pass};

@@ -43,6 +43,7 @@ export function initMotion(){
   const from=scenes[index],to=scenes[target],direction=target>index?1:-1;
   ambient.forEach(t=>t.kill());ambient=[];
   await hydrateArt(to);
+  if(target===1)await document.fonts.load('40px GALVANIZED');
   from.inert=true;to.inert=true;to.classList.add('is-travelling');
   const oldArt=from.querySelector('.vn-artwork'),newArt=to.querySelector('.vn-artwork');
   const oldText=from.querySelector('.vn-dialogue'),newText=to.querySelector('.vn-dialogue');
@@ -51,7 +52,14 @@ export function initMotion(){
   if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
-   if(reduced()){
+   if(!reduced()&&index===0&&target===1){
+    // Keep the final garden framing exactly; reveal only the title after landing.
+    gsap.set([newArt,newText],{opacity:0});
+    courtyard.pass(timeline);
+    timeline.to(oldText,{opacity:0,duration:.2},0)
+     .set(newArt,{opacity:1},3.36).set(oldArt,{opacity:0},3.36)
+     .fromTo(newText,{opacity:0,y:8},{opacity:1,y:0,duration:.85,ease:'sine.out'},3.5);
+   }else if(reduced()){
     timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
    }else{
     sound(index===0?'step':'page');

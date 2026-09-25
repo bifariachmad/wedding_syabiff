@@ -5,6 +5,6 @@ export function courtyardArtwork(){return `<div class="courtyard-camera">
  <img class="courtyard-tree courtyard-tree-left" data-src="/assets/png/arrival/tree.png" alt=""/>
  <img class="courtyard-tree courtyard-tree-right" data-src="/assets/png/arrival/tree.png" alt=""/>
  </div><div class="courtyard-light"></div><header class="courtyard-heading"><span>PART II</span><h1 id="gate-title">Di balik gerbang</h1><img src="/assets/png/arrival/ui-divider.png" alt=""/></header>`;}
-export function courtyardCover(){return `<img class="courtyard-landscape courtyard-title-garden" data-src="/assets/png/courtyard/morning-garden.png" alt=""/><div class="courtyard-light"></div><img class="courtyard-title-rose rose-left" data-src="/assets/png/rose-wilted.png" alt=""/><img class="courtyard-title-rose rose-right" data-src="/assets/png/rose-wilted.png" alt=""/>`;}
+export function courtyardCover(){return `<img class="courtyard-landscape courtyard-title-garden" data-src="/assets/png/courtyard/morning-garden.png" alt=""/><div class="courtyard-light"></div>`;}
 
 

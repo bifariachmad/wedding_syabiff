@@ -1,4 +1,5 @@
 /* Scene 2: a morning garden built from independently moving PNG planes. */
+@font-face{font-family:GALVANIZED;src:url('/assets/fonts/GALVANIZED.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
 .courtyard-active .vn-header{display:none}
 #gate .vn-artwork,#cover .vn-artwork{inset:0;overflow:clip;perspective:1000px}
 .courtyard-camera{position:absolute;inset:0;transform-origin:50% 44%;perspective:1000px;transform-style:preserve-3d}
@@ -21,9 +22,9 @@
 #cover .vn-dialogue{top:22%;bottom:auto;left:50%;translate:-50% 0;width:min(860px,calc(100% - 40px));text-align:center;background:none;border:0;box-shadow:none;padding:35px 12px;color:#fcebd2;text-shadow:0 3px 8px #210914,0 0 30px #210914}
 #cover .vn-dialogue:before,#cover .vn-dialogue:after,#cover .vn-speaker{display:none}
 .courtyard-wedding{display:block;font:clamp(20px,3vw,30px)/1.4 var(--body);letter-spacing:3px;color:#f7d9b6;margin-bottom:22px}
-.visual-novel #cover-title{display:block;font:clamp(37px,5vw,66px)/1.15 var(--display);color:#fff1d9;margin:0}.visual-novel #cover-title span{display:block}.visual-novel #cover-title em{display:block;font:30px/1.8 var(--body);color:#e2b695}
+.visual-novel #cover-title{display:block;font:400 clamp(37px,5vw,66px)/1.15 GALVANIZED,var(--display);color:#fff1d9;margin:0;font-synthesis:none}.visual-novel #cover-title span{display:block}.visual-novel #cover-title em{display:block;font:30px/1.8 var(--body);color:#e2b695}
 #cover .vn-narration{color:#ffe8cc;margin-top:25px;font:15px var(--ui)}
-.courtyard-title-garden{scale:1.5;transform-origin:50% 44%;filter:brightness(.62)}
+.courtyard-title-garden{transform:translateY(36px) scale(2.65);transform-origin:50% 44%}
 .courtyard-title-rose{position:absolute;width:21%;height:60%;object-fit:contain;bottom:-11%;filter:brightness(.65)}.rose-left{left:0;rotate:22deg}.rose-right{right:0;scale:-1 1;rotate:-22deg}
 @keyframes courtyard-cloud{to{translate:9% -3%}}
 @keyframes courtyard-sway{to{rotate:1deg}}
