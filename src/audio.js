@@ -48,6 +48,15 @@ export function sound(name){
   const t=context.currentTime;
   if(name==='knock')for(let i=0;i<3;i++){tone(125,t+i*.26,.16,.19,'sine',68);noise(t+i*.26,.075,460,.13);}
   if(name==='door'){noise(t,1.4,420,.035);tone(160,t,1.2,.018,'triangle',86);}
+  if(name==='latch'){noise(t,.08,2200,.16);tone(780,t,.13,.07,'triangle',380);noise(t+.11,.1,1100,.07);}
+  if(name==='step'){noise(t,.19,190,.14);tone(67,t,.2,.055,'sine',42);noise(t+.42,.18,240,.1);}
+  if(name==='paper-lift'){noise(t,.32,1700,.09);noise(t+.24,.36,900,.06);}
+  if(name==='ignite'){noise(t,.25,2400,.17);noise(t+.12,.45,740,.09);tone(180,t,.4,.035,'triangle',70);}
+  if(name==='burn'||name==='burn-short'){
+   const duration=name==='burn'?3.2:1;
+   noise(t,duration,850,.13);noise(t,duration,2600,.075);
+   for(let i=0;i<Math.floor(duration*10);i++)noise(t+i*.1+(i%3)*.014,.025+(i%4)*.009,1200+(i%7)*480,.045+(i%3)*.025);
+  }
   if(name==='portal'){noise(t,3.8,330,.055);tone(72,t,3.6,.035,'sine',170);tone(220,t+1.8,1.8,.025,'sine',550);}
   if(name==='gate'){tone(83,t,1.5,.025,'sawtooth',32);noise(t,1.5,320,.06);}
   if(name==='chain')for(let i=0;i<6;i++){noise(t+i*.14,.1,1600+i*135,.08);tone(950+i*117,t+i*.14,.11,.018);}

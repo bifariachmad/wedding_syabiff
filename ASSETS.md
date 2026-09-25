@@ -2,13 +2,15 @@
 
 ## Scene 1 additions — 25 September 2026
 
-Ten active PNG assets follow the requested Don't Starve Together direction. The feedback revision uses a vibrant maroon/black room and door, illustrated knock marks, a gripping hand, and moving cloud/tree layers. Full built-in ImageGen prompts, original paths, alpha checks and alignment coordinates are in `artwork/arrival-generation.json` and `artwork/arrival-generation-v2.json`. Import scripts read the sibling `scene1-artwork` and `scene1-artwork-v2` folders. Normal builds use committed optimized PNGs and do not need source-generation files. Cutouts have actual alpha; the room is opaque.
+Twelve active PNG assets follow the requested Don't Starve Together direction. The feedback revisions use a vibrant maroon/black room and door, illustrated knock marks, a separate left hand without hardware, moving cloud/tree layers, and independent paper/fire layers. Full built-in ImageGen prompts, original paths, alpha checks and alignment coordinates are in the three `artwork/arrival-generation*.json` manifests. Import scripts read the sibling `scene1-artwork`, `scene1-artwork-v2`, and `scene1-artwork-v3` folders. Normal builds use committed optimized PNGs and do not need source-generation files. Cutouts have actual alpha; the room is opaque.
 
 | File under public/assets/png/arrival | Role | Bytes |
 |---|---|---:|
 | room-open.png | Maroon cottage interior and empty morning doorway | 186746 |
 | door.png | Independent ebony/maroon hinged door | 78258 |
-| hand-grip.png | Hand wrapped around brass lever; plate aligned to door hardware | 16298 |
+| hand-left.png | Left hand only, with continuous long sleeve; hardware stays painted on door | 42391 |
+| invitation-card.png | Independent blank card that floats clear of hands before burning | 82379 |
+| burn-edge.png | Transparent illustrated ember edge over the dissolving paper | 18239 |
 | knock-marks.png | Three ink-hatched wedges above the center of the door | 5907 |
 | clouds.png | Slow drifting maroon/rose cloud layer inside doorway | 12338 |
 | tree.png | Near/far swaying maroon trees clipped inside doorway | 23588 |
@@ -17,7 +19,7 @@ Ten active PNG assets follow the requested Don't Starve Together direction. The 
 | hands-card.png | POV hands with the opened invitation | 59580 |
 | ink-portal.png | Transparent swirling ink ring | 51873 |
 
-The ten active Scene 1 assets total 509,163 bytes. The old `hand-door.png` (10,926 bytes) and three bright storybook alternatives are retained but not loaded. The total project inventory contains 65 raster files.
+The twelve active Scene 1 assets total 635,874 bytes. The old `hand-door.png` (10,926 bytes), `hand-grip.png` (16,298 bytes) and three bright storybook alternatives are retained but not loaded. The total project inventory contains 68 raster files. The final hand imports `hand-left-long.png` (925×1700) into the canonical `hand-left.png`; its contact point is (781,326). Paper/fire trimming preserves their actual alpha.
 
 The latest user direction replaces the original SVG requirement. All shipped illustrations are PNGs. Twenty-nine artworks were generated from the Biff reference style; eighteen icons, textures, and templates were drawn procedurally on Canvas. Three brand icons and the Open Graph image bring the raster inventory to 51. No SVG illustrations are used.
 
@@ -79,7 +81,7 @@ Prompts and original generation paths: `artwork/sources.json`. The user explicit
 
 ## Audio
 
-All audio is original Web Audio synthesis in `src/audio.js`: a periodic 60-second ambient loop (drone, wind, sparse chimes), gate creak, chain rattle, wax-seal thump, page rustle, UI tick, and success chime. It starts on a gesture, observes the saved mute preference, and suspends when the page is hidden. `CONFIG.BGM_SRC` optionally replaces the ambient loop.
+All audio is original Web Audio synthesis in `src/audio.js`: a periodic 60-second ambient loop, knocking, latch click, door/gate creaks, footsteps, paper pickup/rustle, chain rattle, seal thump, ignition, crackling fire, portal swell, UI tick and success chime. The portal starts after the paper is fully consumed. Audio starts on a gesture, observes the saved mute preference, and suspends when the page is hidden. `CONFIG.BGM_SRC` optionally replaces the ambient loop.
 
 ## Fonts and review
 

@@ -1,0 +1,206 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "hand-left.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v3/hand-left.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-2ca43966-7db7-4f2f-ba3f-ee5e8cc71c3f.png",
+      "prompt": "Use case: stylized-concept\nAsset type: ONE isolated transparent LEFT HAND sprite for first-person invitation interaction. Absolutely no door hardware or props.\nPrimary request: An anatomically correct adult LEFT HAND ONLY with ivory sleeve cuff and narrow burgundy trim. Left forearm enters from BOTTOM LEFT corner and reaches diagonally toward UPPER RIGHT. The left hand is CLOSED IN A RELAXED NATURAL GRIP, ready to wrap around an IMAGINARY horizontal door lever that would point LEFT from a mount on the right. The hand's fingers curl together into a single coherent C-shaped grip; thumb rests across the curled index finger. Exactly FIVE digits total: four distinct naturally curled fingers and one thumb. View mostly BACK OF LEFT HAND from first-person perspective, wrist continuing naturally toward bottom-left. Hand contact near upper-right area. Do not show a clenched punching fist; a relaxed cupped handle grip with a small empty space inside it.\nAnatomy: Correct LEFT-hand anatomy and attachment. One hand only. Thumb sits naturally on the hand's radial side, fingers curl toward the palm, no disconnected digit, no duplicated knuckles, no crossing or fused fingers. Keep form simple and clearly readable.\nStyle: Don't Starve Together game illustration matching angular hand-ink cut-paper art: bold scratchy black contours, spare scribbled crosshatching, flat warm tan skin, ivory cuff with rich maroon/burgundy trim. Whimsical gothic. NOT photorealistic and NOT detailed realistic engraving. No rings or jewelry.\nComposition: SQUARE1024x1024 canvas. Forearm comes from x0%,y100% bottom-left corner and wrist travels diagonally up-right. Grip centered near x68%,y34%; fingertips around x75%,y28%. Entire hand visible, sleeve exits only bottom-left edge. Ample transparent space around it.\nBackground: Real PNG ALPHA transparency outside hand/cuff. No white or black matte, no checkerboard pixels, no halo.\nCRITICAL EXCLUSIONS: NO BRASS. NO GOLD. NO HANDLE. NO LEVER. NO MOUNTING PLATE. NO KEY. NO OBJECT IN OR NEAR HAND. NO DOOR. NO HARDWARE WHATSOEVER. This sprite contains ONLY left hand and ivory cuff, all other pixels transparent. No other hand, no face, no body, no background, no text. Do not include any object being held.",
+      "inspectedSupportingReferences": [
+        "../scene1-artwork-v2/door.png",
+        "../scene1-artwork-v2/hand-grip.png"
+      ],
+      "verification": {
+        "file": "hand-left.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated dimensions and alpha elsewhere; zeroed hidden RGB in transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 69.92,
+        "nonzeroAlphaBounds": [
+          0,
+          209,
+          1068,
+          1254
+        ]
+      }
+    },
+    {
+      "file": "invitation-card.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v3/invitation-card.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-fc5735f6-1d9b-4049-9f10-562ef9028bad.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One isolated blank cream invitation PAPER CARD, transparent PNG, ready for a single HTML text line.\nPrimary request: A HORIZONTAL rectangular cream paper invitation card ONLY. Very slightly crooked/jagged black ink border and rich MAROON angular leafy corner ornaments in all four corners. Hand-drawn thorny angular vine curls and diamond-shaped leaves at corners; keep ornaments confined to corners. Large plain warm CREAM center completely EMPTY. No hands and no envelope.\nStyle: Don't Starve Together whimsical gothic cut-paper illustration, bold scratchy black ink edges, sparse scribbled ink hatching near border only, flat cream and maroon palette. Light subtle mottled cream paper texture. Match a gothic maroon-corner invitation card. No realistic engraving, no photorealism, no 3D.\nComposition: Landscape1536x1024 PNG3:2 canvas. Card centered, front-facing flat rectangle with horizontal edges, filling approx x8%–92%, y15%–85%. All four edges and corners clearly visible and uncropped, small transparent margin on every side. Card itself proportion about1.8:1, broad blank central space for ONE line of HTML text.\nTransparency: Actual alpha transparency outside the paper card; no solid backdrop, no white matte, no fake checkerboard, no black background, no cast shadow, no halo.\nConstraints: PAPER CARD ONLY. NO HANDS, no fingers, no arms, no envelope, no wax seal, no flowers outside card, no room. NO TEXT AT ALL: no words, no letters, no symbols, no fake handwriting, no placeholder text. Leave center completely blank; the live interface will add its own text later.",
+      "inspectedSupportingReferences": [
+        "../scene1-artwork/hands-card.png"
+      ],
+      "verification": {
+        "file": "invitation-card.png",
+        "sourceSize": [
+          1536,
+          1024
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated dimensions and alpha elsewhere; zeroed hidden RGB in transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 29.68,
+        "nonzeroAlphaBounds": [
+          52,
+          98,
+          1486,
+          926
+        ]
+      }
+    },
+    {
+      "file": "burn-edge.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v3/burn-edge.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-932d30ce-4e03-41ba-bb1f-c7cc72b15459.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One isolated transparent burning-edge sprite for an animated paper disappearance.\nPrimary request: A WIDE HORIZONTAL RAGGED LINE of GLOWING EMBERS with little angular FLAME TONGUES licking upward, warm amber orange light, orange-red embers, maroon-and-charcoal char along the edge, and a few tiny sparks lifting just above it. This is ONLY a burning edge/strip, not a whole sheet. Thin broken charcoal black crust and jagged orange-gold glowing cracks. Uneven hand-ink outline with scratchy marks and crosshatching. Fire is stylized illustrated cut-paper game art, not realistic flames.\nStyle: Don't Starve Together whimsical gothic hand-ink sprite. Angular jagged shapes, bold scratchy black contours around char, sparse scribbled crosshatching, flat warm amber/orange with rich maroon charcoal. Cream-hot pinpoint ember highlights. Match maroon and black illustrated invitation world.\nComposition: Landscape1536x1024 PNG canvas. Continuous ragged HORIZONTAL ember edge across x5%–95%, centered at y55%. Flame tongues rise irregularly between y35%–55%, tiny sparks no higher than y27%. Narrow char crust extends down to about y61%, then ends with torn edge; everything below transparent. Overall shallow wide strip with wide transparent margins above and below. All edges visible and uncropped. No full sheet of paper.\nTransparency: Actual PNG ALPHA everywhere outside embers/flames/sparks/char. No solid black backdrop, no sky, no white matte, no fake checkerboard, no smoky background. Preserve clear transparent gaps between separate sparks. Tiny controlled glow on flame edge only.\nConstraints: NO PAPER CARD, no complete document, no card corners, no envelope, no hand, no person, no table, no room, no ground, no letters, no text, no logo, no symbols. One horizontal burning border only. No fireball, no circular portal, no full-screen wall of fire, no photorealism.",
+      "inspectedSupportingReferences": [],
+      "verification": {
+        "file": "burn-edge.png",
+        "sourceSize": [
+          1536,
+          1024
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated dimensions and alpha elsewhere; zeroed hidden RGB in transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 91.21,
+        "nonzeroAlphaBounds": [
+          29,
+          351,
+          1510,
+          661
+        ]
+      }
+    },
+    {
+      "file": "hand-left-long.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v3/hand-left-long.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-0a2b233f-14c6-431b-bc9c-f62cd7d51d4e.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Long-sleeve transparent POV LEFT-hand sprite for connecting a handle-height hand to bottom of a tall viewport.\nInput image: hand-left.png is EDIT TARGET. Preserve the LEFT HAND ANATOMY, fingers, thumb, grip opening, warm tan skin, ink style, burgundy cuff trim and hand scale. No new hardware.\nPrimary request: OUTPAINT/EXTEND this sprite onto a much TALLER transparent canvas, ideally1254px wide by2304px high. The current hand remains in the SAME upper-right region at its ORIGINAL PIXEL SIZE. Preserve the upper hand and wrist through approximately originaly830. Original grip/contact point must remain approximatelyx955,y470. Do not scale the hand down. Keep hand-to-cuff region recognizable. Below the cuff, draw a MUCH LONGER IVORY SLEEVE continuing diagonally DOWN-LEFT for roughly another900pixels, all the way to bottom-left edge of the new tall canvas. The sleeve must not terminate or be cropped by the left edge halfway down: guide its long silhouette gradually down-left so it ONLY exits the canvas at BOTTOM LEFT. Sleeve near bottom can be broad and extend beyond bottom edge, but no abrupt midair end anywhere.\nCanvas and placement: TALL1254x2304, transparent. Hand in upper-right exactly as input, grip approximately(955,470). Wrist descends down-left into ivory cuff with burgundy trim, then long simple ivory forearm sleeve stretches through lower half to bottom-left corner. There must be about900additionalpixels of sleeve extension below original1254px image bottom. Lower-right area stays transparent. Long slender arm proportion, not a massive flared sleeve or flowing cloak. Keep angular cloth folds subtle and natural.\nStyle: Same Don't Starve Together cut-paper game sprite: bold scratchy black outlines, sparse hand-ink crosshatching, flat ivory fabric, narrow rich burgundy trim, warm tan hand. Same anatomy: left hand C-shaped relaxed grip, four curled fingers plus thumb. Forearm connects naturally.\nTransparency: ACTUAL PNG ALPHA everywhere outside hand/arm/cuff. Preserve transparent grip opening. No black matte, no white matte, no checkerboard pixels, no background or shadow.\nCRITICAL: NO HANDLE, no lever, no brass, no gold hardware, no plate, no key, no object at all. ONLY one LEFT hand plus long ivory sleeve. No other limb, no person or face. No text. Do not shorten the sleeve or center the hand vertically; keep hand HIGH and sleeve LONG, reaching bottom-left edge.",
+      "editTarget": "../scene1-artwork-v3/hand-left.png",
+      "verification": {
+        "file": "hand-left-long.png",
+        "sourceSize": [
+          925,
+          1700
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          925,
+          1700
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Removed exterior generated neutral checker matte by flood fill, preserving enclosed fabric highlights; cleaned one source-pixel edge fringe.",
+          "Cleared alpha0–1 numerical speckles; preserved generated dimensions and alpha elsewhere; zeroed hidden RGB in transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 76.26,
+        "nonzeroAlphaBounds": [
+          0,
+          182,
+          864,
+          1700
+        ]
+      }
+    }
+  ],
+  "generationCalls": 4,
+  "composition": {
+    "hand-left-long.png": {
+      "canvas": [
+        925,
+        1700
+      ],
+      "gripContactCenterPixels": [
+        781,
+        326
+      ],
+      "gripContactCenterNormalized": [
+        0.8443,
+        0.1918
+      ],
+      "notes": "Targeted long-sleeve outpaint. Same left-hand C-shaped grip and no hardware, with ivory sleeve extending continuously to bottom-left edge. Generator returned925×1700tall canvas; retained it. Upper hand is smaller than original requested pixel scale, so align using updated contact coordinates and desired rendered hand size. Original hand-left.png retained."
+    },
+    "hand-left.png": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "gripContactCenterPixels": [
+        955,
+        470
+      ],
+      "gripContactCenterNormalized": [
+        0.7616,
+        0.3748
+      ],
+      "notes": "LEFT hand only, forearm enters bottom-left and reaches upper-right. Four curled fingers plus thumb make clear C-shaped grip. NO hardware/handle/brass/plate/prop included. Map contact opening onto door lever around(465,760) in door607×1415 canvas."
+    },
+    "invitation-card.png": {
+      "canvas": [
+        1536,
+        1024
+      ],
+      "cardBoundsPixels": [
+        53,
+        102,
+        1486,
+        921
+      ],
+      "safeSingleLineTextBoundsPixels": [
+        370,
+        360,
+        1166,
+        650
+      ],
+      "notes": "Isolated blank cream paper only with angular maroon corner ornaments. No hands or envelope. Front-facing, horizontal3:2canvas; center ready for a single HTML text line."
+    },
+    "burn-edge.png": {
+      "canvas": [
+        1536,
+        1024
+      ],
+      "burningLineApproxY": 560,
+      "burningLineNormalizedY": 0.5469,
+      "visibleStripApproxBoundsPixels": [
+        27,
+        348,
+        1509,
+        660
+      ],
+      "notes": "Isolated horizontal glowing ember line, upward angular flames, charcoal/maroon ragged char and sparse sparks. No card or hands. Preserve canvas and align ember line near54.7%vertical with clipping boundary."
+    }
+  }
+}

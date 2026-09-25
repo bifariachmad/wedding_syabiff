@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { hydrateArt } from './art.js';
 import { sound, startAudio } from './audio.js';
+import { burnPaper } from './paper-burn.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lines=['Hari ini terasa seperti hari biasa.','Ada ketukan di pintu.','Tak ada siapa-siapa…','Hah, ada undangan.','Dari siapa ya…','Untukku?','Anda diundang.'];
@@ -12,7 +13,7 @@ const descriptions=[
  'Kamu menunduk. Sebuah amplop bersegel maroon tergeletak di ambang pintu.',
  'Kamu memperhatikan undangan itu, penasaran siapa pengirimnya.',
  'Kamu mengambil undangan dan membaca nama di amplop.',
- 'Kamu membuka segel. Pada kartu tertulis: Anda diundang. Lanjut untuk masuk ke dalam undangan.'
+ 'Kamu membuka segel. Pada kartu tertulis: Anda diundang. Lanjut untuk melihat kartu terbakar menjadi abu sebelum portal terbuka.'
 ];
 
 export function initPrologue(onExit){
@@ -21,7 +22,7 @@ export function initPrologue(onExit){
  let step=0,active=true,busy=false,timeline;
  const $=selector=>section.querySelector(selector);
  async function prepare(target){
-  const selectors={1:'.arrival-knocks',2:'.arrival-envelope-paint,.arrival-door-hand,.arrival-garden img',5:'.arrival-sealed img',6:'.arrival-open img',7:'.arrival-portal img'};
+  const selectors={1:'.arrival-knocks',2:'.arrival-envelope-paint,.arrival-door-hand,.arrival-garden img',5:'.arrival-sealed img',6:'.arrival-open img',7:'.arrival-floating img,.arrival-portal img'};
   const images=selectors[target]?[...section.querySelectorAll(selectors[target])]:[];
   for(const img of images){if(img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;}img.loading='eager';}
   await Promise.all(images.map(img=>img.decode().catch(()=>{})));
@@ -50,6 +51,9 @@ export function initPrologue(onExit){
   gsap.set($('.arrival-sealed'),{autoAlpha:target===5?1:0,y:0,scale:1,rotation:0,rotationX:0});
   gsap.set($('.arrival-open'),{autoAlpha:target===6?1:0,y:0,scale:1,rotation:0});
   gsap.set($('.arrival-card-copy'),{opacity:1});
+  gsap.set($('.arrival-floating'),{autoAlpha:0,y:0,scale:1,rotation:0});
+  burnPaper($('.arrival-burning-paper'),$('.arrival-burn-edge'),0);
+  section.dataset.burn='idle';
   gsap.set($('.arrival-portal'),{autoAlpha:0,scale:.15});
   gsap.set($('.arrival-ink-ring'),{rotation:0});
   gsap.set($('.arrival-portal-shade'),{opacity:0});
@@ -94,22 +98,23 @@ export function initPrologue(onExit){
     knocks(t);
    }else if(target===2){
     t.to($('.arrival-camera'),{scale:1.12,yPercent:3,duration:1.1,ease:'power2.inOut'},0)
-     .fromTo($('.arrival-door-hand'),{opacity:0,x:45,y:85,rotation:9},{opacity:1,x:0,y:0,rotation:0,duration:.7,ease:'power2.out'},.25)
+     .fromTo($('.arrival-door-hand'),{opacity:0,x:-65,y:85,rotation:-8},{opacity:1,x:0,y:0,rotation:0,duration:.7,ease:'power2.out'},.25)
      .to($('.arrival-door-hand'),{rotation:0,duration:.2},1)
+     .call(()=>sound('latch'),[],1.05)
      .call(()=>sound('door'),[],1.22)
      .set($('.arrival-garden'),{opacity:1},1.22)
      .to($('.arrival-door'),{rotationY:-102,x:0,duration:2,ease:'power2.inOut'},1.22)
      .to($('.arrival-door-hand'),{rotation:0,duration:.25},1.5)
-     .to($('.arrival-door-hand'),{opacity:0,y:25,duration:.45},2.65)
+     .to($('.arrival-door-hand'),{opacity:0,x:-35,y:65,duration:.45},1.85)
      .to($('.arrival-floor-envelope'),{opacity:1,duration:.5},1.7)
      .to($('.arrival-camera'),{xPercent:-1.8,duration:.6,ease:'sine.inOut'},3.2)
      .to($('.arrival-camera'),{xPercent:0,duration:.6,ease:'sine.inOut'},3.8);
    }else if(target===3){
-    t.to($('.arrival-camera'),{...cameraPose(3),duration:1.6,ease:'power2.inOut'},0);
+    t.call(()=>sound('step'),[],.1).to($('.arrival-camera'),{...cameraPose(3),duration:1.6,ease:'power2.inOut'},0);
    }else if(target===4){
     t.to($('.arrival-floor-envelope'),{scale:1.035,duration:.45,ease:'sine.inOut'},0);
    }else if(target===5){
-    t.call(()=>sound('page'),[],.25)
+    t.call(()=>sound('paper-lift'),[],.25)
      .to($('.arrival-floor-envelope'),{opacity:0,y:-60,duration:.55},.25)
      .fromTo($('.arrival-sealed'),{autoAlpha:0,y:window.innerHeight*.45,scale:.68,rotation:-9},{autoAlpha:1,y:0,scale:1,rotation:0,duration:1.4,ease:'power2.out'},.5)
      .to($('.arrival-camera'),{...cameraPose(5),duration:1.4,ease:'power2.inOut'},.45);
@@ -125,20 +130,32 @@ export function initPrologue(onExit){
   },()=>complete(target));
  }
  function enterPortal(){
-  const card=$('.arrival-card-copy').getBoundingClientRect(),bounds=section.getBoundingClientRect();
-  gsap.set($('.arrival-portal'),{left:card.x+card.width/2-bounds.x,top:card.y+card.height/2-bounds.y});
+  const held=$('.arrival-open').getBoundingClientRect(),bounds=section.getBoundingClientRect();
+  const floating=$('.arrival-floating'),paper=$('.arrival-burning-paper'),edge=$('.arrival-burn-edge');
+  const width=held.width*.7,height=held.height*.56,left=held.x+held.width*.15-bounds.x,top=held.y+held.height*.1-bounds.y;
+  gsap.set(floating,{left,top,width,height,autoAlpha:0,y:0,scale:1,rotation:-2});
+  gsap.set($('.arrival-portal'),{left:left+width/2,top:top+height/2-25,autoAlpha:0,scale:.06});
+  burnPaper(paper,edge,0);
+  const burn={progress:0},burnStart=reduced()?.45:1.1,burnDuration=reduced()?1:3.2,portalStart=burnStart+burnDuration+.4;
   return run(t=>{
    t.to($('.arrival-heading'),{opacity:0,duration:.35},0);
-   if(reduced())t.to(section,{opacity:0,duration:.35});
-   else t.call(()=>sound('portal'),[],.1)
-    .to($('.arrival-card-copy'),{opacity:0,duration:.6},0)
-    .fromTo($('.arrival-portal'),{autoAlpha:0,scale:.06},{autoAlpha:1,scale:1,duration:1.6,ease:'power2.in'},.25)
-    .to($('.arrival-ink-ring'),{rotation:210,duration:4,ease:'power1.in'},.25)
-    .to($('.arrival-open'),{scale:1.18,rotation:-3,duration:1.7,ease:'power2.in'},.4)
-    .to($('.arrival-camera'),{scale:1.3,duration:3},.3)
-    .to($('.arrival-portal'),{scale:8,duration:2.1,ease:'power3.in'},1.65)
-    .to($('.arrival-open'),{scale:1.9,autoAlpha:0,duration:1.5,ease:'power2.in'},1.8)
-    .to(section,{opacity:0,duration:.7},3.35);
+   t.to($('.arrival-card-copy'),{opacity:0,duration:.2},0)
+    .to(floating,{autoAlpha:1,y:reduced()?0:-25,duration:.35},0)
+    .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:innerHeight*.55,duration:reduced()?.3:.8,ease:'power2.in'},.05)
+    .call(()=>{section.dataset.burn='burning';$('#arrival-description').textContent='Kartu terangkat. Api menjalar di kertas, menyisakan abu.';sound('ignite');sound(reduced()?'burn-short':'burn');},[],burnStart)
+    .to(burn,{progress:1,duration:burnDuration,ease:'none',onUpdate:()=>burnPaper(paper,edge,burn.progress)},burnStart)
+    .set(floating,{autoAlpha:0},burnStart+burnDuration)
+    .call(()=>{section.dataset.burn='complete';$('#arrival-description').textContent='Kertas habis menjadi abu.';},[],burnStart+burnDuration)
+    .call(()=>{section.dataset.burn='portal';$('#arrival-description').textContent='Setelah kertas habis, sebuah portal terbuka di hadapanmu.';sound('portal');},[],portalStart);
+   if(reduced()){
+    t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:.25},portalStart).to(section,{opacity:0,duration:.35},portalStart+.45);
+   }else{
+    t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:1.4,ease:'power2.in'},portalStart)
+     .to($('.arrival-ink-ring'),{rotation:210,duration:3.8,ease:'power1.in'},portalStart)
+     .to($('.arrival-camera'),{scale:1.3,duration:3},portalStart)
+     .to($('.arrival-portal'),{scale:8,duration:2.1,ease:'power3.in'},portalStart+1.4)
+     .to(section,{opacity:0,duration:.7},portalStart+3.2);
+   }
   },()=>{active=false;busy=false;section.hidden=true;section.inert=true;section.setAttribute('aria-hidden','true');root.classList.remove('intro-active');stage.inert=false;controls();onExit();});
  }
  async function show(){
