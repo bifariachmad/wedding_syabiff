@@ -46,6 +46,9 @@ export function isMusicEnabled(){return started&&enabled;}
 export function sound(name){
   if(!context||!enabled) return;
   const t=context.currentTime;
+  if(name==='knock')for(let i=0;i<3;i++){tone(125,t+i*.26,.16,.19,'sine',68);noise(t+i*.26,.075,460,.13);}
+  if(name==='door'){noise(t,1.4,420,.035);tone(160,t,1.2,.018,'triangle',86);}
+  if(name==='portal'){noise(t,3.8,330,.055);tone(72,t,3.6,.035,'sine',170);tone(220,t+1.8,1.8,.025,'sine',550);}
   if(name==='gate'){tone(83,t,1.5,.025,'sawtooth',32);noise(t,1.5,320,.06);}
   if(name==='chain')for(let i=0;i<6;i++){noise(t+i*.14,.1,1600+i*135,.08);tone(950+i*117,t+i*.14,.11,.018);}
   if(name==='seal')tone(100,t,.4,.15,'sine',30);

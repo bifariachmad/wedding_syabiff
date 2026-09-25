@@ -3,6 +3,7 @@ import { CONFIG } from './src/config.js';
 import { invitationMarkup } from './src/markup.js';
 import fs from 'node:fs';
 export default defineConfig({
+  server: { watch: { ignored: ['**/artifacts/**'] } },
   plugins: [{
     name: 'invitation-metadata',
     transformIndexHtml(html) {

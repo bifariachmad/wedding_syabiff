@@ -2,7 +2,9 @@
 
 Full-screen visual-novel wedding invitation for Achmad Bifari & Syafira Aulia, 31 October 2026, 09:30–13:40 WIB, Lumbung Kuliner. Vite, vanilla JavaScript, GSAP, and original dark PNG artwork in the supplied Biff reference style.
 
-The story has 16 scenes. **Kembali** and **Lanjut** are the only story navigation, fixed at the bottom. The gate opens before the camera advances through it; foreground cutouts and distant scenery travel at different depths. Each rundown item is its own scene. Wheel and swipe do not advance the story. Reduced motion uses short fades. Form/ticket overflow is contained inside the dialogue for small screens and the on-screen keyboard; the page itself does not scroll. Reservation, Maps, music and download buttons remain functional actions.
+The invitation now starts with **Scene 1 — Sebuah Undangan**, an approved first-person opening with seven generated PNG layers in the requested Don't Starve Together visual direction. Four presses of Lanjut open the cottage door, look down and pick up a personalized envelope, open the invitation, and enter an ink portal. Kembali returns to the previous stop; returning from the gate reopens the card. The first interaction enables optional audio and three knocks. The card remains readable until the guest advances.
+
+The portal connects to the existing 16-scene invitation. **Kembali** and **Lanjut** are the only story navigation, fixed at the bottom. Each rundown item is its own scene. Wheel and swipe do not advance the story. Reduced motion uses short fades. Form/ticket overflow is contained inside the dialogue for small screens and the on-screen keyboard; the page itself does not scroll. Reservation, Maps, music and download buttons remain functional actions. The later proposed Scene 2–9 redesign is not part of this Scene 1 implementation.
 
 ## Run locally
 
@@ -69,5 +71,7 @@ invitation/
 ## Tests and asset maintenance
 
 `npm test` executes the actual `Code.gs` using in-memory Google service adapters. With the dev server running, `npm run verify` checks all 16 scenes forward/back at three widths, two-button navigation, no page scrolling, inactive-scene focus isolation, depth motion, validation, QR, ticket PNG, calendar, updates, recall, network failure and admin. Test API interception exists only in the test runner. `node scripts/review-novel.mjs` captures mobile, short-screen and desktop scene reviews. See `VERIFICATION.md` for results and limitations.
+
+`node tests/arrival.mjs` checks the four-step opening, normal/reduced motion, portrait/landscape layouts, personalized plain text, click locking, portal exit, and reverse/replay. `node scripts/review-arrival.mjs` captures its static storyboard states. Its source is isolated in `src/prologue.js`, `src/prologue-markup.js`, and `src/prologue.css`. Seven optimized assets live in `public/assets/png/arrival/`; full generation prompts and geometry metadata are in `artwork/arrival-generation.json`.
 
 Final PNGs are committed; normal builds need no image-generation service. `npm run assets` repeats cleanup and procedural generation on the original machine. `artwork/sources.json` records full prompts and source paths; on another machine use the committed PNGs or update those paths. `npm run assets:review` refreshes the contact sheet. With the dev server running, `node scripts/generate-og.mjs` regenerates the share image. Browser scripts use a Windows Chrome path; adjust it on another OS.

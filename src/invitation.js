@@ -11,7 +11,7 @@ export async function renderInvitation(app) {
  let ticket=storage.get('djsl-ticket');if(!validTicket(ticket))ticket=null;
  if(!app.querySelector('#invitation'))app.innerHTML=invitationMarkup();
  const $=s=>document.querySelector(s),form=$('#reservation-form'),name=$('#guest-name'),count=$('#guest-count'),submit=$('#submit-reservation'),status=$('#reservation-status'),host=$('#ticket-host');
- if(to){$('#recipient').hidden=false;$('#recipient').textContent=`Untuk ${to}`;name.value=to;}
+ if(to){$('#recipient').hidden=false;$('#recipient').textContent=`Untuk ${to}`;$('#arrival-guest').textContent=to;name.value=to;}
  const updateMusic=()=>{const playing=isMusicEnabled();$('#music-toggle').innerHTML=icon(playing?'music-on':'music-off');$('#music-toggle').setAttribute('aria-label',playing?'Matikan musik':'Nyalakan musik');$('#closing-music').textContent=playing?'Matikan musik':'Nyalakan musik';};
  $('#music-toggle').onclick=toggleAudio;$('#closing-music').onclick=toggleAudio;document.addEventListener('musicchange',updateMusic);
  let touchedName=false,touchedCount=false,busy=false;

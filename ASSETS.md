@@ -1,5 +1,21 @@
 # PNG artwork and audio inventory
 
+## Scene 1 additions — 25 September 2026
+
+Seven built-in generated assets follow the requested Don't Starve Together direction. Full prompts, original paths, alpha checks and composition coordinates: `artwork/arrival-generation.json`. `scripts/import-arrival.mjs` imports final source layers from the sibling `scene1-artwork` folder. Normal builds use committed optimized PNGs and do not need source-generation files. The six cutouts have actual alpha; the room is opaque.
+
+| File under public/assets/png/arrival | Role | Bytes |
+|---|---|---:|
+| room-open.png | Cottage interior and empty morning doorway | 260646 |
+| door.png | Independent hinged wooden door | 101403 |
+| hand-door.png | Guest's hand reaching for the handle | 10926 |
+| envelope-floor.png | Sealed invitation at the threshold | 11419 |
+| hands-envelope.png | POV hands holding the sealed envelope | 63156 |
+| hands-card.png | POV hands with the opened invitation | 59580 |
+| ink-portal.png | Transparent swirling ink ring | 51873 |
+
+The seven additions total 559,003 bytes. Three earlier bright storybook alternatives are retained but not loaded. The original inventory below describes the earlier invitation kit; with these additions and those three alternatives, there are 61 raster files.
+
 The latest user direction replaces the original SVG requirement. All shipped illustrations are PNGs. Twenty-nine artworks were generated from the Biff reference style; eighteen icons, textures, and templates were drawn procedurally on Canvas. Three brand icons and the Open Graph image bring the raster inventory to 51. No SVG illustrations are used.
 
 Prompts and original generation paths: `artwork/sources.json`. The user explicitly authorized code to remove baked checkerboard backgrounds. `scripts/import-art.mjs` performs that cleanup and palette optimization. The final optimized cutouts ship in this repository; normal builds never require the original generator files. Motion targets are HTML classes or `data-layer` values, not internal image IDs. A few complete alternate kit assets are retained but not loaded by the invitation.

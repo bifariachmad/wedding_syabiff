@@ -1,0 +1,302 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+  "assets": [
+    {
+      "file": "room-open.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/room-open.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-01cb57fa-c0b1-4e0f-aa03-97bf3839af29.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone background environment PNG layer for an interactive POV wedding invitation.\nPrimary request: A first-person view inside a crooked little cottage vestibule, facing an EMPTY OPEN DOORWAY centered in the image. A quiet morning garden is visible beyond.\nStyle/medium: Don't Starve Together visual style, angular crooked cut-paper objects, extremely bold scratchy black ink contours, expressive scribbled crosshatching, simple flat muted sepia and cream with small dusty maroon accents. Whimsical gothic storybook game art. Use broad shapes, not intricate realistic engraving.\nComposition: Portrait canvas exactly 1024 x 1536. Eye level, looking straight forward. Doorway interior occupies roughly x28%–72%, y12%–74% of the canvas; the vertical doorway sides must be nearly parallel/straight for a separately animated door leaf overlay. Doorway is open and unobstructed: NO door leaf anywhere. Cream-morning garden beyond the opening with simple angular hedge/tree silhouettes and a path. Foreground wooden floor occupies bottom quarter. Only at edges of room: narrow side window with simple curtain, partial little furniture edges; room should feel close and small. Door opening is dominant center shape. Opaque illustrated background, not transparency.\nPalette: warm gray cream, muted sepia, charcoal brown and black, restrained maroon.\nConstraints: One environment only, no storyboard, no panels, no screenshot, no UI, no words, no letters, no people, no characters, no hands, no envelope, no doors at all. Avoid photorealism, 3D, smooth gradients, polished vector art, detailed realistic engraving. Strong sparse crooked hand-drawn shapes.",
+      "verification": {
+        "file": "room-open.png",
+        "originalSize": [
+          1024,
+          1536
+        ],
+        "finalSize": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "cleanup": []
+      }
+    },
+    {
+      "file": "door.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/door.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-25efda08-e594-4690-a1b6-f739b377d1b1.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone transparent PNG cutout layer, a wooden door leaf for an interactive gothic cottage wedding invitation.\nPrimary request: Isolated CLOSED wooden door LEAF seen perfectly FRONT-ON with parallel sides, approximately 1:2 width-to-height aspect. Very dark charcoal-brown vertical jagged wood planks, thick black ink outline, crooked subtle grain scratches and scribbled crosshatching, small tarnished brass handle on RIGHT side, two subtle hinge plates on LEFT. All of door visible; no crop.\nStyle/medium: Don't Starve Together game art. Angular cut-paper silhouette, bold scratchy black ink, sparse expressive scribbles, flat muted charcoal and sepia brown colors. Whimsical gothic, simple strong shapes, NOT realistic detailed engraving.\nComposition: portrait 1024x1536 PNG canvas with door centered and its leaf occupying approx 65% of canvas width and 90% of height. The door leaf is a single solid near-rectangular flat wooden shape, with slightly irregular ink edge, suitable to scale into a rectangular door opening and rotate around its left edge.\nBackground: Actual transparent alpha channel, everything outside door must be fully transparent. No white matte, no black matte, no fake checkerboard pattern. Transparent cutout.\nConstraints: ONE door leaf only. NO surrounding door frame, NO wall, NO room, NO garden, NO people, NO hands, NO letters, NO text, NO symbol on door, NO floor, NO ground shadow, no 3D perspective, no panels or storyboards. Flat front view only. Do not render a transparency checkerboard into pixels.",
+      "verification": {
+        "file": "door.png",
+        "originalSize": [
+          1024,
+          1536
+        ],
+        "finalSize": [
+          607,
+          1415
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha.",
+          "Trim transparent padding tightly to the door leaf."
+        ],
+        "cropBoundsInOriginal": [
+          209,
+          66,
+          816,
+          1481
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 4.03,
+        "nonzeroAlphaBounds": [
+          0,
+          0,
+          607,
+          1415
+        ]
+      }
+    },
+    {
+      "file": "hands-envelope.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/hands-envelope.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-2398412d-9d9c-4c53-a79f-52deff13acf9.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone transparent PNG foreground layer for first-person interactive wedding invitation.\nPrimary request: POV adult hands wearing simple neutral IVORY sleeve cuffs extend diagonally inward from the BOTTOM LEFT and BOTTOM RIGHT corners and hold a LARGE CREAM ENVELOPE, seen FRONTALLY with very little perspective. Envelope in central image, horizontally rectangular, its top edge around y30% and bottom edge near y72%, covering x17%–83%. Thumb and fingertips hold only lower left and lower right corners. Warm pale tan skin, slender angular adult fingers. The closed envelope has a MAROON WAX SEAL at lower middle, subtle diagonal fold seams. Large upper central blank cream address area ABOVE THE SEAL must be totally EMPTY for live HTML guest-name text.\nStyle/medium: Don't Starve Together style game sprite. Angular crooked cut-paper shapes, bold scratchy black ink outlines, spare scribbled crosshatching, flat muted cream/sepia/maroon, whimsical gothic. Make hands stylized and simple, NOT photorealistic, NOT realistic detailed engraving. Envelope cream lightly mottled but empty and readable.\nComposition: landscape 1536 x 1024 PNG. Same simple neutral ivory cuffs on both wrists. Envelope's front face parallel to image plane and large; hands/cuffs enter from bottom corners and crop naturally at bottom image edge. Keep space above envelope.\nBackground: Actual transparent alpha channel outside hands, sleeves and envelope. No backdrop, no solid color, no checkerboard texture. Clear transparent cutout.\nConstraints: ONLY two hands with cuffs and ONE closed envelope, all other pixels transparent. NO body, NO face, NO room, NO table, NO floor, NO words, NO letters, NO address, NO logo, NO symbols on wax seal, NO patterned cuffs, NO jewelry. Five natural fingers per hand, no extra limbs.",
+      "verification": {
+        "file": "hands-envelope.png",
+        "originalSize": [
+          1536,
+          1024
+        ],
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 53.94,
+        "nonzeroAlphaBounds": [
+          0,
+          180,
+          1536,
+          1024
+        ]
+      }
+    },
+    {
+      "file": "hands-card.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/hands-card.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-8a6939de-5269-4cf6-b04d-51dcb396fb90.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone transparent PNG foreground layer for interactive POV wedding invitation.\nPrimary request: FIRST PERSON adult hands wearing SIMPLE IVORY CUFFS from bottom corners hold one UNFOLDED CREAM INVITATION CARD in front of viewer. The open card is large, horizontally rectangular, front-facing and parallel to image plane. Same pale warm tan skin, angular simple hands and ivory cloth cuffs as companion envelope illustration. Behind lower edge of open card, a little of the cream opened envelope is visible with BROKEN MAROON WAX SEAL pieces. Hands grip lower corners so center stays clear.\nStyle: Don't Starve Together cut-paper game illustration. Bold jagged black ink contours, angular crooked forms, loose sparse scribbled crosshatching, muted flat cream/sepia/maroon palette. Whimsical gothic. Simple hand drawn sprite, NOT photorealism and NOT realistic detailed engraving.\nComposition: landscape PNG1536x1024. Open card from approx x15% to85%, y15% to74%. Huge EMPTY light cream central writing area occupying x23% to77%, y23% to62%, with no lines or decoration crossing it, reserved for HTML text overlay. Only thin uneven black ink card edge and very sparse small maroon corner flourishes. No heavy central fold line. Envelope behind bottom card edge, broken seal near bottom. Two hands and ivory wrists reach from bottom left/right; sleeve bottoms naturally exit canvas.\nBackground: Actual transparent alpha channel everywhere outside card/envelope/hands/cuffs. No white backdrop, no solid colored backdrop, no checkerboard pattern.\nConstraints: No text at all, no words, letters, numbers, names, logos, fake writing, or text placeholders. No body, no face, no room, no table, no floor, no UI, no storyboard. Natural anatomy with two hands only and five fingers per hand. Use the empty cream card for real text later.",
+      "verification": {
+        "file": "hands-card.png",
+        "originalSize": [
+          1536,
+          1024
+        ],
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 39.79,
+        "nonzeroAlphaBounds": [
+          0,
+          87,
+          1536,
+          1024
+        ]
+      }
+    },
+    {
+      "file": "ink-portal.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/ink-portal.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-0dda5dfa-9cbe-4760-a4b6-b8735b01c47e.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone transparent PNG vortex overlay for an interactive gothic wedding invitation.\nPrimary request: A ragged circular vortex/ring made of rough BLACK INK SPIRAL STROKES with tiny muted antique-gold scribbled edge flecks. An OPEN EMPTY TRANSPARENT CIRCULAR HOLE in the center. This is an isolated 2D ink effect layer, suitable to overlay on a cream invitation and rotate.\nStyle/medium: Don't Starve Together inspired scratchy hand drawn game effect: angular cut-paper black shapes, scribbled crosshatching, rough broken ink, sparse gold lines. Graphic flat black ink with no 3D shading.\nComposition: SQUARE1024x1024 PNG. Centered circular whirling ring occupies approx x12%–88%, y12%–88%. Clear center hole spans approx x36%–64%, y36%–64%. Ink arcs spiral clockwise and have rough tapering endpoints and irregular ragged edges. Keep balanced overall circle with asymmetrical hand drawn character. Few ink flecks nearby.\nTransparency: MUST have actual alpha transparency. All pixels outside strokes, including open center hole, are fully transparent. NO black backdrop, NO white backdrop, NO gray backdrop, NO visible checkerboard texture. The only visible objects are ink strokes and tiny muted gold scribbles. No glow or halo.\nConstraints: No room, no card, no people, no text, no letters, no symbols, no background texture, no gradient, no photorealism, no polished digital 3D vortex, no storyboards.",
+      "verification": {
+        "file": "ink-portal.png",
+        "originalSize": [
+          1254,
+          1254
+        ],
+        "finalSize": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha.",
+          "Downsample square generated image to requested 1024×1024."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 65.95,
+        "nonzeroAlphaBounds": [
+          46,
+          46,
+          985,
+          984
+        ]
+      }
+    },
+    {
+      "file": "envelope-floor.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/envelope-floor.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-fa113b0d-d3c7-42dc-95de-00339db5aa67.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One standalone transparent PNG cutout of an envelope lying flat, for an interactive wedding invitation.\nPrimary request: A CLOSED CREAM PAPER ENVELOPE with a MAROON WAX SEAL, viewed from a SLIGHTLY TOP-DOWN first-person angle as if lying flat on a cottage threshold. Envelope rectangular and horizontal, centered, all edges clearly visible, modest foreshortening; top edge a little farther away than bottom edge. Blank front flap and upper cream area, diagonal black ink fold lines, round maroon wax seal centered just below middle. No symbol on seal. Match a hand-drawn gothic invitation envelope.\nStyle: Don't Starve Together game sprite. Angular cut-paper silhouette, extremely bold scratchy black ink contours, sparse expressive scribbled hatching, muted flat cream/sepia/maroon palette. Simple crooked whimsical gothic illustration, NOT photorealistic, NOT detailed realistic engraving. Light mottled cream paper texture.\nComposition: landscape1536x1024 PNG. Isolated envelope occupies x15%–85% and y25%–74%. It is the only object. No hands, no cuffs. Suitable for animation lifting from floor.\nTransparency: Actual transparent alpha outside the envelope. No floor or surface. No backdrop, no white matte, no black matte, no checkerboard, no outer glow, no halo, no cast shadow.\nConstraints: ONE closed sealed envelope, no open card, NO hands, NO fingers, NO person, NO background, NO room, NO floor, NO text, NO words, NO address, NO letters, NO names, NO numbers, NO logos. No storyboards or panels.",
+      "verification": {
+        "file": "envelope-floor.png",
+        "originalSize": [
+          1536,
+          1024
+        ],
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 41.0,
+        "nonzeroAlphaBounds": [
+          34,
+          186,
+          1502,
+          867
+        ]
+      }
+    },
+    {
+      "file": "hand-door.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork/hand-door.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-9a732104-c58e-408c-9f2f-24362a850404.png",
+      "prompt": "Use case: stylized-concept\nAsset type: ONE standalone actual transparent PNG action sprite for an interactive first-person gothic wedding invitation.\nPrimary request: An isolated FIRST-PERSON adult RIGHT HAND, warm pale tan skin, in a simple neutral IVORY sleeve cuff, reaching diagonally UP-LEFT from the BOTTOM-RIGHT corner. We see the BACK OF THE RIGHT HAND. The fingers are naturally curled downward/inward in the gesture of pressing a door lever handle, but the handle itself is ABSENT. Wrist extends toward bottom-right corner. The hand is slender and angular, five anatomically plausible fingers only. Bent fingers held close together, thumb visible naturally at side.\nStyle/medium: Don't Starve Together game sprite. Angular crooked cut-paper silhouette, bold scratchy black ink outlines, sparse expressive scribbled hatching, flat muted tan/cream/sepia colors, whimsical gothic illustration. Ivory cuff is simple and loose with jagged ink fold lines, matching pale ivory sleeves of POV envelope-holding sprites. No jewelry. NOT photorealistic, NOT realistic detailed engraving.\nComposition: SQUARE1024x1024 PNG. Forearm enters and crops at the BOTTOM-RIGHT corner. Hand centered around x40%, y38%, fingertips pointing upper-left near x26%, y25%. One right hand and cuff/forearm only, filling diagonal central-to-bottom-right region, ample empty transparent upper-left area. Isolate full reaching gesture.\nBackground: MUST be actual transparent alpha channel outside hand/cuff. No black backdrop, no white matte, no checkerboard pixels, no halo, no outer glow, no background texture.\nConstraints: NO door, NO handle, NO lever, NO object being held, NO other hand, NO left hand, NO body, NO face, NO room, NO text, NO words, NO symbols, NO jewelry. Do not include any prop. One isolated right hand only.",
+      "verification": {
+        "file": "hand-door.png",
+        "originalSize": [
+          1254,
+          1254
+        ],
+        "finalSize": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Set only alpha 0–1 to fully transparent to remove numerical background speckles; preserve all other alpha.",
+          "Downsample square generated image to requested 1024×1024."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 76.74,
+        "nonzeroAlphaBounds": [
+          251,
+          221,
+          1024,
+          1024
+        ]
+      }
+    }
+  ],
+  "generationCalls": 7,
+  "composition": {
+    "room-open.png": {
+      "doorwayInnerBoundsPixels": [
+        286,
+        137,
+        773,
+        1058
+      ],
+      "doorwayInnerBoundsNormalized": [
+        0.2793,
+        0.0892,
+        0.7549,
+        0.6888
+      ],
+      "floorBeginsAroundY": 1095,
+      "notes": "Portrait room generated before landscape clarification. Door sides are nearly parallel. No door leaf or characters baked into scene."
+    },
+    "hands-envelope.png": {
+      "canvasPixels": [
+        1536,
+        1024
+      ],
+      "envelopeBoundsPixels": [
+        257,
+        184,
+        1278,
+        738
+      ],
+      "safeGuestNameBoundsPixels": [
+        390,
+        240,
+        1140,
+        410
+      ],
+      "waxSealCenterPixels": [
+        768,
+        575
+      ],
+      "notes": "Front-facing closed envelope and matching ivory cuffs. Empty central flap above seal supports HTML guest text."
+    },
+    "hands-card.png": {
+      "canvasPixels": [
+        1536,
+        1024
+      ],
+      "cardBoundsPixels": [
+        208,
+        90,
+        1326,
+        691
+      ],
+      "safeWritingBoundsPixels": [
+        370,
+        190,
+        1175,
+        570
+      ],
+      "notes": "Large empty cream card, restrained maroon corner flourishes, broken seal on envelope behind. Same neutral ivory cuffs; envelope/card hand poses are similar but not pixel-identical."
+    },
+    "envelope-floor.png": {
+      "canvasPixels": [
+        1536,
+        1024
+      ],
+      "envelopeBoundsPixels": [
+        34,
+        186,
+        1502,
+        867
+      ],
+      "notes": "Slight top-down foreshortening, blank cream envelope and maroon seal. No hands, floor, or cast shadow."
+    },
+    "ink-portal.png": {
+      "notes": "Square transparent ink ring with open alpha center. Black ink and muted gold flecks. Original square canvas1254×1254 downsampled to1024×1024."
+    },
+    "hand-door.png": {
+      "canvasPixels": [
+        1024,
+        1024
+      ],
+      "fingertipContactApproxPixels": [
+        285,
+        235
+      ],
+      "notes": "Back of right hand reaches up-left from bottom-right ivory cuff. Fingers curled for pressing handle; handle not included. Original1254square downsampled to1024square."
+    }
+  }
+}

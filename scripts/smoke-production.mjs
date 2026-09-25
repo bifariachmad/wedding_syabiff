@@ -5,6 +5,7 @@ try{
  const page=await browser.newPage({viewport:{width:360,height:640},reducedMotion:'reduce'});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:4173/');await page.waitForFunction(()=>document.querySelector('#app').dataset.ready==='true');
+ for(let i=0;i<4;i++){await page.locator('#nav-next').click();await page.waitForFunction(()=>document.querySelector('#invitation').dataset.prologueBusy==='false');}
  for(let i=1;i<=14;i++){await page.locator('#nav-next').click();await page.waitForFunction(i=>document.querySelector('#invitation').dataset.scene===String(i)&&document.querySelector('#invitation').dataset.travelling==='false',i);}
  assert.equal(await page.locator('#reservation').getAttribute('aria-hidden'),null);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight&&document.documentElement.scrollWidth<=innerWidth),true);

@@ -1,15 +1,16 @@
 import gsap from 'gsap';
 import { hydrateArt } from './art.js';
 import { sound } from './audio.js';
+import { initPrologue } from './prologue.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 export function initMotion(){
  const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
  const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
- let index=0,busy=false,ambient=[];
- const controls=()=>{back.disabled=busy||index===0;next.disabled=busy||index===scenes.length-1;root.dataset.scene=String(index);root.dataset.travelling=String(busy);};
+ let index=0,busy=false,ambient=[],prologue;
+ const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);if(prologue?.active){prologue.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;};
  function atmosphere(){
-  ambient.forEach(t=>t.kill());ambient=[];if(reduced())return;
+  ambient.forEach(t=>t.kill());ambient=[];if(reduced()||prologue?.active)return;
   const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
   loop('.hanging-lantern,.final-lantern',{rotation:4,duration:4,transformOrigin:'50% 0%'});
   loop('.flying-raven',{y:-9,rotation:3,duration:3});
@@ -32,6 +33,8 @@ export function initMotion(){
  }
  async function goTo(target){
   if(typeof target==='string')target=scenes.findIndex(s=>s.id===target);
+  if(prologue?.busy)return false;
+  if(prologue?.active){prologue.dismiss();controls();}
   if(busy||target<0||target>=scenes.length||target===index)return false;
   busy=true;controls();
   const from=scenes[index],to=scenes[target],direction=target>index?1:-1;
@@ -69,7 +72,8 @@ export function initMotion(){
    timeline.to('#journey-progress',{scaleX:(target+1)/scenes.length,duration:.3},0);
   });
  }
- controls();atmosphere();
- return {goTo,next:()=>goTo(index+1),back:()=>goTo(index-1)};
+ prologue=initPrologue(()=>{controls();hydrateArt(scenes[0]);root.querySelector('#journey-position').innerHTML=`01 <small>/ ${scenes.length}</small>`;gsap.set('#journey-progress',{scaleX:1/scenes.length});atmosphere();});
+ controls();
+ return {goTo,next:()=>prologue.active?prologue.next():goTo(index+1),back:()=>{if(prologue.active)return prologue.back();if(index===0){ambient.forEach(t=>t.kill());return prologue.show();}return goTo(index-1);}};
 }
 export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:10,opacity:0,duration:.5});sound('seal');}

@@ -5,7 +5,7 @@ export function art(name, cls = '', layer = '') {
 export function icon(name) { return `<img class="icon" src="/assets/png/icon-${name}.png" alt="" width="24" height="24"/>`; }
 export async function hydrateArt(root=document) {
   if(document.querySelector('.visual-novel')){
-    const images=[...root.querySelectorAll(root===document?'.vn-world img, #gate img':'img')];
+    const images=[...root.querySelectorAll(root===document?'#arrival .arrival-room, #arrival .arrival-door-paint':'img')];
     for(const img of images){if(img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;}img.loading='eager';}
     await Promise.all(images.filter(img=>img.getAttribute('src')).map(img=>img.decode().catch(()=>{})));
     return;

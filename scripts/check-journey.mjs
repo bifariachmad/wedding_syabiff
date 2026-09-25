@@ -4,6 +4,7 @@ const p=await b.newPage({viewport:{width:390,height:844}});
 p.on('pageerror',e=>console.log('ERROR',e.stack));
 try{
  await p.goto('http://127.0.0.1:5173/');await p.waitForFunction(()=>document.querySelector('#app').dataset.ready==='true');
+ for(let s=0;s<4;s++){await p.locator('#nav-next').click();await p.waitForFunction(()=>document.querySelector('#invitation').dataset.prologueBusy==='false');}
  for(const target of [...Array.from({length:15},(_,i)=>i+1),14,13,12,11,10,9,8,7,6,5,4,3,2,1,0]){
   const before=Number(await p.locator('#invitation').getAttribute('data-scene'));
   console.log('GO',before,target);
