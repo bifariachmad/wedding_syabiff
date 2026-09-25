@@ -2,19 +2,22 @@
 
 ## Scene 1 additions — 25 September 2026
 
-Seven built-in generated assets follow the requested Don't Starve Together direction. Full prompts, original paths, alpha checks and composition coordinates: `artwork/arrival-generation.json`. `scripts/import-arrival.mjs` imports final source layers from the sibling `scene1-artwork` folder. Normal builds use committed optimized PNGs and do not need source-generation files. The six cutouts have actual alpha; the room is opaque.
+Ten active PNG assets follow the requested Don't Starve Together direction. The feedback revision uses a vibrant maroon/black room and door, illustrated knock marks, a gripping hand, and moving cloud/tree layers. Full built-in ImageGen prompts, original paths, alpha checks and alignment coordinates are in `artwork/arrival-generation.json` and `artwork/arrival-generation-v2.json`. Import scripts read the sibling `scene1-artwork` and `scene1-artwork-v2` folders. Normal builds use committed optimized PNGs and do not need source-generation files. Cutouts have actual alpha; the room is opaque.
 
 | File under public/assets/png/arrival | Role | Bytes |
 |---|---|---:|
-| room-open.png | Cottage interior and empty morning doorway | 260646 |
-| door.png | Independent hinged wooden door | 101403 |
-| hand-door.png | Guest's hand reaching for the handle | 10926 |
+| room-open.png | Maroon cottage interior and empty morning doorway | 186746 |
+| door.png | Independent ebony/maroon hinged door | 78258 |
+| hand-grip.png | Hand wrapped around brass lever; plate aligned to door hardware | 16298 |
+| knock-marks.png | Three ink-hatched wedges above the center of the door | 5907 |
+| clouds.png | Slow drifting maroon/rose cloud layer inside doorway | 12338 |
+| tree.png | Near/far swaying maroon trees clipped inside doorway | 23588 |
 | envelope-floor.png | Sealed invitation at the threshold | 11419 |
 | hands-envelope.png | POV hands holding the sealed envelope | 63156 |
 | hands-card.png | POV hands with the opened invitation | 59580 |
 | ink-portal.png | Transparent swirling ink ring | 51873 |
 
-The seven additions total 559,003 bytes. Three earlier bright storybook alternatives are retained but not loaded. The original inventory below describes the earlier invitation kit; with these additions and those three alternatives, there are 61 raster files.
+The ten active Scene 1 assets total 509,163 bytes. The old `hand-door.png` (10,926 bytes) and three bright storybook alternatives are retained but not loaded. The total project inventory contains 65 raster files.
 
 The latest user direction replaces the original SVG requirement. All shipped illustrations are PNGs. Twenty-nine artworks were generated from the Biff reference style; eighteen icons, textures, and templates were drawn procedurally on Canvas. Three brand icons and the Open Graph image bring the raster inventory to 51. No SVG illustrations are used.
 

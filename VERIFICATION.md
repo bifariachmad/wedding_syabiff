@@ -4,12 +4,12 @@
 
 | Check | Result and evidence |
 |---|---|
-| Scene 1 | Four interactive stops; normal-motion door/hand, camera dip/pickup, card opening and ink portal checked. Reverse/replay from the gate, rapid-click locking, plain-text guest names, reduced motion and no page overflow pass at 360×640, 430×932, 1440×900 and 844×390. `node tests/arrival.mjs`, `artifacts/arrival/results.json` and screenshots. |
-| Scene 1 artwork | Seven newly generated PNGs, six with real transparency. Composite QA and door geometry inspected. Optimized total 559,003 bytes; full prompts and alpha metadata in `artwork/arrival-generation.json`. |
+| Scene 1 | Seven reading stops. Instrumented Web Audio confirms all three knocks finish before “Ada ketukan di pintu” begins typing. Downward thoughts stay separate; grip/open, pickup, card, portal and reverse/replay pass. Top heading, centered page counter, moving clouds, rapid-click locking, plain-text names, reduced motion and no page overflow pass at 360×640, 430×932, 1440×900 and 844×390. `node tests/arrival.mjs`, `artifacts/arrival-v2/results.json` and 28 screenshots. |
+| Scene 1 artwork | Six revised generated PNGs integrated with four retained active assets. Maroon/black palette, upper-center illustrated knock fan, handle grip, transparent clouds/trees and door alignment visually inspected. Ten active assets total 509,163 bytes; prompts and alpha metadata in `artwork/arrival-generation.json` and `artwork/arrival-generation-v2.json`. |
 | Visual-novel layout | 48 screenshots: all 16 scenes at 360, 390, 430 px. No horizontal or vertical page overflow. Additional reviews at 360 × 640, 390 × 844 and 1440 × 900. `artifacts/browser/` and `artifacts/novel/` |
 | Artwork | 29 generated illustrations, 18 procedural PNG assets, three brand icons and one share image. All 47 main assets reviewed at 1×/2× on paper/ink; transparent-cutout correction pass completed. `artifacts/raster-review/` |
 | Share image | 1200 × 630 PNG; inspected at 400 × 210. `artifacts/og-small.png` |
-| Lighthouse mobile | Performance **84**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **599,125 bytes** (0.60 MB), below 3 MB. LCP 4.43 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
+| Lighthouse mobile | Performance **88**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **486,587 bytes** (0.49 MB), below 3 MB. LCP 3.91 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
 | Frontend validation | Empty name, one-character name, guest counts 0 and 6 rejected; valid submission enabled. Exactly two visible reservation fields plus hidden honeypot. |
 | Backend logic | Six tests execute the actual Apps Script source using Google service adapters. Validation, stable IDs for normalized names, locked writes, PIN checks, repeated check-in, stats, malformed actions and literal formula-like names pass. `npm test` |
 | Reservation flow | Valid submit, same-name update with same ID, ticket recall after reload, network failure/retry all pass in browser. The test-only API adapter executes actual `Code.gs`; no mock API ships. |
@@ -21,7 +21,7 @@
 | Build and assets | Production Vite build passes. Static `/admin/` entry included. No SVG files/references in application source or public assets; scanner uses the generated PNG overlay. |
 | Runtime dependencies | `npm audit --omit=dev`: zero reported vulnerabilities. |
 
-The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The final Scene 1 build scored 84 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
+The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The feedback revision scored 88 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
 
 ## Concept checklist
 
@@ -46,7 +46,7 @@ The new opening first scored 77. Deferring the later gate imagery improved initi
 - `APPS_SCRIPT_URL` is not configured. The preview cannot save real reservations until the owner completes README setup. Tests validate the code, not a deployed Google account's permissions, redirect/CORS behavior or quotas.
 - Concurrent-call tests verify retained records and lock coverage in an in-memory harness. They do not simulate Google's distributed execution scheduling. Repeat two simultaneous submissions after live deployment.
 - Camera tests use a generated video feed, not physical optics or event lighting. Phone smoothness, iOS behavior, camera permission UX, actual speaker quality and sustained hardware frame rate require real-device checks.
-- Lighthouse is a lab result. The 84 score meets the requested threshold but LCP still measures 4.43 s under its mobile simulation; hosting, network and device results will vary.
+- Lighthouse is a lab result. The 88 score meets the requested threshold; LCP measures 3.91 s under its mobile simulation; hosting, network and device results will vary.
 - The Sites preview is private. Final guest access, custom domain and third-party link preview scraping need the owner's final deployment.
 - Development-only Lighthouse/sharp dependency trees currently have npm advisories; those packages are not included in the static guest bundle. The production dependency audit is clear.
 

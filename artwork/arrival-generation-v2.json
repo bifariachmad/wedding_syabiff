@@ -1,0 +1,253 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "room-open.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/room-open.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-6702a6da-fd89-4815-af9c-4811620c14f4.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Revised standalone opaque illustrated room background layer for a POV wedding invitation.\nInput image: Existing room-open.png is the EDIT TARGET. Recolor it while PRESERVING ITS EXACT COMPOSITION, outlines, object positions, crop, perspective, and door opening geometry.\nPrimary request: Make the palette much more vibrant MAROON AND BLACK. Change the walls and curtains to rich wine-maroon and burgundy, beams and wood edging to ebony black, roses to rich red-maroon, outdoor tree foliage to burgundy/plum. Keep the sky and morning light warm pale rose and amber so the open doorway stays readable. Bright restrained rose/amber highlights. Rich saturated maroon accents throughout instead of the washed-out gray-brown appearance.\nStyle: Preserve angular crooked cut-paper forms, very bold scratchy black ink outlines, loose hand-ink crosshatching, whimsical gothic Don't Starve Together game illustration. Flat colored shapes; no realism and no detailed realistic engraving.\nCRITICAL GEOMETRY: Keep exactly1024x1536 portrait canvas. Preserve exact existing doorway aperture from x286 to773 and y137 to1058, and the existing floor beginning near y1095. Do NOT shift or redraw opening geometry. Preserve every perspective line, frame edge, foreground arrangement and garden composition. Keep doorway OPEN and empty, no door leaf. Keep opaque background.\nConstraints: Change colors only, no new objects, no people, no hands, no text, no UI, no cards. Do not crop, expand, rotate, resize or rearrange the image. Do not make sky dark or obscure garden. Vibrant wine-maroon/black overall, still readable.",
+      "references": [
+        "../scene1-artwork/room-open.png"
+      ],
+      "verification": {
+        "file": "room-open.png",
+        "sourceSize": [
+          1024,
+          1536
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "cleanup": []
+      }
+    },
+    {
+      "file": "door.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/door.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-142d8cb2-2fe7-4132-8dbf-90f326a80a53.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Revised transparent door-leaf game sprite.\nInput image: door.png is the EDIT TARGET, a tightly trimmed607x1415 transparent door leaf. Preserve its EXACT silhouette, canvas dimensions, plank boundaries, geometry, perspective, hinge positions, and HANDLE POSITION.\nPrimary request: Recolor only: ebony-black wood with rich vibrant wine-maroon grain scratches and burgundy edge accents; antique muted gold brass hinges and handle remain readable. Deep maroon tones should be vivid enough to read over dark wood, but black is dominant. Preserve existing crooked scratchy black ink drawing.\nStyle: Don't Starve Together game art, angular cut-paper outline, bold black ink, loose sparse crosshatching, whimsical gothic. No realism or detailed realistic engraving.\nGeometry: Same607x1415 canvas and leaf boundaries. Keep lever handle on right at exact existing position; preserve lever's left-pointing curve, oval pointed mounting plate, and all hinge hardware. Do not move, enlarge, recenter, crop, rotate, stretch, or pad the door.\nTransparency: Preserve actual alpha transparency outside original door silhouette. No wall, no frame, no floor, no shadow, no black backdrop, no checkerboard pattern.\nConstraints: Color changes only. No hands, people, text, symbols, new objects or new hardware. Preserve all shapes and proportions.",
+      "references": [
+        "../scene1-artwork/door.png"
+      ],
+      "verification": {
+        "file": "door.png",
+        "sourceSize": [
+          822,
+          1914
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          607,
+          1415
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Flood-filled only exterior generated neutral gray/white checker matte, preserving enclosed cuff/hardware highlights; cleaned one source-pixel fringe against black ink boundary.",
+          "Restored original door canvas607×1415; no trim or recenter.",
+          "Cleared alpha0–1 numerical speckles and hidden RGB of transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 5.11,
+        "nonzeroAlphaBounds": [
+          0,
+          0,
+          605,
+          1403
+        ]
+      }
+    },
+    {
+      "file": "knock-marks.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/knock-marks.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-254c4aef-57cb-4b56-af41-ce0a8ebbdd21.png",
+      "prompt": "Use case: stylized-concept\nAsset type: Standalone transparent illustrated knock-marks PNG overlay for an ebony/maroon door.\nPrimary request: THREE expressive jagged cut-paper impact wedges arranged as a FAN opening upward, as a wordless cartoon knocking sound cue. These are filled irregular tapered torn-ink shapes, each thicker at outer end and pointing inward toward a shared point near bottom-center. Left wedge leans upper-left, middle rises nearly vertical, right leans upper-right. Three distinct chunky irregular wedges with visible breathing room, not simple straight strokes.\nStyle: Don't Starve Together hand-drawn game artwork, bold scratchy BLACK INK outline, vibrant MAROON fill, warm cream and antique-gold jagged highlights, little scribbled hand-ink crosshatching. Angular crooked cut-paper silhouette, whimsical gothic. Rich wine maroon and black with cream highlights so it reads against a dark door.\nComposition: SQUARE1024x1024 canvas, fan centered and contained within x15%–85%,y15%–85%, no cropping. Three main impact wedges only; sparse tiny ink flecks close to them. Point of fan around x50%, y76%.\nBackground: Actual transparent alpha channel, all surrounding space transparent. No white background, no black background, no checkerboard texture, no halo, no gradient.\nConstraints: No door, no hand, no people, no props, no letters, no text, no punctuation characters, no words. Not three plain straight lines. No realism, no 3D, no polished vector UI icon.",
+      "references": [],
+      "verification": {
+        "file": "knock-marks.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles and hidden RGB of transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 76.97,
+        "nonzeroAlphaBounds": [
+          74,
+          137,
+          1179,
+          1072
+        ]
+      }
+    },
+    {
+      "file": "hand-grip.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/hand-grip.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-39b3f4d8-5668-4469-a297-bcde37fc5922.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Transparent POV hand-and-door-handle action sprite.\nInput image1: The existing right-hand sprite is EDIT TARGET for style, ivory cuff, skin tone and first-person arm direction. Change hand pose so it ACTUALLY FIRMLY GRIPS a horizontal door lever.\nInput image2: The door is a supporting reference ONLY for the antique brass lever and pointed oval mounting plate; do not include door wood.\nPrimary request: Isolated first-person RIGHT adult hand reaches from bottom-right and firmly WRAPS ITS FINGERS AROUND the LEFT-POINTING horizontal antique brass door lever. Four fingers CURL AROUND AND UNDER THE LEVER, visibly hooking underneath it; THUMB rests firmly OVER THE TOP of the lever. The handle passes through the closed grip, so physical contact and clasp are unmistakable. This is a hand HOLDING AND PRESSING a door handle, not merely reaching toward or touching it. Include the matching antique brass lever AND its full vertical pointed-oval brass mounting plate to right of grip. We see mostly the back and side of right hand. Neutral ivory sleeve cuff has a small rich burgundy accent at edge; forearm extends off bottom-right.\nStyle: Don't Starve Together game sprite, angular cut-paper forms, very bold scratchy black ink contours, sparse hand-ink hatching, flat warm tan skin/ivory/maroon and muted gold hardware. Same slender adult hand style as reference. No realism, no detailed realistic engraving.\nComposition: SQUARE1024x1024 transparent PNG. Mounting plate centered near x52%,y38%, vertical plate from about y23%to53%, brass lever base near x52%,y36%, lever extends left to x22%,y39%. Closed gripping hand centered around x33%,y40%. Wrist and ivory cuff diagonal down-right to bottom-right canvas edge. Keep entire mounting plate and handle visible enough to align onto a door; handle must be behind and partially occluded by fingers. No extra limbs. Handle attachment is on right and lever points LEFT.\nTransparency: Actual alpha transparent everywhere outside hand,cuff,handle,plate. No black matte, white matte, checkerboard pixels, halo or cast shadow.\nConstraints: No door wood, no wall, no room, no background, no other hand, no text, no letters, no jewelry. Five fingers only, natural right-hand grip. Fingers must visibly encircle the lever and thumb must be on it.",
+      "references": [
+        "../scene1-artwork/hand-door.png",
+        "../scene1-artwork/door.png"
+      ],
+      "verification": {
+        "file": "hand-grip.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Flood-filled only exterior generated neutral gray/white checker matte, preserving enclosed cuff/hardware highlights; cleaned one source-pixel fringe against black ink boundary.",
+          "Cleared alpha0–1 numerical speckles and hidden RGB of transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 72.15,
+        "nonzeroAlphaBounds": [
+          144,
+          151,
+          1254,
+          1254
+        ]
+      }
+    },
+    {
+      "file": "clouds.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/clouds.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-bb02ef97-8871-4f69-b664-d601c7bd8d36.png",
+      "prompt": "Use case: stylized-concept\nAsset type: Standalone transparent ambient cloud layer for a gothic interactive wedding invitation garden.\nPrimary request: A horizontal cluster of wispy ANGULAR HAND-INK CLOUDS, like long torn cut-paper curls tapering to sharp points, with airy spaces between cloud wisps. Rich burgundy/rose shadow bands and warm ivory/pale-rose highlight faces; black scratchy ink edges and spare crosshatching. Whimsical morning clouds matching maroon-and-black Don't Starve Together game art.\nComposition: Landscape1536x1024 transparent PNG. A few long low cloud wisps in a loose HORIZONTAL band across x8%–92%, y28%–65%, all fully visible, no crop. Keep forms slender and layered, not huge puffy storm clouds. Cluster should float slowly across pale amber/rose sky.\nStyle: Angular crooked cut-paper silhouettes, bold hand-ink contours, scribbled hatch details, flat burgundy/ivory/rose colors. No gradients, no realism, no 3D.\nBackground: Actual transparent alpha outside cloud wisps. No sky backdrop, no white matte, no checkerboard pixels, no dark solid background, no glow.\nConstraints: Clouds only. No landscape, no ground, no sun, no stars, no birds, no tree, no room, no people, no text, no words, no symbols. Isolated ambient cloud sprite.",
+      "references": [],
+      "verification": {
+        "file": "clouds.png",
+        "sourceSize": [
+          1536,
+          1024
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles and hidden RGB of transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 87.07,
+        "nonzeroAlphaBounds": [
+          9,
+          291,
+          1525,
+          677
+        ]
+      }
+    },
+    {
+      "file": "tree.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v2/tree.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-392461e6-5c31-4406-a6cc-939b29d98587.png",
+      "prompt": "Use case: stylized-concept\nAsset type: Standalone transparent full-tree PNG layer to gently sway inside a gothic invitation doorway.\nPrimary request: One isolated crooked SLENDER TREE with rich WINE-MAROON and BURGUNDY foliage, black/ebony trunk and sharp angular limbs. Sparse stylized foliage forms torn cut-paper clumps with jagged pointed tips. Dark plum shadows, vivid restrained red-maroon highlights, a few rose edge accents. Thin crooked trunk bends subtly right then left, tapering upward. Whimsical gothic morning-garden tree, not a scary monster.\nStyle: Don't Starve Together hand-drawn game illustration, angular cut-paper silhouette, very bold scratchy BLACK INK contours, loose scribbled crosshatching, flat maroon-and-black colors, sparse broad shapes. NOT photorealism or detailed realistic engraving.\nComposition: Portrait1024x1536 transparent PNG. Upright FULL TREE entirely visible, centered, roots/trunk bottom near y92%, highest leaf near y7%. Slender silhouette extends approx x25%–75%. Clear transparent margins on all sides. A simple base with pointed root tips only, no ground plane. Suitable to rotate gently about trunk base for swaying.\nBackground: Actual transparent alpha outside tree. No sky, no white backdrop, no checkerboard pixels, no halo, no shadow on ground.\nConstraints: Exactly ONE tree only; no forest, no scenery, no grass patch, no surrounding ground, no planter, no people, no animals, no birds, no text, no symbols. All tree parts visible and uncropped.",
+      "references": [],
+      "verification": {
+        "file": "tree.png",
+        "sourceSize": [
+          1024,
+          1536
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles and hidden RGB of transparent pixels."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 254,
+        "fullyTransparentPercent": 78.06,
+        "nonzeroAlphaBounds": [
+          68,
+          14,
+          940,
+          1526
+        ]
+      }
+    }
+  ],
+  "generationCalls": 6,
+  "composition": {
+    "room-open.png": {
+      "canvas": [
+        1024,
+        1536
+      ],
+      "doorwayInnerBoundsPixels": [
+        286,
+        137,
+        773,
+        1058
+      ],
+      "notes": "Recolor edit preserves original room objects, camera and opening placement; vivid maroon/black with warm rose/amber sky."
+    },
+    "door.png": {
+      "canvas": [
+        607,
+        1415
+      ],
+      "notes": "Generated edit restored from822×1914 to original607×1415 canvas. Near-matching silhouette; no crop/recenter. Minor redraw variation around hardware."
+    },
+    "hand-grip.png": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "mountingPlateBoundsPixels": [
+        624,
+        149,
+        882,
+        777
+      ],
+      "leverMountCenterPixels": [
+        743,
+        463
+      ],
+      "handContactApproxPixels": [
+        472,
+        523
+      ],
+      "notes": "Actual closed grip around left-pointing brass lever, thumb over top; plate partially occluded by hand. Ivory cuff has burgundy accent. Preserve square canvas for mapping."
+    },
+    "knock-marks.png": {
+      "notes": "Three filled jagged maroon wedges with cream/gold highlights; fan points downward toward impact origin."
+    },
+    "clouds.png": {
+      "notes": "Horizontal wisps on transparent canvas; all shapes isolated for translation across sky."
+    },
+    "tree.png": {
+      "trunkBaseApproxPixels": [
+        531,
+        1455
+      ],
+      "notes": "Complete maroon foliage tree on transparent canvas. Rotate gently about trunk base."
+    }
+  }
+}
