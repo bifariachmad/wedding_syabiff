@@ -2,6 +2,7 @@ import { CONFIG } from './config.js';
 import { art, icon } from './art.js';
 import { prologueMarkup } from './prologue-markup.js';
 import { courtyardArtwork, courtyardCover } from './courtyard-markup.js';
+import { welcomeArtwork, welcomeDialogue } from './welcome-markup.js';
 
 const sprite=(name,cls='hero',depth=0)=>`<div class="vn-layer ${cls}" data-depth="${depth}">${art(name)}</div>`;
 const scene=(id,label,visual,content,extra='')=>`<section id="${id}" class="vn-scene ${extra}${id==='gate'?' is-active is-visible':''}" data-label="${label}" aria-labelledby="${id}-title" ${id==='gate'?'':'aria-hidden="true" inert'}><div class="vn-artwork" aria-hidden="true">${visual}</div><div class="vn-dialogue"><span class="vn-speaker">${label}</span>${content}</div></section>`;
@@ -15,7 +16,7 @@ export function invitationMarkup(){
  <div class="vn-stage">
  ${scene('gate','KAMU',courtyardArtwork(),`<p id="recipient" class="recipient" hidden></p><p id="courtyard-line" aria-hidden="true">Di mana ini…? Udara pagi terasa hangat.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Udara pagi terasa hangat.</span>`)}
  ${scene('cover','Part II · The Wedding',courtyardCover(),`<span class="courtyard-wedding">The Wedding</span><h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1><p class="vn-narration courtyard-date">Sabtu,<br>31 Oktober 2026.</p>`)}
- ${scene('greeting','Bab II · Sebuah undangan',`${sprite('arch-roses','couple greeting-couple',-50)}${sprite('book-quill','letter-book',150)}${sprite('raven-flight','flying-raven',200)}`,`<h2 id="greeting-title">Dengan hangat, kami mengundangmu</h2><p class="vn-narration">Di antara gelap dan cahaya, kami memilih saling menemukan. Dengan hangat, kami mengundangmu menyaksikan hari kami.</p>`)}
+ ${scene('greeting','KAMU',welcomeArtwork(),welcomeDialogue())}
  ${scene('countdown','Bab III · Menanti hari',`${sprite('clock','clock-hero',0)}${sprite('pendulum','pendulum-hero',20)}${sprite('key','floating-key',170)}`,`<h2 id="countdown-title">Menuju Hari Kami</h2><div id="countdown-digits" class="countdown-grid" role="timer" aria-label="Hitung mundur menuju 31 Oktober 2026 pukul 09:30 WIB">${['Hari','Jam','Menit','Detik'].map((l,i)=>`<div><span class="digit" data-digit="${i}">00</span><span class="digit-label">${l}</span></div>`).join('')}</div><p id="countdown-arrived" hidden>Hari yang dinanti telah tiba.</p>`)}
  ${scene('location','Bab IV · Tempat kita bertemu',`${sprite('map-card','map-hero',10)}${sprite('icon-pin','map-marker',150)}${sprite('key','floating-key',180)}`,`<h2 id="location-title">${e.venue}</h2><p class="vn-narration">Tamu diminta hadir mulai pukul 09:30 WIB.</p><a class="vn-action" href="${e.maps}" target="_blank" rel="noopener noreferrer">Buka di Google Maps ↗</a>`)}
  ${CONFIG.RUNDOWN.map(([time,title,note,asset,extra],i)=>scene(`rundown-${i}`,'Bab V · Rangkaian acara',`${sprite(asset,'rundown-hero asset-'+asset,0)}${extra?sprite(extra,'rundown-accent',200):''}`,`<span class="vn-event-number">${String(i+1).padStart(2,'0')} / 08</span><time>${time} WIB</time><h2 id="rundown-${i}-title">${title}</h2><p class="vn-narration">${note}</p>`,'vn-rundown')).join('')}

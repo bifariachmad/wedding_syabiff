@@ -98,3 +98,7 @@ Self-hosted Latin WOFF2: UnifrakturCook 700, IM Fell English 400, Special Elite 
 Two built-in ImageGen PNGs, imported with scripts/import-courtyard.mjs. Sources are in ../scene2-artwork; exact prompts are in artwork/courtyard-generation.json. morning-garden.png is opaque, 1024×1536, 353,396 bytes. gate-pair.png is genuinely transparent, 1000×1000, 161,173 bytes. Total additional PNG weight: 514,569 bytes; project inventory: 76 raster files. Existing tree, cloud and rose cutouts are reused for independent motion. Images load near the portal transition rather than at initial arrival.
 
 GALVANIZED Regular by UI Creative is embedded for the couple names in this personal wedding invitation. Original TTF and supplied personal-use EULA are in public/assets/fonts. Source: https://www.1001fonts.com/galvanized-font.html. Font files are unmodified.
+
+## Scene 3 — Welcome hall
+
+Two built-in ImageGen assets imported by scripts/import-welcome.mjs: welcome-hall.png (347,856 bytes) and manor-door.png (330,492 bytes). Sources and exact prompts are in ../scene3-artwork and artwork/welcome-generation.json. Door alpha is genuine; its two halves hinge independently. Existing arch-roses.png and candle.png are reused. Added PNG weight: 678,348 bytes; project raster inventory: 78 files.

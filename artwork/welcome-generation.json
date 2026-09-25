@@ -1,0 +1,34 @@
+{
+  "mode": "built-in image_gen",
+  "reference_images": [
+    "invitation/public/assets/png/courtyard/morning-garden.png",
+    "invitation/public/assets/png/arrival/room-open.png"
+  ],
+  "assets": [
+    {
+      "filename": "welcome-hall.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d77f-e186-7621-822c-f01b9b0b8053/exec-5d7e2412-0d4f-4b83-978e-2dac01089e81.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: opaque portrait 1024 x 1536 background artwork for Scene 3 of a romantic gothic wedding visual novel.\nPrimary request: POV inside a gothic manor foyer / wedding welcome hall. Straight-on central one-point perspective. Tall crooked arched ceiling, rich maroon curtains only at the outer sides, delicate carved rose motifs, a rear arch doorway, candles grouped at the sides, warm morning light. Keep the middle 40% of the image width empty of furniture, decorations and people, showing only architectural background depth and open floor, to layer separate couple sprites later. Empty center floor. Lower area is dark and quiet to support a separate dialog overlay.\nStyle: Match the two recently shown style references (garden and open room): Don't Starve Together inspired hand-inked cutout storybook art, crisp irregular black contour lines and dense crosshatching, flat maroon and ebony shadows against warm parchment/coral light, textured print grain. Romantic and welcoming, not horror. Preserve their visual level of detail and colors.\nComposition: portrait full-bleed opaque environment, symmetric overall central axis with charmingly crooked architecture. Readable open center, side framing. No people, no text, no lettering, no logos, no skulls, no crosses, no religious symbols, no UI."
+    },
+    {
+      "filename": "manor-door.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d77f-e186-7621-822c-f01b9b0b8053/exec-80406f25-fca4-4e17-b8a7-e504f4743c38.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: isolated opening-door game sprite, portrait PNG 1024 x 1536 with TRUE TRANSPARENT BACKGROUND / alpha.\nPrimary request: A full closed pair of tall gothic manor wooden door leaves ONLY. Ebony and deep maroon carved wood, subtle rose motifs, hand-forged iron rose hinges along the outer edges, two small handles close to the center. Full outer door edges visible with a narrow transparent margin all around. Closed straight central seam at EXACTLY 50% of the image width, so the image can be split into two equally sized left/right leaves and each rotated open in software. Perfectly front-facing elevation, zero perspective. The pair forms one tall subtle pointed arch silhouette. Warm light catching the wooden outer edges.\nStyle: Match the previously shown wedding garden/room art: Don't Starve Together inspired hand-inked cutout storybook illustration, irregular black lines, dense black crosshatching, flat maroon and ebony color, warm parchment accents, textured wood. Romantic gothic, not horror.\nBackground: genuinely transparent alpha pixels surrounding the door silhouette. No scene, no painted backdrop, no checkerboard texture. DOOR LEAVES ONLY, no wall, no frame, no arch frame, no pillars, no floor, no landscape, no cast shadow outside the object.\nConstraints: no people, no text, no logos, no skulls, no crosses, no religious symbols. Entire top, bottom, left and right edges of the wood visible. Two leaves meet exactly on vertical midline.",
+      "alpha": {
+        "verified": true,
+        "min": 0,
+        "max": 254,
+        "fullyTransparentPixels": 476109
+      },
+      "postprocessing": "None; original generated alpha preserved."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+.welcome-active .vn-header{display:none}
+#greeting .vn-artwork{inset:0;overflow:clip;perspective:1000px}
+.welcome-camera{position:absolute;inset:0;transform-origin:50% 46%;perspective:1100px;transform-style:preserve-3d}
+.welcome-room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.welcome-couple{position:absolute;left:50%;translate:-50% 0;top:16%;height:69%;width:min(75%,600px);filter:drop-shadow(0 15px 10px #10050bcc);transform-origin:50% 95%}
+.welcome-couple img{width:100%;height:100%;object-fit:contain;object-position:bottom;transform-origin:50% 95%;animation:welcome-breathe 5s ease-in-out infinite alternate}
+.welcome-doors{position:absolute;left:50%;translate:-50% 0;top:7%;height:94%;width:min(96vw,810px);perspective:1100px;transform-style:preserve-3d}
+.welcome-door{position:absolute;top:0;width:50%;height:100%;overflow:clip;filter:drop-shadow(0 3px 8px #080405)}
+.welcome-door-left{left:0;transform-origin:0 50%}.welcome-door-right{right:0;transform-origin:100% 50%}
+.welcome-door img{position:absolute;top:0;width:200%;height:100%;max-width:none;object-fit:fill}.welcome-door-left img{left:0}.welcome-door-right img{right:0}
+.welcome-candle{position:absolute;bottom:16%;width:12%;height:25%;filter:drop-shadow(0 0 12px #e6a05266);animation:welcome-glow 2.7s ease-in-out infinite alternate}.welcome-candle img{width:100%;height:100%;object-fit:contain}.candle-left{left:4%}.candle-right{right:4%;animation-delay:-1.3s}
+.welcome-shade{position:absolute;inset:0;background:linear-gradient(#130610bb,transparent 27%,transparent 55%,#10070de0),radial-gradient(ellipse at 50% 43%,transparent 25%,#15070c70);pointer-events:none}
+.welcome-heading{position:absolute;left:55px;right:55px;top:25px;text-align:center;color:#f3d9bc;text-shadow:0 2px 7px #000}
+.welcome-heading>span{font:11px var(--ui);letter-spacing:4px}.visual-novel .welcome-heading h2{font:clamp(26px,3vw,38px)/1.15 var(--body);margin:9px 0}.welcome-heading img{width:110px;height:7px}
+#greeting .vn-dialogue{width:min(720px,calc(100% - 36px));bottom:15px;background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;padding:18px 24px;box-shadow:none;min-height:128px}
+#greeting .vn-dialogue:before,#greeting .vn-dialogue:after{display:none}
+#greeting .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
+#greeting .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
+@keyframes welcome-glow{to{filter:drop-shadow(0 0 20px #e6a052a0)}}
+@keyframes welcome-breathe{to{transform:translateY(-3px) rotate(.25deg)}}
+#greeting:not(.is-visible) .welcome-candle,#greeting:not(.is-visible) .welcome-couple img{animation-play-state:paused}
+@media(max-width:600px){.welcome-couple{top:19%;width:96%;height:63%}.welcome-doors{width:118%;top:10%;height:91%}.welcome-candle{height:22%;bottom:22%;width:15%}.candle-left{left:0}.candle-right{right:0}#greeting .vn-dialogue{padding:14px 12px;min-height:122px}#greeting .vn-dialogue p{font-size:19px;min-height:54px}}
+@media(max-height:700px) and (max-width:600px){.welcome-couple{top:18%;height:57%}.welcome-heading{top:18px}.visual-novel .welcome-heading h2{font-size:24px}#greeting .vn-dialogue{bottom:10px}}
+@media(max-height:500px) and (min-width:600px){.welcome-couple{left:28%;top:12%;height:85%;width:40%}.welcome-doors{height:105%;top:0;width:60%}.welcome-heading{left:25px;right:auto;top:14px;max-width:45%}.visual-novel .welcome-heading h2{font-size:24px}.welcome-heading img{display:none}#greeting .vn-dialogue{left:auto;right:18px;translate:0;width:45%;bottom:24px;padding:12px;min-height:125px}#greeting .vn-dialogue p{font-size:18px}.welcome-candle{height:40%;width:10%}.candle-right{display:none}}
+@media(prefers-reduced-motion:reduce){.welcome-candle,.welcome-couple img{animation:none}}
