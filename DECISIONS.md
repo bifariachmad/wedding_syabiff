@@ -27,3 +27,5 @@
 - Web Audio generates a periodic 60-second ambient buffer plus action cues synchronized to the Scene 1 sequence. A single `BGM_SRC` value supports final music replacement.
 - The Sites preview remains owner-private. Vercel-compatible static output is supplied for guest deployment. `BASE_URL` initially points to the preview and should change to the final guest domain.
 - The verification report distinguishes local browser results from live Google deployment, true concurrent Google writes, physical camera quality, mid-range-phone frame rate, and private-link preview access, which require owner/hardware checks.
+
+Follow-up proportion pass: the door-hand PNG renders at 72% around its grip contact, so its fingertips remain on the painted handle. The dialogue panel reuses the cutout PNG as a sliced border with a filled center, giving a rectangular reading area and safe text padding instead of stretching the ragged button silhouette across the copy.

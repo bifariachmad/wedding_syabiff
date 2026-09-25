@@ -7,7 +7,7 @@
 .arrival-door{position:absolute;left:27.9%;top:9%;width:47.5%;height:60.3%;transform-origin:0% 50%;transform-style:preserve-3d;will-change:transform;filter:drop-shadow(5px 8px 5px #0009)}
 .arrival-door-paint{width:100%;height:100%;object-fit:fill;display:block;backface-visibility:hidden}
 /* Only the left hand moves. The right-side brass handle is painted on the door. */
-.arrival-door-hand{position:absolute;width:132%;height:auto;left:-22.7%;top:27.35%;opacity:0;transform-origin:75.84% 38.04%;pointer-events:none;backface-visibility:hidden}
+.arrival-door-hand{position:absolute;width:132%;height:auto;left:-22.7%;top:27.35%;scale:.72;opacity:0;transform-origin:75.84% 38.04%;pointer-events:none;backface-visibility:hidden}
 .arrival-knocks{position:absolute;left:42.2%;top:15%;width:19%;height:auto;pointer-events:none;opacity:0;filter:drop-shadow(0 3px 3px #18060c)}
 .arrival-garden{position:absolute;left:28.5%;top:9.5%;width:46.3%;height:59.3%;overflow:hidden;opacity:0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
 .arrival-clouds{position:absolute;top:5%;left:3%;width:116%;height:auto;opacity:.55;animation:arrival-cloud-drift 28s ease-in-out infinite alternate}
@@ -69,10 +69,10 @@
 .visual-novel .music-toggle,.visual-novel.intro-active .music-toggle{width:48px;height:48px;background:none;border:0;border-radius:0;padding:0;box-shadow:none}
 .visual-novel .music-toggle .icon{width:100%;height:100%;filter:none;object-fit:contain}
 .arrival-heading-rule{width:100px;height:8px;object-fit:fill;margin:8px auto 0}
-.arrival-caption{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;padding-left:30px;padding-right:30px}
+.arrival-caption{background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;box-shadow:none;padding:18px 24px;min-height:112px}
 .arrival-caption:before,.arrival-caption:after{display:none}
 .arrival-speaker{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;padding:6px 16px;top:-14px;font-size:12px}
-@media(max-width:600px){.visual-novel .music-toggle{right:12px;top:12px;width:44px;height:44px}.visual-novel .vn-nav{font-size:13px;padding:10px 12px}.arrival-caption{padding-left:24px;padding-right:24px}}
+@media(max-width:600px){.visual-novel .music-toggle{right:12px;top:12px;width:44px;height:44px}.visual-novel .vn-nav{font-size:13px;padding:10px 12px}.arrival-caption{padding:14px 12px;min-height:108px}}
 .visual-novel .vn-progress{position:relative;background:none}
 .visual-novel .vn-progress:before{content:'';position:absolute;inset:0;background:url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;opacity:.3}
 .visual-novel #journey-progress{position:relative}
