@@ -5,11 +5,12 @@
 | Check | Result and evidence |
 |---|---|
 | Scene 1 | Seven reading stops. Instrumented Web Audio checks knocks before dialogue and portal SFX after burning, plus mute. Paper burns while the separate hands remain visible and unclipped; after paper disappears the hands lower, then the portal opens. One-line invitation text, navigation, intact-card replay, click locking, plain-text names and reduced motion are checked at 360×640, 430×932, 1440×900 and 844×390. Current evidence: `node tests/arrival.mjs`, `artifacts/arrival-v4/results.json` and screenshots. |
+| Scene 2 | Morning garden arrival, approach, independent gate hinges, inward camera movement and The Wedding title. Forward/back and rapid-click lock verified, including return to Scene 1. Four viewport checks and reduced motion pass in tests/courtyard.mjs; evidence in artifacts/courtyard/. |
 | Scene 1 artwork | Short bent left forearm, separate holding hands, maroon cutout button/dialogue panel, progress strip and on/off sound badges. Grip and held burning inspected separately; the right-side handle stays with the door. Sixteen active PNGs; prompts and alpha metadata are in the four `artwork/arrival-generation*.json` manifests. |
 | Visual-novel layout | 48 screenshots: all 16 scenes at 360, 390, 430 px. No horizontal or vertical page overflow. Additional reviews at 360 × 640, 390 × 844 and 1440 × 900. `artifacts/browser/` and `artifacts/novel/` |
 | Artwork | 29 generated illustrations, 18 procedural PNG assets, three brand icons and one share image. All 47 main assets reviewed at 1×/2× on paper/ink; transparent-cutout correction pass completed. `artifacts/raster-review/` |
 | Share image | 1200 × 630 PNG; inspected at 400 × 210. `artifacts/og-small.png` |
-| Lighthouse mobile | Performance **87**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **514,029 bytes** (0.51 MB), below 3 MB. LCP 3.98 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
+| Lighthouse mobile | Performance **87**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **506,348 bytes** (0.51 MB), below 3 MB. LCP 3.98 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
 | Frontend validation | Empty name, one-character name, guest counts 0 and 6 rejected; valid submission enabled. Exactly two visible reservation fields plus hidden honeypot. |
 | Backend logic | Six tests execute the actual Apps Script source using Google service adapters. Validation, stable IDs for normalized names, locked writes, PIN checks, repeated check-in, stats, malformed actions and literal formula-like names pass. `npm test` |
 | Reservation flow | Valid submit, same-name update with same ID, ticket recall after reload, network failure/retry all pass in browser. The test-only API adapter executes actual `Code.gs`; no mock API ships. |
@@ -17,11 +18,11 @@
 | Downloads | Ticket PNG downloaded; QR readable. Calendar downloaded and checked for `20261031T023000Z`, `20261031T064000Z`, venue, geo and configured URL. |
 | Event content | Countdown target exactly `2026-10-31T09:30:00+07:00`; all eight rundown times checked against config and concept. Supplied copy inspected. |
 | Personalization | `?to=` trimmed, capped to 60, shown as plain text; literal HTML input creates no element. |
-| Motion and navigation | Exactly two story navigation buttons. All 30 normal-motion forward/back transitions checked. Gate hinges and chain fall before a perspective push; incoming and outgoing PNGs use different Z transforms. Repeated clicks are locked during travel. Wheel does not change scenes; inactive scenes are inert. Reduced motion uses short fades. |
+| Motion and navigation | Exactly two story navigation buttons. All 30 normal-motion forward/back transitions checked. Gate leaves hinge independently before a perspective push; incoming and outgoing PNGs use different Z transforms. Repeated clicks are locked during travel. Wheel does not change scenes; inactive scenes are inert. Reduced motion uses short fades. |
 | Build and assets | Production Vite build passes. Static `/admin/` entry included. No SVG files/references in application source or public assets; scanner uses the generated PNG overlay. |
 | Runtime dependencies | `npm audit --omit=dev`: zero reported vulnerabilities. |
 
-The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The cutout UI revision scored 87 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
+The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The Scene 2 revision scored 87 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
 
 ## Concept checklist
 

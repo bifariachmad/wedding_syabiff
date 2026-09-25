@@ -50,6 +50,7 @@ export function sound(name){
   if(name==='door'){noise(t,1.4,420,.035);tone(160,t,1.2,.018,'triangle',86);}
   if(name==='latch'){noise(t,.08,2200,.16);tone(780,t,.13,.07,'triangle',380);noise(t+.11,.1,1100,.07);}
   if(name==='step'){noise(t,.19,190,.14);tone(67,t,.2,.055,'sine',42);noise(t+.42,.18,240,.1);}
+  if(name==='morning'){noise(t,3.5,900,.015);for(let i=0;i<3;i++){tone(1600+i*130,t+i*.48,.16,.018,'sine',2400);tone(2150,t+i*.48+.18,.12,.012,'sine',1750);}}
   if(name==='paper-lift'){noise(t,.32,1700,.09);noise(t+.24,.36,900,.06);}
   if(name==='ignite'){noise(t,.25,2400,.17);noise(t+.12,.45,740,.09);tone(180,t,.4,.035,'triangle',70);}
   if(name==='burn'||name==='burn-short'){

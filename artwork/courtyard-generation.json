@@ -1,0 +1,25 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "filename": "morning-garden.png",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d74f-302d-7f20-af3b-7267a16e2feb/exec-7009b0b2-6d4d-46af-989e-5a0933f13871.png",
+      "prompt": "Use case: stylized-concept\nAsset type: visual novel wedding invitation, Scene 2 full-screen background, portrait 1024x1536 opaque PNG.\nPrimary request: A quiet magical morning garden seen at eye level along a centered straight stone path towards a small distant gothic manor. Use a Don't Starve Together inspired angular hand-inked gothic cut-paper illustration with rough charcoal-black outlines, scratched crosshatching, distressed paper textures, crooked silhouettes, deep burgundy and maroon foliage, warm pale peach morning light.\nComposition: centered path begins wide at bottom and vanishes at exactly about 50% x 42% of the canvas; distant small manor centered near the vanishing point; whimsical crooked trees and thorny maroon rose bushes along left and right edges. Large calm clear peach morning sky occupies the upper half with sparse delicate clouds. Scene should feel welcoming and romantic despite the gothic drawing.\nLighting and palette: luminous pale morning peach sky and path against rich maroon/black trees, matching a hand-drawn maroon gothic invitation; flatter cut-paper shapes and hand-inked linework, no photorealism.\nConstraints: Absolutely NO gates, pillars, fence, doorway, interior, people, figures, text, typography, logo or watermark. Environment must work behind an independently animated gate overlay. Fill entire opaque portrait canvas. One image only.",
+      "notes": "Actual convergence near x50%, y55%; no gates, pillars or people."
+    },
+    {
+      "filename": "gate-pair.png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d74f-302d-7f20-af3b-7267a16e2feb/exec-7e26ed72-5932-4b7b-a98a-df07fa836180.png",
+      "prompt": "Use case: stylized-concept\nAsset type: isolated transparent PNG game sprite for a visual novel wedding invitation, square 1024x1024.\nPrimary request: A completely frontal orthographic symmetrical CLOSED wrought iron double wedding gate, two matching leaves touching along a perfectly vertical center seam at exactly 50% of canvas width. Leaves are made of sparse angular charcoal iron bars, spiked gothic tips, curled wrought iron motifs and a few deep maroon roses with angular thorn leaves climbing the outer side bars and top arches. Don't Starve Together inspired hand-inked gothic cut-paper illustration, rough black scratchy contours and distressed hatching, flat paper forms, dark charcoal and burgundy with subtle warm peach rim lighting.\nComposition and function: Both closed gate leaves occupy almost the complete square canvas, entire objects visible with a narrow transparent margin on all sides. Two equal-width leaves, bottom edges aligned horizontal near the bottom of the canvas. The outermost upright of each gate leaf is its hinge axis; leaves have NO posts or stone pillars. Each leaf will be cut at the exact image midpoint and pivoted at its OUTER edge for 3D opening. Nothing crosses the center seam, no shared ornament, no chain or lock connecting leaves. Upper gate arches rise toward center. Sparse bars leave plentiful transparent open gaps through the gate.\nBackground: genuinely transparent PNG alpha channel, including all negative spaces between bars and ornaments. NO opaque background, NO checkerboard baked into image, NO scenery, landscape, ground, floor, shadows, pillars or surrounding objects.\nConstraints: one isolated gate pair only, no perspective angle, no people, text, logo, chains or watermark. Actual transparency is essential.",
+      "notes": "Leaves only, no pillars; center split x=627. Actual alpha preserved without background removal."
+    }
+  ]
+}

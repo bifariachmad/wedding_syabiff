@@ -1,6 +1,7 @@
 import { CONFIG } from './config.js';
 import { art, icon } from './art.js';
 import { prologueMarkup } from './prologue-markup.js';
+import { courtyardArtwork, courtyardCover } from './courtyard-markup.js';
 
 const sprite=(name,cls='hero',depth=0)=>`<div class="vn-layer ${cls}" data-depth="${depth}">${art(name)}</div>`;
 const scene=(id,label,visual,content,extra='')=>`<section id="${id}" class="vn-scene ${extra}${id==='gate'?' is-active is-visible':''}" data-label="${label}" aria-labelledby="${id}-title" ${id==='gate'?'':'aria-hidden="true" inert'}><div class="vn-artwork" aria-hidden="true">${visual}</div><div class="vn-dialogue"><span class="vn-speaker">${label}</span>${content}</div></section>`;
@@ -12,8 +13,8 @@ export function invitationMarkup(){
  <header class="vn-header"><span>Dua Jiwa, Satu Lentera</span><span class="vn-date">31 . 10 . 2026</span></header>
  <button class="music-toggle" id="music-toggle" aria-label="Nyalakan musik">${icon('music-off')}</button>
  <div class="vn-stage">
- ${scene('gate','Prolog · Di depan gerbang',`<div class="vn-gate" data-depth="100"><div class="gate-leaf gate-left"><img data-src="/assets/png/gate.png" alt="" width="700" height="1050" fetchpriority="high"/></div><div class="gate-leaf gate-right"><img data-src="/assets/png/gate.png" alt="" width="700" height="1050"/></div>${art('chains','gate-chain')}</div>${sprite('lantern','hanging-lantern',160)}${sprite('raven','perched-raven',220)}`,`<p id="recipient" class="recipient" hidden></p><h1 id="gate-title">Di balik gerbang</h1><p class="vn-narration">Sebuah undangan menunggu di balik gerbang.</p><span class="vn-hint">Tekan Lanjut untuk melangkah masuk.</span>`)}
- ${scene('cover','Bab I · Dua jiwa',`${sprite('arch-roses','couple',30)}${sprite('petal','near-petal',180)}`,`<h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1><p class="vn-narration">${e.dateLabel}</p>`)}
+ ${scene('gate','KAMU',courtyardArtwork(),`<p id="recipient" class="recipient" hidden></p><p id="courtyard-line" aria-hidden="true">Di mana ini…? Udara pagi terasa hangat.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Udara pagi terasa hangat.</span>`)}
+ ${scene('cover','Part II · The Wedding',courtyardCover(),`<span class="courtyard-wedding">The Wedding</span><h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1><p class="vn-narration">${e.dateLabel}</p>`)}
  ${scene('greeting','Bab II · Sebuah undangan',`${sprite('arch-roses','couple greeting-couple',-50)}${sprite('book-quill','letter-book',150)}${sprite('raven-flight','flying-raven',200)}`,`<h2 id="greeting-title">Dengan hangat, kami mengundangmu</h2><p class="vn-narration">Di antara gelap dan cahaya, kami memilih saling menemukan. Dengan hangat, kami mengundangmu menyaksikan hari kami.</p>`)}
  ${scene('countdown','Bab III · Menanti hari',`${sprite('clock','clock-hero',0)}${sprite('pendulum','pendulum-hero',20)}${sprite('key','floating-key',170)}`,`<h2 id="countdown-title">Menuju Hari Kami</h2><div id="countdown-digits" class="countdown-grid" role="timer" aria-label="Hitung mundur menuju 31 Oktober 2026 pukul 09:30 WIB">${['Hari','Jam','Menit','Detik'].map((l,i)=>`<div><span class="digit" data-digit="${i}">00</span><span class="digit-label">${l}</span></div>`).join('')}</div><p id="countdown-arrived" hidden>Hari yang dinanti telah tiba.</p>`)}
  ${scene('location','Bab IV · Tempat kita bertemu',`${sprite('map-card','map-hero',10)}${sprite('icon-pin','map-marker',150)}${sprite('key','floating-key',180)}`,`<h2 id="location-title">${e.venue}</h2><p class="vn-narration">Tamu diminta hadir mulai pukul 09:30 WIB.</p><a class="vn-action" href="${e.maps}" target="_blank" rel="noopener noreferrer">Buka di Google Maps ↗</a>`)}
@@ -26,4 +27,5 @@ export function invitationMarkup(){
  </div><div class="vn-bottom"><div class="vn-progress" aria-hidden="true"><span id="journey-progress"></span></div><div class="vn-navline"><nav class="vn-navigation" aria-label="Navigasi cerita"><button id="nav-back" class="vn-nav" disabled>Kembali</button><span class="vn-position" id="journey-position" aria-hidden="true">01 <small>/ 16</small></span><button id="nav-next" class="vn-nav vn-next">Lanjut</button></nav></div></div><span id="journey-announcement" class="sr-only" role="status" aria-live="polite"></span>
  </main>`;
 }
+
 

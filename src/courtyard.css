@@ -1,0 +1,35 @@
+/* Scene 2: a morning garden built from independently moving PNG planes. */
+.courtyard-active .vn-header{display:none}
+#gate .vn-artwork,#cover .vn-artwork{inset:0;overflow:clip;perspective:1000px}
+.courtyard-camera{position:absolute;inset:0;transform-origin:50% 44%;perspective:1000px;transform-style:preserve-3d}
+.courtyard-landscape{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%}
+.courtyard-clouds{position:absolute;width:65%;height:auto;left:20%;top:9%;opacity:.22;animation:courtyard-cloud 26s ease-in-out infinite alternate;pointer-events:none}
+.courtyard-gates{position:absolute;left:50%;top:19%;width:min(92vw,720px);height:66%;translate:-50% 0;perspective:1200px;transform-style:preserve-3d}
+.courtyard-leaf{position:absolute;top:0;width:50%;height:100%;overflow:clip;backface-visibility:visible;filter:drop-shadow(3px 10px 4px #17090c66)}
+.courtyard-left{left:0;transform-origin:0 50%}.courtyard-right{right:0;transform-origin:100% 50%}
+.courtyard-leaf img{position:absolute;top:0;width:200%;height:100%;object-fit:fill;max-width:none}.courtyard-left img{left:0}.courtyard-right img{right:0}
+.courtyard-tree{position:absolute;bottom:-12%;height:90%;width:48%;object-fit:contain;transform-origin:50% 95%;filter:brightness(.65);pointer-events:none;animation:courtyard-sway 6s ease-in-out infinite alternate}
+.courtyard-tree-left{left:-30%;rotate:4deg}.courtyard-tree-right{right:-30%;scale:-1 1;rotate:-4deg}
+.courtyard-light{position:absolute;inset:0;pointer-events:none;background:linear-gradient(#230b1b88,transparent 24%,transparent 60%,#10070deb),radial-gradient(ellipse at 50% 40%,#ffd3a619,transparent 65%)}
+.courtyard-heading{position:absolute;left:55px;right:55px;top:25px;text-align:center;color:#f4dfc5;text-shadow:0 2px 8px #190711}
+.courtyard-heading>span{font:11px var(--ui);letter-spacing:4px}.visual-novel .courtyard-heading h1{font:clamp(26px,3vw,38px)/1.1 var(--body);margin:10px 0}
+.courtyard-heading img{width:110px;height:7px}
+#gate .vn-dialogue{width:min(720px,calc(100% - 36px));bottom:15px;background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;padding:18px 24px;box-shadow:none;color:#f4dfc5;min-height:112px}
+#gate .vn-speaker{top:-14px;left:24px;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:6px 16px;color:#f4dfc5}
+#gate .vn-dialogue p{margin:0;color:#f4dfc5;font-size:22px}
+#gate .vn-dialogue:before,#gate .vn-dialogue:after{display:none}
+#cover .vn-dialogue{top:22%;bottom:auto;left:50%;translate:-50% 0;width:min(860px,calc(100% - 40px));text-align:center;background:none;border:0;box-shadow:none;padding:35px 12px;color:#fcebd2;text-shadow:0 3px 8px #210914,0 0 30px #210914}
+#cover .vn-dialogue:before,#cover .vn-dialogue:after,#cover .vn-speaker{display:none}
+.courtyard-wedding{display:block;font:clamp(20px,3vw,30px)/1.4 var(--body);letter-spacing:3px;color:#f7d9b6;margin-bottom:22px}
+.visual-novel #cover-title{display:block;font:clamp(37px,5vw,66px)/1.15 var(--display);color:#fff1d9;margin:0}.visual-novel #cover-title span{display:block}.visual-novel #cover-title em{display:block;font:30px/1.8 var(--body);color:#e2b695}
+#cover .vn-narration{color:#ffe8cc;margin-top:25px;font:15px var(--ui)}
+.courtyard-title-garden{scale:1.5;transform-origin:50% 44%;filter:brightness(.62)}
+.courtyard-title-rose{position:absolute;width:21%;height:60%;object-fit:contain;bottom:-11%;filter:brightness(.65)}.rose-left{left:0;rotate:22deg}.rose-right{right:0;scale:-1 1;rotate:-22deg}
+@keyframes courtyard-cloud{to{translate:9% -3%}}
+@keyframes courtyard-sway{to{rotate:1deg}}
+#gate:not(.is-visible) .courtyard-clouds{animation-play-state:paused}
+.intro-active .courtyard-clouds,.intro-active .courtyard-tree,#gate:not(.is-visible) .courtyard-tree{animation-play-state:paused}
+@media(min-width:800px){.courtyard-landscape{object-position:center 52%}.courtyard-gates{width:min(66vw,720px);top:14%;height:77%}.courtyard-tree{width:35%}.courtyard-tree-left{left:-10%}.courtyard-tree-right{right:-10%}}
+@media(max-width:600px){#gate .vn-dialogue{padding:14px 12px;min-height:108px}#gate .vn-dialogue p{font-size:19px}.courtyard-gates{top:20%;height:60%;width:110vw}.courtyard-heading{top:24px}#cover .vn-dialogue{top:23%}.courtyard-title-rose{width:30%}}
+@media(max-height:500px) and (min-width:600px){#gate .vn-dialogue{left:50%;translate:-50% 0;bottom:5px;min-height:72px;padding:8px 20px;width:60%}#gate .vn-dialogue p{font-size:17px}.courtyard-heading{top:12px}.visual-novel .courtyard-heading h1{font-size:23px}.courtyard-gates{top:10%;height:84%;width:52vw}#cover .vn-dialogue{top:9%;padding:8px}.courtyard-wedding{font-size:17px;margin-bottom:6px}.visual-novel #cover-title{font-size:30px}.visual-novel #cover-title em{font-size:19px;line-height:1.3}#cover .vn-narration{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.courtyard-clouds,.courtyard-tree{animation:none}}

@@ -2,13 +2,15 @@ import gsap from 'gsap';
 import { hydrateArt } from './art.js';
 import { sound } from './audio.js';
 import { initPrologue } from './prologue.js';
+import { initCourtyard } from './courtyard.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 export function initMotion(){
  const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
  const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
  let index=0,busy=false,ambient=[],prologue;
- const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);if(prologue?.active){prologue.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;};
+ const courtyard=initCourtyard();
+ const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);if(prologue?.active){prologue.controls();return;}if(index===0&&!busy){courtyard.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
  function atmosphere(){
   ambient.forEach(t=>t.kill());ambient=[];if(reduced()||prologue?.active)return;
   const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
@@ -23,8 +25,9 @@ export function initMotion(){
   from.setAttribute('aria-hidden','true');from.inert=true;
   to.classList.remove('is-travelling');to.classList.add('is-active','is-visible');
   to.removeAttribute('aria-hidden');to.inert=false;
-  index=target;busy=false;controls();
+  index=target;busy=false;if(index===0)courtyard.show(2);
   root.querySelector('#journey-position').innerHTML=`${String(index+1).padStart(2,'0')} <small>/ ${scenes.length}</small>`;
+  controls();
   root.querySelector('#journey-announcement').textContent=`${index+1} dari ${scenes.length}. ${to.querySelector('h1,h2').textContent}`;
   atmosphere();
   // Warm only the adjacent pages; distant chapters do not delay the first scene.
@@ -33,7 +36,7 @@ export function initMotion(){
  }
  async function goTo(target){
   if(typeof target==='string')target=scenes.findIndex(s=>s.id===target);
-  if(prologue?.busy)return false;
+  if(prologue?.busy||courtyard.busy)return false;
   if(prologue?.active){prologue.dismiss();controls();}
   if(busy||target<0||target>=scenes.length||target===index)return false;
   busy=true;controls();
@@ -45,19 +48,16 @@ export function initMotion(){
   const oldText=from.querySelector('.vn-dialogue'),newText=to.querySelector('.vn-dialogue');
   gsap.set([oldArt,newArt,oldText,newText],{clearProps:'transform,opacity,visibility'});
   gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
-  if(to.id==='gate')gsap.set('.gate-leaf,.gate-chain',{clearProps:'all'});
+  if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(reduced()){
     timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
    }else{
-    sound(index===0?'gate':'page');
-    const gate=index===0&&direction===1,travel=gate?.72:0;
+    sound(index===0?'step':'page');
+    const gate=index===0&&direction===1,travel=gate?1.15:0;
     if(gate){
-     timeline.to('.gate-chain',{y:120,rotation:-70,opacity:0,duration:.55},0)
-      .to('.gate-left',{rotationY:-87,transformOrigin:'0% 50%',duration:1.15,ease:'power2.inOut'},.15)
-      .to('.gate-right',{rotationY:87,transformOrigin:'100% 50%',duration:1.15,ease:'power2.inOut'},.15)
-      .call(()=>sound('chain'),[],.2);
+     courtyard.pass(timeline);
     }
     timeline.to(oldText,{opacity:0,y:12,duration:.22},0)
      .to(from.querySelectorAll('[data-depth]'),{z:(_i,el)=>direction*(680+Number(el.dataset.depth)*.65),duration:1.2,ease:'power2.inOut'},travel)
@@ -69,11 +69,11 @@ export function initMotion(){
      .fromTo('.vn-haze',{opacity:1},{opacity:.45,duration:1.3},travel+.1)
      .from(newText,{opacity:0,y:12,duration:.42},travel+1.2);
    }
-   timeline.to('#journey-progress',{scaleX:(target+1)/scenes.length,duration:.3},0);
+   timeline.to('#journey-progress',{scaleX:target===0?.75:target===1?1:(target+1)/scenes.length,duration:.3},0);
   });
  }
- prologue=initPrologue(()=>{controls();hydrateArt(scenes[0]);root.querySelector('#journey-position').innerHTML=`01 <small>/ ${scenes.length}</small>`;gsap.set('#journey-progress',{scaleX:1/scenes.length});atmosphere();});
+ prologue=initPrologue(()=>{courtyard.show(0);controls();hydrateArt(scenes[0]);hydrateArt(scenes[1]);sound('morning');atmosphere();});
  controls();
- return {goTo,next:()=>prologue.active?prologue.next():goTo(index+1),back:()=>{if(prologue.active)return prologue.back();if(index===0){ambient.forEach(t=>t.kill());return prologue.show();}return goTo(index-1);}};
+ return {goTo,next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy)return false;if(index===0&&courtyard.step<2)return courtyard.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy)return false;if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}return goTo(index-1);}};
 }
 export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:10,opacity:0,duration:.5});sound('seal');}

@@ -29,3 +29,5 @@
 - The verification report distinguishes local browser results from live Google deployment, true concurrent Google writes, physical camera quality, mid-range-phone frame rate, and private-link preview access, which require owner/hardware checks.
 
 Follow-up proportion pass: the door-hand PNG renders at 36% around its grip contact (50% smaller than the preceding 72% revision), so its fingertips remain on the painted handle. The dialogue panel reuses the cutout PNG as a sliced border with a filled center, giving a rectangular reading area and safe text padding instead of stretching the ragged button silhouette across the copy.
+
+Scene 2 uses two new built-in ImageGen PNGs: the opaque morning garden and a transparent closed gate pair. Each half of the pair rotates about its outer hinge; the foreground trees move faster than the garden during the inward camera push. Three gate reading stops lead into the fourth stop, the wedding title. The existing cover chapter is reused for that title, so event details and reservations retain their routes. Reduced motion preserves the sequence using fades. Prompts: artwork/courtyard-generation.json.

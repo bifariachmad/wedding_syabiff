@@ -92,3 +92,7 @@ All audio is original Web Audio synthesis in `src/audio.js`: a periodic 60-secon
 Self-hosted Latin WOFF2: UnifrakturCook 700, IM Fell English 400, Special Elite 400. Open font licenses are included in `public/assets/fonts`.
 
 `/assets-preview.html` shows all 47 main PNG assets at 1× and 2× against paper and ink. Dark UI icons receive the same light treatment used on dark buttons. Every illustration was visually reviewed, including a full correction pass replacing checkerboard backgrounds with real alpha. Review sheets and mobile section screenshots are under `artifacts/` locally. The 400 × 210 Open Graph reduction was also inspected.
+
+## Scene 2 — Morning courtyard
+
+Two built-in ImageGen PNGs, imported with scripts/import-courtyard.mjs. Sources are in ../scene2-artwork; exact prompts are in artwork/courtyard-generation.json. morning-garden.png is opaque, 1024×1536, 353,396 bytes. gate-pair.png is genuinely transparent, 1000×1000, 161,173 bytes. Total additional PNG weight: 514,569 bytes; project inventory: 76 raster files. Existing tree, cloud and rose cutouts are reused for independent motion. Images load near the portal transition rather than at initial arrival.
