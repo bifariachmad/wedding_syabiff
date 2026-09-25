@@ -60,3 +60,6 @@ Title-frame revision: courtyard checks pass at four viewport sizes, including un
 # Scene 1 / 3 follow-up
 
 Scene 1 replay samples every animation frame during envelope pickup and letter reveal: held-layer opacity remains exactly 0 or 1. Existing burn-before-portal, sound, reverse navigation and four viewport checks pass. Scene 3 checks five reading stops, exterior visibility, two separate character layers, alternating speaker emphasis, dimmed inactive character, forward/back replay, click locking and four viewports without overflow or asset errors.
+# Scenes 1–4 journey revision
+
+Clock-room tests cover four reading stops, talking-mouth opacity alternation, live ticking countdown, entrance-door layers, returning to restored host positions, and four viewports without dialogue/countdown overlap. Gate tests verify +102/-102 degree inward hinges, visible crossing raven during the six-step walk, and unchanged final title framing. Arrival regression and 48-screenshot full navigation/reservation harness passed. Door-layer source reconstruction is exact (zero differing pixels); generated mouth frames differ only inside their recorded mouth rectangles. No live backend deployment is implied by harness tests.

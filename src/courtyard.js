@@ -17,8 +17,8 @@ export function initCourtyard(){
  function pose(){
   gsap.set($('.courtyard-camera'),{scale:step?1.09:1,x:0,y:0,rotation:0,opacity:1});
   gsap.set($('.courtyard-heading'),{opacity:1});
-  gsap.set($('.courtyard-left'),{rotationY:step===2?-102:0});
-  gsap.set($('.courtyard-right'),{rotationY:step===2?102:0});
+  gsap.set($('.courtyard-left'),{rotationY:step===2?102:0});
+  gsap.set($('.courtyard-right'),{rotationY:step===2?-102:0});
   gsap.set($('.vn-dialogue'),{opacity:1,y:0});caption();controls();
  }
  function show(at=0){step=at;busy=false;pose();}
@@ -29,11 +29,11 @@ export function initCourtyard(){
    timeline=gsap.timeline({onComplete:()=>{step=target;busy=false;caption();controls();resolve(true);}});
    timeline.to($('.vn-dialogue'),{opacity:0,duration:.15});
    if(reduced()){
-    timeline.set($('.courtyard-left'),{rotationY:target===2?-102:0}).set($('.courtyard-right'),{rotationY:target===2?102:0});
+    timeline.set($('.courtyard-left'),{rotationY:target===2?102:0}).set($('.courtyard-right'),{rotationY:target===2?-102:0});
    }else if(target===2||step===2){
     timeline.call(()=>{sound('latch');sound('gate');})
-     .to($('.courtyard-left'),{rotationY:target===2?-102:0,duration:1.9,ease:'power2.inOut'})
-     .to($('.courtyard-right'),{rotationY:target===2?102:0,duration:2.1,ease:'power2.inOut'},'<.1');
+     .to($('.courtyard-left'),{rotationY:target===2?102:0,duration:1.9,ease:'power2.inOut'})
+     .to($('.courtyard-right'),{rotationY:target===2?-102:0,duration:2.1,ease:'power2.inOut'},'<.1');
    }else{
     const at=timeline.duration();
     walk(timeline,target?[1.045,1.09]:[1.045,1],0,at);
@@ -56,13 +56,18 @@ export function initCourtyard(){
  }
  function pass(t){
   gate.dataset.walk='walking';
+  gsap.set($('.courtyard-crow'),{x:-innerWidth*.35,y:0,opacity:0});
+  t.set($('.courtyard-crow'),{opacity:1},.25)
+   .to($('.courtyard-crow'),{x:innerWidth*1.15,y:-innerHeight*.12,duration:2.7,ease:'none'},.25)
+   .call(()=>sound('crow'),[],.7).set($('.courtyard-crow'),{opacity:0},3);
   walk(t,[1.22,1.41,1.65,1.94,2.27,2.65],36);
   t.to($('.courtyard-heading'),{opacity:0,duration:.3},0)
    .to($('.courtyard-tree-left'),{xPercent:-85,duration:3.3,ease:'sine.inOut'},0)
    .to($('.courtyard-tree-right'),{xPercent:85,duration:3.3,ease:'sine.inOut'},0)
    .call(()=>{gate.dataset.walk='complete';sound('morning');},[],3.36);
  }
- function resetTrees(){gsap.set(gate.querySelectorAll('.courtyard-tree'),{xPercent:0});}
+ function resetTrees(){gsap.set(gate.querySelectorAll('.courtyard-tree'),{xPercent:0});gsap.set($('.courtyard-crow'),{opacity:0});gate.dataset.walk='idle';}
  return {get step(){return step;},get busy(){return busy;},controls,show:(at)=>{resetTrees();show(at);},next:()=>move(step+1),back:()=>move(step-1),pass};
 }
+
 

@@ -1,0 +1,245 @@
+{
+  "source": "../scene3-artwork-v2/manor-exterior.png",
+  "source_sha256": "acbc722ac5ed467c2b3e5e3575f5adc8f05cdfa074fff2d76672e57038da9afa",
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "alpha": "binary complementary partition; unchanged source RGB in every layer",
+  "door_bounds_px_exclusive": [
+    247,
+    176,
+    777,
+    1190
+  ],
+  "door_bounds_normalized": [
+    0.2412109375,
+    0.11458333333333333,
+    0.7587890625,
+    0.7747395833333334
+  ],
+  "center_seam_x_px": 514,
+  "center_seam_x_normalized": 0.501953125,
+  "hinges": {
+    "left": {
+      "x_px": 255,
+      "y_px": 682,
+      "x_normalized": 0.2490234375,
+      "y_normalized": 0.4440104166666667
+    },
+    "right": {
+      "x_px": 769,
+      "y_px": 682,
+      "x_normalized": 0.7509765625,
+      "y_normalized": 0.4440104166666667
+    }
+  },
+  "wood_boundary_polygon_px": [
+    [
+      262,
+      400
+    ],
+    [
+      266,
+      382
+    ],
+    [
+      272,
+      365
+    ],
+    [
+      280,
+      347
+    ],
+    [
+      290,
+      329
+    ],
+    [
+      302,
+      312
+    ],
+    [
+      315,
+      296
+    ],
+    [
+      330,
+      280
+    ],
+    [
+      347,
+      264
+    ],
+    [
+      366,
+      248
+    ],
+    [
+      386,
+      233
+    ],
+    [
+      407,
+      220
+    ],
+    [
+      429,
+      207
+    ],
+    [
+      451,
+      195
+    ],
+    [
+      474,
+      184
+    ],
+    [
+      493,
+      176
+    ],
+    [
+      502,
+      184
+    ],
+    [
+      512,
+      191
+    ],
+    [
+      522,
+      182
+    ],
+    [
+      529,
+      176
+    ],
+    [
+      550,
+      185
+    ],
+    [
+      573,
+      196
+    ],
+    [
+      596,
+      209
+    ],
+    [
+      619,
+      223
+    ],
+    [
+      642,
+      239
+    ],
+    [
+      663,
+      256
+    ],
+    [
+      683,
+      275
+    ],
+    [
+      701,
+      295
+    ],
+    [
+      717,
+      316
+    ],
+    [
+      731,
+      337
+    ],
+    [
+      742,
+      359
+    ],
+    [
+      752,
+      382
+    ],
+    [
+      761,
+      405
+    ],
+    [
+      763,
+      500
+    ],
+    [
+      765,
+      650
+    ],
+    [
+      768,
+      800
+    ],
+    [
+      770,
+      950
+    ],
+    [
+      773,
+      1100
+    ],
+    [
+      776,
+      1187
+    ],
+    [
+      740,
+      1185
+    ],
+    [
+      600,
+      1185
+    ],
+    [
+      515,
+      1186
+    ],
+    [
+      400,
+      1185
+    ],
+    [
+      294,
+      1185
+    ],
+    [
+      247,
+      1189
+    ],
+    [
+      249,
+      1100
+    ],
+    [
+      252,
+      950
+    ],
+    [
+      254,
+      800
+    ],
+    [
+      257,
+      650
+    ],
+    [
+      259,
+      500
+    ]
+  ],
+  "composition_proof": {
+    "max_channel_difference": 0,
+    "different_pixels": 0,
+    "file": "closed-composition.png"
+  },
+  "integration": "All three images are full canvas, 1024x1536. Use identical scale and position. For object-fit:cover, compute hinge positions in rendered image coordinates including the crop offset, or transform a shared aspect-ratio canvas containing the three images. Put facade above animated leaves. Do not use 50%-wide image boxes."
+}

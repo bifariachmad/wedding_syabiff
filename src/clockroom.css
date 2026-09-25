@@ -1,0 +1,22 @@
+.clockroom-active .vn-header{display:none}
+#countdown .vn-artwork{inset:0;overflow:clip}
+.clockroom-camera{position:absolute;inset:0;transform-origin:50% 43%}
+.clockroom-background{width:100%;height:100%;object-fit:cover;object-position:center}
+#countdown .welcome-couple{top:24%;height:60%;width:min(96%,900px)}
+#countdown .welcome-character{width:40%}
+#countdown .character-bifari{left:3%}#countdown .character-syafira{right:3%}
+.clockroom-countdown{position:absolute;left:50%;translate:-50% 0;top:42%;width:min(360px,64%);padding:12px 10px 17px;border:16px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 16px 20px / 0 stretch;color:#fff1d9;text-align:center;filter:drop-shadow(0 4px 12px #000);opacity:0;visibility:hidden}
+.clockroom-countdown>p{font:20px/1.45 var(--body);margin:8px 0}.clockroom-countdown>p span{font-size:16px}
+#countdown .countdown-grid{gap:10px;margin:4px 0 0}#countdown .digit{font-size:30px;color:#fff1d9}#countdown .digit-label{font:11px var(--ui);letter-spacing:0}
+#countdown .vn-dialogue{width:min(720px,calc(100% - 36px));bottom:15px;background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;padding:18px 24px;box-shadow:none;min-height:128px}
+#countdown .vn-dialogue:before,#countdown .vn-dialogue:after{display:none}
+#countdown .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
+#countdown .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
+@media(max-width:600px){#countdown .welcome-couple{top:25%;height:57%;width:100%}#countdown .welcome-character{width:44%}.clockroom-countdown{top:43%;width:76%;padding:8px 10px}.clockroom-countdown>p{font-size:18px}#countdown .digit{font-size:26px}#countdown .vn-dialogue{padding:14px 12px;min-height:122px}#countdown .vn-dialogue p{font-size:19px;min-height:54px}}
+@media(max-height:700px) and (max-width:600px){.clockroom-countdown{top:28%;padding:6px 8px}.clockroom-countdown>p{font-size:16px;margin:4px 0}#countdown .digit{font-size:22px}#countdown .countdown-grid>div{padding:2px 0}#countdown .welcome-couple{top:17%;height:58%}#countdown .vn-dialogue p{font-size:18px}}
+@media(max-height:500px) and (min-width:600px){#countdown .welcome-couple{top:14%;height:85%;width:55%;left:28%}#countdown .welcome-heading{left:25px;right:auto;top:12px}#countdown .welcome-heading h2{font-size:24px}#countdown .vn-dialogue{left:auto;right:18px;translate:0;width:43%;bottom:20px;padding:10px}#countdown .vn-dialogue p{font-size:18px}.clockroom-countdown{left:28%;top:28%;width:34%;padding:8px 14px}.clockroom-countdown>p{font-size:16px}#countdown .digit{font-size:22px}}
+
+.clockroom-active .welcome-character{pointer-events:none}
+@media(min-height:501px){#countdown .welcome-couple{top:12%;height:45%}}
+@media(max-height:700px) and (max-width:600px){#countdown .welcome-couple{top:4%;height:62%}.clockroom-countdown{top:38%;padding:2px 8px;border-width:12px}.clockroom-countdown>p{font-size:14px;line-height:1.3;margin:2px 0}.clockroom-countdown>p span{font-size:13px}#countdown .digit{font-size:20px}#countdown .digit-label{font-size:10px}#countdown .countdown-grid{margin:0}}
+@media(max-height:500px) and (min-width:600px){#countdown .vn-dialogue{transform:none!important}#countdown .welcome-couple{left:75%;width:42%;top:0;height:62%}.clockroom-background{object-position:center 25%}.clockroom-countdown{left:25%;width:36%;top:27%;padding:4px 8px;border-width:12px}.clockroom-countdown>p{margin:2px 0;font-size:14px;line-height:1.3}#countdown .countdown-grid>div{padding:2px 0}}

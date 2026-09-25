@@ -106,3 +106,6 @@ Two built-in ImageGen assets imported by scripts/import-welcome.mjs: welcome-hal
 
 Exterior facade: scene3-artwork-v2/manor-exterior.png. Front-facing medium-height game-style characters: scene3-artwork-v4/bifari-front.png and syafira-front.png. Installed in public/assets/png/welcome. Built-in ImageGen prompts: artwork/welcome-generation-v2.json and artwork/welcome-generation-v4.json. Alpha cleanup authorized by the user; enclosed white eyes must remain opaque. Previous anime character variants are replaced in Scene 3.
 
+# Clock-room and motion assets
+
+Built-in ImageGen sources: ../scene4-artwork. Installed PNGs in public/assets/png/clockroom: clock-room, garden-shrub, bifari-speaking, syafira-speaking, plus composited speaking-closed frames. Exact prompts and mouth-patch verification: artwork/clockroom-generation.json. Matched facade and door leaves were extracted from the original facade without redrawing; registration and reconstruction proof: artwork/matching-door-layers.json and ../scene3-door-layers. These new layers replace the unrelated opening door artwork.

@@ -8,6 +8,8 @@ The invitation starts with **Scene 1 — Sebuah Undangan**, a first-person openi
 
 ## Run locally
 
+Scene 4 now follows the hosts into a clock room with four reading stops: arrival, approaching the grandfather clock, the live wedding countdown, and an invitation to view the venue. Scene 3 ends with the hosts asking the guest to follow them. Separate speaking poses use open/closed mouth frames while the dialogue types. The entrance uses pixel-matched facade/door layers. Scene 2 adds moving shrubs, two cloud layers and a raven crossing during the inward walk; its gate hinges swing inward. Scene 1 lifts the envelope into view without opacity fading, and the garden inside the portal fades in after the ink ring appears.
+
 Current Scene 3 revision supersedes the original four-stop description above: five reading stops begin outside the manor facade, then reveal two separate front-facing sprites. Bifari and Syafira speak alternately, with the inactive character dimmed and small idle/speaking motions. Character proportions follow the requested Don't Starve Together direction: medium four-head proportions, moderately oversized heads, white pupil-less eyes. In Scene 1, held envelope and letter now appear instantly without hand fades.
 
 Install Node.js 22.12 or later. In this `invitation` folder:

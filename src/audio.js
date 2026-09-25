@@ -65,6 +65,9 @@ export function sound(name){
   if(name==='seal')tone(100,t,.4,.15,'sine',30);
   if(name==='page')noise(t,.6,1300,.07);
   if(name==='tick')tone(740,t,.1,.035);
+  if(name==='clock'){noise(t,.045,1800,.06);tone(540,t,.07,.022,'triangle',340);}
+  if(name==='chime'){tone(440,t,1.8,.06);tone(660,t+.08,1.7,.025);tone(880,t+.13,1.3,.016);}
+  if(name==='crow'){for(let i=0;i<2;i++){tone(310,t+i*.4,.23,.025,'sawtooth',180);noise(t+i*.4,.22,950,.04);}}
   if(name==='success'){tone(440,t,.7,.055);tone(550,t+.12,.7,.045);tone(660,t+.25,.75,.035);}
 }
 document.addEventListener('visibilitychange',()=>{if(!context)return;if(document.hidden){context.suspend();music?.pause();}else{context.resume();if(music&&enabled)music.play().catch(()=>{});}});

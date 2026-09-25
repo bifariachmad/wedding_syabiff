@@ -1,0 +1,116 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "bifari-speaking.png",
+      "prompt": "Use case: precise-object-edit. Edit target: attached Bifari front PNG. Create bifari-speaking.png on exactly 1024x1536 canvas with genuinely transparent alpha background. Preserve reference EXACTLY: identical head size/location, face shape, hair silhouette/colors, round glasses and blank solid WHITE pupil-less iris-less eyes, body proportions, outfit, leg positions and feet baseline. Medium height lanky scratchy Don't Starve Together ink cutout style, NOT ANIME, NOT CHIBI. Change ONLY mouth to small dark angular open talking mouth, and viewer-right arm raised pointing to the RIGHT welcomingly. The viewer-left hand and all other features remain unchanged. Do not zoom, crop, scale or relocate the character. No background, words, ground shadow or extra details. This is an aligned animation pose swap; unchanged pixels should match the reference.",
+      "source": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d7bc-54e8-7ba2-b10d-c7a58275e4d0\\exec-493a015c-847c-45e4-b9f0-a740ce03fbe6.png",
+      "postprocess": "User-authorized neutral backdrop alpha cleanup, protecting white eyes.",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene4-artwork\\bifari-speaking.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 1126522
+    },
+    {
+      "file": "syafira-speaking.png",
+      "prompt": "Use case: precise-object-edit. Edit target: attached Syafira front PNG. Create syafira-speaking.png on exactly 1024x1536 canvas with genuinely transparent alpha background. Preserve reference EXACTLY: identical head size/location, face shape, hair silhouette/colors, blank solid WHITE pupil-less iris-less eyes, body proportions, black-maroon gown and jewelry, dress outline and feet baseline. Medium height scratchy Don't Starve Together hand ink cutout style, NOT ANIME, NOT CHIBI. Change ONLY mouth to a small dark angular open talking mouth, and raise viewer-left hand slightly higher toward chest level in welcoming palm-up gesture. All other features unchanged. Do not zoom, crop, scale or relocate the character. No background, words, ground shadow or extra details. This is an aligned animation pose swap; unchanged pixels should match the reference.",
+      "source": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d7bc-54e8-7ba2-b10d-c7a58275e4d0\\exec-a6709d16-291c-43f3-aaeb-3a2d5a4c5ca3.png",
+      "postprocess": "User-authorized neutral backdrop alpha cleanup, protecting white eyes.",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene4-artwork\\syafira-speaking.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 913477
+    },
+    {
+      "file": "clock-room.png",
+      "prompt": "Use case: illustration-story. Asset clock-room.png, opaque portrait PNG exactly 1024x1536. Attached welcome-hall is STYLE AND ARCHITECTURAL CONTINUITY REFERENCE only. Paint the adjoining inner side room in the SAME gothic manor with black and maroon carved wall panels, tall gothic side windows spilling warm dawn light, scratchy hand-drawn ink crosshatching and flat textured cutout storybook style matching reference, Don't Starve Together atmosphere. At CENTER a single oversized antique grandfather clock integrated naturally in room, approximately 55 percent canvas width and 65 percent canvas height, extending from near top to y=1150. Ornate round analog dial clearly readable in upper middle, simple tick marks and hands without writing or digital numerals; visible brass pendulum in lower clock case. Clock is focal point for wedding countdown scene. Leave clear dark maroon lower foreground floor area for UI. No characters, no lettering or words, no logos, no digital display. Full bleed opaque background.",
+      "source": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d7bc-54e8-7ba2-b10d-c7a58275e4d0\\exec-68cb8fb7-153e-4bfa-a3b0-6603234824a9.png",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene4-artwork\\clock-room.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0
+    },
+    {
+      "file": "garden-shrub.png",
+      "prompt": "Use case: illustration-story. Asset garden-shrub.png: standalone low broad bush / rosebed on genuinely transparent alpha background, landscape 1536x1024 canvas with entire bush comfortably inside margins. Attached morning-garden image is STYLE REFERENCE, match its scratchy angular hand-ink cutout contours and textured muted storybook shading, Don't Starve Together atmosphere. A broad low mass of dark muted green pointed leaves, thin crooked twigs and several deep maroon roses, warm dawn edge highlights. One cohesive low garden shrub, about 3 times wider than tall, useful as foreground overlay. No pots, no soil or ground plane, no ground shadow, no other scenery, no people, no text, no border. True transparent background, not white and not checkerboard.",
+      "source": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d7bc-54e8-7ba2-b10d-c7a58275e4d0\\exec-b46f3da8-8469-40fa-be61-664e8e4603c1.png",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene4-artwork\\garden-shrub.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 1106746,
+      "postprocess": "User-authorized alpha fringe cleanup removes generated glow below alpha 240."
+    }
+  ],
+  "composited_closed_frames": [
+    {
+      "file": "bifari-speaking-closed.png",
+      "open_frame": "bifari-speaking.png",
+      "mouth_rect_xyxy_exclusive": [
+        460,
+        425,
+        552,
+        498
+      ],
+      "source_closed_mouth": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v4\\bifari-front.png",
+      "transform": "identity; skin-edge mask Gaussian blur radius 3",
+      "outside_mouth_differing_pixels": 0,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "syafira-speaking-closed.png",
+      "open_frame": "syafira-speaking.png",
+      "mouth_rect_xyxy_exclusive": [
+        478,
+        314,
+        540,
+        378
+      ],
+      "source_closed_mouth": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v4\\syafira-front.png",
+      "transform": "identity; skin-edge mask Gaussian blur radius 3",
+      "outside_mouth_differing_pixels": 0,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "alpha_range": [
+        0,
+        255
+      ]
+    }
+  ]
+}
