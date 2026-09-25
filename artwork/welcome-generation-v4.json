@@ -1,0 +1,113 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "bifari-front.png",
+      "prompt": "Rework the reference into a front-facing Don't Starve Together styled Bifari groom sprite. CRITICAL PROPORTIONS: MEDIUM HEIGHT, exactly FOUR HEADS tall from top of hair to shoe soles. Head including hair is 25% of total character height. Readable normal compact torso and moderately long legs as in original reference. NOT tiny chibi, NOT bobblehead, NOT two-head proportions, NOT elongated seven-head fashion/anime proportions. Preserve reference angular black/dark brown hair, change colored hair tips and clothing accents to muted dark maroon red. Round black glasses, completely SOLID WHITE pupil-less eyes behind lenses, NO iris NO pupil, angular cream face with minimal tiny friendly mouth line. Head torso and both feet directly FACE VIEWER, one empty hand makes modest welcoming gesture. Ornate but simplified black-maroon tailcoat suit with waistcoat and cravat, moderately long slim dark trousers and pointed shoes. Rough jagged thick black ink contour, scratchy flat paper-cutout crosshatching, flat limited colors, angular Don't Starve Together visual style. No anime eyes, no smooth painted rendering, no glossy skin, no religious or cross pendants. One groom only, full body including complete shoes, centered portrait 1024x1536 transparent PNG with clear margins and genuine alpha transparency (no checkerboard pattern painted in). No floral arch, no bride, no ground, no shadow, no backdrop, no flowers, no text. Reiterate: FOUR HEADS TALL, head exactly one quarter total height, medium proportions matching reference environment scale.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-5001b07b-0c72-4b51-8da1-39710907f11e.png",
+      "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+      "face_protection": [
+        390,
+        290,
+        620,
+        410
+      ],
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v4\\bifari-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 1124600,
+      "face_alpha_min": 255,
+      "postprocess": "User-authorized light-neutral edge flood fill plus visually reviewed hair/arm gap removal outside protected eye rectangle. White pupil-less eyes remain fully opaque.",
+      "targeted_gap_rectangles": [
+        [
+          330,
+          420,
+          380,
+          540
+        ],
+        [
+          625,
+          420,
+          690,
+          540
+        ],
+        [
+          580,
+          690,
+          650,
+          930
+        ],
+        [
+          645,
+          975,
+          690,
+          1050
+        ]
+      ]
+    },
+    {
+      "file": "syafira-front.png",
+      "prompt": "Draw a female Syafira bridal counterpart in the rough angular Don't Starve Together ink-paper style of the reference. Reference used for MEDIUM PROPORTIONS and drawing language ONLY; this bride does NOT have glasses. CRITICAL: exactly FOUR HEADS tall from top of hair to soles, head including hair equals 25% of total height, readable compact torso, moderately long legs beneath a full-length gown. NOT tiny chibi, NOT bobblehead, NOT two-head cartoon proportions, NOT seven-head elongated anime/fashion body. One bride only directly FRONT FACING with warm minimal smile, angular cream face, large solid PURE WHITE eyes outlined black, absolutely NO iris NO pupil. Feminine long dark brown-black flowing hair, maroon rose in hair, no glasses. Ornate black-maroon gothic lace gown with off shoulder neckline, fitted compact bodice, full-length layered skirt and dark shoes peeking beneath hem. One empty hand extends a modest welcoming gesture. Jagged heavy black ink contours, rough scratchy crosshatching, flat desaturated maroon/black/cream color blocks, papery 2D Don't Starve Together puppet aesthetic, not anime or manga, not smooth painting. No religious or cross pendants. Complete full-body silhouette, all gown and shoe tips visible, centered in 1024x1536 portrait canvas with clear margins, genuine alpha transparent background (no printed checkerboard). NO other people, NO arch, NO background flowers, NO bouquet, NO ground, NO shadow, NO backdrop, NO text. FOUR HEADS tall medium proportions, head one quarter height, moderately tall body suited to manor room scale.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-0dae8d20-0347-4c1f-af34-cfc3be4e7bc5.png",
+      "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+      "face_protection": [
+        430,
+        210,
+        605,
+        310
+      ],
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v4\\syafira-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 906107,
+      "face_alpha_min": 255,
+      "postprocess": "User-authorized light-neutral edge flood fill plus visually reviewed hair/arm gap removal outside protected eye rectangle. White pupil-less eyes remain fully opaque.",
+      "targeted_gap_rectangles": [
+        [
+          590,
+          325,
+          650,
+          415
+        ],
+        [
+          365,
+          640,
+          435,
+          810
+        ],
+        [
+          275,
+          395,
+          360,
+          610
+        ],
+        [
+          650,
+          440,
+          700,
+          550
+        ],
+        [
+          580,
+          610,
+          610,
+          675
+        ]
+      ]
+    }
+  ]
+}

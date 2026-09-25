@@ -8,6 +8,8 @@ The invitation starts with **Scene 1 — Sebuah Undangan**, a first-person openi
 
 ## Run locally
 
+Current Scene 3 revision supersedes the original four-stop description above: five reading stops begin outside the manor facade, then reveal two separate front-facing sprites. Bifari and Syafira speak alternately, with the inactive character dimmed and small idle/speaking motions. Character proportions follow the requested Don't Starve Together direction: medium four-head proportions, moderately oversized heads, white pupil-less eyes. In Scene 1, held envelope and letter now appear instantly without hand fades.
+
 Install Node.js 22.12 or later. In this `invitation` folder:
 
 ```sh
@@ -75,3 +77,4 @@ invitation/
 `node tests/arrival.mjs` checks the seven-page opening, audio before dialogue, one-line invitation text, full paper consumption before the portal, SFX ordering, moving clouds, navigation, normal/reduced motion, four viewport layouts, plain-text names, click locking and reverse/replay. `node scripts/review-hand-v3.mjs` captures grip, opening and release. Source is in `src/prologue.js`, `src/prologue-markup.js`, `src/prologue.css` and `src/paper-burn.js`. Sixteen active PNG assets live in `public/assets/png/arrival/`; the old hand alternates remain unused. Prompts and geometry are in the four `artwork/arrival-generation*.json` manifests. The left-hand sprite contains no hardware; it reaches from the left to the handle painted on the right side of the door. The handle remains with the door when the hand withdraws. The paper, fire and holding hands are separate PNGs. A ragged clip consumes only the paper and text while the hands stay in place. The short forearm, UI panels, progress strip and sound badges are generated cutouts in the same style. SFX include latch, steps, paper lift, ignition, crackling and the delayed portal, respecting mute.
 
 Final PNGs are committed; normal builds need no image-generation service. `npm run assets` repeats cleanup and procedural generation on the original machine. `artwork/sources.json` records full prompts and source paths; on another machine use the committed PNGs or update those paths. `npm run assets:review` refreshes the contact sheet. With the dev server running, `node scripts/generate-og.mjs` regenerates the share image. Browser scripts use a Windows Chrome path; adjust it on another OS.
+

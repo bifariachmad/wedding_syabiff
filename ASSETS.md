@@ -102,3 +102,7 @@ GALVANIZED Regular by UI Creative is embedded for the couple names in this perso
 ## Scene 3 — Welcome hall
 
 Two built-in ImageGen assets imported by scripts/import-welcome.mjs: welcome-hall.png (347,856 bytes) and manor-door.png (330,492 bytes). Sources and exact prompts are in ../scene3-artwork and artwork/welcome-generation.json. Door alpha is genuine; its two halves hinge independently. Existing arch-roses.png and candle.png are reused. Added PNG weight: 678,348 bytes; project raster inventory: 78 files.
+# Scene 3 replacement assets
+
+Exterior facade: scene3-artwork-v2/manor-exterior.png. Front-facing medium-height game-style characters: scene3-artwork-v4/bifari-front.png and syafira-front.png. Installed in public/assets/png/welcome. Built-in ImageGen prompts: artwork/welcome-generation-v2.json and artwork/welcome-generation-v4.json. Alpha cleanup authorized by the user; enclosed white eyes must remain opaque. Previous anime character variants are replaced in Scene 3.
+

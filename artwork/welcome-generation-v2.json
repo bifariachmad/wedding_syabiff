@@ -1,0 +1,64 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "bifari-front.png",
+      "prompt": "Use case: identity-preserve. Create a separate transparent PNG character sprite based on the male groom in the reference image. Reference image role: exact identity, clothes, art style reference ONLY. Single groom Bifari alone, full body, directly front facing, his head, eyes, torso and feet face the viewer. Warm gentle welcoming smile. Preserve angular tousled dark brown-black hair with muted red tips, round black glasses, pale cream skin, elongated stylized proportions and ornate maroon-black embroidered long tailcoat and waistcoat, cravat, dark trousers and pointed formal shoes of the reference groom. Arms relaxed with one empty hand making a modest open-palmed welcoming gesture. Don't Starve inspired hand-inked gothic paper cutout illustration, scratchy crosshatching, crisp dark outlines, muted black/maroon/sepia. Full silhouette, both shoes completely visible, centered in portrait 1024x1536 canvas with comfortable clear margin around hair and feet, character occupies about 88% canvas height. Actual transparent alpha background, no backdrop color or checkerboard painted into pixels. Absolutely NO floral arch, no bride or second person, no framing elements, no flowers, no props, no ground, no cast background shadow, no text. Preserve clothing detail but remove floral boutonniere. Export a clean standalone transparent character asset.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-65de7b3d-c68d-4c34-81a9-0ba639b77563.png",
+      "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/invitation/public/assets/png/arch-roses.png",
+      "postprocess": "User-authorized alpha cleanup: removed light neutral checkerboard pixels; retained colored illustration pixels.",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v2\\bifari-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 1172190,
+      "opaque_pixels": 400674
+    },
+    {
+      "file": "syafira-front.png",
+      "prompt": "Use case: identity-preserve. Create a separate transparent PNG character sprite based on the female bride in reference image 1; use reference image 2 only to match standalone sprite canvas/scale and style. Reference image 1 role: exact bride identity, clothes, art style reference ONLY. Single bride Syafira alone, full body, directly front facing, her head, eyes, torso and feet face the viewer. Warm gentle welcoming smile. Preserve pale cream skin, flowing long black/dark brown hair, ornate maroon hair rose, black lace veil, elaborate off-shoulder black and deep maroon lace bridal gown with fitted corset, ruffled layered skirt, ornate gothic choker and lace sleeves matching the reference bride. Arms relaxed with one empty hand making a modest open-palmed welcoming gesture. Don't Starve inspired hand-inked gothic paper cutout illustration, scratchy crosshatching, crisp dark outlines, muted black/maroon/sepia. Full silhouette including bottom of gown and both small shoes visibly peeking beneath hem, centered in portrait 1024x1536 canvas with comfortable clear margin around head and feet, character occupies about 88% canvas height. Actual transparent alpha background, no backdrop color or checkerboard painted into pixels. Absolutely NO floral arch, no groom or second person, no bouquet, no framing elements, no carpet, no ground, no cast background shadow, no text. Export a clean standalone transparent character asset.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-7f1f5ac9-3eee-42e8-a10f-ae164896a71c.png",
+      "references": [
+        "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/invitation/public/assets/png/arch-roses.png",
+        "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-65de7b3d-c68d-4c34-81a9-0ba639b77563.png"
+      ],
+      "postprocess": "User-authorized alpha cleanup: removed light neutral checkerboard pixels; retained colored illustration pixels.",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v2\\syafira-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 798918,
+      "opaque_pixels": 773946
+    },
+    {
+      "file": "manor-exterior.png",
+      "prompt": "Use case: stylized-concept. Create an opaque portrait 1024x1536 exterior manor background for a gothic wedding invitation. Reference image role: morning lighting, architectural world and hand-drawn Don't Starve-inspired ink-and-wash style only. Frontal CLOSE VIEW from OUTSIDE the manor, camera on stone threshold forecourt directly facing a large closed double wooden door centered in image. Two closed tall black-and-maroon wooden door leaves with intricate rose carvings, visible seam down center, clearly defined doorway surround; doorway occupies about central 50 percent width and 65 percent height, suited to later opening animation. Visible deep muted maroon stone/stucco exterior facade walls around the doorway, small exterior windows near side edges, climbing dark maroon roses along outer edges. Exterior facade must unmistakably be OUTSIDE, never an interior hallway. Stone threshold and short stone foreground below the doors. Warm gentle morning sunlight, welcoming romantic mood, pale warm daylight at upper edges, textured storybook scratchy ink outlines and hand-painted washes, black/oxblood/maroon/cream palette matching reference. Straight-on architectural composition, no perspective tilted camera. No people, no characters, no text, no religious symbols, no open door, no interior visible, no carpet. Full opaque background, no transparency.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-0d786c23-7e9b-417e-b449-4d2287ac972c.png",
+      "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/invitation/public/assets/png/courtyard/morning-garden.png",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v2\\manor-exterior.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ],
+      "transparent_pixels": 0,
+      "opaque_pixels": 1572864
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "bifari-front.png",
+      "prompt": "Transform reference character into an authentic Don't Starve Together in-game PAPER CUTOUT sprite. Reference supplies ONLY angular dark hairstyle, round glasses, blank eyes, and coat details. OVERRIDE reference long body: character MUST be extremely short/squat, total height only TWO AND A HALF HEADS, with head including hair taking 45% of full character height, tiny narrow torso and stubby very short legs. Large angular polygon head, broad oversized white pupil-less eye shapes inside round black glasses. Eyes are completely solid ivory white, NO pupil, NO iris. Tiny simple friendly crooked mouth line. Absolutely NOT anime, NOT manga, NOT handsome realistic fashion illustration, NOT tall adult proportions, NOT polished digital painting. Thick irregular jagged black ink outlines, broad flat desaturated color regions, rough scratchy black hatching, papery primitive 2D game puppet. Single Bifari groom alone, directly front-facing head torso and feet, warm welcoming empty hand gesture, dark angular swept hair with muted RED tips instead of purple, simplified maroon-black tailcoat, little waistcoat/cravat, short black trouser legs, chunky pointy shoes. No religious symbols or cross pendants. Full body with both shoes visible, generous blank margins. Portrait 1024x1536 canvas. Actual alpha transparent background; no checkerboard pixels, no backdrop, no arch, no flowers, no other character, no ground shadow, no text. The squat 2.5-head game proportions and white featureless eyes are the top priority.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-5ffcba3c-a052-498e-9011-6429f87feb78.png",
+      "reference": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v3\\bifari-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 1070568,
+      "enclosed_neutral_pixels_preserved": 4685,
+      "postprocess": "User-authorized cleanup: edge-seeded flood-fill only through light neutral pixels; enclosed white eyes and all other enclosed whites remain opaque."
+    },
+    {
+      "file": "syafira-front.png",
+      "prompt": "Create a female bridal counterpart in the EXACT primitive paper-cutout game style and extremely squat proportions of reference image 2 (Bifari groom sprite). Reference image 1 supplies only facial angular drawing language, featureless eyes and scratchy ink aesthetic. Syafira bride alone, directly FRONT-FACING, full body with both little shoes visible. Authentic Don't Starve Together in-game sprite, TWO AND A HALF HEADS total height maximum: enormous angular polygon head taking 45 percent of character height, tiny narrow torso, stubby short legs underneath a small squat bell-shaped skirt. Big completely SOLID WHITE pupil-less eye shapes, black eye outline, NO irises, NO pupils, tiny simple warm crooked smile mouth line. Dark roughly inked flowing hair ending by elbows, one muted maroon hair rose. Simplified black-maroon lace bridal dress, short compact flared skirt with jagged lace hem, short sleeves and small black shoes; empty hand in modest welcoming gesture. Thick irregular jagged black ink outlines, broad flat desaturated regions, sparse scratchy black hatching, primitive papery 2D game puppet. NO anime, NO manga, NO detailed pretty anime face, NO glossy shading, NO tall adult fashion proportions, NO ornate realistic bridal illustration. No cross/religious ornaments. Full silhouette centered with generous clear margins in portrait 1024x1536 canvas. Genuine alpha transparency background, no checkerboard painted into pixels, no other characters, no floral arch, no flowers behind, no bouquet, no background, no ground or shadow, no text. Squat 2.5-head in-game proportions and white featureless eyes are top priority.",
+      "revision_prompt": "Edit ONLY the female bride sprite reference. Remove her glasses completely: no round eyeglass frames, no bridge, no temples. Replace with two large angular almond/oval SOLID WHITE pupil-less eyes directly on face with a single thick scratchy black eye outline and two short jagged outer eyelashes, in Don't Starve Together style. Keep NO iris NO pupil. Make her forehead hair part center parted with long flowing locks. Preserve EVERYTHING ELSE: exact squat 2.5-head body proportions, tiny body and short skirt, oversized head size, maroon hair rose, maroon black bridal dress, welcoming hands, full-body frontal pose, empty background, all feet, exact flat scratchy papercut medium. Genuine transparent alpha background, never printed checkerboard. No new objects, no text.",
+      "source": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-1b68015d-8bc8-41fc-9ecd-63c5d5a9b5c7.png",
+      "references": [
+        "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/biff_character_reference/ChatGPT Image Sep 22, 2026, 12_56_16 PM.png",
+        "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-5ffcba3c-a052-498e-9011-6429f87feb78.png"
+      ],
+      "intermediate": "C:/Users/bifar/.codex/generated_images/01a0d79a-407a-72e3-95fa-e1117473358b/exec-38149aea-b7ea-4c6b-b171-4c82150859ac.png",
+      "path": "D:\\Iksyntha_Naomi_V2026\\Naomi-Link\\Naomi-x-Umbranox\\Project\\Invitation_bif_x_ara\\scene3-artwork-v3\\syafira-front.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "transparent_pixels": 861842,
+      "enclosed_neutral_pixels_preserved": 24795,
+      "postprocess": "User-authorized cleanup: edge-seeded flood-fill only through light neutral pixels; enclosed white eyes and all other enclosed whites remain opaque."
+    }
+  ]
+}

@@ -115,16 +115,15 @@ export function initPrologue(onExit){
     t.to($('.arrival-floor-envelope'),{scale:1.035,duration:.45,ease:'sine.inOut'},0);
    }else if(target===5){
     t.call(()=>sound('paper-lift'),[],.25)
-     .to($('.arrival-floor-envelope'),{opacity:0,y:-60,duration:.55},.25)
-     .fromTo($('.arrival-sealed'),{autoAlpha:0,y:window.innerHeight*.45,scale:.68,rotation:-9},{autoAlpha:1,y:0,scale:1,rotation:0,duration:1.4,ease:'power2.out'},.5)
+     .set($('.arrival-floor-envelope'),{opacity:0},.25)
+     .set($('.arrival-sealed'),{autoAlpha:1,y:0,scale:1,rotation:0},.25)
      .to($('.arrival-camera'),{...cameraPose(5),duration:1.4,ease:'power2.inOut'},.45);
    }else if(target===6){
     t.call(()=>sound('seal'),[],.2)
-     .to($('.arrival-sealed'),{rotation:-4,scale:1.03,duration:.35,ease:'power2.inOut'},0)
      .call(()=>sound('page'),[],.35)
-     .to($('.arrival-sealed'),{rotationX:-24,y:70,autoAlpha:0,duration:.7,ease:'power2.in'},.35)
-     .fromTo($('.arrival-open'),{autoAlpha:0,y:120,scale:.82,rotation:5},{autoAlpha:1,y:0,scale:1,rotation:0,duration:1,ease:'power2.out'},.55)
-     .fromTo($('.arrival-card-copy'),{opacity:0},{opacity:1,duration:.8},1.2);
+     .set($('.arrival-sealed'),{autoAlpha:0},.35)
+     .set($('.arrival-open'),{autoAlpha:1,y:0,scale:1,rotation:0},.35)
+     .set($('.arrival-card-copy'),{opacity:1},.35);
    }
    dialogue(t,target);
   },()=>complete(target));

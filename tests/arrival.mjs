@@ -35,6 +35,14 @@ try{
  const cloud=await page.locator('.arrival-clouds').evaluate(e=>getComputedStyle(e).transform);await page.waitForTimeout(400);assert.notEqual(await page.locator('.arrival-clouds').evaluate(e=>getComputedStyle(e).transform),cloud);
  for(let step=3;step<=6;step++){await next();assert.equal(await page.locator('#arrival').getAttribute('data-step'),String(step));await page.screenshot({path:`artifacts/arrival-v4/mobile-${step}.png`});if(step===3)assert.equal(await page.locator('#arrival-line').textContent(),'Hah, ada undangan.');if(step===4)assert.equal(await page.locator('#arrival-line').textContent(),'Dari siapa ya…');}
  assert.equal(await page.locator('.arrival-open').evaluate(e=>getComputedStyle(e).visibility),'visible');
+ await page.locator('#nav-back').click();await wait();
+ await page.locator('#nav-back').click();await wait();
+ for(let target=5;target<=6;target++){
+  await page.evaluate(()=>{window.handSamples=[];window.sampleHands=true;const sample=()=>{handSamples.push([...document.querySelectorAll('.arrival-sealed,.arrival-open')].map(e=>Number(getComputedStyle(e).opacity)));if(window.sampleHands)requestAnimationFrame(sample);};sample();});
+  await next();
+  const samples=await page.evaluate(()=>{window.sampleHands=false;return handSamples;});
+  assert.ok(samples.length>2);assert.ok(samples.flat().every(v=>v===0||v===1),'held envelope and letter switch without fade');
+ }
  await page.locator('#nav-next').click();await page.waitForFunction(()=>document.querySelector('#arrival').dataset.burn==='burning');await page.waitForTimeout(1300);
  assert.equal(await page.locator('.arrival-portal').evaluate(e=>getComputedStyle(e).visibility),'hidden');
  assert.equal(await page.locator('.arrival-open').evaluate(e=>getComputedStyle(e).visibility),'visible','hands keep holding while paper burns');

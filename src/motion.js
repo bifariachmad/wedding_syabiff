@@ -53,7 +53,7 @@ export function initMotion(){
   gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
   if(target===1){gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:1});gsap.set(to.querySelector('.courtyard-rose-frame'),{opacity:1});gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(0% 0% 0% 0%)'});}
   if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
-  if(to.id==='greeting'){welcome.show(direction>0?0:3);back.disabled=true;next.disabled=true;}
+  if(to.id==='greeting'){welcome.show(direction>0?0:welcome.last);back.disabled=true;next.disabled=true;}
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(!reduced()&&index===0&&target===1){
@@ -101,6 +101,6 @@ export function initMotion(){
  }
  prologue=initPrologue(()=>{courtyard.show(0);controls();hydrateArt(scenes[0]);hydrateArt(scenes[1]);sound('morning');atmosphere();});
  controls();
- return {goTo,next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy||welcome.busy)return false;if(index===0&&courtyard.step<2)return courtyard.next();if(index===2&&welcome.step<3)return welcome.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy||welcome.busy)return false;if(index===2&&welcome.step>0)return welcome.back();if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}return goTo(index-1);}};
+ return {goTo,next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy||welcome.busy)return false;if(index===0&&courtyard.step<2)return courtyard.next();if(index===2&&welcome.step<welcome.last)return welcome.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy||welcome.busy)return false;if(index===2&&welcome.step>0)return welcome.back();if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}return goTo(index-1);}};
 }
 export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:10,opacity:0,duration:.5});sound('seal');}

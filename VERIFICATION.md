@@ -57,3 +57,6 @@ Owner actions: deploy the supplied Apps Script in a private Sheet, set/record th
 Scene 2 follow-up: tests/courtyard.mjs additionally samples camera rise/settle across steps, compares the outgoing and title garden bounds (all differences below 1px), and verifies the actual GALVANIZED font is loaded. The four viewport navigation/replay checks pass with no browser or asset errors. Build passes.
 
 Title-frame revision: courtyard checks pass at four viewport sizes, including unchanged final garden framing, GALVANIZED loading, forward/back replay and reduced motion. Inspected the enlarged names, two-line date and complete cutout rose frame in artifacts/courtyard/title.png and viewport screenshots. Production build passes.
+# Scene 1 / 3 follow-up
+
+Scene 1 replay samples every animation frame during envelope pickup and letter reveal: held-layer opacity remains exactly 0 or 1. Existing burn-before-portal, sound, reverse navigation and four viewport checks pass. Scene 3 checks five reading stops, exterior visibility, two separate character layers, alternating speaker emphasis, dimmed inactive character, forward/back replay, click locking and four viewports without overflow or asset errors.

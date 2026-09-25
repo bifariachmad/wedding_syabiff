@@ -1,7 +1,7 @@
 export function welcomeArtwork(){return `<div class="welcome-camera">
  <img class="welcome-room" data-src="/assets/png/welcome/welcome-hall.png" alt=""/>
- <div class="welcome-couple"><img data-src="/assets/png/arch-roses.png" alt=""/></div>
+ <div class="welcome-couple"><div class="welcome-character character-bifari" data-character="BIFARI"><img data-src="/assets/png/welcome/bifari-front.png" alt=""/></div><div class="welcome-character character-syafira" data-character="SYAFIRA"><img data-src="/assets/png/welcome/syafira-front.png" alt=""/></div></div>
  <div class="welcome-candle candle-left"><img data-src="/assets/png/candle.png" alt=""/></div><div class="welcome-candle candle-right"><img data-src="/assets/png/candle.png" alt=""/></div>
  <div class="welcome-doors"><div class="welcome-door welcome-door-left"><img data-src="/assets/png/welcome/manor-door.png" alt=""/></div><div class="welcome-door welcome-door-right"><img data-src="/assets/png/welcome/manor-door.png" alt=""/></div></div>
- </div><div class="welcome-shade"></div><header class="welcome-heading"><span>PART III</span><h2 id="greeting-title">Sebuah sambutan</h2><img src="/assets/png/arrival/ui-divider.png" alt=""/></header>`;}
-export function welcomeDialogue(){return `<p id="welcome-line" aria-hidden="true">Sepertinya aku sudah sampai.</p><span id="welcome-description" class="sr-only" role="status" aria-live="polite">Sepertinya aku sudah sampai.</span>`;}
+ </div><img class="welcome-exterior" data-src="/assets/png/welcome/manor-exterior.png" alt=""/><div class="welcome-shade"></div><header class="welcome-heading"><span>PART III</span><h2 id="greeting-title">Sebuah sambutan</h2><img src="/assets/png/arrival/ui-divider.png" alt=""/></header>`;}
+export function welcomeDialogue(){return `<p id="welcome-line" aria-hidden="true">Ini rumahnya. Sepertinya mereka sudah menunggu.</p><span id="welcome-description" class="sr-only" role="status" aria-live="polite">Ini rumahnya. Sepertinya mereka sudah menunggu.</span>`;}
