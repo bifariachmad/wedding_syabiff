@@ -16,7 +16,7 @@ export function initMotion(){
  const welcome=initWelcome();
  const clockroom=initClockroom();
  const maproom=initMaproom();
- const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);if(prologue?.active){prologue.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
+ const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index>=5&&index<=12);if(prologue?.active){prologue.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index>=5&&index<=12){root.querySelector('#journey-position').innerHTML=`${String(index-4).padStart(2,'0')} <small>/ 08</small>`;gsap.set('#journey-progress',{scaleX:(index-4)/8});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
  function atmosphere(){
   ambient.forEach(t=>t.kill());ambient=[];if(reduced()||prologue?.active)return;
   const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
@@ -60,6 +60,7 @@ export function initMotion(){
   if(to.id==='greeting'){welcome.show(direction>0?0:welcome.last);back.disabled=true;next.disabled=true;}
   if(to.id==='countdown'){clockroom.show(direction>0?0:clockroom.last);back.disabled=true;next.disabled=true;}
   if(to.id==='location'){maproom.show(direction>0?0:maproom.last);back.disabled=true;next.disabled=true;}
+  if(to.classList.contains('vn-agenda'))gsap.set(to.querySelector('.agenda-card'),{opacity:1,rotationY:0});
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(!reduced()&&index===0&&target===1){
@@ -103,6 +104,16 @@ export function initMotion(){
      .to(oldArt,{opacity:0,duration:.55},.85)
      .fromTo(newArt,{xPercent:8,opacity:0},{xPercent:0,opacity:1,duration:1.1,ease:'sine.inOut'},.8)
      .fromTo(newText,{opacity:0,y:8},{opacity:1,y:0,duration:.4},1.7);
+   }else if(!reduced()&&target>=5&&target<=12&&(index===4||index>=5&&index<=12)){
+    const entering=index===4,card=to.querySelector('.agenda-card');
+    gsap.set([newArt,newText,card],{opacity:0});
+    timeline.call(()=>sound('page'),[],0).to(oldText,{opacity:0,duration:.25},0);
+    if(entering){timeline.to(from.querySelector('.maproom-venue'),{opacity:0,duration:.3},0).to(oldArt,{scale:1.2,yPercent:-7,duration:1.5,ease:'sine.inOut'},0);}
+    else{timeline.to(from.querySelector('.agenda-card'),{rotationY:-direction*65,opacity:0,duration:.55,ease:'sine.in'},0);}
+    timeline.to(oldArt,{opacity:0,duration:entering?.65:.35},entering?.65:.25)
+     .fromTo(newArt,{opacity:0,scale:entering?.95:1},{opacity:1,scale:1,duration:entering?.9:.4},entering?.6:.25)
+     .fromTo(card,{rotationY:direction*65,opacity:0},{rotationY:0,opacity:1,duration:.8,ease:'sine.out'},entering?1.1:.35)
+     .fromTo(newText,{opacity:0,y:6},{opacity:1,y:0,duration:.4},entering?1.6:.9);
    }else if(reduced()){
     timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
    }else{

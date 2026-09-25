@@ -1,4 +1,5 @@
-import {maproomArtwork,maproomDialogue} from './maproom-markup.js';
+import {agendaArtwork,agendaCard,agendaDialogue,agendaSpeaker} from './agenda-markup.js';
+import {maproomArtwork,maproomDialogue,maproomVenue} from './maproom-markup.js';
 import {clockroomArtwork,clockroomDialogue} from './clockroom-markup.js';
 import { CONFIG } from './config.js';
 import { art, icon } from './art.js';
@@ -7,7 +8,7 @@ import { courtyardArtwork, courtyardCover } from './courtyard-markup.js';
 import { welcomeArtwork, welcomeDialogue } from './welcome-markup.js';
 
 const sprite=(name,cls='hero',depth=0)=>`<div class="vn-layer ${cls}" data-depth="${depth}">${art(name)}</div>`;
-const scene=(id,label,visual,content,extra='')=>`<section id="${id}" class="vn-scene ${extra}${id==='gate'?' is-active is-visible':''}" data-label="${label}" aria-labelledby="${id}-title" ${id==='gate'?'':'aria-hidden="true" inert'}><div class="vn-artwork" aria-hidden="true">${visual}</div><div class="vn-dialogue"><span class="vn-speaker">${label}</span>${content}</div></section>`;
+const scene=(id,label,visual,content,extra='')=>`<section id="${id}" class="vn-scene ${extra}${id==='gate'?' is-active is-visible':''}" data-label="${label}" aria-labelledby="${id}-title" ${id==='gate'?'':'aria-hidden="true" inert'}><div class="vn-artwork" aria-hidden="true">${visual}</div><div class="vn-dialogue"><span class="vn-speaker">${label}</span>${content}</div>${id==='location'?maproomVenue():''}</section>`;
 export function invitationMarkup(){
  const e=CONFIG.EVENT;
  return `<main id="invitation" class="visual-novel intro-active" data-scene="0" data-prologue="active">
@@ -21,7 +22,7 @@ export function invitationMarkup(){
  ${scene('greeting','KAMU',welcomeArtwork(),welcomeDialogue())}
  ${scene('countdown','BIFARI',clockroomArtwork(),clockroomDialogue())}
  ${scene('location','SYAFIRA',maproomArtwork(),maproomDialogue())}
- ${CONFIG.RUNDOWN.map(([time,title,note,asset,extra],i)=>scene(`rundown-${i}`,'Bab V · Rangkaian acara',`${sprite(asset,'rundown-hero asset-'+asset,0)}${extra?sprite(extra,'rundown-accent',200):''}`,`<span class="vn-event-number">${String(i+1).padStart(2,'0')} / 08</span><time>${time} WIB</time><h2 id="rundown-${i}-title">${title}</h2><p class="vn-narration">${note}</p>`,'vn-rundown')).join('')}
+ ${CONFIG.RUNDOWN.map((_,i)=>scene(`rundown-${i}`,agendaSpeaker(i),agendaArtwork(i),agendaDialogue(i),'vn-agenda').replace('</section>',`${agendaCard(i)}</section>`)).join('')}
  ${scene('dresscode','Bab VI · Sehelai maroon',`${sprite('cloth-swatch','cloth-hero',20)}${sprite('rose-wilted','rose-hero',160)}${sprite('petal','near-petal',200)}`,`<h2 id="dresscode-title">Dresscode & Tema</h2><p class="vn-narration">Kenakan warna maroon.</p><p>Dekorasi bernuansa gothic: remang, hangat, sedikit misterius.</p>`)}
  ${scene('reservation','Bab VII · Sebuah kursi untukmu',`${sprite('book-quill','reservation-hero',0)}${sprite('lantern','hanging-lantern',120)}`,`<h2 id="reservation-title">Reservasi</h2><div class="vn-form-content"><p class="reservation-intro">Bantu kami menyiapkan kursimu. Isi nama dan jumlah tamu untuk melanjutkan.</p>
  <form id="reservation-form" novalidate><div class="form-field"><label for="guest-name">Nama tamu</label><input id="guest-name" name="name" type="text" required minlength="2" maxlength="60" autocomplete="name" aria-describedby="name-error"/><p class="field-error" id="name-error" aria-live="polite"></p></div><div class="form-field"><label for="guest-count">Jumlah tamu (termasuk kamu)</label><div class="stepper"><button type="button" id="minus" aria-label="Kurangi jumlah tamu">${icon('minus')}</button><input id="guest-count" name="guests" type="number" min="1" max="${CONFIG.MAX_GUESTS}" step="1" value="1" required inputmode="numeric" aria-describedby="count-error"/><button type="button" id="plus" aria-label="Tambah jumlah tamu">${icon('plus')}</button></div><p class="field-error" id="count-error" aria-live="polite"></p></div><div class="honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"/></div><button type="submit" class="button primary" id="submit-reservation" disabled>Kirim Reservasi</button></form>

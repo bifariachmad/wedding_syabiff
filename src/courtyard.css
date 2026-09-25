@@ -61,3 +61,7 @@
 @keyframes raven-up{0%,49%{opacity:1}50%,100%{opacity:0}}@keyframes raven-down{0%,49%{opacity:0}50%,100%{opacity:1}}
 .courtyard-wedding{color:#ad354f;text-shadow:0 2px 2px #080305,0 0 14px #000}
 @media(prefers-reduced-motion:reduce){.courtyard-crow .crow-up,.courtyard-crow .crow-down{animation:none}.courtyard-crow .crow-down{opacity:0}}
+#cover .vn-dialogue{inset:0;width:100%;height:100%;translate:none;transform:none!important;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 44px;text-align:center}
+.courtyard-wedding{color:#f7d9b6;text-shadow:0 3px 8px #210914}
+#cover-title{max-width:870px}
+@media(max-height:500px) and (min-width:600px){#cover .vn-dialogue{padding:18px 70px}}

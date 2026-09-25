@@ -15,7 +15,7 @@ try{
  await p.waitForTimeout(1450);const mid=await p.locator('.arrival-portal-window').evaluate(e=>parseFloat(getComputedStyle(e).filter.match(/[\d.]+/)[0]));assert.ok(mid>0&&mid<1);await p.screenshot({path:'artifacts/maproom/portal-lightening.png'});await settle();
  await next();await next();await p.locator('#nav-next').click();await p.waitForTimeout(1000);
  const frames=await p.locator('.courtyard-crow').evaluate(async el=>{let out=[];for(let i=0;i<24;i++){out.push([...el.children].map(e=>getComputedStyle(e).opacity));await new Promise(r=>setTimeout(r,20));}return out;});assert.ok(frames.some(a=>a[0]==='1'&&a[1]==='0')&&frames.some(a=>a[0]==='0'&&a[1]==='1'));
- await p.screenshot({path:'artifacts/maproom/raven.png'});await settle();assert.equal(await p.locator('.courtyard-date').count(),0);assert.equal(await p.locator('.courtyard-wedding').evaluate(e=>getComputedStyle(e).color),'rgb(173, 53, 79)');
+ await p.screenshot({path:'artifacts/maproom/raven.png'});await settle();assert.equal(await p.locator('.courtyard-date').count(),0);assert.equal(await p.locator('.courtyard-wedding').evaluate(e=>getComputedStyle(e).color),'rgb(247, 217, 182)');
  await next();await p.locator('#nav-next').click();await p.waitForTimeout(900);assert.ok(await p.locator('.welcome-exterior').evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).a>1));
  await p.waitForFunction(()=>document.querySelector('#greeting').dataset.arrival==='empty');assert.equal(await p.locator('#greeting .welcome-couple').evaluate(e=>getComputedStyle(e).opacity),'0');await p.screenshot({path:'artifacts/maproom/empty-room.png'});await settle();
  const sy=await p.locator('#greeting .character-syafira').boundingBox(),bi=await p.locator('#greeting .character-bifari').boundingBox();assert.ok(sy.x<bi.x);await p.screenshot({path:'artifacts/maproom/hosts.png'});
@@ -37,5 +37,5 @@ try{
    await p.screenshot({path:`artifacts/maproom/${width}-${step}.png`});
   }await back();await back();await back();
  }
- assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);console.log({portalDarkToLight:true,twoRavenPNGs:true,noCoverDate:true,maroonHeading:true,emptyRoomBeforeHosts:true,syafiraLeft:true,fourMapStops:true,venueLink:true,reverseReplay:true,fourViewports:true,errors,failed});
+ assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);console.log({portalDarkToLight:true,twoRavenPNGs:true,noCoverDate:true,creamHeading:true,emptyRoomBeforeHosts:true,syafiraLeft:true,fourMapStops:true,venueLink:true,reverseReplay:true,fourViewports:true,errors,failed});
 }finally{await b.close();}

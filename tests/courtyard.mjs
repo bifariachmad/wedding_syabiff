@@ -24,8 +24,8 @@ try{
  await p.screenshot({path:'artifacts/courtyard/opening.png'});await settled();
  assert.equal(await p.locator('#gate').getAttribute('data-courtyard-step'),'2');
  await p.screenshot({path:'artifacts/courtyard/open.png'});
- assert.match(await p.locator('.courtyard-left').getAttribute('style'),/rotateY\(102deg\)/);
- assert.match(await p.locator('.courtyard-right').getAttribute('style'),/rotateY\(-102deg\)/);
+ assert.match(await p.locator('.courtyard-left').getAttribute('style'),/rotateY\(82deg\)/);
+ assert.match(await p.locator('.courtyard-right').getAttribute('style'),/rotateY\(-82deg\)/);
  await p.evaluate(()=>{window.walkSamples=[];const sample=()=>{const c=document.querySelector('.courtyard-camera'),m=new DOMMatrix(getComputedStyle(c).transform);window.walkSamples.push({scale:m.a,y:m.m42});if(document.querySelector('#invitation').dataset.scene==='0')requestAnimationFrame(sample);};requestAnimationFrame(sample);});
  await p.locator('#nav-next').click();await p.waitForTimeout(1100);
  assert.equal(await p.locator('.courtyard-crow').evaluate(e=>getComputedStyle(e).opacity),'1');

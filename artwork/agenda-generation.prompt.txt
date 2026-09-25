@@ -1,0 +1,15 @@
+Generation mode: built-in image_gen
+Reference: scene5-artwork/map-room.png (style/world reference)
+Requested output: scene6-artwork/agenda-desk.png
+
+Use case: stylized-concept
+Asset type: portrait raster background for scene 6 of a gothic wedding invitation, exactly 1024x1536 pixels, fully opaque.
+Primary request: Continue the world of the reference image. The guest camera moves close to the same wooden study desk and leans down toward a very large OLD OPEN WEDDING AGENDA, replacing the map as the hero. No people; hosts are offscreen.
+Input images: Image 1 is STYLE AND WORLD REFERENCE ONLY: same burgundy-black gothic study, scratched ink outlines, wood, candle lighting. Generate a new closer composition, do not preserve the distant framing.
+Scene/backdrop: The same maroon study wall occupies only the upper quarter, dark and visually quiet at upper center for a chapter heading. Warm candles at outer sides, a quill at the outer right edge, maroon bookmark ribbon near an outer book edge, richly grained old wooden desk continuing through the bottom foreground.
+Subject: A huge, open, worn cream parchment book centered in the image. BOTH PAGES COMPLETELY BLANK. Pages have subtle warm cream paper grain, softly worn irregular edges, a thin aged leather cover beneath, and a vertical central gutter at exactly x50%. The pages are the clear hero.
+Composition/framing: Guest point of view leaning down, close to overhead while retaining a strip of study wall. The open book spans approximately x8% to x92% and y25% to y72% of the full portrait canvas. Keep the page plane very flat and broad with minimal foreshortening so typography can be overlaid legibly. Each page has a large uninterrupted rectangular blank readable area. Book takes most of width. Foreground wooden tabletop fills below the book. Decorative props remain outside the central page reading areas.
+Style/medium: Don't Starve Together-inspired hand-drawn scratchy ink and cut-paper illustration, dense irregular black outlines, controlled hatch shading, crooked handmade gothic shapes, textured maroon-black shadows, muted sepia gold candlelight. Match the supplied reference's illustrated world, not photorealism, no 3D render.
+Lighting/mood: intimate romantic candlelit gothic wedding study; warmly luminous cream paper contrasted against dark burgundy wood and wall.
+Text: NONE.
+Constraints: Absolutely no letters, no words, no numbers, no symbols, no icons, no maps or drawings on either page; no fake UI; no borders across usable page space; no people or hands; no watermark. Decoration only at outer edges. Maintain full opaque background. Output one image only.

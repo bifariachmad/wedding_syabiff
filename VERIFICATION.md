@@ -66,3 +66,6 @@ Clock-room tests cover four reading stops, talking-mouth opacity alternation, li
 # Scene 5 follow-up
 
 tests/maproom.mjs verifies portal brightness starts at zero and passes through intermediate brightness, both raven PNG frames alternate, title date is absent and heading is maroon, opening door zoom begins concurrently, the room is empty before hosts appear, Syafira is left, four map-room stops replay in both directions, Maps URL remains the configured venue URL, and dialogue fits 360x640, 430x932, 1440x900 and 844x390. Browser/asset errors: none. Grounded clock composition inspected in artifacts/maproom/grounded-clock.png. Gate extraction reconstructs original RGBA exactly with zero differing pixels.
+
+# Scene 6 and gate revision
+tests/agenda.mjs passes normal-motion slow opening (final inward angle 82 degrees), centered cream heading, venue information outside dialogue, all eight original schedule pages, backward replay, and four viewports (360x640, 430x932, 1440x900, 844x390), without browser or asset errors. This supersedes the earlier 102-degree gate and maroon title expectations. Scene 5 leads naturally from the map table to the open agenda book.
