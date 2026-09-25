@@ -34,3 +34,15 @@
 @media(max-width:600px){#gate .vn-dialogue{padding:14px 12px;min-height:108px}#gate .vn-dialogue p{font-size:19px}.courtyard-gates{top:20%;height:60%;width:110vw}.courtyard-heading{top:24px}#cover .vn-dialogue{top:23%}.courtyard-title-rose{width:30%}}
 @media(max-height:500px) and (min-width:600px){#gate .vn-dialogue{left:50%;translate:-50% 0;bottom:5px;min-height:72px;padding:8px 20px;width:60%}#gate .vn-dialogue p{font-size:17px}.courtyard-heading{top:12px}.visual-novel .courtyard-heading h1{font-size:23px}.courtyard-gates{top:10%;height:84%;width:52vw}#cover .vn-dialogue{top:9%;padding:8px}.courtyard-wedding{font-size:17px;margin-bottom:6px}.visual-novel #cover-title{font-size:30px}.visual-novel #cover-title em{font-size:19px;line-height:1.3}#cover .vn-narration{margin-top:12px}}
 @media(prefers-reduced-motion:reduce){.courtyard-clouds,.courtyard-tree{animation:none}}
+.courtyard-title-shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 43%,#10060880 10%,#0b0407c9 75%,#050204f2),linear-gradient(#23130e33,#0005)}
+.courtyard-title-shade:after{content:'';position:absolute;inset:0;background:url('/assets/png/paper-filter.png') center/400px;mix-blend-mode:soft-light;opacity:.2}
+.courtyard-rose-frame{position:absolute;left:50%;translate:-50% 0;top:2%;bottom:2%;width:min(100% - 20px,980px);pointer-events:none;filter:drop-shadow(0 3px 4px #0008)}
+.courtyard-vine{position:absolute;inset:0}.vine-left{clip-path:inset(0 50% 0 0)}.vine-right{clip-path:inset(0 0 0 50%)}
+.courtyard-vine img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+#cover .vn-dialogue{top:50%;translate:-50% -50%;width:min(870px,calc(100% - 72px));padding:0 8px;text-shadow:0 3px 10px #000,0 0 28px #210914}
+.courtyard-wedding{font-size:clamp(25px,3.3vw,40px);margin-bottom:24px;letter-spacing:3px}
+.visual-novel #cover-title{font-size:clamp(48px,7.5vw,96px);line-height:1.1}
+.visual-novel #cover-title em{font-size:clamp(25px,3.6vw,43px);line-height:1.6}
+#cover .courtyard-date{font:clamp(17px,2vw,22px)/1.65 var(--body);margin-top:26px;letter-spacing:1px}
+@media(max-width:600px){.visual-novel #cover-title{font-size:clamp(40px,10.8vw,62px)}.courtyard-wedding{font-size:27px;margin-bottom:22px}.courtyard-rose-frame{top:3%;bottom:3%}#cover .courtyard-date{font-size:19px;margin-top:24px}}
+@media(max-height:500px) and (min-width:600px){.courtyard-rose-frame{width:min(80%,680px);top:1%;bottom:1%}#cover .vn-dialogue{width:65%}.visual-novel #cover-title{font-size:36px;line-height:1.05}.visual-novel #cover-title em{font-size:22px;line-height:1.1}.courtyard-wedding{font-size:24px;margin-bottom:10px}#cover .courtyard-date{font-size:16px;line-height:1.35;margin-top:12px}}

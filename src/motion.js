@@ -49,16 +49,22 @@ export function initMotion(){
   const oldText=from.querySelector('.vn-dialogue'),newText=to.querySelector('.vn-dialogue');
   gsap.set([oldArt,newArt,oldText,newText],{clearProps:'transform,opacity,visibility'});
   gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
+  if(target===1){gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:1});gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(0% 0% 0% 0%)'});}
   if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(!reduced()&&index===0&&target===1){
     // Keep the final garden framing exactly; reveal only the title after landing.
     gsap.set([newArt,newText],{opacity:0});
+    gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:0});
+    gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(100% 0% 0% 0%)'});
     courtyard.pass(timeline);
     timeline.to(oldText,{opacity:0,duration:.2},0)
      .set(newArt,{opacity:1},3.36).set(oldArt,{opacity:0},3.36)
-     .fromTo(newText,{opacity:0,y:8},{opacity:1,y:0,duration:.85,ease:'sine.out'},3.5);
+     .to(to.querySelector('.courtyard-title-shade'),{opacity:1,duration:1.15,ease:'sine.inOut'},3.36)
+     .to(to.querySelector('.vine-left img'),{clipPath:'inset(0% 0% 0% 0%)',duration:2.5,ease:'sine.inOut'},3.65)
+     .to(to.querySelector('.vine-right img'),{clipPath:'inset(0% 0% 0% 0%)',duration:2.6,ease:'sine.inOut'},3.85)
+     .fromTo(newText,{opacity:0,y:8},{opacity:1,y:0,duration:1.1,ease:'sine.out'},3.9);
    }else if(reduced()){
     timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
    }else{
