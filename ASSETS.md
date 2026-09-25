@@ -2,25 +2,29 @@
 
 ## Scene 1 additions — 25 September 2026
 
-Twelve active PNG assets follow the requested Don't Starve Together direction. The feedback revisions use a vibrant maroon/black room and door, illustrated knock marks, a separate left hand without hardware, moving cloud/tree layers, and independent paper/fire layers. Full built-in ImageGen prompts, original paths, alpha checks and alignment coordinates are in the three `artwork/arrival-generation*.json` manifests. Import scripts read the sibling `scene1-artwork`, `scene1-artwork-v2`, and `scene1-artwork-v3` folders. Normal builds use committed optimized PNGs and do not need source-generation files. Cutouts have actual alpha; the room is opaque.
+Sixteen active PNG assets follow the requested Don't Starve Together direction. The feedback revisions use a vibrant maroon/black room and door, illustrated knock marks, a separate left hand without hardware, moving cloud/tree layers, and independent paper/fire layers. Full built-in ImageGen prompts, original paths, alpha checks and alignment coordinates are in the four `artwork/arrival-generation*.json` manifests. Import scripts read the sibling `scene1-artwork`, `scene1-artwork-v2`, `scene1-artwork-v3`, and `scene1-artwork-v4` folders. Normal builds use committed optimized PNGs and do not need source-generation files. Cutouts have actual alpha; the room is opaque.
 
 | File under public/assets/png/arrival | Role | Bytes |
 |---|---|---:|
 | room-open.png | Maroon cottage interior and empty morning doorway | 186746 |
 | door.png | Independent ebony/maroon hinged door | 78258 |
-| hand-left.png | Left hand only, with continuous long sleeve; hardware stays painted on door | 42391 |
-| invitation-card.png | Independent blank card that floats clear of hands before burning | 82379 |
+| hand-short.png | Compact bent left forearm; hardware stays painted on door | 26234 |
+| invitation-card.png | Independent card that burns while held | 82379 |
 | burn-edge.png | Transparent illustrated ember edge over the dissolving paper | 18239 |
 | knock-marks.png | Three ink-hatched wedges above the center of the door | 5907 |
 | clouds.png | Slow drifting maroon/rose cloud layer inside doorway | 12338 |
 | tree.png | Near/far swaying maroon trees clipped inside doorway | 23588 |
 | envelope-floor.png | Sealed invitation at the threshold | 11419 |
 | hands-envelope.png | POV hands holding the sealed envelope | 63156 |
-| hands-card.png | POV hands with the opened invitation | 59580 |
+| holding-hands.png | Separate foreground hands, unaffected by paper burning | 20877 |
 | ink-portal.png | Transparent swirling ink ring | 51873 |
 
-The twelve active Scene 1 assets total 635,874 bytes. The old `hand-door.png` (10,926 bytes), `hand-grip.png` (16,298 bytes) and three bright storybook alternatives are retained but not loaded. The total project inventory contains 68 raster files. The final hand imports `hand-left-long.png` (925×1700) into the canonical `hand-left.png`; its contact point is (781,326). Paper/fire trimming preserves their actual alpha.
+| ui-panel.png | Maroon torn-paper buttons and dialogue | 19354 |
+| ui-divider.png | Ink-cut progress and heading strip | 3509 |
+| ui-sound-on.png | Cutout music badge | 4380 |
+| ui-sound-off.png | Matching crossed-note mute badge | 4104 |
 
+The sixteen active Scene 1 assets total 612,361 bytes. Superseded hand-door, hand-grip, hand-left, hands-card, and three bright storybook alternatives are retained but not loaded. The project inventory contains 74 raster files. `scripts/import-arrival-v4.mjs` imports the short hand, separate holding hands and four UI assets. The hand contact point is (951,477) in its 1254×1254 source canvas. Hands retain the original 1536×1024 canvas alignment; paper alone is clipped during burning.
 The latest user direction replaces the original SVG requirement. All shipped illustrations are PNGs. Twenty-nine artworks were generated from the Biff reference style; eighteen icons, textures, and templates were drawn procedurally on Canvas. Three brand icons and the Open Graph image bring the raster inventory to 51. No SVG illustrations are used.
 
 Prompts and original generation paths: `artwork/sources.json`. The user explicitly authorized code to remove baked checkerboard backgrounds. `scripts/import-art.mjs` performs that cleanup and palette optimization. The final optimized cutouts ship in this repository; normal builds never require the original generator files. Motion targets are HTML classes or `data-layer` values, not internal image IDs. A few complete alternate kit assets are retained but not loaded by the invitation.

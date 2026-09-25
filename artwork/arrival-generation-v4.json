@@ -1,0 +1,252 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "hand-short.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/hand-short.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-65ee8579-4abd-40a0-bf97-85255a669b76.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Transparent LEFT-hand action sprite with a short bent forearm and no props.\nInput: hand-left.png is the EDIT TARGET. Preserve its anatomically correct LEFT HAND and four curled fingers plus thumb, relaxed C-shaped grip opening, warm tan skin, ivory cuff with maroon trim, angular bold scratchy ink style.\nPrimary request: CHANGE ARM POSE to a SHORT BENT FOREARM. Left forearm enters from the LEFT CANVAS EDGE around y60%, extends only a short distance to a bent wrist, then the left hand reaches diagonally UP-RIGHT. The forearm and wrist form a compact bent action gesture. The hand remains in UPPER RIGHT, grip opening near x74%,y33%. A short ivory sleeve with narrow burgundy trim is visible at left; NO LONG STRAIGHT ARM OR SLEEVE. The sleeve exits LEFT edge around MID/LOWER HEIGHT, not bottom edge. Leave bottom quarter transparent.\nAnatomy: LEFT hand only, five coherent digits total, four naturally curled fingers and thumb making relaxed grip around an IMAGINARY horizontal lever. Keep the good fingers and grip from reference. Back of left hand visible. Wrist bends naturally without dislocation; forearm is short and has a clear gentle bend.\nStyle: Don't Starve Together hand-ink cut-paper game illustration, bold jagged black contours, spare scribbled crosshatching, flat warm tan/ivory/maroon. Same original finger proportions and scratchy style. No realism, no polished vector art.\nComposition: SQUARE1024x1024 transparent PNG. Hand near upper-right with grip aperture around(750,330). Forearm comes through LEFT border around(0,610). Forearm/cuff occupies center-left area and connects compactly to hand. Nothing extends to bottom edge; bottom quarter mostly empty transparency. All fingertips visible, sleeve only cropped at left edge.\nTransparency: Real PNG ALPHA outside the hand and short cuff/forearm. Transparent grip opening. No checkerboard pixels, white matte, black matte, background, glow or shadow.\nABSOLUTE EXCLUSIONS: NO HANDLE, NO LEVER, NO BRASS, NO MOUNTING PLATE, NO KEY, NO OBJECT HELD, NO HARDWARE, NO DOOR. ONLY LEFT HAND AND SHORT BENT FOREARM WITH IVORY CUFF. No other hand, body, face, text, or jewelry.",
+      "editTarget": "../scene1-artwork-v3/hand-left.png",
+      "verification": {
+        "file": "hand-short.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Removed only exterior neutral checker matte, preserving enclosed highlights; cleaned one source-pixel edge fringe.",
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 72.29,
+        "nonzeroAlphaBounds": [
+          0,
+          207,
+          1069,
+          1118
+        ]
+      }
+    },
+    {
+      "file": "holding-hands.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/holding-hands.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-9b9652d2-f846-41ba-a3e3-834055b93d7d.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Separate transparent two-hands holding layer for burning an independent invitation paper.\nInput: hands-card.png is EDIT TARGET. This is an EXTRACTION/REMOVAL edit, not a new composition.\nPrimary request: REMOVE EVERY PIECE OF PAPER, including the large central invitation card, rear envelope, maroon corner ornaments, wax seal and broken wax fragments. Replace all removed objects with ACTUAL TRANSPARENCY. RETAIN ONLY THE TWO HUMAN HANDS AND THEIR IVORY CUFFS in EXACTLY THEIR ORIGINAL POSITIONS, POSES, COLORS, SCALE AND PIXEL PLACEMENT. Left hand pinches original card's lower LEFT corner, right hand pinches original card's lower RIGHT corner; after paper removal, they are pinching empty air. Reconstruct only the tiny previously occluded fingertips necessary to complete natural hands. Keep thumbs in same position ready to overlay a separately rendered paper card.\nCRITICAL CANVAS: Keep EXACT1536x1024 landscape canvas and source crop. Left hand remains anchored at bottom-left, thumb near x220,y640; right hand remains anchored bottom-right, thumb near x1310,y640. Preserve all source hand/sleeve visible contours, fold lines, hatching and anatomy. Do not move, enlarge, shrink, rotate or mirror any hand. Do not recenter hands after removing card. Middle80% of upper canvas and middle gap between hands must be transparent.\nStyle: Preserve original Don't Starve Together angular cut-paper hand-ink sprite style, warm tan skin, simple ivory sleeves, bold scratchy black outline, spare crosshatching.\nTransparency: Actual PNG ALPHA outside two hands and ivory cuffs, including removed card, envelope and seal areas. No checkerboard pixels, no white/black backdrop or halo.\nConstraints: ONLY TWO HANDS WITH CUFFS. ZERO PAPER, no card fragments, no invitation, no envelope, no wax seal, no maroon wax pieces, no objects whatsoever. No text, no body or face, no additional hand. Preserve exact original hand coordinates.",
+      "editTarget": "../scene1-artwork/hands-card.png",
+      "verification": {
+        "file": "holding-hands.png",
+        "sourceSize": [
+          1536,
+          1024
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Removed only exterior neutral checker matte, preserving enclosed highlights; cleaned one source-pixel edge fringe.",
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 89.07,
+        "nonzeroAlphaBounds": [
+          0,
+          497,
+          1536,
+          1024
+        ]
+      }
+    },
+    {
+      "file": "ui-divider.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/ui-divider.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-29195f33-621c-4af9-a24d-687ecd253885.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One transparent decorative horizontal line/track PNG for a maroon gothic invitation interface.\nPrimary request: A LONG VERY SLENDER HAND-INK TORN STRIP, horizontal divider/progress track, with a deep black/ebony center line and rough maroon paper edge. Small cream and maroon angular decorative end cuts at left and right, like tiny torn diamond-tipped paper ends. Sparse warm cream scratch highlights. This should read clearly as a thin hand-drawn horizontal rule, not a thick plaque. Blank, no text.\nStyle: Don't Starve Together cut-paper game UI, scratchy irregular black outline, crooked tapered ink strokes, rich wine-maroon color and a little ivory hatching. Match maroon/black/cream torn-paper interface artwork. No smooth vector shape, no glossy gradients.\nComposition: Wide landscape canvas. The line extends almost full width x5%–95%, centered around y50%. Extremely slender, roughly20:1 width-to-height for visible silhouette including end cuts. Irregular rough edge with a few tiny angular ink flecks close to strip. Left/right ends fully visible. Use generous actual transparency around it.\nTransparency: Actual PNG alpha outside the slender strip/end ornaments. No white matte, no black backdrop, no checkerboard pixels, no halo or shadow.\nConstraints: One decorative horizontal divider only. No words, letters, numerals, progress dots, symbols, music notes, arrows, complete interface, buttons, parchment sheet or thick panel. No scenery.",
+      "verification": {
+        "file": "ui-divider.png",
+        "sourceSize": [
+          2172,
+          724
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          2048,
+          89
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha.",
+          "Trimmed outer transparent padding for directly scalable UI use. Original crop:(61, 314, 2109, 403)"
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 62.32,
+        "nonzeroAlphaBounds": [
+          0,
+          0,
+          2048,
+          89
+        ]
+      }
+    },
+    {
+      "file": "ui-panel.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/ui-panel.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-7e6ef094-265f-4524-8ac8-6d62c7acc783.png",
+      "prompt": "Use case: stylized-concept\nAsset type: One blank transparent UI plaque/background PNG for a gothic wedding invitation.\nPrimary request: A HORIZONTAL MAROON-AND-BLACK torn-paper plaque with irregular ragged cut-paper edges. Wide roughly4:1 rectangle. Deep wine-maroon center, ebony-black torn outer edge, narrow warm cream scratchy fine-hatch rim. Blank clear center reserved for HTML button or dialogue text. Center should be relatively flat and legible, subtle mottled maroon paper texture; no objects on it.\nStyle: Don't Starve Together hand-ink game interface art. Angular uneven cut-paper silhouette, bold scratchy black outlines, scribbled fine cream hatch near perimeter, rich burgundy/maroon with ebony and ivory accents. Handmade gothic paper label, not glossy or polished digital UI.\nComposition: Landscape1536x1024 PNG. Plaque centered horizontally, about x6%–94%,y33%–67%; complete4:1-ish silhouette fully visible. Clear blank inner area occupies85% of plaque width and65%height. Small angular tears and notches at perimeter, restrained and practical for a scalable button/dialogue background.\nTransparency: Actual PNG alpha outside plaque. No white matte, no black backdrop, no checkerboard pixels, no shadow, no halo.\nConstraints: ONE plaque only, no text, letters, symbols, icons, ornaments in center, music notes, buttons, panels within panels, no room or props. Do not render any interface screenshot. Blank background sprite only.",
+      "verification": {
+        "file": "ui-panel.png",
+        "sourceSize": [
+          2172,
+          724
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          2047,
+          407
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha.",
+          "Trimmed outer transparent padding for directly scalable UI use. Original crop:(62, 161, 2109, 568)"
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 27.81,
+        "nonzeroAlphaBounds": [
+          0,
+          0,
+          2047,
+          407
+        ]
+      }
+    },
+    {
+      "file": "ui-sound-on.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/ui-sound-on.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-cd3aaa14-ce99-449d-a2ce-da812bfb9d58.png",
+      "prompt": "Use case: stylized-concept\nAsset type: Transparent SOUND-ON music toggle icon for a maroon gothic invitation.\nPrimary request: A small hand-drawn CUT-PAPER MUSIC NOTE symbol on an irregular BLACK-AND-MAROON PAPER BADGE. Rounded roughly square badge with torn angular edges, ebony outer rim, deep rich wine-maroon inner face. In center, one clear cream-parchment EIGHTH NOTE silhouette with maroon ink scratch accents and dark rim. The note should be bold, simple and clearly recognizable at48px; short crooked stem, hooked flag and roundish angular note head. Cream note stands out against maroon. Not a text glyph render, handmade illustration.\nStyle: Don't Starve Together game-interface cut-paper art. Bold scratchy black ink outline, sparse crosshatching, angular imperfect torn paper shapes, muted ivory/cream against vibrant maroon and ebony. Match rough maroon/cream plaque and divider style, no gloss or 3D.\nComposition: SQUARE1024x1024 transparent PNG. Badge centered, occupies x15%–85% andy15%–85%, all edges visible. Equal visual margins, compact icon. Central note fills about55%ofbadge. Keep uncluttered.\nTransparency: Actual PNG alpha outside badge. No background, white matte, checkerboard pixels, outer glow or cast shadow.\nConstraints: ONE music-note badge only, sound-on state. No slash or X over note. No words, letters, labels, speaker icon, headphones, extra symbols, surrounding interface or scenery. No typography.",
+      "verification": {
+        "file": "ui-sound-on.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGBA",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 39.52,
+        "nonzeroAlphaBounds": [
+          108,
+          103,
+          1150,
+          1157
+        ]
+      }
+    },
+    {
+      "file": "ui-sound-off.png",
+      "path": "D:/Iksyntha_Naomi_V2026/Naomi-Link/Naomi-x-Umbranox/Project/Invitation_bif_x_ara/scene1-artwork-v4/ui-sound-off.png",
+      "generatedSource": "C:\\Users\\bifar\\.codex\\generated_images\\01a0d694-5030-7b52-89d1-9f9faf7fe943\\exec-2029ddc2-3715-4ac9-a013-a1a2421377fb.png",
+      "prompt": "Use case: precise-object-edit\nAsset type: Transparent MUSIC MUTED toggle badge, matching the provided sound-on badge exactly.\nInput: ui-sound-on.png is EDIT TARGET. Preserve the exact square canvas dimensions, badge silhouette, maroon and black colors, note shape, crop, position, paper textures, rough ink outline and hatching.\nPrimary request: Make the same badge clearly SOUND OFF by adding ONE bold ragged diagonal slash across the music note, running upper-left to lower-right. Slash is black-maroon cut-paper with a thin warm cream jagged outline so it visibly crosses the cream note and the maroon background. It must read as a visibly crossed-out music note at48px. Keep the original note visible underneath. Slash remains entirely INSIDE the badge, no extending past its outline.\nStyle: Match existing Don't Starve Together hand-ink torn-paper badge exactly; scratchy, angular maroon/black/cream flat art. No new visual style.\nTransparency: Preserve actual alpha transparent background outside original badge, no checkerboard matte, no black or white backdrop, no halo.\nConstraints: Change ONLY add the mute slash. Do not move or resize badge or note, do not redraw silhouette, do not rotate or pad canvas. No text, no labels, no letters, no additional icons. One crossed-out music note on SAME badge.",
+      "editTarget": "ui-sound-on.png",
+      "verification": {
+        "file": "ui-sound-off.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "sourceMode": "RGB",
+        "finalSize": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "cleanup": [
+          "Removed only exterior neutral checker matte, preserving enclosed highlights; cleaned one source-pixel edge fringe.",
+          "Cleared alpha0–1 numerical speckles; preserved generated canvas and other alpha."
+        ],
+        "alphaMin": 0,
+        "alphaMax": 255,
+        "fullyTransparentPercent": 39.66,
+        "nonzeroAlphaBounds": [
+          110,
+          108,
+          1150,
+          1156
+        ]
+      }
+    }
+  ],
+  "generationCalls": 6,
+  "composition": {
+    "hand-short.png": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "gripContactCenterPixels": [
+        951,
+        477
+      ],
+      "gripContactCenterNormalized": [
+        0.7584,
+        0.3804
+      ],
+      "notes": "Correct LEFT hand and compact bent wrist/short forearm entering LEFT edge, not bottom. Ivory/maroon cuff. No hardware or object."
+    },
+    "holding-hands.png": {
+      "canvas": [
+        1536,
+        1024
+      ],
+      "leftThumbContactPixels": [
+        225,
+        640
+      ],
+      "rightThumbContactPixels": [
+        1310,
+        640
+      ],
+      "notes": "Extracted only two hands/cuffs from original hands-card.png in original positions; all paper/envelope/wax removed. Reconstructed only previously hidden fingertip regions."
+    },
+    "ui-panel.png": {
+      "notes": "Blank maroon/black plaque with cream scratch-hatched perimeter. Trimmed outer transparent padding,2047×407. Safe central label area roughly8%..92%width and24%..76%height."
+    },
+    "ui-divider.png": {
+      "notes": "Thin rough maroon/black divider with cream tipped endcuts, trimmed2048×89; can display as a single scalable PNG rule."
+    },
+    "ui-sound-on.png": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "notes": "Cream paper note on maroon/black torn-paper badge. Full square canvas retained to match mute state."
+    },
+    "ui-sound-off.png": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "notes": "Same badge with bold ragged maroon/black slash and cream outline crossing note. Full square canvas retained. Same composition with small texture/ink variations from edit."
+    }
+  }
+}

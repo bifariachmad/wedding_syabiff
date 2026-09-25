@@ -22,7 +22,7 @@ export function initPrologue(onExit){
  let step=0,active=true,busy=false,timeline;
  const $=selector=>section.querySelector(selector);
  async function prepare(target){
-  const selectors={1:'.arrival-knocks',2:'.arrival-envelope-paint,.arrival-door-hand,.arrival-garden img',5:'.arrival-sealed img',6:'.arrival-open img',7:'.arrival-floating img,.arrival-portal img'};
+  const selectors={1:'.arrival-knocks',2:'.arrival-envelope-paint,.arrival-door-hand,.arrival-garden img',5:'.arrival-sealed img',6:'.arrival-open img',7:'.arrival-portal img'};
   const images=selectors[target]?[...section.querySelectorAll(selectors[target])]:[];
   for(const img of images){if(img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;}img.loading='eager';}
   await Promise.all(images.map(img=>img.decode().catch(()=>{})));
@@ -51,7 +51,7 @@ export function initPrologue(onExit){
   gsap.set($('.arrival-sealed'),{autoAlpha:target===5?1:0,y:0,scale:1,rotation:0,rotationX:0});
   gsap.set($('.arrival-open'),{autoAlpha:target===6?1:0,y:0,scale:1,rotation:0});
   gsap.set($('.arrival-card-copy'),{opacity:1});
-  gsap.set($('.arrival-floating'),{autoAlpha:0,y:0,scale:1,rotation:0});
+  gsap.set($('.arrival-paper-frame'),{autoAlpha:1});
   burnPaper($('.arrival-burning-paper'),$('.arrival-burn-edge'),0);
   section.dataset.burn='idle';
   gsap.set($('.arrival-portal'),{autoAlpha:0,scale:.15});
@@ -130,22 +130,18 @@ export function initPrologue(onExit){
   },()=>complete(target));
  }
  function enterPortal(){
-  const held=$('.arrival-open').getBoundingClientRect(),bounds=section.getBoundingClientRect();
-  const floating=$('.arrival-floating'),paper=$('.arrival-burning-paper'),edge=$('.arrival-burn-edge');
-  const width=held.width*.7,height=held.height*.56,left=held.x+held.width*.15-bounds.x,top=held.y+held.height*.1-bounds.y;
-  gsap.set(floating,{left,top,width,height,autoAlpha:0,y:0,scale:1,rotation:-2});
-  gsap.set($('.arrival-portal'),{left:left+width/2,top:top+height/2-25,autoAlpha:0,scale:.06});
+  const frame=$('.arrival-paper-frame'),paper=$('.arrival-burning-paper'),edge=$('.arrival-burn-edge');
+  const card=frame.getBoundingClientRect(),bounds=section.getBoundingClientRect();
+  gsap.set($('.arrival-portal'),{left:card.x+card.width/2-bounds.x,top:card.y+card.height/2-bounds.y,autoAlpha:0,scale:.06});
   burnPaper(paper,edge,0);
-  const burn={progress:0},burnStart=reduced()?.45:1.1,burnDuration=reduced()?1:3.2,portalStart=burnStart+burnDuration+.4;
+  const burn={progress:0},burnStart=.35,burnDuration=reduced()?1:3.2,portalStart=burnStart+burnDuration+.9;
   return run(t=>{
    t.to($('.arrival-heading'),{opacity:0,duration:.35},0);
-   t.to($('.arrival-card-copy'),{opacity:0,duration:.2},0)
-    .to(floating,{autoAlpha:1,y:reduced()?0:-25,duration:.35},0)
-    .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:innerHeight*.55,duration:reduced()?.3:.8,ease:'power2.in'},.05)
-    .call(()=>{section.dataset.burn='burning';$('#arrival-description').textContent='Kartu terangkat. Api menjalar di kertas, menyisakan abu.';sound('ignite');sound(reduced()?'burn-short':'burn');},[],burnStart)
+   t.call(()=>{section.dataset.burn='burning';$('#arrival-description').textContent='Kartu masih kamu pegang. Api menjalar di kertas, menyisakan abu.';sound('ignite');sound(reduced()?'burn-short':'burn');},[],burnStart)
     .to(burn,{progress:1,duration:burnDuration,ease:'none',onUpdate:()=>burnPaper(paper,edge,burn.progress)},burnStart)
-    .set(floating,{autoAlpha:0},burnStart+burnDuration)
+    .set(frame,{autoAlpha:0},burnStart+burnDuration)
     .call(()=>{section.dataset.burn='complete';$('#arrival-description').textContent='Kertas habis menjadi abu.';},[],burnStart+burnDuration)
+    .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:innerHeight*.4,duration:.5,ease:'power2.in'},burnStart+burnDuration+.2)
     .call(()=>{section.dataset.burn='portal';$('#arrival-description').textContent='Setelah kertas habis, sebuah portal terbuka di hadapanmu.';sound('portal');},[],portalStart);
    if(reduced()){
     t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:.25},portalStart).to(section,{opacity:0,duration:.35},portalStart+.45);

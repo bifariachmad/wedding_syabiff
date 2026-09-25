@@ -4,12 +4,12 @@
 
 | Check | Result and evidence |
 |---|---|
-| Scene 1 | Seven reading stops. Instrumented Web Audio confirms knocks precede dialogue and portal SFX follows the burn; new cues respect mute. Hands disappear before paper burns; paper is fully hidden while portal remains hidden, then the portal opens, including reduced-motion mode. One-line invitation text fits at 360×640, 430×932, 1440×900 and 844×390. Grip/open, downward thoughts, pickup, intact-card replay, navigation, clouds, click locking, plain-text names, reduced motion and no page overflow pass. `node tests/arrival.mjs`, `artifacts/arrival-v3/results.json` and screenshots. |
-| Scene 1 artwork | New left hand without hardware, independent card, and ember edge are integrated with existing maroon artwork. Grip, opening and release inspected separately; the right-side handle stays with the door. Twelve active PNGs; prompts and alpha metadata are in the three `artwork/arrival-generation*.json` manifests. |
+| Scene 1 | Seven reading stops. Instrumented Web Audio checks knocks before dialogue and portal SFX after burning, plus mute. Paper burns while the separate hands remain visible and unclipped; after paper disappears the hands lower, then the portal opens. One-line invitation text, navigation, intact-card replay, click locking, plain-text names and reduced motion are checked at 360×640, 430×932, 1440×900 and 844×390. Current evidence: `node tests/arrival.mjs`, `artifacts/arrival-v4/results.json` and screenshots. |
+| Scene 1 artwork | Short bent left forearm, separate holding hands, maroon cutout button/dialogue panel, progress strip and on/off sound badges. Grip and held burning inspected separately; the right-side handle stays with the door. Sixteen active PNGs; prompts and alpha metadata are in the four `artwork/arrival-generation*.json` manifests. |
 | Visual-novel layout | 48 screenshots: all 16 scenes at 360, 390, 430 px. No horizontal or vertical page overflow. Additional reviews at 360 × 640, 390 × 844 and 1440 × 900. `artifacts/browser/` and `artifacts/novel/` |
 | Artwork | 29 generated illustrations, 18 procedural PNG assets, three brand icons and one share image. All 47 main assets reviewed at 1×/2× on paper/ink; transparent-cutout correction pass completed. `artifacts/raster-review/` |
 | Share image | 1200 × 630 PNG; inspected at 400 × 210. `artifacts/og-small.png` |
-| Lighthouse mobile | Performance **88**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **487,644 bytes** (0.49 MB), below 3 MB. LCP 3.83 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
+| Lighthouse mobile | Performance **87**, accessibility **100**. Lighthouse 12.8.2, default simulated mobile throttling, local production build in Chrome. Initial transfer **514,029 bytes** (0.51 MB), below 3 MB. LCP 3.98 s, CLS 0. `artifacts/lighthouse.json` and `.html` |
 | Frontend validation | Empty name, one-character name, guest counts 0 and 6 rejected; valid submission enabled. Exactly two visible reservation fields plus hidden honeypot. |
 | Backend logic | Six tests execute the actual Apps Script source using Google service adapters. Validation, stable IDs for normalized names, locked writes, PIN checks, repeated check-in, stats, malformed actions and literal formula-like names pass. `npm test` |
 | Reservation flow | Valid submit, same-name update with same ID, ticket recall after reload, network failure/retry all pass in browser. The test-only API adapter executes actual `Code.gs`; no mock API ships. |
@@ -21,7 +21,7 @@
 | Build and assets | Production Vite build passes. Static `/admin/` entry included. No SVG files/references in application source or public assets; scanner uses the generated PNG overlay. |
 | Runtime dependencies | `npm audit --omit=dev`: zero reported vulnerabilities. |
 
-The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The feedback revision scored 88 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
+The new opening first scored 77. Deferring the later gate imagery improved initial loading. Only each next action's assets warm during the reading pause, including the gate while the invitation is open. The cutout UI revision scored 87 with its first-action images prefetched. The final run used an explicitly managed Chrome process.
 
 ## Concept checklist
 
@@ -46,7 +46,7 @@ The new opening first scored 77. Deferring the later gate imagery improved initi
 - `APPS_SCRIPT_URL` is not configured. The preview cannot save real reservations until the owner completes README setup. Tests validate the code, not a deployed Google account's permissions, redirect/CORS behavior or quotas.
 - Concurrent-call tests verify retained records and lock coverage in an in-memory harness. They do not simulate Google's distributed execution scheduling. Repeat two simultaneous submissions after live deployment.
 - Camera tests use a generated video feed, not physical optics or event lighting. Phone smoothness, iOS behavior, camera permission UX, actual speaker quality and sustained hardware frame rate require real-device checks.
-- Lighthouse is a lab result. The 88 score meets the requested threshold; LCP measures 3.83 s under its mobile simulation; hosting, network and device results will vary.
+- Lighthouse is a lab result. The 87 score meets the requested threshold; LCP measures 3.98 s under its mobile simulation; hosting, network and device results will vary.
 - The Sites preview is private. Final guest access, custom domain and third-party link preview scraping need the owner's final deployment.
 - Development-only Lighthouse/sharp dependency trees currently have npm advisories; those packages are not included in the static guest bundle. The production dependency audit is clear.
 

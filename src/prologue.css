@@ -7,7 +7,7 @@
 .arrival-door{position:absolute;left:27.9%;top:9%;width:47.5%;height:60.3%;transform-origin:0% 50%;transform-style:preserve-3d;will-change:transform;filter:drop-shadow(5px 8px 5px #0009)}
 .arrival-door-paint{width:100%;height:100%;object-fit:fill;display:block;backface-visibility:hidden}
 /* Only the left hand moves. The right-side brass handle is painted on the door. */
-.arrival-door-hand{position:absolute;width:118%;height:auto;left:-22.2%;top:31.88%;opacity:0;transform-origin:84.43% 19.18%;pointer-events:none;backface-visibility:hidden}
+.arrival-door-hand{position:absolute;width:132%;height:auto;left:-22.7%;top:27.35%;opacity:0;transform-origin:75.84% 38.04%;pointer-events:none;backface-visibility:hidden}
 .arrival-knocks{position:absolute;left:42.2%;top:15%;width:19%;height:auto;pointer-events:none;opacity:0;filter:drop-shadow(0 3px 3px #18060c)}
 .arrival-garden{position:absolute;left:28.5%;top:9.5%;width:46.3%;height:59.3%;overflow:hidden;opacity:0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
 .arrival-clouds{position:absolute;top:5%;left:3%;width:116%;height:auto;opacity:.55;animation:arrival-cloud-drift 28s ease-in-out infinite alternate}
@@ -49,11 +49,33 @@
 @media(max-height:700px) and (max-width:600px){.arrival-heading{top:18px}.visual-novel .arrival-heading h1{font-size:22px}.arrival-held{bottom:calc(var(--nav-height) + 19dvh)}.arrival-caption{min-height:83px;padding-top:22px;padding-bottom:18px}}
 @media(max-height:500px) and (min-width:600px){.arrival-heading{top:12px}.visual-novel .arrival-heading h1{font-size:22px;margin:3px 0}.arrival-heading-rule{display:none}.arrival-held{width:68vh;bottom:calc(var(--nav-height) + 52px)}.arrival-address{font-size:15px}.arrival-address small{font-size:10px}.arrival-card-copy strong{font-size:24px;margin:3px 0}.arrival-card-small{display:none}.arrival-caption{width:min(480px,70vw);min-height:60px;padding:16px 22px 12px;bottom:calc(var(--nav-height) + 8px)}.arrival-caption p{font-size:17px;min-height:24px}}
 @media(prefers-reduced-motion:reduce){.arrival-dust i,.arrival-tree,.arrival-clouds,.arrival-dialogue-cue{animation:none}.arrival-camera,.arrival-door,.arrival-held,.arrival-portal{will-change:auto}}
-.arrival-card-copy strong,.arrival-floating-copy strong{font:clamp(24px,4vw,50px)/1.1 var(--display);white-space:nowrap;margin:18px 0}
-.arrival-floating{position:absolute;z-index:4;opacity:0;visibility:hidden;pointer-events:none;transform-origin:center}
+.arrival-card-copy strong{font:clamp(24px,4vw,50px)/1.1 var(--display);white-space:nowrap;margin:18px 0}
 .arrival-burning-paper{position:absolute;inset:0;filter:drop-shadow(0 6px 10px #0005)}
 .arrival-paper{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
-.arrival-floating-copy{position:absolute;inset:13% 9%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#36101c}
 .arrival-burn-edge{position:absolute;left:-3%;top:-12%;width:106%;height:26%;object-fit:fill;translate:0 -61%;opacity:0;filter:drop-shadow(0 0 5px #ef782d70)}
-@media(max-width:600px){.arrival-card-copy strong,.arrival-floating-copy strong{font-size:clamp(24px,7vw,34px);margin:12px 0}}
-@media(max-height:500px) and (min-width:600px){.arrival-card-copy strong,.arrival-floating-copy strong{font-size:19px;margin:5px 0}.arrival-floating-copy .arrival-card-small{display:none}}
+@media(max-width:600px){.arrival-card-copy strong{font-size:clamp(24px,7vw,34px);margin:12px 0}}
+@media(max-height:500px) and (min-width:600px){.arrival-card-copy strong{font-size:19px;margin:5px 0}}
+/* Paper burns inside the grip; only this layer is clipped. */
+.arrival-paper-frame{position:absolute;left:15%;top:10%;width:70%;height:56%;z-index:1;transform:rotate(-2deg)}
+.arrival-paper-frame .arrival-card-copy{inset:13% 9%;width:auto;height:auto;transform:none}
+.arrival-holding-hands{z-index:2;filter:drop-shadow(0 7px 8px #0004)}
+/* Generated ink-cutout chrome, shared by the entire invitation. */
+.visual-novel .vn-nav{justify-content:center;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;filter:drop-shadow(0 3px 2px #0008);font-size:14px;min-height:51px;width:min(150px,100%);min-width:0;padding:12px 14px;gap:8px;transition:filter .2s,transform .2s}
+.visual-novel .vn-nav:hover{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;filter:brightness(1.2) drop-shadow(0 3px 2px #0008);transform:rotate(-1deg)}
+.visual-novel .vn-nav:disabled{filter:saturate(.5);opacity:.42;transform:none}
+.visual-novel .vn-next{filter:brightness(1.15) drop-shadow(0 3px 2px #0008)}
+.visual-novel .vn-progress{height:7px;background:transparent url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;margin-bottom:10px}
+.visual-novel #journey-progress{height:100%;background:transparent url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;filter:brightness(1.65)}
+.visual-novel .music-toggle,.visual-novel.intro-active .music-toggle{width:48px;height:48px;background:none;border:0;border-radius:0;padding:0;box-shadow:none}
+.visual-novel .music-toggle .icon{width:100%;height:100%;filter:none;object-fit:contain}
+.arrival-heading-rule{width:100px;height:8px;object-fit:fill;margin:8px auto 0}
+.arrival-caption{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;padding-left:30px;padding-right:30px}
+.arrival-caption:before,.arrival-caption:after{display:none}
+.arrival-speaker{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;padding:6px 16px;top:-14px;font-size:12px}
+@media(max-width:600px){.visual-novel .music-toggle{right:12px;top:12px;width:44px;height:44px}.visual-novel .vn-nav{font-size:13px;padding:10px 12px}.arrival-caption{padding-left:24px;padding-right:24px}}
+.visual-novel .vn-progress{position:relative;background:none}
+.visual-novel .vn-progress:before{content:'';position:absolute;inset:0;background:url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;opacity:.3}
+.visual-novel #journey-progress{position:relative}
+.visual-novel .button,.visual-novel .stepper button{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;color:#f4dfc5}
+.visual-novel .button .icon,.visual-novel .stepper button .icon{filter:invert(90%) sepia(15%)}
+.visual-novel .vn-action{border:0;text-decoration:none;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;padding:10px 15px;color:#f4dfc5}
