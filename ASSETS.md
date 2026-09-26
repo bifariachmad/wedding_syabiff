@@ -124,3 +124,7 @@ Built-in ImageGen PNGs and matching prompts: ../finale-artwork/scroll-desk.png, 
 
 # Animated guestbook layers
 Built-in ImageGen produced ../guestbook-artwork/source.png with matching closed/open book sprites; alpha cleanup and extraction metadata are in that folder. Installed closed.png, open.png and right-page crop page.png under public/assets/png/guestbook. Exact prompt: artwork/guestbook-layers.prompt.txt.
+
+# Coherent map room and overhead guestbook — 26 September 2026
+
+Built-in ImageGen generated two replacement raster backgrounds: ../room-revisions/map-room-balanced.png and ../room-revisions/overhead-desk.png (1024×1536 sources). Optimized 1000px-wide PNGs are installed under public/assets/png/rooms. Exact prompts are preserved in artwork/room-revisions.prompts.json. The map console is smaller with visible floor; the overhead desk deliberately contains no book or paper. Scene 8 reuses the existing single closed/open book sprite pair and right-page crop, preventing doubled furniture. Existing host PNGs, cloth, cutout buttons and dialogue borders are retained; no SVG illustration was added.

@@ -1,6 +1,6 @@
 const picture=(name,cls,extra='')=>`<img class="${cls}" ${name==='room-open'||name==='door'?'src':'data-src'}="/assets/png/arrival/${name}.png" alt="" decoding="async" ${extra}/>`;
 export function prologueMarkup(){return `<section id="arrival" class="arrival" data-step="0" aria-label="Scene 1: Sebuah undangan">
- <header class="arrival-heading"><span class="arrival-chapter">PART I</span><h1>Sebuah undangan</h1><img class="arrival-heading-rule" src="/assets/png/arrival/ui-divider.png" alt=""/></header>
+ <header class="arrival-heading"><span class="arrival-chapter">BAB I</span><h1>Sebuah undangan</h1><img class="arrival-heading-rule" src="/assets/png/arrival/ui-divider.png" alt=""/></header>
  <div class="arrival-view" aria-hidden="true">
   <div class="arrival-camera">
    <div class="arrival-set">
@@ -18,6 +18,6 @@ export function prologueMarkup(){return `<section id="arrival" class="arrival" d
  <div class="arrival-held arrival-open" aria-hidden="true"><div class="arrival-paper-frame"><div class="arrival-burning-paper">${picture('invitation-card','arrival-paper')}<div class="arrival-card-copy"><strong>Anda diundang</strong><span class="arrival-card-rule">✦</span></div></div>${picture('burn-edge','arrival-burn-edge')}</div>${picture('holding-hands','arrival-hands arrival-holding-hands')}</div>
  <div class="arrival-portal" aria-hidden="true"><div class="arrival-portal-window"><img data-src="/assets/png/courtyard/morning-garden.png" alt=""/><img class="arrival-distant-gate" data-src="/assets/png/courtyard/gate-pair.png" alt=""/></div>${picture('ink-portal','arrival-ink-ring')}<div class="arrival-portal-shade"></div></div>
  <div class="arrival-vignette" aria-hidden="true"></div>
- <div class="arrival-caption"><span class="arrival-speaker">KAMU</span><p id="arrival-line" aria-hidden="true">Hari ini terasa seperti hari biasa.</p><span class="arrival-dialogue-cue" aria-hidden="true">◆</span></div>
- <span id="arrival-description" class="sr-only" role="status" aria-live="polite">Di dalam rumah, kamu menghadap pintu kayu yang tertutup. Hari ini terasa seperti hari biasa.</span>
+ <div class="arrival-caption"><span class="arrival-speaker">ANDA</span><p id="arrival-line" aria-hidden="true">Hari ini terasa seperti hari biasa.</p><span class="arrival-dialogue-cue" aria-hidden="true">◆</span></div>
+ <span id="arrival-description" class="sr-only" role="status" aria-live="polite">Di dalam rumah, Anda menghadap pintu kayu yang tertutup. Hari ini terasa seperti hari biasa.</span>
  </section>`;}

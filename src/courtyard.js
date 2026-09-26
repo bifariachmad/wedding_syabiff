@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { sound } from './audio.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=['Di mana ini…? Udara pagi terasa hangat.','Ada jalan di balik gerbang itu.','Gerbangnya terbuka. Aku akan masuk.'];
+const lines=['Selamat datang di undangan pernikahan Bifari dan Syafira.','Pilih Lanjut untuk membuka gerbang.','Gerbang sudah terbuka. Mari masuk.'];
 export function initCourtyard(){
  const root=document.querySelector('#invitation'),gate=document.querySelector('#gate');
  let step=0,busy=false,timeline;

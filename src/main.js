@@ -10,6 +10,7 @@ import './agenda.css';
 import './wardrobe.css';
 import './finale.css';
 import './guestbook.css';
+import './guest-friendly.css';
 const app=document.querySelector('#app');
 if(location.pathname.replace(/\/$/,'')==='/admin'){
   await import('./admin.css');

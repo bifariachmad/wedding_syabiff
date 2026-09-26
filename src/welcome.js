@@ -2,11 +2,11 @@ import gsap from 'gsap';
 import {sound} from './audio.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
- ['KAMU','Ini rumahnya. Sepertinya mereka sudah menunggu.'],
- ['BIFARI','Hai, selamat datang! Aku Bifari. Yuk, masuk dulu.'],
- ['SYAFIRA','Aku Syafira. Senang sekali bisa menyambutmu di sini.'],
- ['BIFARI','Kami ingin mengundangmu menjadi bagian dari hari bahagia kami.'],
- ['SYAFIRA','Yuk, ikut kami ke jam besar di dalam. Ada tanggal yang ingin kami tunjukkan.']
+ ['ANDA','Kita sudah tiba. Bifari dan Syafira menyambut kedatangan Anda.'],
+ ['BIFARI','Selamat datang, Bapak, Ibu, dan sahabat sekalian. Saya Bifari. Silakan masuk.'],
+ ['SYAFIRA','Saya Syafira. Terima kasih sudah membuka undangan kami.'],
+ ['BIFARI','Dengan senang hati, kami mengundang Anda untuk hadir di pernikahan kami.'],
+ ['SYAFIRA','Berikut tanggal dan waktu acara kami. Silakan pilih Lanjut.']
 ];
 export function initWelcome(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#greeting');

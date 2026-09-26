@@ -78,3 +78,11 @@ Focused finale checks cover the outward mirrored gate, removed invitation subtit
 
 # Guestbook and summary revision
 Focused tests cover the one-line date, venue logo in Scene 5, all eight centered rundown entries, two separate cloth options, three guestbook states, GALVANIZED display type, labeled local-only mockup success, decoded DEMO-prefixed QR, and a 1080x1600 PNG summary export. Checked 360x640, 430x932, 1440x900 and 844x390. Mockup tickets use a separate storage key and never call the reservation service; setting a live service URL restores server submission and real-ticket storage. Empty summaries show no invented QR or guest count.
+
+# Guest clarity and coherent rooms — 26 September 2026
+
+Focused guest-friendly checks pass at 360×640, 430×932, 1440×900 and 844×390: chapter menu and Escape focus return; reservation-required final ticket; stored-ticket recall; edited-name guard; one closed/open/zooming book; visible form bounds; responsive ticket centering; QR decoding; and 1080×1600 PNG export. The older book-summary entry point now runs the current test. Inspected screenshots under artifacts/guest-friendly, including enlarged portrait hosts and landscape ticket.
+
+All six backend unit tests pass. Production build and the production / plus /admin smoke check pass with no browser errors or SVG artwork. The live service remains unconfigured: the published site uses an explicitly labeled local demo; these checks do not claim a real reservation was sent.
+
+Full browser regression also passes: 45 mobile chapter screenshots, all 16 internal scenes forward/back, normal and reduced motion, reservation validation/update/recall, network failure recovery, decoded QR, PNG/calendar export, admin lookup/check-in, and simulated camera decode. Browser errors: none. Closing is intentionally excluded from the initial unsaved-tour screenshots; its saved-reservation route and the mandatory guard are tested separately.

@@ -44,6 +44,6 @@ export async function saveTicket(ticket) {
   g.font='30px "IM Fell English"';g.fillText(`${CONFIG.EVENT.dateLabel} · ${CONFIG.EVENT.arrival}`,450,463+shift);g.fillText(CONFIG.EVENT.venue,450,511+shift);g.fillText(`Dresscode: ${CONFIG.EVENT.dresscode}`,450,553+shift);
   const qr=new Image();qr.src=await qrData(ticket,500);await qr.decode();g.drawImage(qr,200,600+shift,500,500);
   g.font='30px "Special Elite"';g.fillText(ticketPayload(ticket),450,1145+shift);g.font='28px "IM Fell English"';g.fillText(ticket.demo?'MOCKUP - BUKAN TIKET CHECK-IN':'Tunjukkan QR ini saat registrasi.',450,1215+shift);
-  g.font='24px "IM Fell English"';g.fillStyle='#6B1420';g.fillText('Dua Jiwa, Satu Lentera',450,1353);
+  g.font='24px "IM Fell English"';g.fillStyle='#6B1420';g.fillText('Undangan Pernikahan',450,1353);
   c.toBlob(blob=>{if(blob)downloadBlob(blob,`tiket-${ticket.id}.png`);},'image/png');
 }

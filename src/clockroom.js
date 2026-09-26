@@ -2,10 +2,10 @@ import gsap from 'gsap';
 import {sound} from './audio.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lines=[
- ['BIFARI','Nah, ini jam yang tadi kami ceritakan. Mari mendekat.'],
+ ['BIFARI','Mari melihat tanggal dan waktu pernikahan kami.'],
  ['SYAFIRA','Kami akan menikah hari Sabtu, 31 Oktober 2026. Acara dimulai pukul 09:30 WIB.'],
- ['BIFARI','Tinggal menghitung hari. Rasanya makin tidak sabar bisa bertemu kamu di sana.'],
- ['SYAFIRA','Simpan tanggalnya, ya. Yuk, ke meja peta di sebelah. Kami tunjukkan tempat acaranya.']
+ ['BIFARI','Kami berharap dapat menyambut kehadiran Anda bersama keluarga.'],
+ ['SYAFIRA','Mohon catat tanggalnya. Berikutnya, kami tunjukkan lokasi acara.']
 ];
 export function initClockroom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#countdown'),$=s=>scene.querySelector(s);

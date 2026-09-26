@@ -1,0 +1,100 @@
+/* Consistent reading surfaces and touch targets for every guest. */
+.chapter-toggle{position:absolute;z-index:150;top:max(15px,env(safe-area-inset-top));left:14px;display:flex;align-items:center;justify-content:center;gap:6px;width:86px;height:46px;padding:8px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;color:#ffe7c7;font:17px Georgia,serif}
+.menu-bars{font:24px Georgia,serif;line-height:1}
+#chapter-menu{background:#2c111c;color:#ffe9d0;border:16px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 16px 20px / 0 stretch;width:min(440px,94vw);max-height:90dvh;padding:14px 18px;overflow:auto;font:18px/1.4 Georgia,serif}
+#chapter-menu::backdrop{background:#100710d9;backdrop-filter:blur(4px)}
+.chapter-menu-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#chapter-menu h2{font:26px Georgia,serif;margin:4px 0;color:#ffe9d0}
+#chapter-menu p{font:16px/1.4 Georgia,serif;margin:10px 0}
+#chapter-close{background:none;border:0;color:#ffe9d0;min-height:44px;font:16px Georgia,serif}
+#chapter-menu nav{display:grid;gap:5px}
+#chapter-menu nav button{background:#6b263a55;border:1px solid #c79e7966;border-radius:4px;min-height:45px;padding:10px 12px;text-align:left;color:#fff1dc;font:18px Georgia,serif}
+#chapter-menu nav button:focus-visible{outline:3px solid #ffdab0}
+#chapter-menu .chapter-menu-hint{font-size:14px;color:#e9c5a9}
+.visual-novel .music-toggle{width:44px;height:44px}
+.visual-novel .welcome-heading,.arrival-heading{pointer-events:none}
+.vn-nav{min-height:48px;font-size:16px}
+.vn-dialogue p,.arrival-caption p{line-height:1.45}
+.agenda-current{display:block;font:18px/1.25 Georgia,serif;color:#ffe3b9;margin:0 0 8px}
+.vn-agenda .vn-dialogue p{font-size:18px;line-height:1.3}
+.agenda-card{height:43%}
+#location .maproom-background{object-position:center 50%}
+#location .welcome-couple{bottom:2%;height:54%;width:min(95%,860px)}
+#location .welcome-character{width:43%}
+#location .maproom-venue{top:16%;width:min(420px,78%);padding:8px 12px}
+#location .maproom-venue>span{display:none}
+#location .venue-logo{float:left;width:48px;height:48px;margin:0 9px 4px 0}
+#location .maproom-venue h3{font-size:27px;margin:3px 0}
+#location .maproom-venue p{font-size:16px;margin:6px 0}
+#location .maproom-link{min-height:44px;font-size:15px}
+/* One overhead desk, one book. The right-page crop becomes the writing surface. */
+#reservation .finale-background{object-position:center;filter:brightness(.85)}
+#reservation .guestbook-object{top:20%;height:52%;left:3%;right:3%}
+#reservation .vn-dialogue{overflow:visible}
+#reservation .book-writing-area{display:none}
+#reservation[data-book-step='2'] .vn-dialogue{top:16%;bottom:10px;width:min(610px,94%);padding:0!important;background:url('/assets/png/guestbook/page.png') center/100% 100%;display:block;overflow:visible}
+#reservation[data-book-step='2'] .book-writing-area{position:absolute;inset:6% 16% 6% 10%;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:visible}
+#reservation[data-book-step='2'] #reservation-title{font:32px/1.2 GALVANIZED,Georgia,serif;margin:0 0 12px;flex:none;color:#642139}
+#reservation[data-book-step='2'] .vn-form-content{min-width:0;width:100%;max-width:100%;padding:0;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+#reservation[data-book-step='2'] .reservation-intro{font:18px/1.4 Georgia,serif;margin:0 0 16px;max-width:100%;overflow-wrap:break-word;color:#32131c}
+#reservation[data-book-step='2'] #reservation-form{display:block;width:100%;max-width:100%;min-width:0}
+#reservation[data-book-step='2'] .form-field{margin:0 0 14px;min-width:0}
+#reservation[data-book-step='2'] .form-field label{font:17px/1.4 Georgia,serif;margin:0 0 6px;display:block;overflow-wrap:break-word}
+#reservation[data-book-step='2'] input{font:20px Georgia,serif;min-width:0;max-width:100%;min-height:45px;padding:6px 2px}
+#reservation .stepper{max-width:100%;display:flex;gap:0}
+#reservation .stepper button{min-width:44px;min-height:44px}
+#reservation .stepper input{width:76px}
+#reservation .button{min-height:48px;max-width:100%;font:16px/1.3 Georgia,serif;padding:10px 14px;white-space:normal}
+#reservation .field-error{font:15px/1.3 Georgia,serif;white-space:normal;color:#8b203e}
+#reservation #reservation-status{font:17px/1.4 Georgia,serif;overflow-wrap:anywhere}
+#reservation-success strong{font:26px/1.2 Georgia,serif}
+#reservation-success p{font:18px/1.45 Georgia,serif;margin:10px 0}
+#reservation #recall-ticket,#reservation #edit-reservation{font:17px/1.4 Georgia,serif;min-height:44px}
+#closing .welcome-couple{display:none}
+#closing .farewell-camera{filter:brightness(.35)}
+#closing .vn-dialogue{top:15%;bottom:10px;width:min(560px,94%);background:url('/assets/png/guestbook/page.png') center/100% 100%;border:none;box-shadow:0 18px 60px #0009;padding:24px 75px 20px 50px;overflow:auto;color:#31121b}
+#closing-summary{display:flex;flex-direction:column;align-items:center;text-align:center}
+#closing #closing-summary .summary-mode{font:11px/1.3 Georgia,serif;color:#74344a;margin:0 0 5px}
+#closing #closing-summary h3{font:22px/1.25 Georgia,serif;color:#642139;margin:0 0 9px}
+#closing #closing-summary .summary-couple{font:26px/1.25 GALVANIZED,Georgia,serif;color:#421c2a;margin:0 0 12px}
+.summary-event{width:100%;display:grid;gap:5px;border-top:1px solid #80485977;border-bottom:1px solid #80485977;padding:10px 0;color:#3c1b27;font:18px/1.3 Georgia,serif}
+.summary-event strong{font-weight:700;font-size:21px}
+.summary-guest{padding:10px 0 4px}
+.summary-guest>span{font:13px Georgia,serif;color:#704452}
+#closing #closing-summary .summary-name{font:20px/1.3 Georgia,serif;color:#32151f;margin:3px 0;overflow-wrap:anywhere}
+#closing .summary-guests{font:17px Georgia,serif;color:#32151f}
+#closing .summary-qr{width:174px;height:174px;margin:8px auto 5px}
+#closing #closing-summary .summary-code{font:11px/1.3 var(--ui);color:#4d2936;overflow-wrap:anywhere;margin:4px 0}
+#closing #save-summary{min-height:48px;font:17px/1.3 Georgia,serif;padding:12px 18px;margin:12px 0 0}
+@media(max-width:600px){.chapter-toggle{width:76px;left:10px;font-size:16px}.welcome-heading{left:78px;right:65px}.welcome-heading h2{font-size:26px}.arrival-heading{left:80px;right:64px}.visual-novel .arrival-heading h1{font-size:25px}#location .maproom-venue{width:80%;top:17%;padding:6px 10px}#location .venue-logo{width:42px;height:42px}#location .maproom-venue h3{font-size:24px}#location .maproom-venue p{font-size:14px}#location .welcome-couple{height:55%;width:100%;bottom:2%}#reservation[data-book-step='2'] .book-writing-area{inset:6% 15% 6% 10%}#reservation[data-book-step='2'] #reservation-title{font-size:29px}#closing .vn-dialogue{padding:20px 13% 18px 9%;}#closing #closing-summary h3{font-size:20px}#closing #closing-summary .summary-couple{font-size:23px}.summary-event{font-size:17px}.summary-event strong{font-size:20px}}
+@media(max-height:700px) and (max-width:600px){.welcome-heading{top:20px}.visual-novel .welcome-heading h2{font-size:22px}.arrival-chapter{font-size:10px}.agenda-current{font-size:16px;margin-bottom:5px}.vn-agenda .vn-dialogue{padding:8px 10px;min-height:116px}.vn-agenda .vn-dialogue p{font-size:17px;line-height:1.25}.agenda-card{height:41%}#location .maproom-venue{top:17%;padding:4px 8px}#location .maproom-link{font-size:14px}#reservation[data-book-step='2'] .book-writing-area{inset:6% 15% 6% 10%}#reservation[data-book-step='2'] #reservation-title{font-size:27px;margin-bottom:9px}#reservation[data-book-step='2'] .reservation-intro{font-size:17px;margin-bottom:12px}#reservation[data-book-step='2'] .form-field label{font-size:16px}#reservation[data-book-step='2'] .form-field{margin-bottom:10px}#closing .vn-dialogue{top:16%;padding:14px 13% 13px 9%}#closing #closing-summary h3{font-size:18px;margin-bottom:5px}#closing #closing-summary .summary-couple{font-size:21px;margin-bottom:6px}.summary-event{font-size:16px;gap:3px;padding:7px 0}.summary-event strong{font-size:18px}.summary-guest{padding:7px 0 0}#closing #closing-summary .summary-name{font-size:18px}#closing .summary-qr{width:132px;height:132px;margin:6px auto 3px}#closing #save-summary{font-size:15px;margin-top:7px;padding:10px 12px}}
+@media(max-height:500px) and (min-width:600px){.chapter-toggle{top:8px;height:42px}.welcome-heading{left:108px;max-width:31%;top:8px}.arrival-heading{left:110px;right:80px}.agenda-current{font-size:16px}.agenda-card{height:69%}.vn-agenda .vn-dialogue p{font-size:17px}#location .welcome-heading{left:108px;top:8px}#location .maproom-venue{left:25%;top:29%;width:42%;padding:4px 8px}#location .venue-logo{width:40px;height:40px}#location .welcome-couple{left:75%;width:47%;height:80%;bottom:0}#reservation .guestbook-object{left:3%;right:48%;top:22%;height:72%}#reservation .welcome-heading{left:110px;right:auto}#reservation[data-book-step='2'] .vn-dialogue{top:5%;bottom:7px;right:3%;width:60%}#reservation[data-book-step='2'] .book-writing-area{inset:7% 16% 7% 10%}#reservation[data-book-step='2'] #reservation-title{font-size:27px}#reservation[data-book-step='2'] .reservation-intro{font-size:17px}#closing .welcome-heading{left:110px;max-width:24%}#closing .vn-dialogue{top:5%;bottom:7px;right:3%;width:61%;padding:14px 7% 14px 4%}#closing-summary{display:grid;grid-template-columns:minmax(0,1fr) 132px;gap:3px 10px;align-items:center}#closing-summary>*{grid-column:1}#closing-summary .summary-qr{grid-column:2;grid-row:2/7;width:132px;height:132px}#closing #save-summary{grid-column:2;grid-row:7/9;font-size:14px;margin:4px 0;min-height:44px;padding:8px}#closing #closing-summary h3{font-size:18px;margin:2px 0}#closing #closing-summary .summary-couple{font-size:21px;margin:2px 0}.summary-event{font-size:15px;padding:5px 0}.summary-event strong{font-size:18px}.summary-guest{padding:3px 0}#closing #closing-summary .summary-name{font-size:17px}}
+
+/* Keep the whole guest ticket inside the illustrated paper on small screens. */
+@media(max-width:600px){
+ #closing .vn-dialogue{padding:26px 13% 27px 9%}
+ #closing-summary{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:4px 8px;align-items:center}
+ #closing-summary>*{grid-column:1 / -1;min-width:0}
+ #closing-summary .summary-guest{grid-column:1;grid-row:5;padding:4px 0}
+ #closing #closing-summary .summary-name{font-size:18px}
+ #closing-summary .summary-qr{grid-column:2;grid-row:5;width:112px;height:112px;margin:6px 0}
+ #closing #save-summary{justify-self:center;margin-top:4px;font-size:15px}
+ #closing #closing-summary .summary-couple{width:100%;font-size:21px}
+}
+@media(max-height:500px) and (min-width:600px){
+ #closing .vn-dialogue{padding-top:18px;padding-bottom:20px}
+ #closing-summary .summary-qr{grid-row:2/5}
+ #closing #save-summary{grid-row:5/8}
+}
+
+@media(max-width:600px){#location .welcome-character{width:62%}}
+@media(max-height:500px) and (min-width:600px){
+ #closing-summary .summary-mode{grid-column:1;grid-row:1}
+ #closing-summary h3{grid-column:1;grid-row:2}
+ #closing-summary .summary-couple{grid-column:1;grid-row:3}
+ #closing-summary .summary-event{grid-column:1;grid-row:4}
+ #closing-summary .summary-guest{grid-column:1;grid-row:5/8}
+ #closing-summary .summary-qr{grid-column:2;grid-row:1/5}
+ #closing-summary .summary-code{grid-column:2;grid-row:5}
+ #closing #save-summary{grid-column:2;grid-row:6/8}
+}

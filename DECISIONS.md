@@ -37,3 +37,11 @@ Scene 2 movement revision: six alternating footfalls advance the garden camera t
 Title reveal: a black/maroon vignette and subtle existing paper grain fade in only after the last step. GALVANIZED names are enlarged; the date reads Sabtu, on its own line and 31 Oktober 2026. below. The existing transparent frame-border PNG is split into left/right clipped layers, revealing roots upward at staggered timing to frame the names. Reduced motion shows the finished frame without growth.
 
 Scene 3 — Sebuah sambutan: four reading stops reuse the greeting chapter without removing event content. Enter at a closed manor door, open two independent PNG leaves, step closer to the existing couple cutout, then read the original two-sentence welcome split into two dialogue beats. No personal-history details are invented. Separate room, door, couple and candle layers support motion and depth. Back from countdown restores the final welcome stop; back from its first stop restores the title and rose frame. Reduced motion preserves each beat using short fades.
+
+# Guest clarity revision — 26 September 2026
+
+Chapter shortcuts open from a native modal dialog in the upper-left corner. Location/date/wardrobe shortcuts open at the useful information state; the book shortcut opens its form. The story keeps its ordinary back/next sequence. All paths to the final ticket require a saved ticket matching the current name and guest count. Editing either value locks continuation until saved again. A stored matching ticket can be recalled after reload.
+
+The illustrated overhead desk is empty and supports one animated book. Form content stays within the page's safe area and scrolls internally on short screens. The final ticket is the dominant light surface; unnecessary share/music actions and the invented slogan are removed. Copy now uses short, direct Indonesian and respectful forms of address. Font sizes, touch targets, form contrast and mobile summary hierarchy are improved. GSAP text transforms are cleared after transitions to restore CSS percentage-based centering when the viewport changes.
+
+Live reservations remain unconfigured. The clearly labeled local demo uses separate storage and DEMO-prefixed QR payloads; it is not a valid event check-in. BGM-RECOMMENDATIONS.md lists four official-source music options without adding any recording to the site.

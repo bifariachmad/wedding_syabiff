@@ -10,7 +10,7 @@ import { initCourtyard } from './courtyard.js';
 import { initWelcome } from './welcome.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-export function initMotion(){
+export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{}}={}){
  const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
  const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
  let index=0,busy=false,ambient=[],prologue;
@@ -19,8 +19,8 @@ export function initMotion(){
  const clockroom=initClockroom();
  const maproom=initMaproom();
  const wardrobe=initWardrobe();
- const guestbook=initGuestbook();
- const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index>=5&&index<=12);root.classList.toggle('finale-active',!prologue?.active&&index>=14);root.classList.toggle('wardrobe-active',!prologue?.active&&index===13);if(prologue?.active){prologue.controls();return;}if(index===14&&!busy){guestbook.controls();return;}if(index===13&&!busy){wardrobe.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index>=5&&index<=12){root.querySelector('#journey-position').innerHTML=`${String(index-4).padStart(2,'0')} <small>/ 08</small>`;gsap.set('#journey-progress',{scaleX:(index-4)/8});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
+ const guestbook=initGuestbook(canOpenSummary);
+ const controls=()=>{next.textContent='Lanjut';root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index>=5&&index<=12);root.classList.toggle('finale-active',!prologue?.active&&index>=14);root.classList.toggle('wardrobe-active',!prologue?.active&&index===13);if(prologue?.active){prologue.controls();return;}if(index===14&&!busy){guestbook.controls();return;}if(index===13&&!busy){wardrobe.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index>=5&&index<=12){root.querySelector('#journey-position').innerHTML=`${String(index-4).padStart(2,'0')} <small>/ 08</small>`;gsap.set('#journey-progress',{scaleX:(index-4)/8});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
  function atmosphere(){
   ambient.forEach(t=>t.kill());ambient=[];if(reduced()||prologue?.active)return;
   const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
@@ -36,6 +36,8 @@ export function initMotion(){
   from.setAttribute('aria-hidden','true');from.inert=true;
   to.classList.remove('is-travelling');to.classList.add('is-active','is-visible');
   to.removeAttribute('aria-hidden');to.inert=false;
+  // Restore percentage-based centering after GSAP resolves it to pixels.
+  gsap.set(to.querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});
   index=target;busy=false;if(index===0)courtyard.show(2);
   root.querySelector('#journey-position').innerHTML=`${String(index+1).padStart(2,'0')} <small>/ ${scenes.length}</small>`;
   controls();
@@ -49,7 +51,9 @@ export function initMotion(){
   if(typeof target==='string')target=scenes.findIndex(s=>s.id===target);
   if(prologue?.busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;
   if(prologue?.active){prologue.dismiss();controls();}
-  if(busy||target<0||target>=scenes.length||target===index)return false;
+  if(busy||target<0||target>=scenes.length)return false;
+  if(target===15&&!canOpenSummary()){if(index!==14)await goTo(14);guestbook.show(2);onSummaryBlocked();return false;}
+  if(target===index){controls();return false;}
   busy=true;controls();
   const from=scenes[index],to=scenes[target],direction=target>index?1:-1;
   ambient.forEach(t=>t.kill());ambient=[];
@@ -156,6 +160,7 @@ export function initMotion(){
  }
  prologue=initPrologue(()=>{courtyard.show(0);controls();hydrateArt(scenes[0]);hydrateArt(scenes[1]);sound('morning');atmosphere();});
  controls();
- return {goTo,next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===0&&courtyard.step<2)return courtyard.next();if(index===2&&welcome.step<welcome.last)return welcome.next();if(index===3&&clockroom.step<clockroom.last)return clockroom.next();if(index===4&&maproom.step<maproom.last)return maproom.next();if(index===13&&wardrobe.step<wardrobe.last)return wardrobe.next();if(index===14&&guestbook.step<2)return guestbook.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===2&&welcome.step>0)return welcome.back();if(index===3&&clockroom.step>0)return clockroom.back();if(index===4&&maproom.step>0)return maproom.back();if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}if(index===13&&wardrobe.step>0)return wardrobe.back();if(index===14&&guestbook.step>0)return guestbook.back();return goTo(index-1);}};
+ document.addEventListener('reservation-updated',()=>{if(index===14&&!busy)guestbook.controls();});
+ return {goTo,chapter:async id=>{if(busy||prologue.busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(id==='arrival'){await prologue.show(0);controls();return true;}await goTo(id);if(id==='reservation')guestbook.show(2);else if(id==='gate')courtyard.show(0);else if(id==='greeting')welcome.show(0);else if(id==='countdown')clockroom.show(1);else if(id==='location')maproom.show(1);else if(id==='dresscode')wardrobe.show(1);gsap.set(scenes[index].querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});controls();return true;},next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===0&&courtyard.step<2)return courtyard.next();if(index===2&&welcome.step<welcome.last)return welcome.next();if(index===3&&clockroom.step<clockroom.last)return clockroom.next();if(index===4&&maproom.step<maproom.last)return maproom.next();if(index===13&&wardrobe.step<wardrobe.last)return wardrobe.next();if(index===14&&guestbook.step<2)return guestbook.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===2&&welcome.step>0)return welcome.back();if(index===3&&clockroom.step>0)return clockroom.back();if(index===4&&maproom.step>0)return maproom.back();if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}if(index===13&&wardrobe.step>0)return wardrobe.back();if(index===14&&guestbook.step>0)return guestbook.back();return goTo(index-1);}};
 }
 export function stampTicket(){if(reduced())return;gsap.from('.ticket-card',{y:10,opacity:0,duration:.5});sound('seal');}
