@@ -75,3 +75,6 @@ The focused wardrobe test covers the normal-motion book-to-wardrobe entrance, fo
 
 # Final journey revision
 Focused finale checks cover the outward mirrored gate, removed invitation subtitle, enlarged invitation headline, three date lines and rounded venue logo, progressive scroll entries, maroon/black dresscode, reservation and garden farewell in four viewports. Normal transitions and reverse navigation pass with all PNGs loaded and no browser errors. The live Google Apps Script URL remains unconfigured; reservation checks use the existing service harness.
+
+# Guestbook and summary revision
+Focused tests cover the one-line date, venue logo in Scene 5, all eight centered rundown entries, two separate cloth options, three guestbook states, GALVANIZED display type, labeled local-only mockup success, decoded DEMO-prefixed QR, and a 1080x1600 PNG summary export. Checked 360x640, 430x932, 1440x900 and 844x390. Mockup tickets use a separate storage key and never call the reservation service; setting a live service URL restores server submission and real-ticket storage. Empty summaries show no invented QR or guest count.

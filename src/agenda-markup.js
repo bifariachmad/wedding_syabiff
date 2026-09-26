@@ -10,6 +10,6 @@ const dialogue=[
  ['SYAFIRA','Acara ditutup dengan ucapan terima kasih dari kami. Sebelum melanjutkan, ada warna yang ingin kami ajak kamu kenakan.']
 ];
 export function agendaArtwork(i){return `<div class="agenda-camera"><img class="agenda-background" data-src="/assets/png/finale/scroll-desk.png" alt=""/></div><div class="agenda-shade"></div><header class="welcome-heading"><span>PART VI</span><h2 id="rundown-${i}-title">Selembar rencana</h2><img src="/assets/png/arrival/ui-divider.png" alt=""/></header>`;}
-export function agendaCard(i){return `<article class="agenda-card" aria-label="Rundown tahap ${i+1}"><div class="agenda-list" style="--offset:${Math.max(0,i-2)}">${CONFIG.RUNDOWN.map(([time,title],j)=>`<div class="agenda-entry" ${j>i?'hidden':''} ${j===i?'aria-current="step"':''}><time>${time} WIB</time><h3>${title}</h3></div>`).join('')}</div></article>`;}
+export function agendaCard(i){return `<article class="agenda-card" aria-label="Rundown tahap ${i+1}"><div class="agenda-list" style="--offset:0">${CONFIG.RUNDOWN.map(([time,title],j)=>`<div class="agenda-entry" ${j>i?'hidden':''} ${j===i?'aria-current="step"':''}><time>${time} WIB</time><h3>${title}</h3></div>`).join('')}</div></article>`;}
 export function agendaDialogue(i){return `<p class="agenda-line">${dialogue[i][1]}</p>`;}
 export function agendaSpeaker(i){return dialogue[i][0];}

@@ -121,3 +121,6 @@ Built-in ImageGen source and exact prompt: ../scene7-artwork/dressing-alcove.png
 
 # Scroll, guestbook and farewell
 Built-in ImageGen PNGs and matching prompts: ../finale-artwork/scroll-desk.png, guestbook-desk.png, farewell-garden.png. Optimized copies in public/assets/png/finale; exact prompts in artwork. User-supplied ../logo_lumbung.png is installed as public/assets/png/logo-lumbung.png with rounded CSS corners. Existing cloth PNG is reused and filtered for the black option.
+
+# Animated guestbook layers
+Built-in ImageGen produced ../guestbook-artwork/source.png with matching closed/open book sprites; alpha cleanup and extraction metadata are in that folder. Installed closed.png, open.png and right-page crop page.png under public/assets/png/guestbook. Exact prompt: artwork/guestbook-layers.prompt.txt.

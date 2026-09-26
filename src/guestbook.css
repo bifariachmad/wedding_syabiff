@@ -1,0 +1,62 @@
+.clockroom-countdown .event-date strong{font-size:clamp(23px,3vw,32px);white-space:nowrap}
+#location .welcome-couple{top:auto;bottom:3%;height:47%}
+#location .host-idle,#location .host-speaking{animation:none;transform:none}
+#location .maproom-venue{top:16%;padding:10px 16px}
+#location .venue-logo{width:64px;height:64px;float:none;margin:0 auto 6px;border-radius:14px}
+.agenda-card{top:22%;height:47%;text-align:center}
+.agenda-list{height:100%;transform:none}
+.agenda-entry{height:12.5%;padding:3px 0;display:flex;flex-direction:column;justify-content:center;gap:3px}
+.visual-novel .agenda-card time{font-size:13px;margin:0}
+.visual-novel .agenda-card h3{font-size:19px;line-height:1.08}
+.wardrobe-swatch{width:min(650px,95%);height:34%;display:flex;gap:10px;align-items:center;top:29%;filter:none}
+.cloth-option{position:relative;width:50%;height:100%;margin:0;filter:drop-shadow(0 10px 10px #000b);transform-origin:center top}
+.cloth-option img{width:100%;height:100%;object-fit:contain}
+.cloth-option figcaption{position:absolute;bottom:1%;left:10%;width:80%;text-align:center;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;font:16px var(--ui);color:#ffe4bf;padding:9px 4px}
+.cloth-black img{filter:grayscale(1) brightness(.32)}
+.guestbook-object{position:absolute;left:5%;right:5%;top:19%;height:55%;perspective:1100px;transform-origin:72% 50%;filter:drop-shadow(0 20px 20px #0009)}
+.guestbook-object img{position:absolute;width:100%;height:100%;object-fit:contain}
+.guestbook-object .guestbook-cover{width:48%;left:26%;transform-origin:left center;backface-visibility:hidden}
+.guestbook-open{opacity:0}
+#reservation:not([data-book-step='2']) .vn-form-content,#reservation:not([data-book-step='2']) #reservation-title{display:none}
+#reservation:not([data-book-step='2']) .vn-dialogue{min-height:110px;max-height:30%;padding:18px 20px}
+#reservation .guestbook-line{font:20px/1.4 var(--body);margin:0;color:#f4dfc5}
+#reservation[data-book-step='2'] .guestbook-line,#reservation[data-book-step='2'] .vn-speaker{display:none}
+#reservation[data-book-step='2'] .vn-dialogue{background:url('/assets/png/guestbook/page.png') center/100% 100%;border:none;box-shadow:none;top:17%;bottom:12px;max-height:none;width:min(540px,92%);padding:32px 40px;color:#32131c}
+#reservation[data-book-step='2'] #reservation-title{font-family:GALVANIZED;font-size:36px;color:#642139;text-align:center;flex-shrink:0}
+#reservation[data-book-step='2'] .reservation-intro,#reservation[data-book-step='2'] .form-field label,#reservation[data-book-step='2'] #reservation-status{color:#32131c}
+#reservation[data-book-step='2'] .reservation-intro{font-size:17px;line-height:1.25;margin:0 0 8px}
+#reservation[data-book-step='2'] .form-field{margin-top:10px}
+#reservation[data-book-step='2'] .form-field label{font-size:14px}
+#reservation[data-book-step='2'] input{color:#431d28;border-bottom-color:#784656;background:#eee0b833}
+#reservation .vn-form-content{min-height:0}
+#reservation .stepper{background:none}
+#reservation-success{padding:14px 8px;text-align:center;color:#642139}
+#reservation-success strong{font:28px GALVANIZED}
+#reservation-success p{color:#431d28;font:18px/1.35 var(--body)}
+#reservation.is-demo .ticket-card,#reservation.is-demo #save-ticket,#reservation.is-demo #calendar{display:none}
+#reservation.is-demo #edit-reservation{color:#642139}
+#reservation.is-demo .ticket-actions{display:block;text-align:center}
+#closing .welcome-couple{opacity:.4}
+#closing .vn-dialogue{top:15%;bottom:12px;padding:16px 22px;max-height:none;width:min(540px,92%);overflow-y:auto}
+#closing .vn-speaker{display:none}
+#closing-summary{text-align:center}
+#closing-summary h3{font:30px/1.1 GALVANIZED;color:#ffe3bd;margin:7px 0}
+#closing #closing-summary p{font:17px/1.25 var(--body);margin:6px 0}
+#closing #closing-summary .summary-mode{font:11px var(--ui);color:#e8ba98}
+#closing #closing-summary .summary-couple{font:21px GALVANIZED}
+.summary-name{overflow-wrap:anywhere}
+.summary-guests{display:block;font:16px var(--ui);color:#ffe1ba}
+.summary-qr{width:154px;height:154px;display:block;margin:8px auto;max-width:100%;object-fit:contain}
+#closing #closing-summary .summary-code{font:10px var(--ui);overflow-wrap:anywhere}
+#save-summary{margin:5px auto 10px;font:14px var(--ui)}
+#closing .vn-closing-actions{margin-top:5px}
+@media(max-width:600px){#location .welcome-couple{bottom:2%;height:45%}#location .maproom-venue{top:15%;padding:6px 12px}#location .venue-logo{width:52px;height:52px}.agenda-card{height:46%;top:22%}.visual-novel .agenda-card time{font-size:10px}.visual-novel .agenda-card h3{font-size:13px}.agenda-entry{gap:2px;padding:1px 0}#reservation[data-book-step='2'] .vn-dialogue{padding:25px 28px}.cloth-option figcaption{font-size:13px}.summary-qr{width:142px;height:142px}}
+@media(max-height:700px) and (max-width:600px){.clockroom-countdown .event-date strong{font-size:22px}#location .maproom-venue{top:15%;padding:4px 8px}#location .venue-logo{width:44px;height:44px}.agenda-card{top:21%;height:46%}.vn-agenda .vn-dialogue{min-height:106px;padding:9px 10px}.vn-agenda .vn-dialogue p{font-size:16px;line-height:1.25;min-height:0}.visual-novel .agenda-card h3{font-size:12px}.visual-novel .agenda-card time{font-size:9px}.cloth-option figcaption{font-size:12px}#reservation[data-book-step='2'] .vn-dialogue{top:17%;padding:22px 26px}#reservation[data-book-step='2'] #reservation-title{font-size:28px}#reservation[data-book-step='2'] .reservation-intro{font-size:15px}#reservation .button{padding:10px 14px;min-height:42px;font-size:12px}#closing .vn-dialogue{top:15%;padding:10px 18px}#closing-summary h3{font-size:24px}#closing #closing-summary .summary-couple{font-size:18px}#closing #closing-summary p{font-size:14px;margin:4px 0}.summary-qr{width:124px;height:124px;margin:5px auto}#save-summary{font-size:12px;padding:8px 12px;margin:4px auto}#closing .vn-closing-actions button{font-size:10px;padding:7px 4px}}
+@media(max-height:500px) and (min-width:600px){#location .welcome-couple{left:25%;bottom:0;height:62%;width:46%}#location .maproom-venue{left:25%;top:25%;width:43%}#location .venue-logo{width:40px;height:40px;float:left;margin-right:8px}.agenda-card{height:72%;top:24%;width:26%}.visual-novel .agenda-card time{font-size:9px}.visual-novel .agenda-card h3{font-size:12px}.vn-agenda .welcome-heading{top:5px}.wardrobe-swatch{width:47%;left:0;right:auto;top:30%;height:53%}.cloth-option figcaption{font-size:12px}.guestbook-object{left:0;right:48%;top:22%;height:68%}#reservation:not([data-book-step='2']) .vn-dialogue{left:auto;right:18px;width:46%;bottom:20px;max-height:60%}#reservation[data-book-step='2'] .vn-dialogue{top:6%;bottom:6px;right:3%;width:57%;padding:20px 32px}#reservation[data-book-step='2'] #reservation-title{font-size:28px}#reservation[data-book-step='2'] .reservation-intro{font-size:15px}#closing .welcome-heading{max-width:35%}#closing .vn-dialogue{top:4%;right:3%;width:61%;bottom:6px;padding:12px 18px}#closing-summary{display:grid;grid-template-columns:1fr 124px;column-gap:12px}#closing-summary>*{grid-column:1}#closing-summary .summary-qr{grid-column:2;grid-row:2/8;width:124px;height:124px;align-self:center}#closing-summary h3{font-size:24px}#closing #closing-summary p{font-size:14px;margin:3px}#closing #closing-summary .summary-couple{font-size:18px}#save-summary{grid-column:2;grid-row:8/10;font-size:11px;align-self:center}#closing .vn-closing-actions{margin-top:4px}}
+@media(prefers-reduced-motion:no-preference){.cloth-maroon img{animation:cloth-left 3s ease-in-out infinite alternate}.cloth-black img{animation:cloth-right 3.4s ease-in-out infinite alternate}@keyframes cloth-left{to{transform:rotate(-3deg) translateY(-5px)}}@keyframes cloth-right{to{transform:rotate(3deg) translateY(-5px)}}}
+
+#reservation[data-book-step='2'] .vn-dialogue{padding-right:54px}
+#reservation .vn-form-content{min-width:0;flex:1 1 auto;overflow-x:hidden}
+#reservation-success p{overflow-wrap:anywhere}
+@media(max-width:600px){#reservation[data-book-step='2'] .vn-dialogue{padding-left:28px;padding-right:44px}}
+@media(max-height:500px) and (min-width:600px){#reservation .vn-form-content{flex:1 1 auto;min-height:0}#reservation[data-book-step='2'] .vn-dialogue{padding-right:54px}}

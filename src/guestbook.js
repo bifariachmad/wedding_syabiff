@@ -1,0 +1,12 @@
+import gsap from 'gsap';
+import {sound} from './audio.js';
+const captions=['Ini buku tamu kami. Mari dibuka, ada satu halaman untukmu.','Halaman ini masih kosong. Kita mendekat, lalu tuliskan namamu di sini.','Silakan tuliskan nama dan jumlah tamu yang akan hadir.'];
+export function initGuestbook(){
+ const root=document.querySelector('#invitation'),scene=document.querySelector('#reservation'),book=scene.querySelector('.guestbook-object'),cover=scene.querySelector('.guestbook-cover'),open=scene.querySelector('.guestbook-open'),dialogue=scene.querySelector('.vn-dialogue');let step=0,busy=false;
+ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function controls(){scene.dataset.bookStep=String(step);root.dataset.bookBusy=String(busy);root.querySelector('#nav-next').disabled=busy;root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 03</small>`;gsap.set('#journey-progress',{scaleX:(step+1)/3});}
+ function pose(){gsap.set(cover,{rotationY:step? -150:0,autoAlpha:step?0:1});gsap.set(open,{autoAlpha:step?1:0});gsap.set(book,{scale:step===2?1.9:1,xPercent:step===2?-23:0,opacity:step===2?0:1});gsap.set(dialogue,{opacity:1,y:0});scene.querySelector('.guestbook-line').textContent=captions[step];controls();}
+ function show(at=0){step=at;busy=false;pose();}
+ function move(at){if(busy||at<0||at>2)return false;busy=true;controls();return new Promise(resolve=>{const t=gsap.timeline({onComplete:()=>{step=at;busy=false;pose();resolve(true);}});t.to(dialogue,{opacity:0,duration:reduced()?0:.2},0).call(()=>sound('page'),[],0);if(at===1){t.to(book,{scale:1,xPercent:0,opacity:1,duration:reduced()?0:.9},0).set(open,{autoAlpha:1},0).to(cover,{rotationY:-150,autoAlpha:0,duration:reduced()?0:1.3,ease:'sine.inOut'},0);}else if(at===2){t.to(book,{scale:1.9,xPercent:-23,duration:reduced()?0:1.5,ease:'sine.inOut'},0).to(book,{opacity:0,duration:reduced()?0:.4},reduced()?0:1.1);}else{t.set(open,{autoAlpha:0}).set(cover,{autoAlpha:1}).to(cover,{rotationY:0,duration:reduced()?0:1.1,ease:'sine.inOut'});}});}
+ return{get step(){return step;},get last(){return 2;},get busy(){return busy;},show,controls,next:()=>move(step+1),back:()=>move(step-1)};
+}

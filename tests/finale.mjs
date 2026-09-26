@@ -1,6 +1,6 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
 const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const p=await b.newPage({viewport:{width:360,height:640},reducedMotion:'reduce'}),errors=[];
-p.on('pageerror',e=>errors.push(e.message));await p.route('**/src/invitation.js',async r=>{const response=await r.fetch();await r.fulfill({response,body:(await response.text()).replace('const journey=initMotion();','const journey=initMotion();window.testJourney=journey;')});});
+p.on('pageerror',e=>errors.push(e.message));await p.route('**/src/invitation.js*',async r=>{const response=await r.fetch();await r.fulfill({response,body:(await response.text()).replace('const journey=initMotion();','const journey=initMotion();window.testJourney=journey;')});});
 const go=async i=>p.evaluate(i=>window.testJourney.goTo(i),i);const next=async()=>p.evaluate(()=>window.testJourney.next());
 try{await fs.mkdir('artifacts/finale',{recursive:true});await p.goto('http://127.0.0.1:5173');await p.waitForFunction(()=>window.testJourney);assert.equal(await p.locator('.arrival-card-small').count(),0);for(let i=0;i<6;i++)await next();await p.screenshot({path:'artifacts/finale/letter.png'});
  await go(1);await go(0);assert.match(await p.locator('.courtyard-left').getAttribute('style'),/rotateY\(-82deg\)/);assert.match(await p.locator('.courtyard-right').getAttribute('style'),/rotateY\(82deg\)/);
