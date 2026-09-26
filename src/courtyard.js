@@ -17,8 +17,8 @@ export function initCourtyard(){
  function pose(){
   gsap.set($('.courtyard-camera'),{scale:step?1.09:1,x:0,y:0,rotation:0,opacity:1});
   gsap.set($('.courtyard-heading'),{opacity:1});
-  gsap.set($('.courtyard-left'),{rotationY:step===2?82:0});
-  gsap.set($('.courtyard-right'),{rotationY:step===2?-82:0});
+  gsap.set($('.courtyard-left'),{rotationY:step===2?-82:0});
+  gsap.set($('.courtyard-right'),{rotationY:step===2?82:0});
   gsap.set($('.vn-dialogue'),{opacity:1,y:0});caption();controls();
  }
  function show(at=0){step=at;busy=false;pose();}
@@ -29,12 +29,12 @@ export function initCourtyard(){
    timeline=gsap.timeline({onComplete:()=>{step=target;busy=false;caption();controls();resolve(true);}});
    timeline.to($('.vn-dialogue'),{opacity:0,duration:.15});
    if(reduced()){
-    timeline.set($('.courtyard-left'),{rotationY:target===2?82:0}).set($('.courtyard-right'),{rotationY:target===2?-82:0});
+    timeline.set($('.courtyard-left'),{rotationY:target===2?-82:0}).set($('.courtyard-right'),{rotationY:target===2?82:0});
    }else if(target===2||step===2){
     const at=timeline.duration();
     timeline.call(()=>{sound('latch');sound('gate');},[],at)
-     .to($('.courtyard-left'),{rotationY:target===2?82:0,duration:4.2,ease:'sine.inOut'},at+.2)
-     .to($('.courtyard-right'),{rotationY:target===2?-82:0,duration:4.4,ease:'sine.inOut'},at+.28)
+     .to($('.courtyard-left'),{rotationY:target===2?-82:0,duration:4.2,ease:'sine.inOut'},at+.2)
+     .to($('.courtyard-right'),{rotationY:target===2?82:0,duration:4.4,ease:'sine.inOut'},at+.28)
      .call(()=>sound('gate'),[],at+2.2).to({}, {duration:.3});
    }else{
     const at=timeline.duration();

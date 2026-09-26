@@ -13,7 +13,7 @@ export const CONFIG = Object.freeze({
     venue: 'Lumbung Kuliner',
     maps: 'https://maps.app.goo.gl/d5nJ9Rfvx1j3bCwp7',
     geo: [3.6875523, 98.6558724],
-    dresscode: 'Maroon',
+    dresscode: 'Maroon atau hitam',
   },
   RUNDOWN: [
     ['09:30-10:00', 'Registrasi & Welcome Drink', 'Tunjukkan QR reservasi, duduk santai', 'gate', 'wine-glass'],

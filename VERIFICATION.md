@@ -72,3 +72,6 @@ tests/agenda.mjs passes normal-motion slow opening (final inward angle 82 degree
 
 # Scene 7 wardrobe
 The focused wardrobe test covers the normal-motion book-to-wardrobe entrance, four dialogue stops, alternating speakers, cloth reveal, navigation to reservation and back to agenda, image loading, no SVG, no page overflow, and 360x640 / 430x932 / 1440x900 / 844x390 layouts. Production build passes. No backend behavior changed.
+
+# Final journey revision
+Focused finale checks cover the outward mirrored gate, removed invitation subtitle, enlarged invitation headline, three date lines and rounded venue logo, progressive scroll entries, maroon/black dresscode, reservation and garden farewell in four viewports. Normal transitions and reverse navigation pass with all PNGs loaded and no browser errors. The live Google Apps Script URL remains unconfigured; reservation checks use the existing service harness.

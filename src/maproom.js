@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import {sound} from './audio.js';
 import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=[['SYAFIRA','Di meja ini, kami sudah menyiapkan petunjuk untukmu.'],['BIFARI',`Kami akan merayakannya di ${CONFIG.EVENT.venue}. Ini lokasi yang bisa kamu simpan.`],['SYAFIRA','Kamu bisa membuka Google Maps untuk melihat rutenya. Kami menunggumu mulai pukul 09:30 WIB.'],['BIFARI','Setelah tahu tempatnya, yuk, buka buku agenda di meja ini. Kami tunjukkan rangkaian acaranya.']];
+const lines=[['SYAFIRA','Di meja ini, kami sudah menyiapkan petunjuk untukmu.'],['BIFARI',`Kami akan merayakannya di ${CONFIG.EVENT.venue}. Ini lokasi yang bisa kamu simpan.`],['SYAFIRA','Kamu bisa membuka Google Maps untuk melihat rutenya. Kami menunggumu mulai pukul 09:30 WIB.'],['BIFARI','Setelah tahu tempatnya, yuk, buka gulungan agenda di meja ini. Kami tunjukkan rangkaian acaranya.']];
 export function initMaproom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#location'),$=s=>scene.querySelector(s);let step=0,busy=false;
  function controls(){scene.dataset.mapStep=String(step);root.dataset.mapBusy=String(busy);root.querySelector('#nav-next').disabled=busy;root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 04</small>`;gsap.set('#journey-progress',{scaleX:(step+1)/4});}

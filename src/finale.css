@@ -1,0 +1,48 @@
+.arrival-card-copy strong{font-size:clamp(38px,5.2vw,68px);margin:10px 0;letter-spacing:-1px}
+@media(max-width:600px){.arrival-card-copy strong{font-size:clamp(32px,9vw,49px)}}
+@media(max-height:500px) and (min-width:600px){.arrival-card-copy strong{font-size:28px}}
+.clockroom-countdown{top:15%;width:min(420px,80%);padding:10px 14px}
+.venue-logo{width:66px;height:66px;object-fit:cover;border-radius:15px;display:block;margin:0 auto 8px}
+.clockroom-countdown .event-date{margin:0 0 10px;line-height:1.12}
+.clockroom-countdown .event-date span,.clockroom-countdown .event-date strong{display:block;font:32px/1.15 var(--body)}
+.clockroom-countdown .event-date strong{font-size:36px}
+#countdown .welcome-couple{bottom:8%;height:47%}
+#countdown .digit{font-size:24px}
+.agenda-card{top:25%;width:58%;height:270px;overflow:hidden;padding:0;text-align:left;--row-height:90px}
+.agenda-list{transform:translateY(calc(var(--offset) * var(--row-height) * -1))}
+.agenda-entry{height:var(--row-height);padding:8px 4px;border-bottom:1px solid #6b344444;opacity:.55}
+.agenda-entry[aria-current]{opacity:1}
+.visual-novel .agenda-card time{font:16px var(--ui);margin:0 0 6px;color:#7b2138}
+.visual-novel .agenda-card h3{font:25px/1.1 var(--body);margin:0;color:#34161b}
+.wardrobe-swatch .black-cloth{position:absolute;inset:0;filter:grayscale(1) brightness(.38);transform:translateX(17%) rotate(8deg);z-index:-1}
+.wardrobe-swatch span{font-size:17px;white-space:nowrap;padding:12px 18px}
+.finale-active .vn-header{display:none}
+#reservation .vn-artwork,#closing .vn-artwork{inset:0;display:block;overflow:clip}
+.finale-background{width:100%;height:100%;object-fit:cover;object-position:center}
+.farewell-camera{position:absolute;inset:0}
+#reservation .vn-dialogue,#closing .vn-dialogue{background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;box-shadow:none}
+#reservation .vn-dialogue:before,#reservation .vn-dialogue:after,#closing .vn-dialogue:before,#closing .vn-dialogue:after{display:none}
+#reservation .vn-dialogue{bottom:15px;max-height:76%;padding:20px 20px 12px;width:min(570px,calc(100% - 36px))}
+#reservation .vn-speaker,#closing .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui)}
+#reservation-title{font-size:29px;margin:0 0 8px}
+#reservation .form-field label{color:#ffe8d1}
+#closing .welcome-couple{top:auto;bottom:18%;height:61%;width:min(94%,760px)}
+#closing .welcome-character{width:47%;filter:brightness(1);pointer-events:none}
+#closing .character-syafira{left:0;right:auto}#closing .character-bifari{right:0;left:auto}
+#closing .vn-dialogue{bottom:15px;width:min(720px,calc(100% - 36px));padding:18px 22px}
+#closing .vn-dialogue p{font:22px/1.35 var(--body);margin:0 0 12px;color:#f4dfc5}
+#closing .vn-closing-actions{gap:10px;flex-wrap:wrap}#closing .vn-closing-actions button{font-size:14px}
+@media(max-width:600px){.clockroom-countdown{top:15%;padding:7px 10px}.clockroom-countdown .event-date span{font-size:27px}.clockroom-countdown .event-date strong{font-size:30px}.venue-logo{width:52px;height:52px;border-radius:12px}#countdown .welcome-couple{bottom:8%;height:45%}.agenda-card{top:25%;width:60%;height:228px;--row-height:76px}.visual-novel .agenda-card time{font-size:13px}.visual-novel .agenda-card h3{font-size:21px}#closing .vn-dialogue p{font-size:19px}#closing .welcome-couple{bottom:22%;height:55%}}
+@media(max-height:700px) and (max-width:600px){.clockroom-countdown{top:15%;border-width:10px;padding:4px 8px}.venue-logo{width:40px;height:40px;margin-bottom:4px}.clockroom-countdown .event-date{margin-bottom:4px}.clockroom-countdown .event-date span{font-size:24px}.clockroom-countdown .event-date strong{font-size:26px}#countdown .digit{font-size:19px}#countdown .welcome-couple{bottom:8%;height:41%}.agenda-card{top:24%;height:186px;--row-height:62px}.visual-novel .agenda-card h3{font-size:18px}.visual-novel .agenda-card time{font-size:12px;margin-bottom:3px}.agenda-entry{padding:5px 0}#reservation .vn-dialogue{max-height:78%;padding:16px 10px 8px}#reservation-title{font-size:25px}#closing .vn-dialogue p{font-size:18px}#closing .welcome-couple{bottom:28%;height:48%}}
+@media(max-height:500px) and (min-width:600px){.clockroom-countdown{left:25%;top:23%;width:36%;padding:4px 8px}.venue-logo{width:36px;height:36px;float:left;margin:5px}.clockroom-countdown .event-date span{font-size:23px}.clockroom-countdown .event-date strong{font-size:25px}#countdown .welcome-couple{left:75%;bottom:0;height:72%;width:42%}.agenda-card{left:25%;top:26%;width:31%;height:180px;--row-height:60px}.visual-novel .agenda-card h3{font-size:18px}.visual-novel .agenda-card time{font-size:12px}.agenda-entry{padding:4px 0}#reservation .welcome-heading{left:20px;right:auto}#reservation .vn-dialogue{left:auto;right:20px;translate:0;transform:none!important;width:52%;max-height:91%;bottom:8px}#reservation .welcome-heading h2{font-size:27px}#closing .welcome-heading{left:25px;right:auto;top:12px}#closing .welcome-couple{left:25%;bottom:0;height:83%;width:48%}#closing .vn-dialogue{left:auto;right:18px;translate:0;transform:none!important;width:47%;bottom:18px;padding:12px}#closing .vn-dialogue p{font-size:18px}}
+
+/* Keep every line inside the parchment's ink-safe area. */
+.agenda-card{width:min(520px,48%)}
+.agenda-entry{opacity:.72}
+.agenda-entry[aria-current]{opacity:1}
+#closing .vn-closing-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#closing .vn-closing-actions button{font-size:12px;line-height:1.4;padding:10px 8px;min-width:0}
+#closing #share-status:empty{display:none}
+@media(max-height:500px) and (min-width:600px){.vn-agenda .agenda-camera{width:50%}.agenda-card{width:24%;left:25%}.vn-agenda .agenda-shade{background:linear-gradient(#10040a55,transparent 25%,transparent 65%,#10040a55)}#reservation .vn-dialogue{overflow:visible}#reservation .vn-form-content{overflow-y:auto}}
+
+.vn-agenda .vn-artwork{background:#180c12}

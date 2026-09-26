@@ -18,13 +18,14 @@ export function initMotion(){
  const clockroom=initClockroom();
  const maproom=initMaproom();
  const wardrobe=initWardrobe();
- const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index>=5&&index<=12);root.classList.toggle('wardrobe-active',!prologue?.active&&index===13);if(prologue?.active){prologue.controls();return;}if(index===13&&!busy){wardrobe.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index>=5&&index<=12){root.querySelector('#journey-position').innerHTML=`${String(index-4).padStart(2,'0')} <small>/ 08</small>`;gsap.set('#journey-progress',{scaleX:(index-4)/8});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
+ const controls=()=>{root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index>=5&&index<=12);root.classList.toggle('finale-active',!prologue?.active&&index>=14);root.classList.toggle('wardrobe-active',!prologue?.active&&index===13);if(prologue?.active){prologue.controls();return;}if(index===13&&!busy){wardrobe.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy||index===scenes.length-1;if(index>=5&&index<=12){root.querySelector('#journey-position').innerHTML=`${String(index-4).padStart(2,'0')} <small>/ 08</small>`;gsap.set('#journey-progress',{scaleX:(index-4)/8});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
  function atmosphere(){
   ambient.forEach(t=>t.kill());ambient=[];if(reduced()||prologue?.active)return;
   const loop=(selector,vars)=>{const targets=scenes[index].querySelectorAll(selector);if(targets.length)ambient.push(gsap.to(targets,{repeat:-1,yoyo:true,ease:'sine.inOut',...vars}));};
   loop('.hanging-lantern,.final-lantern',{rotation:4,duration:4,transformOrigin:'50% 0%'});
   loop('.flying-raven',{y:-9,rotation:3,duration:3});
   loop('.floating-key,.near-petal',{y:-12,rotation:10,duration:5});
+  loop('#closing .welcome-couple',{rotation:.4,duration:3,transformOrigin:'50% 100%'});
   loop('.pendulum-hero',{rotation:12,duration:1.4,transformOrigin:'50% 0%'});
  }
  document.addEventListener('visibilitychange',()=>ambient.forEach(t=>document.hidden?t.pause():t.resume()));
@@ -63,7 +64,7 @@ export function initMotion(){
   if(to.id==='countdown'){clockroom.show(direction>0?0:clockroom.last);back.disabled=true;next.disabled=true;}
   if(to.id==='location'){maproom.show(direction>0?0:maproom.last);back.disabled=true;next.disabled=true;}
   if(to.id==='dresscode'){wardrobe.show(direction>0?0:wardrobe.last);back.disabled=true;next.disabled=true;}
-  if(to.classList.contains('vn-agenda'))gsap.set(to.querySelector('.agenda-card'),{opacity:1,rotationY:0});
+  if(to.classList.contains('vn-agenda'))gsap.set(to.querySelector('.agenda-card'),{opacity:1,rotationY:0,y:0});
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(!reduced()&&index===0&&target===1){
@@ -112,10 +113,10 @@ export function initMotion(){
     gsap.set([newArt,newText,card],{opacity:0});
     timeline.call(()=>sound('page'),[],0).to(oldText,{opacity:0,duration:.25},0);
     if(entering){timeline.to(from.querySelector('.maproom-venue'),{opacity:0,duration:.3},0).to(oldArt,{scale:1.2,yPercent:-7,duration:1.5,ease:'sine.inOut'},0);}
-    else{timeline.to(from.querySelector('.agenda-card'),{rotationY:-direction*65,opacity:0,duration:.55,ease:'sine.in'},0);}
+    else{timeline.to(from.querySelector('.agenda-card'),{y:-direction*18,opacity:0,duration:.55,ease:'sine.in'},0);}
     timeline.to(oldArt,{opacity:0,duration:entering?.65:.35},entering?.65:.25)
      .fromTo(newArt,{opacity:0,scale:entering?.95:1},{opacity:1,scale:1,duration:entering?.9:.4},entering?.6:.25)
-     .fromTo(card,{rotationY:direction*65,opacity:0},{rotationY:0,opacity:1,duration:.8,ease:'sine.out'},entering?1.1:.35)
+     .fromTo(card,{y:direction*28,opacity:0},{y:0,rotationY:0,opacity:1,duration:.8,ease:'sine.out'},entering?1.1:.35)
      .fromTo(newText,{opacity:0,y:6},{opacity:1,y:0,duration:.4},entering?1.6:.9);
     }else if(!reduced()&&index===12&&target===13){
     gsap.set([newArt,newText],{opacity:0});
@@ -127,6 +128,8 @@ export function initMotion(){
      .to(oldArt,{opacity:0,duration:.55},.7)
      .fromTo(newArt,{xPercent:9,scale:1.04,opacity:0},{xPercent:0,scale:1,opacity:1,duration:1.25,ease:'sine.inOut'},.65)
      .fromTo(newText,{opacity:0,y:7},{opacity:1,y:0,duration:.45},1.85);
+   }else if(!reduced()&&target>=14&&index>=13){
+    gsap.set([newArt,newText],{opacity:0});timeline.to(oldText,{opacity:0,duration:.3},0).to(oldArt,{scale:1.07,xPercent:-5,duration:1.3,ease:'sine.inOut'},0).call(()=>sound('footstep'),[],.4).call(()=>sound('footstep'),[],.95).to(oldArt,{opacity:0,duration:.6},.7).fromTo(newArt,{scale:.96,opacity:0},{scale:1,opacity:1,duration:1.1},.8).fromTo(newText,{opacity:0,y:8},{opacity:1,y:0,duration:.5},1.7);
    }else if(reduced()){
     timeline.to(oldText,{opacity:0,duration:.1}).set(oldArt,{opacity:0}).from(newArt,{opacity:0,duration:.14}).from(newText,{opacity:0,duration:.15},'<');
    }else{

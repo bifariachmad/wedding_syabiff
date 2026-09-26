@@ -118,3 +118,6 @@ Built-in ImageGen source: ../scene6-artwork/agenda-desk.png. Installed optimized
 
 # Scene 7 wardrobe
 Built-in ImageGen source and exact prompt: ../scene7-artwork/dressing-alcove.png and dressing-alcove.prompt.txt. Installed optimized PNG: public/assets/png/wardrobe/dressing-room.png. Prompt copied to artwork/wardrobe-generation.prompt.txt. Existing cloth-swatch.png is reused as the animated maroon reveal.
+
+# Scroll, guestbook and farewell
+Built-in ImageGen PNGs and matching prompts: ../finale-artwork/scroll-desk.png, guestbook-desk.png, farewell-garden.png. Optimized copies in public/assets/png/finale; exact prompts in artwork. User-supplied ../logo_lumbung.png is installed as public/assets/png/logo-lumbung.png with rounded CSS corners. Existing cloth PNG is reused and filtered for the black option.
