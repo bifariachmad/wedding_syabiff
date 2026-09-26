@@ -69,3 +69,6 @@ tests/maproom.mjs verifies portal brightness starts at zero and passes through i
 
 # Scene 6 and gate revision
 tests/agenda.mjs passes normal-motion slow opening (final inward angle 82 degrees), centered cream heading, venue information outside dialogue, all eight original schedule pages, backward replay, and four viewports (360x640, 430x932, 1440x900, 844x390), without browser or asset errors. This supersedes the earlier 102-degree gate and maroon title expectations. Scene 5 leads naturally from the map table to the open agenda book.
+
+# Scene 7 wardrobe
+The focused wardrobe test covers the normal-motion book-to-wardrobe entrance, four dialogue stops, alternating speakers, cloth reveal, navigation to reservation and back to agenda, image loading, no SVG, no page overflow, and 360x640 / 430x932 / 1440x900 / 844x390 layouts. Production build passes. No backend behavior changed.

@@ -1,3 +1,4 @@
+import {wardrobeArtwork,wardrobeDialogue} from './wardrobe-markup.js';
 import {agendaArtwork,agendaCard,agendaDialogue,agendaSpeaker} from './agenda-markup.js';
 import {maproomArtwork,maproomDialogue,maproomVenue} from './maproom-markup.js';
 import {clockroomArtwork,clockroomDialogue} from './clockroom-markup.js';
@@ -23,7 +24,7 @@ export function invitationMarkup(){
  ${scene('countdown','BIFARI',clockroomArtwork(),clockroomDialogue())}
  ${scene('location','SYAFIRA',maproomArtwork(),maproomDialogue())}
  ${CONFIG.RUNDOWN.map((_,i)=>scene(`rundown-${i}`,agendaSpeaker(i),agendaArtwork(i),agendaDialogue(i),'vn-agenda').replace('</section>',`${agendaCard(i)}</section>`)).join('')}
- ${scene('dresscode','Bab VI · Sehelai maroon',`${sprite('cloth-swatch','cloth-hero',20)}${sprite('rose-wilted','rose-hero',160)}${sprite('petal','near-petal',200)}`,`<h2 id="dresscode-title">Dresscode & Tema</h2><p class="vn-narration">Kenakan warna maroon.</p><p>Dekorasi bernuansa gothic: remang, hangat, sedikit misterius.</p>`)}
+ ${scene('dresscode','SYAFIRA',wardrobeArtwork(),wardrobeDialogue())}
  ${scene('reservation','Bab VII · Sebuah kursi untukmu',`${sprite('book-quill','reservation-hero',0)}${sprite('lantern','hanging-lantern',120)}`,`<h2 id="reservation-title">Reservasi</h2><div class="vn-form-content"><p class="reservation-intro">Bantu kami menyiapkan kursimu. Isi nama dan jumlah tamu untuk melanjutkan.</p>
  <form id="reservation-form" novalidate><div class="form-field"><label for="guest-name">Nama tamu</label><input id="guest-name" name="name" type="text" required minlength="2" maxlength="60" autocomplete="name" aria-describedby="name-error"/><p class="field-error" id="name-error" aria-live="polite"></p></div><div class="form-field"><label for="guest-count">Jumlah tamu (termasuk kamu)</label><div class="stepper"><button type="button" id="minus" aria-label="Kurangi jumlah tamu">${icon('minus')}</button><input id="guest-count" name="guests" type="number" min="1" max="${CONFIG.MAX_GUESTS}" step="1" value="1" required inputmode="numeric" aria-describedby="count-error"/><button type="button" id="plus" aria-label="Tambah jumlah tamu">${icon('plus')}</button></div><p class="field-error" id="count-error" aria-live="polite"></p></div><div class="honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"/></div><button type="submit" class="button primary" id="submit-reservation" disabled>Kirim Reservasi</button></form>
  <p id="reservation-status" role="status" aria-live="polite"></p><button class="vn-action" id="recall-ticket" hidden>Lihat Tiket</button><div id="ticket-host" hidden></div></div>`,'vn-form-scene')}

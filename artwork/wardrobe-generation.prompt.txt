@@ -1,0 +1,8 @@
+Use case: illustration-story
+Asset type: Scene 7 portrait wedding visual novel background, one PNG image at 1024x1536.
+Primary request: An adjoining gothic dressing alcove in the same manor as the reference study. A crooked dark wooden wardrobe stands OPEN, clearly displaying rich maroon garments on hangers. A nearby crooked wooden chair has maroon fabric draped over it. Dark wooden floorboards and one small warm lantern.
+Style reference: Match the previously inspected study artwork's carved gothic dark-wood wall panels, maroon inset panels, warm aged cream highlights and hand-inked surface textures, while showing an entirely new dressing room composition.
+Style/medium: Don't Starve Together inspired scratchy ink cutout storybook illustration, angular slightly crooked handmade silhouettes, dense expressive black ink hatching, flat illustrated shadow shapes, vibrant deep maroon and black with cream ink highlights. Cohesive gothic fairytale game background. No anime, no 3D rendering, no photorealism.
+Composition/framing: Portrait 1024x1536, natural eye-level room perspective. Open wardrobe and its maroon garments are the central focal area, centered within x30-70% and y25-62% of the image. Maroon draped chair supports this focal group. Keep bottom 25% visually quieter with low-contrast dark wooden floor and subdued detail to support a dialogue overlay added later. No frame or border.
+Lighting/mood: One small warm lantern gives gentle amber illumination to the maroon cloth and carved wood; intimate, inviting, mysterious.
+Constraints: No people, no faces, no writing, no text, no UI, no icons, no watermark. Garments must be clearly visible through OPEN wardrobe doors. Generate only this single final image; no variants.

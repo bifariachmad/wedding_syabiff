@@ -7,6 +7,7 @@ import './welcome.css';
 import './clockroom.css';
 import './maproom.css';
 import './agenda.css';
+import './wardrobe.css';
 const app=document.querySelector('#app');
 if(location.pathname.replace(/\/$/,'')==='/admin'){
   await import('./admin.css');

@@ -115,3 +115,6 @@ Built-in ImageGen sources in ../scene5-artwork: raven-up.png, raven-down.png (al
 
 # Scene 6 agenda
 Built-in ImageGen source: ../scene6-artwork/agenda-desk.png. Installed optimized PNG: public/assets/png/agenda/agenda-desk.png. Exact prompt: artwork/agenda-generation.prompt.txt. The blank book supports accessible HTML agenda text and eight page-turn transitions, preserving the configured schedule.
+
+# Scene 7 wardrobe
+Built-in ImageGen source and exact prompt: ../scene7-artwork/dressing-alcove.png and dressing-alcove.prompt.txt. Installed optimized PNG: public/assets/png/wardrobe/dressing-room.png. Prompt copied to artwork/wardrobe-generation.prompt.txt. Existing cloth-swatch.png is reused as the animated maroon reveal.
