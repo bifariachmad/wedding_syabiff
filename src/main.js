@@ -22,6 +22,8 @@ if(['/reservasi','/cetak','/kamera','/album-admin'].includes(route)){
   }
 }else if(['/admin','/buku-tamu'].includes(route)){
   await import('./admin.css');
+  await import('./companion.css');
+  document.body.className='companion guest-admin';
   const {renderAdmin}=await import('./admin.js');
   await renderAdmin(app);
   if(route==='/buku-tamu'){
@@ -30,6 +32,11 @@ if(['/reservasi','/cetak','/kamera','/album-admin'].includes(route)){
     for(const [href,label] of [['/reservasi?mode=panitia','Reservasikan tamu offline'],['/cetak','Cetak undangan A5'],['/album-admin','Kelola album'],['https://docs.google.com/spreadsheets/d/18MMsdmA47e9p3nhbQrhV-P4b8W9F4njlfvXiZEj6jsE/edit#gid=10312026','Buka Google Sheets']]){const a=document.createElement('a');a.href=href;a.className='button';a.textContent=label;nav.append(a);}
     document.querySelector('.admin h1').after(nav);
   }
+  const adminTitle=app.querySelector('.admin h1');
+  const heading=document.createElement('header');heading.className='companion-heading';
+  const kicker=document.createElement('p');kicker.className='kicker';kicker.textContent='DUA JIWA · SATU LENTERA';
+  adminTitle.before(heading);heading.append(kicker,adminTitle);
+  app.querySelector('#admin-login').classList.add('companion-card');
 }else{
   const {preparePortrait}=await import('./device.js');
   await preparePortrait(app,async()=>{
