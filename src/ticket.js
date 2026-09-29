@@ -1,6 +1,6 @@
 import QRCode from 'qrcode';
 import { CONFIG, invitationUrl } from './config.js';
-import { ID_PATTERN } from './api.js';
+import { ID_PATTERN, displayCode } from './api.js';
 import { art, icon, hydrateArt } from './art.js';
 export const ticketPayload = ticket => `${ticket.demo?'DEMO-':''}DJSL-${ticket.id}`;
 export function validTicket(value){return value&&ID_PATTERN.test(value.id)&&typeof value.name==='string'&&value.name.trim().length>=2&&value.name.length<=60&&Number.isInteger(value.guests)&&value.guests>=1&&value.guests<=CONFIG.MAX_GUESTS;}
@@ -19,7 +19,7 @@ export async function renderTicket(host,ticket,edit) {
   host.innerHTML=`<div class="ticket-card" id="ticket-card">${art('wax-seal','ticket-seal')}<p class="eyebrow">Tiket Reservasi</p><div class="ticket-top"><span class="ticket-label">Nama</span><h3 class="ticket-name"></h3><span class="ticket-label">Jumlah Tamu</span><strong class="ticket-guests"></strong></div><div class="ticket-perforation"></div><p class="ticket-date">${CONFIG.EVENT.dateLabel} · ${CONFIG.EVENT.arrival}</p><p>${CONFIG.EVENT.venue}<br>Dresscode: ${CONFIG.EVENT.dresscode}</p><img class="ticket-qr" width="224" height="224" alt="QR reservasi"/><p class="ticket-code"></p><p class="ticket-instruction">${ticket.demo?'QR mockup — bukan tiket check-in.':'Tunjukkan QR ini saat registrasi.'}</p></div><div class="ticket-actions"><button class="button primary" id="save-ticket">${icon('download')}Simpan Tiket</button><button class="button" id="calendar">${icon('calendar')}Tambahkan ke Kalender</button><button class="text-button" id="edit-reservation">Ubah Reservasi</button></div>`;
   host.querySelector('.ticket-name').textContent=ticket.name;
   host.querySelector('.ticket-guests').textContent=ticket.guests;
-  host.querySelector('.ticket-code').textContent=ticketPayload(ticket);
+  host.querySelector('.ticket-code').textContent=displayCode(ticket.id);
   host.querySelector('.ticket-qr').src=await qrData(ticket);
   host.querySelector('#save-ticket').onclick=()=>saveTicket(ticket);
   host.querySelector('#calendar').onclick=()=>downloadBlob(new Blob([calendarFile()],{type:'text/calendar;charset=utf-8'}),'dua-jiwa-satu-lentera.ics');

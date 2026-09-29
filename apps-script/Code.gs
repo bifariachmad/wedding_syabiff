@@ -1,16 +1,28 @@
 // Bound Google Sheets web app. Run setup() once before deploying.
 const MAX_GUESTS = 5;
 const COLUMNS = ['id', 'created_at', 'updated_at', 'name', 'name_key', 'guests', 'checked_in', 'checked_in_at'];
-const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const SHEET_ID = '18MMsdmA47e9p3nhbQrhV-P4b8W9F4njlfvXiZEj6jsE';
+const HEADERS = ['Kode Reservasi','Dibuat pada','Diperbarui pada','Nama Tamu','Nama Normalisasi','Jumlah Tamu','Sudah Hadir','Waktu Kehadiran'];
+const ID_PATTERN = /^(?:[1-9][0-9]{5}|[A-HJ-NP-Z2-9]{8})$/;
 
 function setup() {
   const props = PropertiesService.getScriptProperties();
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
   if (!spreadsheet) throw new Error('Open this script from Extensions > Apps Script in your Sheet.');
   props.setProperty('SHEET_ID', spreadsheet.getId());
   if (!props.getProperty('ADMIN_PIN')) props.setProperty('ADMIN_PIN', Utilities.getUuid().replace(/-/g, '').slice(0, 12).toUpperCase());
   const sheet = spreadsheet.getSheetByName('Reservations') || spreadsheet.insertSheet('Reservations');
-  if (sheet.getLastRow() === 0) { sheet.appendRow(COLUMNS); sheet.setFrozenRows(1); }
+  if (sheet.getLastRow() === 0) sheet.appendRow(HEADERS);
+  const header = sheet.getRange(1, 1, 1, 8).getValues()[0].join('|');
+  if (![COLUMNS.join('|'), HEADERS.join('|')].includes(header)) throw new Error('Unexpected headers; no existing data was changed.');
+  sheet.getRange(1, 1, 1, 8).setValues([HEADERS]).setBackground('#ebebeb').setFontWeight('bold').setWrap(true);
+  sheet.setFrozenRows(1);sheet.setRowHeight(1, 42);
+  [180,215,215,280,240,130,130,215].forEach(function(width,i){sheet.setColumnWidth(i+1,width);});
+  sheet.hideColumns(5);
+  spreadsheet.setSpreadsheetTimeZone('Asia/Jakarta');
+  if (!sheet.getFilter()) sheet.getRange(1,1,sheet.getMaxRows(),8).createFilter();
+  sheet.getRange('F2:F').setNumberFormat('0').setDataValidation(SpreadsheetApp.newDataValidation().requireNumberBetween(1,5).setAllowInvalid(false).build());
+  sheet.getRange('G2:G').setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().setAllowInvalid(false).build());
   sheet.getRange('A:E').setNumberFormat('@');
   console.log('Setup complete. Your private ADMIN_PIN is in Project Settings > Script Properties.');
 }
@@ -40,7 +52,7 @@ function sheet_() {
   const id = PropertiesService.getScriptProperties().getProperty('SHEET_ID');
   if (!id) throw new Error('Run setup first');
   const sheet = SpreadsheetApp.openById(id).getSheetByName('Reservations');
-  if (!sheet || sheet.getRange(1, 1, 1, COLUMNS.length).getValues()[0].join('|') !== COLUMNS.join('|')) throw new Error('Invalid schema');
+  if (!sheet || ![COLUMNS.join('|'), HEADERS.join('|')].includes(sheet.getRange(1, 1, 1, COLUMNS.length).getValues()[0].join('|'))) throw new Error('Invalid schema');
   return sheet;
 }
 function rows_(sheet) {
@@ -53,7 +65,7 @@ function rows_(sheet) {
       if (String(record[key]).charAt(0) === "'" && /^[=+\-@']/.test(String(record[key]).slice(1))) record[key] = String(record[key]).slice(1);
     });
     return record;
-  });
+  }).filter(function(record){return ID_PATTERN.test(String(record.id));});
 }
 function publicRow_(r) { return { id: r.id, name: r.name, guests: Number(r.guests), checked_in: r.checked_in === true || r.checked_in === 'true', checked_in_at: r.checked_in_at || '' }; }
 function stats_(rows) { return { reservations: rows.length, guests: rows.reduce(function (sum, r) { return sum + Number(r.guests); }, 0), checkedIn: rows.filter(function (r) { return r.checked_in === true || r.checked_in === 'true'; }).reduce(function (sum, r) { return sum + Number(r.guests); }, 0) }; }
@@ -94,16 +106,18 @@ function reserve_(body) {
     let id;
     do {
       const seed = Utilities.getUuid().replace(/-/g, '');
-      id = Array.from({ length: 8 }, function (_, i) { return ALPHABET[parseInt(seed.slice(i * 2, i * 2 + 2), 16) % ALPHABET.length]; }).join('');
+      id = String(100000 + parseInt(seed.slice(0, 12), 16) % 900000);
     } while (rows.some(function (r) { return r.id === id; }));
-    sheet.appendRow([id, now, now, safeName, safeKey, valid.guests, false, '']);
+    const nextRow = rows.reduce(function(last,r){return Math.max(last,r.row);},1)+1;
+    if (nextRow > sheet.getMaxRows()) sheet.insertRowAfter(sheet.getMaxRows());
+    sheet.getRange(nextRow,1,1,8).setValues([[id, now, now, safeName, safeKey, valid.guests, false, '']]);
     SpreadsheetApp.flush();
     return { ok: true, updated: false, reservation: { id: id, name: valid.name, guests: valid.guests } };
   } finally { lock.releaseLock(); }
 }
 function checkin_(value) {
-  const id = String(value || '').replace(/^DJSL-/, '');
-  if (!/^[A-HJ-NP-Z2-9]{8}$/.test(id)) throw new Error('Kode tidak ditemukan.');
+  const id = String(value || '').trim().toUpperCase().replace(/^DJSL-/, '').replace(/[ -]/g, '');
+  if (!ID_PATTERN.test(id)) throw new Error('Kode tidak ditemukan.');
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {

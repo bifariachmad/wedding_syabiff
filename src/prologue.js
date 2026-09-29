@@ -4,16 +4,16 @@ import { sound, startAudio } from './audio.js';
 import { burnPaper } from './paper-burn.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=['Hari ini terasa seperti hari biasa.','Ada ketukan di pintu.','Tak ada siapa-siapa…','Ada sebuah undangan.','Mari kita lihat pengirimnya.','Undangan ini ditujukan kepada Anda.','Anda diundang.'];
+const lines=['Hari ini terasa seperti hari biasa.','Ada ketukan di pintu.','Tak ada siapa-siapa…','Hah, ada undangan.','Dari siapa ya…','Untukku?','Anda diundang.'];
 const last=lines.length-1;
 const descriptions=[
- 'Di dalam rumah, Anda menghadap pintu kayu yang tertutup.',
+ 'Di dalam rumah, kamu menghadap pintu kayu yang tertutup.',
  'Tiga ketukan terdengar dari pintu.',
- 'Tangan Anda menggenggam gagang dan membuka pintu. Teras kosong. Awan bergerak dan pohon bergoyang di luar.',
- 'Anda menunduk. Sebuah amplop bersegel maroon tergeletak di ambang pintu.',
- 'Anda memperhatikan undangan itu, penasaran siapa pengirimnya.',
- 'Anda mengambil undangan dan membaca nama di amplop.',
- 'Anda membuka segel. Pada kartu tertulis: Anda diundang. Lanjut untuk melihat kartu terbakar menjadi abu sebelum portal terbuka.'
+ 'Tanganmu menggenggam handle dan membuka pintu. Teras kosong. Awan bergerak dan pohon bergoyang di luar.',
+ 'Kamu menunduk. Sebuah amplop bersegel maroon tergeletak di ambang pintu.',
+ 'Kamu memperhatikan undangan itu, penasaran siapa pengirimnya.',
+ 'Kamu mengambil undangan dan membaca nama di amplop.',
+ 'Kamu membuka segel. Pada kartu tertulis: Anda diundang. Lanjut untuk melihat kartu terbakar menjadi abu sebelum portal terbuka.'
 ];
 
 export function initPrologue(onExit){
@@ -116,7 +116,7 @@ export function initPrologue(onExit){
    }else if(target===5){
     t.call(()=>sound('paper-lift'),[],.25)
      .set($('.arrival-floor-envelope'),{opacity:0},.25)
-     .set($('.arrival-sealed'),{autoAlpha:1,y:innerHeight*.32,scale:.72,rotation:-7},.25)
+     .set($('.arrival-sealed'),{autoAlpha:1,y:root.clientHeight*.32,scale:.72,rotation:-7},.25)
      .to($('.arrival-sealed'),{y:0,scale:1,rotation:0,duration:1.25,ease:'power2.out'},.25)
      .to($('.arrival-camera'),{...cameraPose(5),duration:1.4,ease:'power2.inOut'},.45);
    }else if(target===6){
@@ -138,11 +138,11 @@ export function initPrologue(onExit){
   const burn={progress:0},burnStart=.35,burnDuration=reduced()?1:3.2,portalStart=burnStart+burnDuration+.9;
   return run(t=>{
    t.to($('.arrival-heading'),{opacity:0,duration:.35},0);
-   t.call(()=>{section.dataset.burn='burning';$('#arrival-description').textContent='Kartu masih Anda pegang. Api menjalar di kertas, menyisakan abu.';sound('ignite');sound(reduced()?'burn-short':'burn');},[],burnStart)
+   t.call(()=>{section.dataset.burn='burning';$('#arrival-description').textContent='Kartu masih kamu pegang. Api menjalar di kertas, menyisakan abu.';sound('ignite');sound(reduced()?'burn-short':'burn');},[],burnStart)
     .to(burn,{progress:1,duration:burnDuration,ease:'none',onUpdate:()=>burnPaper(paper,edge,burn.progress)},burnStart)
     .set(frame,{autoAlpha:0},burnStart+burnDuration)
     .call(()=>{section.dataset.burn='complete';$('#arrival-description').textContent='Kertas habis menjadi abu.';},[],burnStart+burnDuration)
-    .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:innerHeight*.4,duration:.5,ease:'power2.in'},burnStart+burnDuration+.2)
+    .to($('.arrival-open'),{autoAlpha:0,y:reduced()?0:root.clientHeight*.4,duration:.5,ease:'power2.in'},burnStart+burnDuration+.2)
     .call(()=>{section.dataset.burn='portal';$('#arrival-description').textContent='Setelah kertas habis, sebuah portal terbuka di hadapanmu.';sound('portal');},[],portalStart);
    if(reduced()){
     t.to($('.arrival-portal'),{autoAlpha:1,scale:1,duration:.25},portalStart).to($('.arrival-portal-window'),{filter:'brightness(1)',duration:.6},portalStart+.15).to(section,{opacity:0,duration:.35},portalStart+.8);

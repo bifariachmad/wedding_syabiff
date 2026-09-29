@@ -1,0 +1,12 @@
+.git
+.openai
+.env*
+node_modules
+dist
+artifacts
+output
+tmp
+tests
+artwork
+docs
+*.log

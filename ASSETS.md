@@ -128,3 +128,21 @@ Built-in ImageGen produced ../guestbook-artwork/source.png with matching closed/
 # Coherent map room and overhead guestbook — 26 September 2026
 
 Built-in ImageGen generated two replacement raster backgrounds: ../room-revisions/map-room-balanced.png and ../room-revisions/overhead-desk.png (1024×1536 sources). Optimized 1000px-wide PNGs are installed under public/assets/png/rooms. Exact prompts are preserved in artwork/room-revisions.prompts.json. The map console is smaller with visible floor; the overhead desk deliberately contains no book or paper. Scene 8 reuses the existing single closed/open book sprite pair and right-page crop, preventing doubled furniture. Existing host PNGs, cloth, cutout buttons and dialogue borders are retained; no SVG illustration was added.
+
+# Ticket stationery and hinged guestbook — 28 September 2026
+Built-in ImageGen generated public/assets/png/ticket/stationery.png: ivory paper with maroon roses, inked thorns and a lantern. Exact prompt: artwork/ticket-stationery.prompt.txt. Original: ../ticket-artwork-v2/ticket-stationery.png. The same 1080×1600 canvas renders the live preview and downloaded PNG, including guest details and a scannable QR. Existing wax-seal.png is reused for the reservation stamp. Guestbook left-page.png and right-page.png are exact halves of the existing open.png, used as opaque faces of a hinged book; no SVG illustration added.
+
+## Revisi 28 September 2026 — perangkat, tombol, dan audio
+
+Sumber artwork yang sebelumnya berada langsung di folder induk kini berada di `../source-art/<nama-folder-lama>/`; tidak ada sumber yang dihapus. Skrip impor sudah memakai lokasi baru. File referensi lepas ditempatkan di `../source-art/reference-files/`.
+
+Built-in ImageGen membuat delapan aset tombol transparan khusus di `public/assets/png/buttons/`: back, next, maps, submit, save-ticket, edit-reservation, decrement, increment. Prompt dan atlas asli: `../source-art/ui-artwork-v2/button-atlas-prompt.txt` dan `button-atlas.png`; koordinat crop tersimpan dalam `button-manifest.json`. Aset dipakai dengan aspect ratio aslinya; bukan panel dialog yang diregangkan. `scroll-roller.png` adalah crop dari artwork gulungan yang sudah ada, untuk gerakan membuka/menutup.
+
+Musik `public/assets/audio/canon-in-d-piano.mp3`: Canon in D, komposisi Johann Pachelbel, piano/aransemen Lee Galloway. Sumber https://commons.wikimedia.org/wiki/File:Pachelbel%27s_Canon.ogg ; CC BY-SA 3.0. Hanya dikonversi Ogg ke MP3 160kbps. Atribusi dan tautan lisensi tersedia pada menu aplikasi dan `public/assets/audio/CREDITS.html`.
+
+Empat tombol tambahan mempunyai PNG terpisah: menu, close, recall-ticket, chapter. Atlas dan prompt tambahan di `../source-art/ui-artwork-v2/button-extra-atlas-prompt.txt`; salinan prompt juga tersedia di `artwork/`. Seluruh tombol memakai built-in ImageGen, alpha asli, crop transparan, dan aspect ratio yang dipertahankan.
+
+## September 28 — proportion and layer corrections
+Bifari idle and two speaking PNGs were regenerated with built-in ImageGen, matched against Syafira. Source atlas, prompt and alpha/compositing script: `../source-art/character-proportion-v2/`. Speaking frames share identical pixels outside the mouth. Original 1000×1500 canvas and feet alignment retained.
+Scroll paper and rollers are alpha cutouts from the existing scroll-desk PNG; `scripts/refine-layers.mjs` reproduces them. No original full-scroll image is rendered underneath the moving roller.
+Sprite integration applies a uniform 1.14× fit, cropped at (70,210) to 1000×1500, retaining foot placement while matching Syafira’s displayed height.

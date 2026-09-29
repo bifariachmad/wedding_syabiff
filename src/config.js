@@ -1,7 +1,7 @@
 export const CONFIG = Object.freeze({
-  BASE_URL: 'https://dua-jiwa-satu-lentera.bifariachmad.chatgpt.site',
-  APPS_SCRIPT_URL: '',
-  BGM_SRC: '',
+  BASE_URL: 'https://diginvit.bifariachmad.com',
+  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby6Q4_kxRQJ_l8Z8dpck1jXLT2v2dgq-9-V-Z4d6YjJeNE645GnrfMTkMWXfdNyXur1yA/exec',
+  BGM_SRC: '/assets/audio/canon-in-d-piano.mp3',
   MAX_GUESTS: 5,
   EVENT: {
     title: 'Undangan Pernikahan',
@@ -16,14 +16,14 @@ export const CONFIG = Object.freeze({
     dresscode: 'Maroon atau hitam',
   },
   RUNDOWN: [
-    ['09:30-10:00', 'Penerimaan Tamu', 'Tunjukkan QR reservasi, duduk santai', 'gate', 'wine-glass'],
+    ['09:30-10:00', 'Registrasi & Welcome Drink', 'Tunjukkan QR reservasi, duduk santai', 'gate', 'wine-glass'],
     ['10:00-10:15', 'Pembukaan MC', 'Sambutan hangat dan penjelasan aplikasi foto (QR-nya tersedia di lokasi)', 'curtain', 'raven'],
     ['10:15-11:00', 'Prosesi Akad', 'Ijab kabul', 'arch-roses'],
     ['11:00-11:15', 'Doa', 'Doa bersama', 'candle'],
     ['11:15-11:45', 'Pesan dari Keluarga', 'Ucapan dari perwakilan keluarga', 'book-quill'],
     ['11:45-12:10', 'Foto Bersama', 'Foto bersama keluarga dan saksi', 'photo-frame-camera'],
-    ['12:10-13:25', 'Ramah Tamah & Makan', 'Pengantin menyapa tiap meja; makan diiringi biola akustik', 'long-table', 'violin'],
-    ['13:25-13:40', 'Penutup', 'Ucapan terima kasih dari pengantin', 'lantern', 'raven-flight'],
+    ['12:10-13:25', 'Mingle & Makan Bersama', 'Pengantin menyapa tiap meja; makan diiringi biola akustik', 'long-table', 'violin'],
+    ['13:25-13:40', 'Closing', 'Ucapan terima kasih dari pengantin', 'lantern', 'raven-flight'],
   ],
 });
 export const invitationUrl = () => CONFIG.BASE_URL || window.location.origin;

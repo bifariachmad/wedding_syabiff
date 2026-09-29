@@ -1,4 +1,4 @@
-.clockroom-countdown .event-date strong{font-size:clamp(23px,3vw,32px);white-space:nowrap}
+.clockroom-countdown .event-date strong{font-size:clamp(23px,3cqw,32px);white-space:nowrap}
 #location .welcome-couple{top:auto;bottom:3%;height:47%}
 #location .host-idle,#location .host-speaking{animation:none;transform:none}
 #location .maproom-venue{top:16%;padding:10px 16px}

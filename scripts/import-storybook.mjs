@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import sharp from 'sharp';
-const dir='../storybook-artwork',widths={'storybook-stage':800,'storybook-gate':640,'raven-messenger':440};
+const dir='../source-art/storybook-artwork',widths={'storybook-stage':800,'storybook-gate':640,'raven-messenger':440};
 await fs.mkdir('artifacts/storybook',{recursive:true});
 for(const [key,width]of Object.entries(widths)){
  await sharp(`${dir}/${key}.png`).trim({threshold:12}).resize({width}).png({palette:true,colours:160,quality:90,dither:.25,effort:10}).toFile(`public/assets/png/${key}.png`);

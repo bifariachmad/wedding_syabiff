@@ -86,3 +86,13 @@ Focused guest-friendly checks pass at 360×640, 430×932, 1440×900 and 844×390
 All six backend unit tests pass. Production build and the production / plus /admin smoke check pass with no browser errors or SVG artwork. The live service remains unconfigured: the published site uses an explicitly labeled local demo; these checks do not claim a real reservation was sent.
 
 Full browser regression also passes: 45 mobile chapter screenshots, all 16 internal scenes forward/back, normal and reduced motion, reservation validation/update/recall, network failure recovery, decoded QR, PNG/calendar export, admin lookup/check-in, and simulated camera decode. Browser errors: none. Closing is intentionally excluded from the initial unsaved-tour screenshots; its saved-reservation route and the mandatory guard are tested separately.
+
+## 28 September 2026 — revisi portrait dan alur ringkas
+
+- Build dan 8 tes backend lulus.
+- `tests/portrait.mjs` lulus pada 360×640, 390×844, 430×932, 768×1024, dan 820×1180. Rasio kanvas 9:16, desktop notice, orientasi, posisi halaman kanan buku, input transparan, jadwal, ekspor PNG, kode enam angka, dan aset audio diperiksa.
+- `npm run verify` lulus: 24 screenshot, seluruh 9 scene maju/mundur, normal/reduced motion, 4 kasus validasi, QR decode, unduh, update reservasi, recall, kegagalan jaringan, admin/check-in, kamera simulasi. Tidak ada browser error. Backend asli dijalankan melalui adapter in-memory; tidak menulis ke Sheet produksi.
+- `tests/restart.mjs` lulus: menu/tombol akhir mengulang seluruh prolog, reservasi tetap dapat diedit, kode tetap sama.
+- Apps Script Version 2 aktif, URL tetap sama. Uji langsung menghasilkan kode enam angka dan dicocokkan dengan Sheet; baris uji dibersihkan. Data pengguna yang sudah ada dipertahankan.
+- Pemeriksaan visual terakhir memperbaiki jarak tepi kertas, baris rundown, proporsi tombol, dan segel sukses. Screenshot ada di `artifacts/portrait/`.
+- Website publik belum dipublikasikan ulang. Pemeriksaan kamera menggunakan simulasi; uji kamera tablet fisik dilakukan saat aplikasi buku tamu dibuat.

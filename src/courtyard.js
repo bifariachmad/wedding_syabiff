@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { sound } from './audio.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=['Selamat datang di undangan pernikahan Bifari dan Syafira.','Pilih Lanjut untuk membuka gerbang.','Gerbang sudah terbuka. Mari masuk.'];
+const lines=['Di mana ini…? Udara pagi terasa hangat.','Ada jalan di balik gerbang itu.',''];
 export function initCourtyard(){
  const root=document.querySelector('#invitation'),gate=document.querySelector('#gate');
  let step=0,busy=false,timeline;
@@ -19,7 +19,7 @@ export function initCourtyard(){
   gsap.set($('.courtyard-heading'),{opacity:1});
   gsap.set($('.courtyard-left'),{rotationY:step===2?-82:0});
   gsap.set($('.courtyard-right'),{rotationY:step===2?82:0});
-  gsap.set($('.vn-dialogue'),{opacity:1,y:0});caption();controls();
+  gsap.set($('.vn-dialogue'),{opacity:step===2?0:1,y:0});caption();controls();
  }
  function show(at=0){step=at;busy=false;pose();}
  async function move(target){
@@ -42,7 +42,7 @@ export function initCourtyard(){
    }
    const cursor={letters:0},text=lines[target];
    timeline.call(()=>{step=target;$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';})
-    .to($('.vn-dialogue'),{opacity:1,duration:.25})
+    .to($('.vn-dialogue'),{opacity:target===2?0:1,duration:.25})
     .to(cursor,{letters:text.length,duration:reduced()?0:text.length*.027,ease:'none',onUpdate:()=>{$('#courtyard-line').textContent=text.slice(0,Math.ceil(cursor.letters));}});
   });
  }
@@ -58,9 +58,9 @@ export function initCourtyard(){
  }
  function pass(t){
   gate.dataset.walk='walking';
-  gsap.set($('.courtyard-crow'),{x:-innerWidth*.35,y:0,opacity:0});
+  gsap.set($('.courtyard-crow'),{x:-root.clientWidth*.35,y:0,opacity:0});
   t.set($('.courtyard-crow'),{opacity:1},.25)
-   .to($('.courtyard-crow'),{x:innerWidth*1.15,y:-innerHeight*.12,duration:2.7,ease:'none'},.25)
+   .to($('.courtyard-crow'),{x:root.clientWidth*1.15,y:-root.clientHeight*.12,duration:2.7,ease:'none'},.25)
    .call(()=>sound('crow'),[],.7).set($('.courtyard-crow'),{opacity:0},3);
   walk(t,[1.22,1.41,1.65,1.94,2.27,2.65],36);
   t.to($('.courtyard-heading'),{opacity:0,duration:.3},0)

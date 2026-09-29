@@ -1,0 +1,126 @@
+/* The invitation is a 9:16 stage. Tablet gutters preserve the same composition. */
+body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hidden;background:#10070c}
+.invitation-device #app{container-type:size;width:min(100vw,56.25svh);height:min(100svh,177.77778vw);position:relative;isolation:isolate;overflow:hidden}
+.invitation-device #invitation.visual-novel{height:100%;width:100%;--nav-height:78px}
+.device-notice{width:min(480px,88vw);text-align:center;color:#f2d7ba;padding:32px;font:20px/1.6 var(--body)}
+.device-notice img{width:100px;margin:0 auto 25px}
+.device-notice h1{white-space:normal;font:38px/1.2 GALVANIZED;color:#f2d7ba;letter-spacing:0}
+.device-notice p{margin-top:22px}
+#cover .vn-dialogue{padding-bottom:20cqh;}
+#location .maproom-venue p{font:clamp(20px,5.2cqw,30px)/1.5 var(--body);margin:8px 0}
+#location .maproom-venue p strong{font-size:1.15em}
+.vn-agenda .agenda-card{top:20%;height:52%;width:57%;padding:0}
+.visual-novel .agenda-card h3{font:clamp(15px,4.3cqw,26px)/1.12 var(--body)}
+.vn-agenda .agenda-entry:first-child h3{font-size:clamp(14px,3.9cqw,24px)}
+.vn-agenda .vn-dialogue{min-height:0;bottom:12px;padding:12px 16px}
+.vn-agenda .vn-dialogue p{min-height:0;font:clamp(17px,4.2cqw,25px)/1.3 var(--body)}
+.visual-novel .agenda-card time{font:bold clamp(14px,3.7cqw,23px)/1.1 Georgia,serif;margin:0;color:#6d253b}
+.vn-agenda .agenda-entry{gap:4px;border-color:#6d253b35}
+.agenda-desk{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.agenda-roll{position:absolute;left:8%;width:84%;top:14%;height:6%;overflow:hidden;opacity:0;filter:drop-shadow(0 5px 4px #0007)}
+.agenda-roll img{width:100%;height:auto;position:absolute;left:0;bottom:0}
+/* The camera and writing surface share one right-hand page, without a swap. */
+#reservation .guestbook-object{top:24%;width:94%;left:50%;height:auto;aspect-ratio:1206/739;perspective:1800px}
+#reservation .guestbook-spread{transform-origin:0 0}
+#reservation .book-right{opacity:0}
+#reservation[data-book-step='2'] .vn-dialogue,#reservation[data-book-moving='zoom'] .vn-dialogue{top:16%;bottom:1%;width:96%;background:none!important;padding:0!important;box-shadow:none;border:0}
+#reservation[data-book-step='2'] .book-writing-area{inset:8% 21% 8% 10%;text-align:left}
+#reservation[data-book-step='2'] #reservation-title{font-size:clamp(28px,7.2cqw,42px);margin:0 0 12px;text-align:center}
+#reservation[data-book-step='2'] .vn-form-content{padding:0;scrollbar-width:thin}
+#reservation[data-book-step='2'] .reservation-intro{font:clamp(16px,4.15cqw,24px)/1.4 var(--body);margin-bottom:16px}
+#reservation[data-book-step='2'] .form-field label{font:clamp(16px,4.15cqw,24px)/1.35 var(--body)}
+#reservation[data-book-step='2'] input,#reservation[data-book-step='2'] input:focus{background:transparent!important;border:0;border-bottom:1px solid #784656;border-radius:0;box-shadow:none;color:#431d28;caret-color:#642139}
+#reservation input:-webkit-autofill,#reservation input:-webkit-autofill:focus{-webkit-text-fill-color:#431d28;transition:background-color 999999s ease-out 0s}
+#reservation .stepper{border:0;gap:12px;align-items:center;justify-content:center}
+#reservation .stepper input{border:0;width:58px;text-align:center}
+#reservation .stepper button{width:48px;height:48px;padding:12px;min-width:48px;border:0;background-color:transparent;box-shadow:none;background-size:contain;background-position:center;background-repeat:no-repeat}
+#reservation #minus{background-image:url('/assets/png/buttons/button-decrement.png')}
+#reservation #plus{background-image:url('/assets/png/buttons/button-increment.png')}
+#reservation .stepper .icon{width:22px;height:22px}
+#reservation-success{text-align:center;gap:8px;padding:0;}
+#reservation-success p,#reservation-success strong{width:100%;text-align:center}
+#reservation-success .success-seal{width:clamp(75px,22cqw,140px);margin:0 auto 6px}
+#reservation-success strong{font:clamp(22px,6cqw,34px)/1.18 GALVANIZED;white-space:normal}
+#reservation-success .success-detail{font:clamp(16px,4.1cqw,23px)/1.45 var(--body)}
+#reservation-success .success-guest{font:clamp(19px,5cqw,29px)/1.4 var(--body)}
+#reservation #reservation-status:empty{display:none}
+/* Dedicated raster silhouettes stay at their native aspect ratios. */
+.visual-novel .vn-nav{width:100%;height:auto;aspect-ratio:2.56;min-height:44px;padding:10px 12px;border:0;background-color:transparent;background-size:contain;background-repeat:no-repeat;background-position:center;box-shadow:none;font:clamp(14px,3.8cqw,23px)/1.2 var(--body);white-space:nowrap}
+#nav-back{background-image:url('/assets/png/buttons/button-back.png')}
+#nav-next{background-image:url('/assets/png/buttons/button-next.png')}
+.visual-novel .vn-nav:before,.visual-novel .vn-nav:after{display:none}
+#location .maproom-link,#reservation #submit-reservation,#closing #save-summary,#reservation #edit-reservation{display:flex;align-items:center;justify-content:center;width:100%;height:auto;min-height:0;aspect-ratio:3.9;padding:8px 10%;border:0;box-shadow:none;background-color:transparent;background-position:center;background-repeat:no-repeat;background-size:contain;color:#ffe5c6;font:clamp(16px,4.2cqw,25px)/1.2 var(--body);text-align:center}
+#location .maproom-link{background-image:url('/assets/png/buttons/button-maps.png');margin:10px auto 0}
+#reservation #submit-reservation{background-image:url('/assets/png/buttons/button-submit.png')}
+#closing #save-summary{width:90%;aspect-ratio:3.8;background-image:url('/assets/png/buttons/button-save-ticket.png')}
+#reservation #edit-reservation{width:78%;margin:12px auto 0;aspect-ratio:2.48;background-image:url('/assets/png/buttons/button-edit-reservation.png')}
+#closing-summary .ticket-preview{height:calc(100% - 90px)}
+.music-credit{font:12px/1.5 Georgia!important;color:#dec2a2}
+@media(min-width:600px){.invitation-device #invitation{--nav-height:110px}.vn-dialogue p,.arrival-caption p{font-size:clamp(22px,4.5cqw,30px)}.vn-nav{min-height:64px}.chapter-toggle{width:110px;height:54px}}
+.chapter-toggle{width:100px;height:auto;aspect-ratio:2.28;background-image:url('/assets/png/buttons/button-menu.png');background-size:contain;background-repeat:no-repeat}
+#chapter-close{width:90px;height:auto;aspect-ratio:2.31;padding:10px 12px;background:url('/assets/png/buttons/button-close.png') center/contain no-repeat;white-space:nowrap}
+#chapter-menu nav button{width:100%;aspect-ratio:5.13;min-height:48px;background:url('/assets/png/buttons/button-chapter.png') center/contain no-repeat;border:0;padding:10px 10%;font:18px var(--body)}
+#reservation #recall-ticket{width:85%;aspect-ratio:3.36;margin:8px auto;padding:10px 12%;background:url('/assets/png/buttons/button-recall-ticket.png') center/contain no-repeat;border:0;color:#ffe5c6;font:17px var(--body)}
+@media(min-width:600px){.chapter-toggle{width:110px;height:auto}}
+#reservation.is-demo #edit-reservation{color:#ffe5c6}
+
+/* Separate cutout layers: one stationary top and one moving lower roller. */
+.scroll-stage{position:absolute;width:auto;height:100%;aspect-ratio:2/3;top:0;left:50%;translate:-50% 0}
+.scroll-stage .agenda-camera{inset:0}
+.scroll-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.scroll-stage .agenda-roll{left:0;top:0;width:100%;height:100%;opacity:1;overflow:visible;filter:drop-shadow(0 3px 3px #0005)}
+.ending-music-credit{display:block;text-align:center;margin-top:8px;font:10px/1.3 var(--body);color:#dbc6a8}
+#nav-next[hidden]{display:none!important}
+
+/* Reserve sufficient room for the full raster navigation silhouettes. */
+.invitation-device #invitation.visual-novel{--nav-height:clamp(90px,24cqw,155px)}
+.visual-novel .vn-bottom{display:flex;flex-direction:column;justify-content:center;padding:6px 0 max(12px,env(safe-area-inset-bottom));gap:8px}
+.visual-novel .vn-progress{flex:0 0 5px;margin:0}
+.visual-novel .vn-navline{min-height:0}
+.visual-novel .vn-navigation{gap:10px}
+.visual-novel .vn-nav{min-width:0;min-height:0;padding:8px 10px}
+#location .maproom-venue{top:16%;width:88%;padding:8px 14px;border-width:10px}
+#location .maproom-venue h3{font-size:clamp(22px,5.8cqw,34px);margin:0 0 5px}
+#location .maproom-venue p{font:clamp(17px,4.5cqw,27px)/1.25 var(--body);margin:4px 0}
+#location .maproom-link{width:85%;margin:6px auto 0;aspect-ratio:5;font-size:clamp(15px,3.8cqw,23px)}
+#location .welcome-couple{bottom:9%;height:48%;width:100%}
+#location .welcome-character{width:44%}
+.vn-agenda .agenda-card{height:60%;top:20%}
+#reservation .book-leaf{transform-origin:5% 50%}
+#reservation .book-right{left:55%;width:45%;clip-path:none!important}
+#reservation-success .success-seal{width:clamp(110px,30cqw,190px);height:auto}
+
+/* Quick fade through the maroon-black stage. */
+.journey-fade{position:absolute;inset:0;z-index:19;background:#10070d;opacity:0;pointer-events:none}
+.visual-novel .agenda-card h3,.vn-agenda .agenda-entry:first-child h3{font:clamp(13px,3.45cqw,22px)/1.2 var(--body)}
+.visual-novel .agenda-card time{font:bold clamp(11px,2.95cqw,18px)/1.2 Georgia,serif}
+.vn-agenda .agenda-entry{gap:6px;border-bottom-color:#6d253b22;padding:5px 0}
+#reservation[data-book-step='2'] .book-writing-area{inset:7% 20% 7% 10%}
+#reservation[data-book-step='2'] .vn-form-content{overflow:visible;flex:1 1 auto}
+#reservation[data-book-step='2'] #reservation-title{font-size:clamp(24px,6.3cqw,37px);margin-bottom:10px}
+#reservation[data-book-step='2'] .reservation-intro{font:clamp(14px,3.65cqw,22px)/1.3 var(--body);margin:0 0 10px}
+#reservation[data-book-step='2'] .form-field{margin:8px 0}
+#reservation[data-book-step='2'] .form-field label{font:clamp(14px,3.65cqw,22px)/1.3 var(--body);margin-bottom:4px}
+#reservation[data-book-step='2'] .form-field input[type=text]{font-size:clamp(16px,4cqw,24px);min-height:36px;height:5.5cqh;padding:4px 2px}
+#reservation .field-error{font-size:12px;line-height:1.2;min-height:0;margin:3px 0}
+#reservation .field-error:empty{display:none}
+#reservation .stepper{gap:10px;justify-content:flex-start}
+#reservation .stepper button{width:38px;height:38px;min-width:38px;padding:8px}
+#reservation .stepper input{height:38px;width:45px;font-size:20px}
+#reservation #submit-reservation{width:88%;max-width:300px;min-height:44px;aspect-ratio:5;margin:12px auto 0;font-size:clamp(14px,3.65cqw,22px)}
+#reservation #recall-ticket{width:65%;min-height:40px;max-width:220px;aspect-ratio:4.5;padding:6px 10px;margin:6px auto;font-size:clamp(14px,3.65cqw,21px)}
+#reservation #reservation-status{font:clamp(12px,3.2cqw,18px)/1.3 var(--body);margin:6px 0}
+#reservation #edit-reservation{width:65%;max-width:240px;aspect-ratio:4;min-height:40px;font-size:clamp(14px,3.65cqw,22px);margin:6px auto}
+#reservation-success{gap:5px}
+#reservation-success .success-seal{width:clamp(85px,25cqw,155px)}
+#reservation-success .success-detail{font-size:clamp(14px,3.65cqw,22px);line-height:1.3}
+
+/* Align reservation actions with the form fields. */
+#reservation #submit-reservation,#reservation #recall-ticket,#reservation #edit-reservation{margin-left:0;margin-right:auto}
+
+/* Center the writing block on the paper, excluding the thick right binding. */
+#reservation[data-book-step='2'] .book-writing-area{inset:7% 20% 7% 8%;justify-content:center}
+#reservation[data-book-step='2'] .vn-form-content{flex:0 0 auto}
+#reservation #submit-reservation{width:76%;aspect-ratio:579/147;background-position:left center;padding:6px 8%;margin-left:0;margin-right:auto}
+#reservation #recall-ticket{width:60%;aspect-ratio:932/277;background-position:left center;padding:6px 8%;margin-left:0;margin-right:auto}
+#reservation #edit-reservation{background-position:left center}

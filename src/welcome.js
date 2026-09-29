@@ -2,11 +2,10 @@ import gsap from 'gsap';
 import {sound} from './audio.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
- ['ANDA','Kita sudah tiba. Bifari dan Syafira menyambut kedatangan Anda.'],
- ['BIFARI','Selamat datang, Bapak, Ibu, dan sahabat sekalian. Saya Bifari. Silakan masuk.'],
- ['SYAFIRA','Saya Syafira. Terima kasih sudah membuka undangan kami.'],
- ['BIFARI','Dengan senang hati, kami mengundang Anda untuk hadir di pernikahan kami.'],
- ['SYAFIRA','Berikut tanggal dan waktu acara kami. Silakan pilih Lanjut.']
+ ['KAMU','Ini rumahnya. Sepertinya mereka sudah menunggu.'],
+ ['BIFARI','Hai, selamat datang! Aku Bifari. Yuk, masuk dulu.'],
+ ['SYAFIRA','Aku Syafira. Senang sekali bisa menyambutmu di sini.'],
+ ['BIFARI','Kami ingin mengundangmu menjadi bagian dari hari bahagia kami.']
 ];
 export function initWelcome(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#greeting');
@@ -15,7 +14,7 @@ export function initWelcome(){
  function controls(){
   scene.dataset.welcomeStep=String(step);root.dataset.welcomeBusy=String(busy);
   root.querySelector('#nav-back').disabled=busy;root.querySelector('#nav-next').disabled=busy;
-  root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 05</small>`;
+  root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 04</small>`;
   gsap.set('#journey-progress',{scaleX:(step+1)/dialogue.length});
  }
  function highlight(speaker){scene.dataset.speaker=speaker;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===speaker));}

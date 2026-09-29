@@ -1,0 +1,82 @@
+/* Refinements to the final five chapters. */
+#location .maproom-link{display:inline-flex;align-items:center;justify-content:center;min-height:60px;max-width:100%;padding:18px 30px;font-size:18px;line-height:1.3;margin:12px auto 6px;box-sizing:border-box;text-align:center}
+#location .maproom-venue{width:min(510px,88%);padding:14px 20px}
+.wardrobe-swatch[data-fabric-state='stacked'] figcaption{visibility:hidden}
+.cloth-maroon{z-index:2}.cloth-black{z-index:1}
+.vn-agenda .agenda-entry{opacity:1}
+.visual-novel .agenda-card h3{font-size:clamp(14px,2.3cqh,20px)}
+.visual-novel .agenda-card time{font-size:clamp(10px,1.6cqh,14px)}
+#reservation .guestbook-object{left:50%;right:auto;top:24%;width:min(94%,860px);height:auto;aspect-ratio:1206/739;translate:-50% 0;perspective:1600px;transform-origin:50% 50%;filter:none}
+.guestbook-spread{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:75% 50%}
+#reservation .book-right{left:50%;top:0;width:50%;height:100%;object-fit:fill;filter:drop-shadow(0 12px 12px #0008)}
+.book-leaf{position:absolute;left:50%;width:50%;height:100%;transform-origin:0 50%;transform-style:preserve-3d}
+#reservation .book-front,#reservation .book-back{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;backface-visibility:hidden}
+.book-front{transform:translateZ(1px)}.book-back{transform:rotateY(180deg)}
+#reservation[data-book-step='2'] .vn-dialogue{background-image:url('/assets/png/guestbook/right-page.png');width:min(620px,96%)}
+#reservation[data-book-step='2'] .book-writing-area{inset:9% 18% 9% 14%}
+#reservation[data-book-step='2'] #reservation-title{font-size:32px;margin-bottom:18px}
+#reservation[data-book-step='2'] .reservation-intro{font-size:17px;line-height:1.5;margin-bottom:20px}
+#reservation .ticket-card,#reservation #save-ticket,#reservation #calendar{display:none}
+#reservation .ticket-actions{display:block;text-align:center}
+#reservation #edit-reservation{color:#642139}
+#reservation-success{padding:0 0 14px;display:flex;flex-direction:column;align-items:center;gap:10px}
+#reservation-success[hidden]{display:none}
+#reservation-success .success-seal{width:clamp(100px,15cqh,150px);height:auto;display:block;filter:drop-shadow(0 6px 4px #37101c40);margin:4px 0 12px}
+#reservation-success .success-kicker{font:12px Georgia;letter-spacing:3px;color:#884855}
+#reservation-success strong{font:30px/1.25 GALVANIZED,Georgia;display:block}
+#reservation-success .success-guest{font:20px/1.4 Georgia;margin:10px 0;color:#341320}
+#reservation-success .success-detail{font:16px/1.5 Georgia;margin:0;color:#6c4350}
+#closing .vn-dialogue{inset:14% 0 8px;translate:none;transform:none!important;margin:auto;width:min(640px,97%);background:none;box-shadow:none;padding:0;overflow:visible;display:block}
+#closing-summary{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;min-height:0}
+#closing-summary .ticket-preview{display:block;min-height:0;min-width:0;width:100%;height:calc(100% - 68px);object-fit:contain;filter:drop-shadow(0 10px 20px #0008)}
+#closing-summary .ticket-preview[hidden]{display:none}
+#closing #save-summary{flex:none;max-width:96%;min-height:52px;margin:0;padding:16px 28px;font:17px/1.3 Georgia;color:#ffe7c7}
+.summary-accessible{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap}
+@media(max-height:700px) and (max-width:600px){
+ #location .maproom-link{font-size:16px;padding:15px 24px;min-height:54px;margin:8px auto 3px}
+ #location .maproom-venue{padding:10px 16px}
+ #reservation[data-book-step='2'] .book-writing-area{inset:8% 17% 8% 13%}
+ #reservation[data-book-step='2'] #reservation-title{font-size:28px;margin-bottom:12px}
+ #reservation[data-book-step='2'] .reservation-intro{font-size:16px;margin-bottom:12px}
+ #reservation[data-book-step='2'] .form-field label{font-size:16px}
+ #reservation .button{font-size:15px;padding:12px 18px}
+ #reservation-success strong{font-size:26px}
+ #reservation-success .success-guest{font-size:18px}
+ #closing #save-summary{font-size:15px;min-height:48px;padding:14px 24px}
+}
+@media(max-height:500px) and (min-width:600px){
+ #reservation .guestbook-object{top:19%;width:min(46%,480px);left:26%}
+ #reservation[data-book-step='2'] .vn-dialogue{left:auto;right:3%;width:59%}
+ #reservation[data-book-step='2'] .book-writing-area{inset:10% 17% 10% 14%}
+ #closing .vn-dialogue{inset:6% 3% 8px auto;width:67%;margin:0}
+ #closing-summary{flex-direction:row;gap:18px}
+ #closing-summary .ticket-preview{height:100%;width:55%;max-width:55%}
+ #closing #save-summary{max-width:42%;font-size:16px}
+ .visual-novel .agenda-card h3{font-size:12px}.visual-novel .agenda-card time{font-size:9px}
+}
+
+/* Reserve a separate line for each time and title. */
+.vn-agenda .agenda-card{top:22%;height:49%;width:60%;padding:0;overflow:visible}
+.vn-agenda .agenda-list{display:grid;grid-template-rows:repeat(8,minmax(0,1fr));height:100%;gap:0}
+.vn-agenda .agenda-entry{height:auto;min-height:0;display:flex;flex-direction:column;padding:2px 0;gap:2px;justify-content:center}
+.visual-novel .agenda-card time{flex:none;font-size:clamp(10px,1.5cqh,13px);line-height:1.1;margin:0}
+.visual-novel .agenda-card h3{font-size:clamp(13px,1.9cqh,18px);line-height:1.08}
+#reservation[data-book-step='2'] .vn-dialogue{max-height:none}
+#reservation[data-book-step='2'] .vn-form-content{flex:1 1 0;min-height:0;overflow:auto;padding:0 4px 12px 0}
+#reservation #submit-reservation{font-size:16px;padding:14px 18px;min-height:48px;line-height:1.3}
+#reservation-success .success-detail{font-size:15px}
+#reservation-success .success-seal{width:clamp(90px,13cqh,125px);margin:0 0 6px}
+#reservation-success{gap:6px;padding:0 0 8px}
+#reservation #ticket-host .ticket-actions{margin-top:8px}
+@media(max-width:600px){.vn-agenda .agenda-card{width:60%;top:23%;height:49%}.visual-novel .agenda-card h3{font-size:13px}.visual-novel .agenda-card time{font-size:10px}#reservation[data-book-step='2'] .book-writing-area{inset:8% 20% 11% 13%}}
+@media(max-height:700px) and (max-width:600px){
+ .vn-agenda .agenda-card{top:21%;height:52%}
+ .visual-novel .agenda-card h3{font-size:12px}.visual-novel .agenda-card time{font-size:9px}
+ #reservation[data-book-step='2'] .vn-dialogue{top:16%;bottom:4px}
+ #reservation[data-book-step='2'] .reservation-intro{font-size:15px;line-height:1.35;margin-bottom:10px}
+ #reservation[data-book-step='2'] .form-field{margin-bottom:8px}
+ #reservation[data-book-step='2'] .form-field label{font-size:15px;line-height:1.25}
+ #reservation #submit-reservation{font-size:14px;padding:12px 16px}
+ #reservation-success strong{font-size:23px}
+}
+@media(max-height:500px) and (min-width:600px){.vn-agenda .agenda-card{left:25%;width:29%;height:69%;top:25%}.visual-novel .agenda-card h3{font-size:11px}.visual-novel .agenda-card time{font-size:9px}}

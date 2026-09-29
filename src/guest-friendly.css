@@ -1,7 +1,7 @@
 /* Consistent reading surfaces and touch targets for every guest. */
 .chapter-toggle{position:absolute;z-index:150;top:max(15px,env(safe-area-inset-top));left:14px;display:flex;align-items:center;justify-content:center;gap:6px;width:86px;height:46px;padding:8px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;color:#ffe7c7;font:17px Georgia,serif}
 .menu-bars{font:24px Georgia,serif;line-height:1}
-#chapter-menu{background:#2c111c;color:#ffe9d0;border:16px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 16px 20px / 0 stretch;width:min(440px,94vw);max-height:90dvh;padding:14px 18px;overflow:auto;font:18px/1.4 Georgia,serif}
+#chapter-menu{background:#2c111c;color:#ffe9d0;border:16px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 16px 20px / 0 stretch;width:min(440px,94cqw);max-height:90cqh;padding:14px 18px;overflow:auto;font:18px/1.4 Georgia,serif}
 #chapter-menu::backdrop{background:#100710d9;backdrop-filter:blur(4px)}
 .chapter-menu-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
 #chapter-menu h2{font:26px Georgia,serif;margin:4px 0;color:#ffe9d0}

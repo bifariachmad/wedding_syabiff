@@ -31,17 +31,19 @@ function buildAmbient() {
   ambient=context.createBufferSource();ambient.buffer=buffer;ambient.loop=true;ambient.connect(master);ambient.start();
 }
 function notify(){document.dispatchEvent(new CustomEvent('musicchange',{detail:{enabled}}));}
-export async function startAudio() {
-  if(started) return;
+export async function startAudio(enableOnStart=false) {
+  if(started){if(enabled&&music?.paused)void music.play().catch(()=>{});return;}
+  if(enableOnStart){enabled=true;storage.set('djsl-music',true);}
   started=true;
   try {
-    context=new (window.AudioContext||window.webkitAudioContext)();master=context.createGain();master.gain.value=enabled?.35:0;master.connect(context.destination);
+    context=new (window.AudioContext||window.webkitAudioContext)();master=context.createGain();master.gain.value=enabled?.82:0;master.connect(context.destination);
+    // Start media inside the click gesture, before any asynchronous boundary.
+    if(CONFIG.BGM_SRC){music=new Audio(CONFIG.BGM_SRC);music.loop=true;music.volume=.10;music.muted=!enabled;void music.play().catch(()=>{});}else buildAmbient();
     await context.resume();
-    if(CONFIG.BGM_SRC){music=new Audio(CONFIG.BGM_SRC);music.loop=true;music.volume=.15;music.muted=!enabled;await music.play();}else buildAmbient();
     notify();
-  } catch { enabled=false;notify(); }
+  } catch { if(context){enabled=true;notify();}else{enabled=false;started=false;notify();} }
 }
-export async function toggleAudio(){const next=!isMusicEnabled();await startAudio();enabled=next&&!!context;storage.set('djsl-music',enabled);if(master)master.gain.setTargetAtTime(enabled?.35:0,context.currentTime,.1);if(music){music.muted=!enabled;if(enabled)music.play().catch(()=>{});}notify();}
+export async function toggleAudio(){const next=!isMusicEnabled();await startAudio();enabled=next&&!!context;storage.set('djsl-music',enabled);if(master)master.gain.setTargetAtTime(enabled?.82:0,context.currentTime,.1);if(music){music.muted=!enabled;if(enabled)music.play().catch(()=>{});}notify();}
 export function isMusicEnabled(){return started&&enabled;}
 export function sound(name){
   if(!context||!enabled) return;
@@ -60,7 +62,7 @@ export function sound(name){
    for(let i=0;i<Math.floor(duration*10);i++)noise(t+i*.1+(i%3)*.014,.025+(i%4)*.009,1200+(i%7)*480,.045+(i%3)*.025);
   }
   if(name==='portal'){noise(t,3.8,330,.055);tone(72,t,3.6,.035,'sine',170);tone(220,t+1.8,1.8,.025,'sine',550);}
-  if(name==='gate'){tone(83,t,1.5,.025,'sawtooth',32);noise(t,1.5,320,.06);}
+  if(name==='gate'){tone(83,t,2.3,.09,'sawtooth',32);tone(175,t+.1,2.1,.055,'triangle',70);noise(t,2.3,460,.24);noise(t+.15,1.8,1350,.1);}
   if(name==='chain')for(let i=0;i<6;i++){noise(t+i*.14,.1,1600+i*135,.08);tone(950+i*117,t+i*.14,.11,.018);}
   if(name==='seal')tone(100,t,.4,.15,'sine',30);
   if(name==='page')noise(t,.6,1300,.07);
@@ -71,3 +73,5 @@ export function sound(name){
   if(name==='success'){tone(440,t,.7,.055);tone(550,t+.12,.7,.045);tone(660,t+.25,.75,.035);}
 }
 document.addEventListener('visibilitychange',()=>{if(!context)return;if(document.hidden){context.suspend();music?.pause();}else{context.resume();if(music&&enabled)music.play().catch(()=>{});}});
+
+document.addEventListener('devicechange',e=>{if(!context)return;if(e.detail.blocked){context.suspend();music?.pause();}else if(enabled){context.resume();music?.play().catch(()=>{});}});

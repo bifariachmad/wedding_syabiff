@@ -1,6 +1,6 @@
 import sharp from 'sharp';
 import fs from 'node:fs/promises';
-const source='../scene1-artwork-v3';
+const source='../source-art/scene1-artwork-v3';
 for(const [name,width]of [['hand-left',650],['invitation-card',900],['burn-edge',850]]){
  if(process.argv[2]&&name!==process.argv[2])continue;
  let pipeline=sharp(`${source}/${name==='hand-left'?'hand-left-long':name}.png`);

@@ -5,3 +5,10 @@ artifacts/
 .env*
 *.zip
 *.log
+.vercel/
+.openai/
+output/
+tmp/
+
+.vercel
+.env*

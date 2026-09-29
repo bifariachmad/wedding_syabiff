@@ -8,11 +8,12 @@
     "build": "vite build && node scripts/postbuild.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
     "assets": "node scripts/import-art.mjs && node scripts/generate-ui.mjs",
-    "test": "node --test tests/backend.test.mjs",
+    "test": "node --test tests/backend.test.mjs tests/album.test.mjs",
     "verify": "node tests/browser.mjs",
     "assets:review": "node scripts/review-raster.mjs"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.0",
     "gsap": "^3.13.0",
     "qr-scanner": "^1.4.2",
     "qrcode": "^1.5.4"

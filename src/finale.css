@@ -1,5 +1,5 @@
-.arrival-card-copy strong{font-size:clamp(38px,5.2vw,68px);margin:10px 0;letter-spacing:-1px}
-@media(max-width:600px){.arrival-card-copy strong{font-size:clamp(32px,9vw,49px)}}
+.arrival-card-copy strong{font-size:clamp(38px,5.2cqw,68px);margin:10px 0;letter-spacing:-1px}
+@media(max-width:600px){.arrival-card-copy strong{font-size:clamp(32px,9cqw,49px)}}
 @media(max-height:500px) and (min-width:600px){.arrival-card-copy strong{font-size:28px}}
 .clockroom-countdown{top:15%;width:min(420px,80%);padding:10px 14px}
 .venue-logo{width:66px;height:66px;object-fit:cover;border-radius:15px;display:block;margin:0 auto 8px}

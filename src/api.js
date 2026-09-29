@@ -1,5 +1,5 @@
 import { CONFIG } from './config.js';
-export const ID_PATTERN = /^[A-HJ-NP-Z2-9]{8}$/;
+export const ID_PATTERN = /^(?:[1-9][0-9]{5}|[A-HJ-NP-Z2-9]{8})$/;
 export const normalizeName = value => String(value).trim().replace(/\s+/g,' ').toLowerCase();
 export function validate(name, guests) {
   const clean=String(name).trim();
@@ -21,3 +21,6 @@ export async function request(action,payload={}) {
     return result;
   }finally{clearTimeout(timeout);}
 }
+
+export const normalizeCode=value=>String(value).trim().toUpperCase().replace(/^DJSL-/,'').replace(/[ -]/g,'');
+export const displayCode=id=>/^[0-9]{6}$/.test(String(id))?String(id).replace(/(...)(...)/,'$1 $2'):String(id).replace(/(....)(....)/,'$1 $2');
