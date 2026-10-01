@@ -16,6 +16,10 @@ Domain tujuan: https://diginvit.bifariachmad.com. Semua alamat di bawah memakai 
 
 PIN sama dengan admin reservasi sebelumnya, ada di Script Properties `ADMIN_PIN` pada proyek Apps Script. PIN tidak disimpan di source atau frontend. Reservasi memakai backend Google Sheets yang sudah aktif; tidak membutuhkan deployment ulang Apps Script.
 
+Halaman `/buku-tamu` dan `/admin` memakai ilustrasi, font, buku maroon, serta kertas perkamen yang sama dengan undangan. Setelah masuk, pilih **Pindai QR** atau ketik kode tiket. Cocokkan nama dan jumlah rombongan, lalu tekan **Tandai Hadir**. Hanya konfirmasi berhasil dari backend yang mengubah jumlah hadir. Tombol **Tamu berikutnya** membersihkan hasil sebelumnya; kamera diaktifkan kembali lewat Pindai QR. Jika kamera ditolak, pencarian nama dan kode tetap tersedia.
+
+Daftar dapat difilter menjadi Semua, Belum hadir, dan Sudah hadir. Pencarian menerima nama maupun kode dengan spasi. Ringkasan menghitung orang; daftar menghitung reservasi. Gunakan **Muat ulang** untuk mengambil reservasi baru atau perubahan dari perangkat panitia lain; waktu sinkronisasi ditampilkan dalam WIB. Jika muat ulang gagal, daftar lama tetap dapat dicari dan diberi keterangan belum diperbarui. **Ekspor CSV** mengunduh seluruh daftar terakhir yang dimuat. Tautan reservasi offline, Google Sheets, dan album membuka tab baru agar sesi buku tamu tetap terbuka. Keluar membersihkan PIN dan data tamu dari sesi halaman.
+
 Tab `Buku Tamu` di spreadsheet `list_reservasi` adalah tampilan otomatis kolom kode, nama, jumlah, status, dan waktu kehadiran dari tab `Reservations`. Check-in dilakukan lewat aplikasi. Jangan mengetik pada hasil formula tab `Buku Tamu`. Kode enam angka dan kode delapan karakter lama tetap didukung. Check-in ulang mempertahankan waktu kedatangan pertama.
 
 Reservasi masih mengikuti kontrak lama: nama yang sama setelah normalisasi memperbarui reservasi yang sudah ada. Untuk dua keluarga dengan nama sama, gunakan nama pembeda saat reservasi. Data check-in merupakan jumlah rombongan sesuai reservasi.
@@ -43,5 +47,7 @@ Sesi album menggunakan cookie HttpOnly, Secure, SameSite=Lax dengan tanda tangan
 ## Pengembangan dan verifikasi
 
 `npm ci`, `npm run dev`, `npm test`, `npm run build`. `node tests/companions.mjs` memeriksa reservasi, QR cetak, check-in, antrean gagal-upload dan tampilan admin dengan backend mock; menghasilkan screenshot dan PDF lokal. `node tests/restart.mjs` memeriksa perjalanan dan persistensi tiket lama. Endpoint `/api` dijalankan oleh Vercel Functions; gunakan `vercel dev` atau deployment untuk integrasi Blob sungguhan.
+
+`node tests/reception.mjs` memeriksa buku tamu pada lebar 320–1440 px, PIN, filter, pencarian kode, scan kamera simulasi, kamera ditolak, gagal simpan dan coba ulang, check-in ganda, ekspor CSV, serta respons yang tiba setelah logout. Semua data uji terisolasi dari Google Sheets asli.
 
 Folder `artifacts`, `output`, `tmp`, `.env*`, `.vercel`, dan `.openai` dikecualikan dari deployment melalui `.vercelignore`. Riwayat/artwork undangan tetap berada di workspace asli.
