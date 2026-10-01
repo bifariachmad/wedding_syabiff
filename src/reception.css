@@ -1,4 +1,10 @@
-/* The same illustrated book, ink, parchment and characters as the invitation. */
+/* Original reception artwork: keep the invitation's character design and typography. */
+body.guest-admin::before{background:linear-gradient(#160b1618,#160b1630),url('/assets/png/reception/reception-hall-v2.png') center/cover no-repeat}
+.guest-admin .reception .companion-nav,.guest-admin .reception .companion-footer{background:none;border-color:#c9a47a66;border-style:solid;border-width:0 0 1px}
+.guest-admin .reception .companion-footer{border-width:1px 0 0}
+.guest-admin .reception .companion-heading::after{height:1px;background:linear-gradient(90deg,transparent,#c9a47a,transparent)}
+.guest-admin .reception .companion-card{border-image-source:url('/assets/png/reception/reception-ledger-v2.png');border-image-slice:300 200 300 200 fill;border-width:80px 45px 70px 55px;border-image-width:80px 45px 70px 55px}
+.guest-admin .reception .button,.guest-admin .reception .button.primary{background-image:url('/assets/png/reception/reception-ribbon-v2.png');background-size:100% 180%;background-position:center;background-repeat:no-repeat}
 .guest-admin .admin.reception{max-width:1280px;padding:0 44px 32px}
 .guest-admin .reception-heading{padding:32px 0 20px}
 .guest-admin .reception-heading h1{font-size:clamp(44px,6vw,68px)}
@@ -11,13 +17,10 @@
 .guest-admin #admin-login .kicker{margin:0 0 22px}
 .guest-admin #admin-login input{background:#6c2a3510;border:0;border-bottom:1px solid #784656;padding:12px}
 .reception-login-note{margin-top:26px;padding-top:18px;border-top:1px solid #78465655;text-align:center;font-size:15px;color:#704452}
-.reception-illustration{position:relative;height:450px;isolation:isolate}
+.reception-illustration{position:relative;height:580px;isolation:isolate;margin:0}
 .reception-illustration::before{content:'';position:absolute;inset:10% 0;background:radial-gradient(ellipse,#bd704837,transparent 68%);z-index:-1}
-.reception-illustration img{position:absolute;object-fit:contain;filter:drop-shadow(0 12px 10px #0008)}
-.reception-book{width:51%;height:82%;left:23%;top:0;transform:rotate(-9deg)}
-.reception-bifari{width:56%;height:80%;left:-5%;bottom:7%;transform:rotate(-4deg)}
-.reception-syafira{width:57%;height:80%;right:-4%;bottom:7%;transform:rotate(4deg)}
-.reception-illustration>span{position:absolute;bottom:-6px;left:0;right:0;text-align:center;color:#e8c6aa;font:italic 23px var(--body)}
+.reception-illustration .reception-hosts{position:absolute;inset:0;width:100%;height:calc(100% - 35px);object-fit:contain;filter:drop-shadow(0 12px 10px #0008)}
+.reception-illustration figcaption{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#e8c6aa;font:italic 21px var(--body)}
 .guest-admin .reception #admin-panel{margin:0;padding:0;border:0;border-image:none;color:var(--companion-cream)}
 .guest-admin .reception.is-open .reception-heading{padding:26px 0 12px}
 .guest-admin .reception.is-open .reception-heading h1{font-size:48px}
@@ -36,13 +39,14 @@
 .reception-scanner{min-width:0;padding:28px 28px 32px;background:#1e1015dc;border:1px solid #98704d66;box-shadow:0 16px 28px #0004}
 .guest-admin .reception #admin-panel .reception-scanner h2{color:#ffe7c7;font-size:35px;margin-bottom:8px}
 .reception-intro{font-size:18px;color:#e0bcac;line-height:1.4;margin:8px 0 24px}
-.reception-scanner .scanner-stage{max-width:none;aspect-ratio:1.16;background:#0d080ba8;box-shadow:inset 0 0 28px #0009;border:1px solid #93724f55;overflow:hidden}
-.reception-scanner .scanner-stage::after{content:'';position:absolute;inset:10px;border:1px solid #d7b08544;pointer-events:none}
+.reception-scanner .scanner-stage{max-width:none;aspect-ratio:1;background:radial-gradient(ellipse,#4f233a33,#0d080b88);overflow:hidden;isolation:isolate}
+.reception-portal{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;z-index:2}
+.reception-scanner #scanner-overlay{border:1px dashed #f5dba0aa;z-index:1}
 .reception-scanner #scanner-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;margin:0;object-fit:cover}
-#scanner-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;text-align:center;color:#dfbaa1}
-#scanner-placeholder img{height:105px;max-height:45%;width:auto;transform:rotate(-8deg);filter:drop-shadow(0 8px 10px #000)}
-#scanner-placeholder p{margin:12px 0 5px;font-size:23px}
-#scanner-placeholder span{max-width:200px;font-size:14px;line-height:1.4;color:#bc9a8b}
+#scanner-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24% 18% 12%;text-align:center;color:#dfbaa1}
+#scanner-placeholder img{height:85px;max-height:42%;width:auto;filter:drop-shadow(0 8px 10px #000)}
+#scanner-placeholder p{margin:10px 0 5px;font-size:21px}
+#scanner-placeholder span{max-width:190px;font-size:14px;line-height:1.4;color:#d9b9a7}
 .guest-admin .reception .scan-actions{display:block}
 .guest-admin .reception .scan-actions .button{width:100%;min-width:0;margin-top:16px}
 .guest-admin .reception #manual-form label{color:#e1b9a8;font-size:17px}
@@ -50,7 +54,7 @@
 .guest-admin .reception #manual-code{background:#ffe7c70a;border:0;border-bottom:1px solid #ac7d68;color:#ffe7c7;min-width:0;padding:10px 12px;font:22px/1.5 var(--ui);letter-spacing:2px}
 .guest-admin .reception #manual-code::placeholder{color:#b58e7b;font-size:21px}
 .guest-admin .reception .inline-form .button{min-height:52px;padding:10px 20px}
-.guest-admin .reception #checkin-result:not(:empty){border:0;border-style:solid;border-width:23px 25px 26px 18px;border-image:url('/assets/png/guestbook/page.png') 55 85 80 40 fill/23px 25px 26px 18px/0 stretch;background:none;padding:10px 4px;margin-top:26px;color:#431d28}
+.guest-admin .reception #checkin-result:not(:empty){border:0;border-style:solid;border-width:50px 28px 46px 35px;border-image:url('/assets/png/reception/reception-ledger-v2.png') 300 200 300 200 fill/50px 28px 46px 35px/0 stretch;background:none;padding:10px 4px;margin-top:26px;color:#431d28}
 .guest-admin .reception #checkin-result h3{color:#642139;font-size:28px;margin:10px 0}
 .guest-admin .reception #checkin-result p{margin:10px 0;line-height:1.4}
 .guest-admin .reception #checkin-result .kicker{color:#884855;font-size:10px}
@@ -84,3 +88,6 @@
 @media(max-width:1000px){.guest-admin .admin.reception{padding-inline:24px}.reception-workspace{gap:18px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.reception-scanner{padding:24px 18px}.guest-admin .reception #admin-panel .reception-directory{padding:14px 6px;border-width:30px 26px 35px 18px;border-image-width:30px 26px 35px 18px}.guest-admin .reception #admin-panel .reception-directory h2{font-size:29px}.reception-directory-title img{display:none}.reception-welcome{gap:16px}.reception-illustration{height:370px}.reception-toolbar{flex-wrap:wrap}.guest-admin .reception .admin-row .button{width:87px;padding-inline:8px}}
 @media(max-width:700px){.guest-admin .admin.reception{padding:0 16px 24px}.reception-welcome{grid-template-columns:1fr;gap:28px;margin-top:0}.reception-illustration{height:225px;width:280px;max-width:100%;margin:auto}.reception-illustration>span{font-size:18px;bottom:-5px}.guest-admin .admin #admin-login{padding:14px 12px 18px}.guest-admin #admin-login h2{font-size:34px}.guest-admin .reception-heading{padding:24px 0 12px}.guest-admin .reception-heading .kicker{font-size:9px;letter-spacing:1.5px}.guest-admin .reception-heading p:not(.kicker){font-size:18px}.guest-admin .reception.is-open .reception-heading h1{font-size:42px}.reception-workspace{grid-template-columns:1fr;gap:26px}.reception-toolbar{justify-content:center;gap:12px}.reception-toolbar #sync-status{width:100%;text-align:center}.guest-admin .reception-toolbar .admin-actions{width:100%;gap:6px}.guest-admin .reception-toolbar .button{flex:1;min-width:0;padding:10px 9px;font-size:15px;gap:6px}.guest-admin .reception-toolbar .icon{width:16px;height:16px}.guest-admin .reception .admin-totals{gap:6px;margin-bottom:22px}.guest-admin .reception .admin-totals>div{padding:18px 10px;text-align:center}.guest-admin .reception .admin-totals span{font-size:14px}.guest-admin .reception .admin-totals strong{font-size:34px}.guest-admin .reception .admin-totals small{font-size:12px}.reception-scanner{padding:24px 22px}.reception-scanner .scanner-stage{max-width:380px;margin:auto;aspect-ratio:1.25}.guest-admin .reception #admin-panel .reception-directory{padding:16px 8px}.reception-directory-title img{display:block}.guest-admin .reception .admin-row h3{font-size:22px}.reception-links{justify-content:flex-start;gap:4px;margin-top:20px;flex-direction:column}.guest-admin .reception .companion-footer{font-size:8px;letter-spacing:1px;margin-top:28px}.guest-admin .reception #reservation-list{max-height:540px}}
 @media(max-width:359px){.guest-admin .admin.reception{padding-inline:10px}.guest-admin .reception .admin-totals span{font-size:12px}.guest-admin .reception .admin-totals small{font-size:11px}.reception-scanner{padding:22px 16px}.reception-filters button{font-size:15px;padding-inline:9px}.guest-admin .reception .admin-row{flex-wrap:wrap}.reception-directory-title img{display:none}}
+@media(max-width:1000px){.reception-illustration{height:470px}.guest-admin .reception .companion-card,.guest-admin .reception #admin-panel .reception-directory{border-width:65px 32px 60px 40px;border-image-width:65px 32px 60px 40px}.reception-illustration figcaption{font-size:18px}}
+@media(max-width:700px){.reception-illustration{height:355px;width:min(350px,100%)}.reception-illustration figcaption{font-size:18px}.reception-scanner .scanner-stage{aspect-ratio:1}.guest-admin .reception .companion-card,.guest-admin .reception #admin-panel .reception-directory{border-width:58px 25px 52px 34px;border-image-width:58px 25px 52px 34px}.guest-admin .reception-toolbar .button{font-size:14px}.guest-admin .reception #admin-panel .reception-directory{padding-inline:4px}}
+@media(max-width:359px){.reception-illustration{height:310px}.guest-admin .reception #checkin-result:not(:empty){border-width:45px 18px 40px 25px;border-image-width:45px 18px 40px 25px}#scanner-placeholder p{font-size:18px}#scanner-placeholder span{font-size:12px}}
