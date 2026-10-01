@@ -40,25 +40,41 @@ body.companion::before{content:'';position:fixed;inset:0;z-index:-1;pointer-even
 #direct-status:empty,.camera-note:empty,.guest-admin #admin-status:empty{display:none}
 .companion-footer{display:flex;justify-content:space-between;gap:20px;margin-top:48px;padding-top:26px;background:url('/assets/png/arrival/ui-divider.png') center top/100% 12px no-repeat;color:#e1b9a8;font:10px/1.6 'Special Elite',serif;letter-spacing:1.5px}
 .a5-preview{display:flex;justify-content:center}
-.a5-card{width:148mm;height:210mm;flex-shrink:0;position:relative;overflow:hidden;padding:30mm 16mm 17mm;text-align:center;color:#431d28;background:url('/assets/png/ticket/stationery.png') center/100% 100% no-repeat;filter:drop-shadow(0 16px 18px #0008)}
-.a5-border,.a5-lantern{display:none}
-.a5-kicker{font:8pt/1.4 'Special Elite',serif;letter-spacing:1.4px;margin:0 0 3mm;color:#79525a}
-.a5-intro{font:10pt/1.4 'IM Fell English',serif;margin:0 0 4mm}
-.companion .a5-card h2{font:27pt/1 GALVANIZED,Georgia,serif;margin:0;color:#642139}
-.a5-card h2 em{font:italic 14pt/1 'IM Fell English',serif}
-.a5-rule{color:transparent;margin:3mm auto;height:3mm;width:65mm;background:url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat}
-.a5-date{font:9pt 'Special Elite',serif;letter-spacing:.7px;margin:0 0 3mm}
-.a5-details{font:11pt/1.3 'IM Fell English',serif;margin:0}
-.a5-details strong{font-size:15pt;font-weight:400}
-.a5-recipient{border-block:1px solid #88485555;margin:3mm 2mm;padding:2mm 1mm;display:grid;gap:1.5mm}
-.a5-recipient span{font-size:9pt}
+.a5-spread{display:grid;gap:26px}
+.a5-side{margin:0;min-width:0}
+.a5-face-label{margin:0 0 10px;color:#e1b9a8;text-align:center;font:11px/1.5 'Special Elite',serif;letter-spacing:1.8px}
+.a5-cover,.a5-card{width:148mm;height:210mm;flex-shrink:0;position:relative;overflow:hidden;filter:drop-shadow(0 16px 18px #0008);color:#431d28}
+.a5-cover{isolation:isolate;background:#b78451;text-align:center}
+.a5-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.a5-cover-heading{position:absolute;top:8mm;left:12mm;right:12mm;color:#3d101b;text-shadow:0 1px 0 #f6d99855}
+.a5-cover-heading p{font:8pt/1.3 'Special Elite',serif;letter-spacing:1.7px;margin:0 0 2mm}
+.companion .a5-cover h2{font:32pt/1.1 GALVANIZED,Georgia,serif;color:#3d101b;margin:0;white-space:nowrap;letter-spacing:0}
+.a5-cover h2 em{font:italic 22pt 'IM Fell English',Georgia,serif}
+.a5-cover-qr{position:absolute;bottom:5mm;left:50%;transform:translateX(-50%);display:grid;justify-items:center;gap:1mm;width:36mm}
+.a5-cover-qr img{width:22mm;height:22mm;display:block;image-rendering:pixelated}
+.a5-cover-qr span{font:6.5pt/1.2 'Special Elite',serif;letter-spacing:.3px;color:#2b1117;background:#ebcf9cad;padding:1mm 1.5mm}
+.a5-card{padding:30mm 16mm 15mm;text-align:center;background:url('/assets/png/ticket/stationery.png') center/100% 100% no-repeat}
+.a5-intro{font:9.5pt/1.3 'IM Fell English',serif;margin:0 0 3mm}
+.companion .a5-card h2{font:22pt/1 GALVANIZED,Georgia,serif;margin:0;color:#642139}
+.a5-card h2 em{font:italic 13pt/1 'IM Fell English',serif}
+.a5-rule{margin:2mm auto;height:2mm;width:65mm;background:url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat}
+.a5-date{font:9pt/1.4 'Special Elite',serif;letter-spacing:.5px;margin:0 0 1.5mm}
+.a5-time{font:11pt/1.3 'IM Fell English',serif;margin:0 0 2mm}
+.a5-venue{font:16pt/1.2 'IM Fell English',serif;margin:0 0 2mm;color:#642139}
+.a5-address{font:10.5pt/1.35 'IM Fell English',serif;margin:0}
+.a5-location-code{font:8pt/1.3 'Special Elite',serif;margin:1.5mm 0 2mm}
+.a5-dresscode{font:10.5pt/1.3 'IM Fell English',serif;margin:0}
+.a5-recipient{border-block:1px solid #88485555;margin:2mm 2mm;padding:1.5mm 1mm;display:grid;gap:1.5mm}
+.a5-recipient span{font-size:9pt;line-height:1.25}
 .a5-recipient strong{font:13pt/1.2 'IM Fell English',serif;overflow-wrap:anywhere}
-.a5-qrs{display:flex;justify-content:center;gap:10mm}
-.a5-qrs>div{display:grid;justify-items:center;gap:2mm}
-.a5-qrs img{width:27mm;height:27mm;image-rendering:pixelated}
-.a5-qrs span{font:7pt 'Special Elite',serif}
-.a5-url{font:7pt 'Special Elite',serif;margin:3mm 0 0}
-.a5-footer{font:italic 10pt 'IM Fell English',serif;margin:3mm 0 0}
+.a5-qrs{display:flex;justify-content:center}
+.a5-qrs>div{display:grid;justify-items:center;gap:1.5mm}
+.a5-qrs img{width:22mm;height:22mm;display:block;image-rendering:pixelated}
+.a5-qrs span{font:8pt/1.2 'Special Elite',serif}
+.a5-checkin-note{font:9pt/1.3 'IM Fell English',serif;margin:2mm 0 0}
+.a5-general-note{font:11pt/1.4 'IM Fell English',serif;margin:14mm 0 14mm}
+.a5-footer{font:italic 10pt/1.4 'IM Fell English',serif;margin:3mm 0 0}
+
 #camera-login{max-width:560px;margin:0 auto}
 #camera-login>.kicker,#camera-login>h2{text-align:center}
 .camera-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;align-items:start}
@@ -115,5 +131,5 @@ body.companion::before{content:'';position:fixed;inset:0;z-index:-1;pointer-even
 @media(max-width:359px){.a5-preview{zoom:.5}}
 @page{size:A5 portrait;margin:0}
 @media print{
-html,body.companion{margin:0!important;padding:0!important;background:white!important;width:148mm!important;height:210mm!important;overflow:visible!important}body.companion::before{display:none}.companion-shell,.reservation-layout,.a5-preview{display:block!important;width:148mm!important;margin:0!important;padding:0!important;zoom:1!important}.companion-nav,.companion-heading,.no-print{display:none!important}.a5-card{filter:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.camera-app{display:none!important}.print-table{display:block!important;width:148mm;height:210mm;padding:35mm 18mm 20mm;text-align:center;color:#431d28;background:url('/assets/png/ticket/stationery.png') center/100% 100% no-repeat;print-color-adjust:exact;-webkit-print-color-adjust:exact}.print-table h1{font:33pt GALVANIZED,Georgia,serif;color:#642139}.print-table img{display:block;width:55mm;height:55mm;margin:8mm auto}.print-table p{font:14pt/1.4 'IM Fell English',Georgia,serif}.print-table small{font-size:10pt;overflow-wrap:anywhere}
+html,body.companion{margin:0!important;padding:0!important;background:white!important;width:148mm!important;height:auto!important;overflow:visible!important}body.companion::before{display:none}.companion-shell,.reservation-layout,.a5-preview{display:block!important;width:148mm!important;margin:0!important;padding:0!important;zoom:1!important}.companion-nav,.companion-heading,.no-print{display:none!important}.a5-spread{display:block!important}.a5-side{margin:0!important;break-inside:avoid;break-after:page}.a5-side:last-child{break-after:auto}.a5-cover,.a5-card{filter:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}.camera-app{display:none!important}.print-table{display:block!important;width:148mm;height:210mm;padding:35mm 18mm 20mm;text-align:center;color:#431d28;background:url('/assets/png/ticket/stationery.png') center/100% 100% no-repeat;print-color-adjust:exact;-webkit-print-color-adjust:exact}.print-table h1{font:33pt GALVANIZED,Georgia,serif;color:#642139}.print-table img{display:block;width:55mm;height:55mm;margin:8mm auto}.print-table p{font:14pt/1.4 'IM Fell English',Georgia,serif}.print-table small{font-size:10pt;overflow-wrap:anywhere}
 }

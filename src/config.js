@@ -11,6 +11,8 @@ export const CONFIG = Object.freeze({
     end: '2026-10-31T13:40:00+07:00',
     arrival: '09:30 WIB',
     venue: 'Lumbung Kuliner',
+    addressLines: ['Jl. Marelan Raya, Tanah Enam Ratus', 'Kec. Medan Marelan, Kota Medan', 'Sumatera Utara 20244'],
+    plusCode: 'MMP4+X8P',
     maps: 'https://maps.app.goo.gl/d5nJ9Rfvx1j3bCwp7',
     geo: [3.6875523, 98.6558724],
     dresscode: 'Maroon atau hitam',

@@ -7,7 +7,7 @@ Domain tujuan: https://diginvit.bifariachmad.com. Semua alamat di bawah memakai 
 | `/` | Undangan digital sembilan bab untuk HP/tablet vertikal |
 | `/reservasi` | Form reservasi langsung tanpa melewati cerita |
 | `/reservasi?mode=panitia` | Reservasi atas nama tamu offline, tiket, dan cetak kartu personal |
-| `/cetak` | Undangan A5; memakai tiket terakhir yang dibuat di browser ini, jika ada |
+| `/cetak` | Undangan A5 dua muka; memakai tiket terakhir yang dibuat di browser ini, jika ada |
 | `/buku-tamu` | Scan QR, input kode, cari nama, check-in, ekspor CSV |
 | `/album-admin` | Login PIN, ambil QR kamera, moderasi, buka/tutup galeri dan unggahan |
 | `/kamera` | Kamera dan galeri tamu; masuk lewat link/QR album dari panitia |
@@ -22,7 +22,11 @@ Reservasi masih mengikuti kontrak lama: nama yang sama setelah normalisasi mempe
 
 ## Cetak A5
 
-Untuk kartu umum gunakan PDF A5 yang disediakan. Untuk tamu offline: buat reservasi di mode panitia, pastikan kode muncul, lalu tekan Cetak undangan A5. Kartu memuat QR undangan digital serta QR check-in pribadi. Pilih A5 portrait, skala 100%, background graphics aktif, header/footer browser mati. Kartu A5 148 × 210 mm; PDF tidak menambahkan bleed.
+PDF undangan berisi dua halaman A5: halaman 1 adalah cover poster prewedding dengan QR undangan digital kecil di tengah bawah; halaman 2 berisi detail acara, alamat lengkap, dan nama penerima. Tulisan "Dua Jiwa, Satu Lentera" tidak dicetak pada kedua muka kartu.
+
+Untuk kartu umum gunakan PDF A5 yang disediakan. Untuk tamu offline: buat reservasi di mode panitia, pastikan kode muncul, lalu tekan Cetak undangan A5 dua muka. QR dan kode check-in pribadi tercetak di sisi belakang; kartu umum mengarahkan tamu untuk reservasi lewat QR digital pada cover. Pilih A5 portrait, cetak dua sisi/duplex, balik pada sisi panjang (long edge), skala 100%, background graphics aktif, header/footer browser mati. Kartu A5 148 × 210 mm; PDF tidak menambahkan bleed.
+
+Alamat venue: Jl. Marelan Raya, Tanah Enam Ratus, Kec. Medan Marelan, Kota Medan, Sumatera Utara 20244. Patokan Google Maps: MMP4+X8P; pin yang dipakai undangan: https://maps.app.goo.gl/d5nJ9Rfvx1j3bCwp7. Jalan diverifikasi melalui [daftar merchant Bank Mandiri](https://www.bankmandiri.co.id/documents/20143/45659490/Merchant%2BCoffiesta%2B-%2BFAQ%2B%28Feb%2B23%29.pdf/8dde9c17-bf92-2532-7dd5-37d27440867f?t=1681723056872&version=1.2), dan wilayah/kode pos melalui [Dinas Pariwisata Medan](https://medantourism.medan.go.id/kuliner/public).
 
 ## Album kamera
 
