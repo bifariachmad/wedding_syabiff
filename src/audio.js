@@ -1,5 +1,6 @@
 import { CONFIG } from './config.js';
 import { storage } from './storage.js';
+import { createGateCreak } from './gate-creak.js';
 let context, master, ambient, music;
 let enabled = storage.get('djsl-music') !== false;
 let started = false;
@@ -62,7 +63,7 @@ export function sound(name){
    for(let i=0;i<Math.floor(duration*10);i++)noise(t+i*.1+(i%3)*.014,.025+(i%4)*.009,1200+(i%7)*480,.045+(i%3)*.025);
   }
   if(name==='portal'){noise(t,3.8,330,.055);tone(72,t,3.6,.035,'sine',170);tone(220,t+1.8,1.8,.025,'sine',550);}
-  if(name==='gate'){tone(83,t,2.3,.09,'sawtooth',32);tone(175,t+.1,2.1,.055,'triangle',70);noise(t,2.3,460,.24);noise(t+.15,1.8,1350,.1);}
+  if(name==='gate'){const hinge=context.createBufferSource();hinge.buffer=createGateCreak(context);hinge.connect(master);hinge.start(t);}
   if(name==='chain')for(let i=0;i<6;i++){noise(t+i*.14,.1,1600+i*135,.08);tone(950+i*117,t+i*.14,.11,.018);}
   if(name==='seal')tone(100,t,.4,.15,'sine',30);
   if(name==='page')noise(t,.6,1300,.07);

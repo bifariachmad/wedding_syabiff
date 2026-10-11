@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import {sound} from './audio.js';
-const captions=['Ini buku tamu kami. Mari dibuka, ada satu halaman untukmu.','','Silakan tuliskan nama dan jumlah tamu yang akan hadir.'];
+const captions=['Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.','','Silakan tuliskan nama dan jumlah tamu yang akan hadir.'];
 export function initGuestbook(canContinue=()=>true){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#reservation'),book=scene.querySelector('.guestbook-spread'),leaf=scene.querySelector('.book-leaf'),dialogue=scene.querySelector('.vn-dialogue');let step=0,busy=false;
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;

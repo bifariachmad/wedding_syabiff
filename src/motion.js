@@ -50,6 +50,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   from.setAttribute('aria-hidden','true');from.inert=true;
   to.classList.remove('is-travelling');to.classList.add('is-active','is-visible');
   to.removeAttribute('aria-hidden');to.inert=false;
+  gsap.set([from,to],{clearProps:'opacity'});
   // Restore percentage-based centering after GSAP resolves it to pixels.
   gsap.set(to.querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});
   index=target;busy=false;if(index===0)courtyard.show(2);
@@ -74,9 +75,13 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   await hydrateArt(to);
   if(target===1)await document.fonts.load('40px GALVANIZED');
   from.inert=true;to.inert=true;to.classList.add('is-travelling');
+  // Hide the entire incoming scene, including panels outside .vn-artwork.
+  gsap.set(to,{opacity:0});
   const oldArt=from.querySelector('.vn-artwork'),newArt=to.querySelector('.vn-artwork');
   const oldText=from.querySelector('.vn-dialogue'),newText=to.querySelector('.vn-dialogue');
-  gsap.set([oldArt,newArt,oldText,newText],{clearProps:'transform,opacity,visibility'});
+  gsap.set([oldArt,newArt,newText],{clearProps:'transform,opacity,visibility'});
+  // The outgoing scene may intentionally hide its dialogue, as at the open gate.
+  gsap.set(oldText,{clearProps:'transform'});
   gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
   if(target===1){gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:1});gsap.set(to.querySelector('.courtyard-rose-frame'),{opacity:1});gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(0% 0% 0% 0%)'});}
   if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
@@ -86,6 +91,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   if(to.id==='location'){maproom.show(direction>0?0:maproom.last);back.disabled=true;next.disabled=true;}
   if(to.id==='dresscode'){wardrobe.show(direction>0?0:wardrobe.last);back.disabled=true;next.disabled=true;}
   if(to.classList.contains('vn-agenda')){gsap.set(to.querySelector('.agenda-card'),{opacity:1,rotationY:0,y:0});gsap.set(to.querySelector('.agenda-camera'),{clipPath:'inset(0% 0% 16.4% 0%)'});gsap.set(to.querySelector('.agenda-roll'),{yPercent:0,opacity:1});}
+  const incomingTextOpacity=Number(gsap.getProperty(newText,'opacity'));
   return new Promise(resolve=>{
    const timeline=gsap.timeline({onComplete:()=>{finish(from,to,target);resolve(true);}});
    if(index===0&&target===1&&!reduced()){
@@ -95,20 +101,22 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
     gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(100% 0% 0% 0%)'});
     courtyard.pass(timeline);
     timeline.to(oldText,{opacity:0,duration:.15},0)
+     .set(from,{opacity:0},3.36).set(to,{opacity:1},3.36)
      .set(newArt,{opacity:1},3.36).set(oldArt,{opacity:0},3.36)
      .to(to.querySelector('.courtyard-title-shade'),{opacity:1,duration:.7,ease:'sine.inOut'},3.36)
      .to(to.querySelector('.vine-left img'),{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'sine.inOut'},3.5)
      .to(to.querySelector('.vine-right img'),{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'sine.inOut'},3.6)
-     .to(newText,{opacity:1,duration:.65,ease:'sine.out'},3.8);
+     .to(newText,{opacity:incomingTextOpacity,duration:.65,ease:'sine.out'},3.8);
    }else{
    const duration=reduced()?0.1:0.25;
    gsap.set([newArt,newText],{opacity:0});
    const veil=document.createElement('div');veil.className='journey-fade';root.append(veil);
    const midway=duration,reveal=duration+.03;
    timeline.to(oldText,{opacity:0,duration},0).to(veil,{opacity:1,duration},0)
+    .set(from,{opacity:0},midway).set(to,{opacity:1},midway)
     .set(oldArt,{opacity:0},midway).set(newArt,{opacity:1},midway);
    timeline.to(veil,{opacity:0,duration},reveal)
-    .to(newText,{opacity:1,duration},reveal)
+    .to(newText,{opacity:incomingTextOpacity,duration},reveal)
     .call(()=>veil.remove(),[],reveal+duration);
    if(target===5&&!reduced()){
     const paper=to.querySelector('.agenda-camera'),roll=to.querySelector('.agenda-roll'),card=to.querySelector('.agenda-card');

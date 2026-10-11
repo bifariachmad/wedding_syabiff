@@ -1,9 +1,9 @@
 import gsap from 'gsap';
 import {sound} from './audio.js';
 const lines=[
- ['SYAFIRA','Sebelum beranjak, lihat lemari di sebelah meja ini. Ada dua pilihan warna untuk hari itu.'],
- ['SYAFIRA','Maroon atau hitam. Pilih warna yang paling nyaman kamu kenakan.'],
- ['BIFARI','Boleh maroon, boleh juga hitam. Kita akan menghabiskan waktu bersama, makan, dan berfoto.']
+ ['SYAFIRA','Warna tema pernikahan kami adalah merah maroon dan hitam.'],
+ ['SYAFIRA','Kamu bisa memakai pakaian berwarna merah maroon maupun hitam, kombinasi keduanya juga boleh!'],
+ ['BIFARI','Jangan sampai salah warna ya! Merah maroon atau hitam, okay?']
 ];
 export function initWardrobe(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#dresscode'),line=scene.querySelector('#wardrobe-line'),swatch=scene.querySelector('.wardrobe-swatch');let step=0,busy=false;

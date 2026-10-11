@@ -25,7 +25,7 @@ body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hi
 #reservation .book-right{opacity:0}
 #reservation[data-book-step='2'] .vn-dialogue,#reservation[data-book-moving='zoom'] .vn-dialogue{top:16%;bottom:1%;width:96%;background:none!important;padding:0!important;box-shadow:none;border:0}
 #reservation[data-book-step='2'] .book-writing-area{inset:8% 21% 8% 10%;text-align:left}
-#reservation[data-book-step='2'] #reservation-title{font-size:clamp(28px,7.2cqw,42px);margin:0 0 12px;text-align:center}
+#reservation[data-book-step='2'] #reservation-title{font-size:clamp(28px,7.2cqw,42px);margin:0 0 12px;text-align:left}
 #reservation[data-book-step='2'] .vn-form-content{padding:0;scrollbar-width:thin}
 #reservation[data-book-step='2'] .reservation-intro{font:clamp(16px,4.15cqw,24px)/1.4 var(--body);margin-bottom:16px}
 #reservation[data-book-step='2'] .form-field label{font:clamp(16px,4.15cqw,24px)/1.35 var(--body)}
@@ -92,11 +92,11 @@ body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hi
 
 /* Quick fade through the maroon-black stage. */
 .journey-fade{position:absolute;inset:0;z-index:19;background:#10070d;opacity:0;pointer-events:none}
-.visual-novel .agenda-card h3,.vn-agenda .agenda-entry:first-child h3{font:clamp(13px,3.45cqw,22px)/1.2 var(--body)}
+.visual-novel .agenda-card h3,.vn-agenda .agenda-entry:first-child h3{font:italic clamp(12px,3.2cqw,19px)/1.18 var(--body);color:#4f3428;letter-spacing:0}
 .visual-novel .agenda-card time{font:bold clamp(11px,2.95cqw,18px)/1.2 Georgia,serif}
-.vn-agenda .agenda-entry{gap:6px;border-bottom-color:#6d253b22;padding:5px 0}
+.vn-agenda .agenda-entry{gap:6px;border-bottom-color:#79533d20;padding:3px 0}
 #reservation[data-book-step='2'] .book-writing-area{inset:7% 20% 7% 10%}
-#reservation[data-book-step='2'] .vn-form-content{overflow:visible;flex:1 1 auto}
+#reservation[data-book-step='2'] .vn-form-content{overflow-y:auto;overflow-x:hidden;min-height:0;flex:1 1 auto}
 #reservation[data-book-step='2'] #reservation-title{font-size:clamp(24px,6.3cqw,37px);margin-bottom:10px}
 #reservation[data-book-step='2'] .reservation-intro{font:clamp(14px,3.65cqw,22px)/1.3 var(--body);margin:0 0 10px}
 #reservation[data-book-step='2'] .form-field{margin:8px 0}
@@ -110,7 +110,7 @@ body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hi
 #reservation #submit-reservation{width:88%;max-width:300px;min-height:44px;aspect-ratio:5;margin:12px auto 0;font-size:clamp(14px,3.65cqw,22px)}
 #reservation #recall-ticket{width:65%;min-height:40px;max-width:220px;aspect-ratio:4.5;padding:6px 10px;margin:6px auto;font-size:clamp(14px,3.65cqw,21px)}
 #reservation #reservation-status{font:clamp(12px,3.2cqw,18px)/1.3 var(--body);margin:6px 0}
-#reservation #edit-reservation{width:65%;max-width:240px;aspect-ratio:4;min-height:40px;font-size:clamp(14px,3.65cqw,22px);margin:6px auto}
+#reservation #edit-reservation{width:100%;max-width:240px;aspect-ratio:2.48;min-height:48px;font-size:clamp(16px,4cqw,24px);margin:6px auto;padding:8px 14%;white-space:nowrap}
 #reservation-success{gap:5px}
 #reservation-success .success-seal{width:clamp(85px,25cqw,155px)}
 #reservation-success .success-detail{font-size:clamp(14px,3.65cqw,22px);line-height:1.3}
@@ -120,7 +120,7 @@ body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hi
 
 /* Center the writing block on the paper, excluding the thick right binding. */
 #reservation[data-book-step='2'] .book-writing-area{inset:7% 20% 7% 8%;justify-content:center}
-#reservation[data-book-step='2'] .vn-form-content{flex:0 0 auto}
-#reservation #submit-reservation{width:76%;aspect-ratio:579/147;background-position:left center;padding:6px 8%;margin-left:0;margin-right:auto}
+#reservation[data-book-step='2'] .vn-form-content{flex:0 1 auto;padding-bottom:4px}
+#reservation #submit-reservation{width:100%;aspect-ratio:579/147;background-position:left center;padding:6px 8%;margin-left:0;margin-right:auto;white-space:nowrap}
 #reservation #recall-ticket{width:60%;aspect-ratio:932/277;background-position:left center;padding:6px 8%;margin-left:0;margin-right:auto}
 #reservation #edit-reservation{background-position:left center}

@@ -4,7 +4,7 @@ import { sound, startAudio } from './audio.js';
 import { burnPaper } from './paper-burn.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=['Hari ini terasa seperti hari biasa.','Ada ketukan di pintu.','Tak ada siapa-siapa…','Hah, ada undangan.','Dari siapa ya…','Untukku?','Anda diundang.'];
+const lines=['Hari ini rasanya ada yang berbeda...','Wah... sepertinya ada tamu yang datang.','Lho... ke mana tamunya?','Undangan?','Dari siapa ya…','','Kamu diundang.'];
 const last=lines.length-1;
 const descriptions=[
  'Di dalam rumah, kamu menghadap pintu kayu yang tertutup.',
@@ -12,8 +12,8 @@ const descriptions=[
  'Tanganmu menggenggam handle dan membuka pintu. Teras kosong. Awan bergerak dan pohon bergoyang di luar.',
  'Kamu menunduk. Sebuah amplop bersegel maroon tergeletak di ambang pintu.',
  'Kamu memperhatikan undangan itu, penasaran siapa pengirimnya.',
- 'Kamu mengambil undangan dan membaca nama di amplop.',
- 'Kamu membuka segel. Pada kartu tertulis: Anda diundang. Lanjut untuk melihat kartu terbakar menjadi abu sebelum portal terbuka.'
+ 'Kamu mengambil undangan. Amplop bersegel kini berada di tanganmu.',
+ 'Kamu membuka segel. Pada kartu tertulis: Kamu diundang. Lanjut untuk melihat kartu terbakar menjadi abu sebelum portal terbuka.'
 ];
 
 export function initPrologue(onExit){
@@ -35,7 +35,7 @@ export function initPrologue(onExit){
   root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ ${String(lines.length).padStart(2,'0')}</small>`;
   gsap.set('#journey-progress',{scaleX:(step+1)/lines.length});
  }
- function lineFor(target){return target===5?`Untuk… ${$('#arrival-guest').textContent}.` :lines[target];}
+ function lineFor(target){return lines[target];}
  function describe(){
   $('#arrival-line').textContent=lineFor(step);$('#arrival-description').textContent=`${descriptions[step]} ${lineFor(step)}`;
   $('.arrival-sealed').setAttribute('aria-hidden',String(step!==5));
@@ -57,12 +57,12 @@ export function initPrologue(onExit){
   gsap.set($('.arrival-portal'),{autoAlpha:0,scale:.15});
   gsap.set($('.arrival-ink-ring'),{rotation:0});
   gsap.set($('.arrival-portal-shade'),{opacity:0});
-  gsap.set($('.arrival-caption'),{opacity:target===6?0:1});
+  gsap.set($('.arrival-caption'),{opacity:target>=5?0:1});
   gsap.set($('.arrival-knocks'),{opacity:0});
  }
  // Announce the complete line once; only the decorative visual copy is typed.
  function dialogue(t,target){
-  if(target===6)return;
+  if(target>=5)return;
   const text=lineFor(target),cursor={letters:0};
   t.call(()=>{$('#arrival-line').textContent='';$('#arrival-description').textContent=`${descriptions[target]} ${text}`;section.dataset.speaking='true';})
    .to($('.arrival-caption'),{opacity:1,duration:.18})

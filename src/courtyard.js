@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { sound } from './audio.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=['Di mana ini…? Udara pagi terasa hangat.','Ada jalan di balik gerbang itu.',''];
+const lines=['Di mana ini…? Rasanya tidak asing.','Aku penasaran...',''];
 export function initCourtyard(){
  const root=document.querySelector('#invitation'),gate=document.querySelector('#gate');
  let step=0,busy=false,timeline;
@@ -19,6 +19,7 @@ export function initCourtyard(){
   gsap.set($('.courtyard-heading'),{opacity:1});
   gsap.set($('.courtyard-left'),{rotationY:step===2?-82:0});
   gsap.set($('.courtyard-right'),{rotationY:step===2?82:0});
+  $('.vn-dialogue').hidden=step===2;
   gsap.set($('.vn-dialogue'),{opacity:step===2?0:1,y:0});caption();controls();
  }
  function show(at=0){step=at;busy=false;pose();}
@@ -27,7 +28,8 @@ export function initCourtyard(){
   busy=true;controls();
   return new Promise(resolve=>{
    timeline=gsap.timeline({onComplete:()=>{step=target;busy=false;caption();controls();resolve(true);}});
-   timeline.to($('.vn-dialogue'),{opacity:0,duration:.15});
+   timeline.to($('.vn-dialogue'),{opacity:0,duration:.15})
+    .call(()=>{$('.vn-dialogue').hidden=true;});
    if(reduced()){
     timeline.set($('.courtyard-left'),{rotationY:target===2?-82:0}).set($('.courtyard-right'),{rotationY:target===2?82:0});
    }else if(target===2||step===2){
@@ -35,13 +37,13 @@ export function initCourtyard(){
     timeline.call(()=>{sound('latch');sound('gate');},[],at)
      .to($('.courtyard-left'),{rotationY:target===2?-82:0,duration:4.2,ease:'sine.inOut'},at+.2)
      .to($('.courtyard-right'),{rotationY:target===2?82:0,duration:4.4,ease:'sine.inOut'},at+.28)
-     .call(()=>sound('gate'),[],at+2.2).to({}, {duration:.3});
+     .to({}, {duration:.3});
    }else{
     const at=timeline.duration();
     walk(timeline,target?[1.045,1.09]:[1.045,1],0,at);
    }
    const cursor={letters:0},text=lines[target];
-   timeline.call(()=>{step=target;$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';})
+   timeline.call(()=>{step=target;$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';$('.vn-dialogue').hidden=!text;})
     .to($('.vn-dialogue'),{opacity:target===2?0:1,duration:.25})
     .to(cursor,{letters:text.length,duration:reduced()?0:text.length*.027,ease:'none',onUpdate:()=>{$('#courtyard-line').textContent=text.slice(0,Math.ceil(cursor.letters));}});
   });
@@ -57,6 +59,8 @@ export function initCourtyard(){
   });
  }
  function pass(t){
+  // Remove the frame from layout for the entire walk, independently of fades.
+  $('.vn-dialogue').hidden=true;
   gate.dataset.walk='walking';
   gsap.set($('.courtyard-crow'),{x:-root.clientWidth*.35,y:0,opacity:0});
   t.set($('.courtyard-crow'),{opacity:1},.25)

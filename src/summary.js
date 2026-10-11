@@ -5,24 +5,60 @@ let cachedKey='',cachedCanvas,renderVersion=0;
 const loadImage=async src=>{const img=new Image();img.src=src;await img.decode();return img;};
 export async function renderSummaryCanvas(ticket){
  const key=JSON.stringify([ticket.id,ticket.name,ticket.guests,!!ticket.demo]);if(cachedKey===key&&cachedCanvas)return cachedCanvas;
- await Promise.all([document.fonts.load('70px GALVANIZED'),document.fonts.load('50px "IM Fell English"')]);
- const [paper,seal,qr]=await Promise.all([loadImage('/assets/png/ticket/stationery.png'),loadImage('/assets/png/wax-seal.png'),qrData(ticket,400).then(loadImage)]);
+ await Promise.all([document.fonts.load('70px GALVANIZED'),document.fonts.load('82px "IM Fell English"'),document.fonts.load('italic 32px "IM Fell English"')]);
+ const [paper,qr]=await Promise.all([loadImage('/assets/png/ticket/stationery.png'),qrData(ticket,360).then(loadImage)]);
  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1600;const g=canvas.getContext('2d');g.drawImage(paper,0,0,1080,1600);g.textAlign='center';
- function text(value,y,size=48,font='"IM Fell English"',color='#37131f',max=740){g.fillStyle=color;g.font=size+'px '+font;while(g.measureText(value).width>max&&size>24)g.font=--size+'px '+font;g.fillText(value,540,y);}
- text('UNDANGAN PERNIKAHAN',269,29,'Georgia','#74243c');
- text('Achmad Bifari',351,78,'GALVANIZED');text('&',405,39,'Georgia','#74243c');text('Syafira Aulia',471,78,'GALVANIZED');
- text(CONFIG.EVENT.dateLabel,544,46);text('09:30–13:40 WIB',601,45);text(CONFIG.EVENT.venue,671,57);text('Maroon atau hitam',720,34,'Georgia','#74243c');
- g.strokeStyle='#8e5960';g.lineWidth=1.5;g.beginPath();g.moveTo(250,750);g.lineTo(830,750);g.stroke();
- text('KHUSUS UNTUK',795,26,'Georgia','#74243c');text(ticket.name,860,58);text(ticket.guests+' tamu',916,40);
- g.drawImage(qr,370,952,340,340);g.drawImage(seal,740,1075,195,195);
- text(displayCode(ticket.id),1330,50,'Georgia');
- text(ticket.demo?'PRATINJAU · BELUM TERDAFTAR':'Tunjukkan QR ini saat registrasi',1376,24,'Georgia','#74243c');
+ const ink='#37131f',muted='#795144',maroon='#74243c';
+ function text(value,x,y,size=40,font='"IM Fell English"',color=ink,max=800){
+  g.fillStyle=color;g.font=size+'px '+font;
+  while(g.measureText(value).width>max&&size>24)g.font=--size+'px '+font;
+  g.fillText(value,x,y);
+ }
+ // Wrap long names and address words without clipping even an unbroken surname.
+ function wrap(value,width){
+  const lines=[];let line='';
+  for(const word of value.trim().split(/\s+/)){
+   if(line&&g.measureText(line+' '+word).width>width){lines.push(line);line='';}
+   for(const char of (line?' ':'')+word){
+    if(g.measureText(line+char).width>width&&line){lines.push(line);line='';}
+    line+=char;
+   }
+  }
+  if(line)lines.push(line);return lines;
+ }
+ text('TIKET RESEPSI',540,289,29,'Georgia',maroon);
+ text('KHUSUS UNTUK',540,348,25,'Georgia',muted);
+ let nameSize=86,nameLines;
+ do{g.font=nameSize+'px "IM Fell English"';nameLines=wrap(ticket.name,780);if(nameLines.length*nameSize*1.1<=202)break;nameSize-=2;}while(nameSize>42);
+ const nameHeight=nameLines.length*nameSize*1.1;
+ nameLines.forEach((line,i)=>text(line,540,454-nameHeight/2+nameSize*.8+i*nameSize*1.1,nameSize));
+ text(ticket.guests+' tamu',540,583,39,'"IM Fell English"',muted);
+ text(CONFIG.EVENT.names.join(' & '),540,665,47,'GALVANIZED',maroon);
+ g.strokeStyle='#8e596066';g.lineWidth=1.5;g.beginPath();g.moveTo(150,708);g.lineTo(930,708);g.stroke();
+
+ g.imageSmoothingEnabled=false;g.drawImage(qr,145,794,340,340);g.imageSmoothingEnabled=true;
+ text(displayCode(ticket.id),315,1185,43,'Georgia',ink,340);
+ text('KODE UNDANGAN',315,1223,22,'Georgia',muted,340);
+
+ g.textAlign='left';
+ const [day,...date]=CONFIG.EVENT.dateLabel.split(',');
+ text(day+',',530,786,38,'"IM Fell English"',muted,400);
+ text(date.join(',').trim(),530,839,44,'"IM Fell English"',ink,400);
+ text('Mulai '+CONFIG.EVENT.arrival,530,889,38,'"IM Fell English"',maroon,400);
+ text(CONFIG.EVENT.venue,530,973,46,'"IM Fell English"',ink,400);
+ g.font='32px "IM Fell English"';
+ const address=CONFIG.EVENT.addressLines.flatMap(line=>wrap(line,400));
+ address.forEach((line,i)=>text(line,530,1023+i*39,32,'"IM Fell English"',muted,400));
+
+ g.textAlign='center';
+ text('Dresscode: '+CONFIG.EVENT.dresscode.toLowerCase(),540,1311,33,'"IM Fell English"',maroon);
+ text(ticket.demo?'PRATINJAU · BELUM TERDAFTAR':'Tunjukkan QR ini saat registrasi.',540,1362,29,'"IM Fell English"',muted);
  cachedKey=key;cachedCanvas=canvas;return canvas;
 }
 export async function updateSummary(ticket){
  const version=++renderVersion,host=document.querySelector('#closing-summary');if(!host)return;
  host.querySelector('.summary-name').textContent=ticket?.name||'Belum mengisi buku tamu';host.querySelector('.summary-guests').textContent=ticket?ticket.guests+' tamu':'';host.querySelector('.summary-code').textContent=ticket?ticketPayload(ticket):'';host.querySelector('.summary-mode').textContent=ticket?.demo?'CONTOH · BELUM TERDAFTAR':ticket?'RESERVASI TERCATAT':'';
  const preview=host.querySelector('.ticket-preview'),save=host.querySelector('#save-summary');save.disabled=true;preview.hidden=!ticket;if(!ticket)return;
- const canvas=await renderSummaryCanvas(ticket);if(version!==renderVersion)return;preview.src=canvas.toDataURL('image/png');preview.alt='Undangan pernikahan Achmad Bifari dan Syafira Aulia. '+CONFIG.EVENT.venue+', '+CONFIG.EVENT.dateLabel+', 09:30–13:40 WIB. Untuk '+ticket.name+', '+ticket.guests+' tamu. '+(ticket.demo?'Tiket pratinjau; belum terdaftar.':'Reservasi tercatat.');save.disabled=false;save.onclick=()=>saveSummary(ticket);
+ const canvas=await renderSummaryCanvas(ticket);if(version!==renderVersion)return;preview.src=canvas.toDataURL('image/png');preview.alt='Tiket resepsi untuk '+ticket.name+', '+ticket.guests+' tamu. Pernikahan Achmad Bifari dan Syafira Aulia. '+CONFIG.EVENT.dateLabel+', mulai '+CONFIG.EVENT.arrival+'. '+CONFIG.EVENT.venue+', '+CONFIG.EVENT.addressLines.join(', ')+'. Kode '+displayCode(ticket.id)+'. '+(ticket.demo?'Tiket pratinjau; belum terdaftar.':'Reservasi tercatat.');save.disabled=false;save.onclick=()=>saveSummary(ticket);
 }
 export async function saveSummary(ticket){if(!ticket)return;const canvas=await renderSummaryCanvas(ticket);canvas.toBlob(blob=>{if(blob)downloadBlob(blob,'tiket-undangan-'+(ticket.demo?'contoh-':'')+ticket.id+'.png');},'image/png');}

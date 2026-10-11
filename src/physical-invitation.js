@@ -16,7 +16,7 @@ export function physicalInvitationMarkup(){
         <h2>Achmad Bifari<br><em>&</em><br>Syafira Aulia</h2>
         <div class="a5-rule" aria-hidden="true"></div>
         <p class="a5-date">SABTU, 31 OKTOBER 2026</p>
-        <p class="a5-time">09:30-13:40 WIB</p>
+        <p class="a5-time">Mulai ${CONFIG.EVENT.arrival}</p>
         <p class="a5-venue">Lumbung Kuliner</p>
         <p class="a5-address">${CONFIG.EVENT.addressLines.join('<br>')}</p>
         <p class="a5-location-code">Patokan peta: ${CONFIG.EVENT.plusCode}</p>

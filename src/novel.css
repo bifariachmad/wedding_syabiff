@@ -14,8 +14,8 @@ html:has(.visual-novel),body:has(.visual-novel){height:100%;overflow:clip;oversc
 .visual-novel .music-toggle{position:absolute;right:28px;top:max(15px,env(safe-area-inset-top));width:40px;height:40px;background:#21191a;border:1px solid #d8c7a34d;box-shadow:none}
 .visual-novel .music-toggle .icon{filter:invert(88%) sepia(15%)}
 .vn-stage{bottom:var(--nav-height);perspective:1000px;perspective-origin:50% 39%}
-.vn-scene{visibility:hidden;pointer-events:none;perspective:1000px;perspective-origin:50% 39%;overflow:visible}
-.vn-scene.is-active{visibility:visible;pointer-events:auto}.vn-scene.is-travelling{visibility:visible;pointer-events:none}
+.vn-scene{visibility:hidden;opacity:0;pointer-events:none;perspective:1000px;perspective-origin:50% 39%;overflow:visible}
+.vn-scene.is-active{visibility:visible;opacity:1;pointer-events:auto}.vn-scene.is-travelling{visibility:visible;opacity:1;pointer-events:none}
 .vn-artwork{position:absolute;inset:68px 0 var(--art-bottom);transform-style:preserve-3d;transform-origin:50% 43%;pointer-events:none;will-change:transform,opacity}
 .vn-layer{position:absolute;transform-style:preserve-3d}.vn-layer .art{width:100%;height:100%}.vn-layer img{filter:drop-shadow(0 12px 18px #0008)}
 .vn-gate{position:absolute;width:min(76cqw,430px);height:110%;left:50%;bottom:-14%;translate:-50% 0;perspective:900px;transform-style:preserve-3d}

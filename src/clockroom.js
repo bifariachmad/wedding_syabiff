@@ -1,10 +1,11 @@
 import gsap from 'gsap';
 import {sound} from './audio.js';
+import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lines=[
- ['SYAFIRA','Kami akan menikah hari Sabtu, 31 Oktober 2026. Acara dimulai pukul 09:30 WIB.'],
- ['BIFARI','Tinggal menghitung hari. Rasanya makin tidak sabar bisa bertemu kamu di sana.'],
- ['SYAFIRA','Simpan tanggalnya, ya!']
+ ['SYAFIRA',`Kami akan melaksanakan resepsi pernikahan kami pada ${CONFIG.EVENT.dateLabel}.`],
+ ['BIFARI',`Acaranya dimulai pukul ${CONFIG.EVENT.arrival} ya, pastikan kamu datang tepat waktu!`],
+ ['SYAFIRA','Kami sangat berharap kehadiranmu lho.']
 ];
 export function initClockroom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#countdown'),$=s=>scene.querySelector(s);
@@ -27,7 +28,7 @@ export function initClockroom(){
   t.call(()=>{speaker(target);scene.dataset.speaking='true';$('#clockroom-line').textContent='';}).to($('.vn-dialogue'),{opacity:1,duration:.2}).to(cursor,{n:line.length,duration:reduced()?0:line.length*.029,ease:'none',onUpdate:()=>{$('#clockroom-line').textContent=line.slice(0,Math.ceil(cursor.n));}});
  });}
  // Audible clock ticks are scoped to the visible room and respect the common mute setting.
- const timer=setInterval(()=>{if(scene.classList.contains('is-active')&&!document.hidden)sound('clock');},1000);
+ const timer=setInterval(()=>{if(scene.classList.contains('is-active')&&!scene.inert&&!document.hidden)sound('clock');},1000);
  window.addEventListener('pagehide',()=>clearInterval(timer),{once:true});
  return {get step(){return step;},get last(){return lines.length-1;},get busy(){return busy;},show,controls,next:()=>move(step+1),back:()=>move(step-1)};
 }

@@ -15,25 +15,25 @@ try{
   AudioContext.prototype.createOscillator=function(){const osc=create.call(this),ctx=this,set=osc.frequency.setValueAtTime.bind(osc.frequency);osc.frequency.setValueAtTime=(value,time)=>{window.sfxTones.push({value,at:performance.now()});if(value===125)window.knockTimes.push({start:performance.now()+(time-ctx.currentTime)*1000,end:performance.now()+(time-ctx.currentTime+.16)*1000});return set(value,time);};return osc;};
  });
  await page.goto('http://127.0.0.1:5173/?to='+encodeURIComponent('<b>Nadia</b>'));await ready();
- assert.equal(await page.locator('#arrival-guest').textContent(),'<b>Nadia</b>');assert.equal(await page.locator('#arrival-guest b').count(),0);
+ assert.equal(await page.locator('#arrival-guest').count(),0);assert.equal(await page.locator('#guest-name').inputValue(),'<b>Nadia</b>');
  assert.equal(await page.locator('#nav-back').isDisabled(),true);assert.equal(await page.locator('.vn-stage').evaluate(e=>e.inert),true);
- await page.evaluate(()=>{new MutationObserver(()=>{if(document.querySelector('#arrival-line').textContent.startsWith('Ada')&&!window.dialogueAt)window.dialogueAt=performance.now();}).observe(document.querySelector('#arrival-line'),{childList:true,subtree:true,characterData:true});});
+ await page.evaluate(()=>{new MutationObserver(()=>{if(document.querySelector('#arrival-line').textContent.startsWith('Wah')&&!window.dialogueAt)window.dialogueAt=performance.now();}).observe(document.querySelector('#arrival-line'),{childList:true,subtree:true,characterData:true});});
  await page.mouse.wheel(0,700);assert.equal(await page.locator('#arrival').getAttribute('data-step'),'0');
  await page.screenshot({path:'artifacts/arrival-v4/mobile-0.png'});
  await page.locator('#nav-next').click();await page.waitForFunction(()=>document.querySelector('#arrival').dataset.knock==='playing');
- assert.ok(!(await page.locator('#arrival-line').textContent()).startsWith('Ada'));
+ assert.ok(!(await page.locator('#arrival-line').textContent()).startsWith('Wah'));
  await page.screenshot({path:'artifacts/arrival-v4/knock.png'});await wait();
  const timing=await page.evaluate(()=>({knocks:knockTimes,dialogueAt}));assert.equal(timing.knocks.length,3);assert.ok(timing.dialogueAt>=timing.knocks[2].end,JSON.stringify(timing));
- assert.equal(await page.locator('#arrival-line').textContent(),'Ada ketukan di pintu.');
+ assert.equal(await page.locator('#arrival-line').textContent(),'Wah... sepertinya ada tamu yang datang.');
  await page.locator('#nav-next').click();await page.waitForTimeout(1100);
  assert.equal(await page.locator('#nav-next').isDisabled(),true);await page.evaluate(()=>document.querySelector('#nav-next').click());
  await page.screenshot({path:'artifacts/arrival-v4/hand-grip.png'});await wait();
  assert.equal(await page.locator('#arrival').getAttribute('data-step'),'2');
  assert.ok(await page.locator('.vn-nav').first().evaluate(e=>getComputedStyle(e).backgroundImage.includes('ui-panel.png')),'navigation uses cutout panel');
  assert.ok((await page.locator('#music-toggle img').getAttribute('src')).includes('ui-sound-on.png'),'cutout sound state');
- assert.equal(await page.locator('#arrival-line').textContent(),'Tak ada siapa-siapa…');
+ assert.equal(await page.locator('#arrival-line').textContent(),'Lho... ke mana tamunya?');
  const cloud=await page.locator('.arrival-clouds').evaluate(e=>getComputedStyle(e).transform);await page.waitForTimeout(400);assert.notEqual(await page.locator('.arrival-clouds').evaluate(e=>getComputedStyle(e).transform),cloud);
- for(let step=3;step<=6;step++){await next();assert.equal(await page.locator('#arrival').getAttribute('data-step'),String(step));await page.screenshot({path:`artifacts/arrival-v4/mobile-${step}.png`});if(step===3)assert.equal(await page.locator('#arrival-line').textContent(),'Hah, ada undangan.');if(step===4)assert.equal(await page.locator('#arrival-line').textContent(),'Dari siapa ya…');}
+ for(let step=3;step<=6;step++){await next();assert.equal(await page.locator('#arrival').getAttribute('data-step'),String(step));await page.screenshot({path:`artifacts/arrival-v4/mobile-${step}.png`});if(step===3)assert.equal(await page.locator('#arrival-line').textContent(),'Undangan?');if(step===4)assert.equal(await page.locator('#arrival-line').textContent(),'Dari siapa ya…');}
  assert.equal(await page.locator('.arrival-open').evaluate(e=>getComputedStyle(e).visibility),'visible');
  await page.locator('#nav-back').click();await wait();
  await page.locator('#nav-back').click();await wait();

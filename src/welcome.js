@@ -2,9 +2,9 @@ import gsap from 'gsap';
 import {sound} from './audio.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
- ['KAMU','Ini rumahnya. Sepertinya mereka sudah menunggu.'],
- ['BIFARI','Hai, selamat datang! Aku Bifari. Yuk, masuk dulu.'],
- ['SYAFIRA','Aku Syafira. Senang sekali bisa menyambutmu di sini.'],
+ ['KAMU','Rumah ini... terasa tidak asing...'],
+ ['BIFARI','Hai, selamat datang! Aku Bifari. Mari masuk.'],
+ ['SYAFIRA','Aku Syafira. Senang sekali bisa menyambutmu.'],
  ['BIFARI','Kami ingin mengundangmu menjadi bagian dari hari bahagia kami.']
 ];
 export function initWelcome(){
@@ -45,6 +45,9 @@ export function initWelcome(){
      .call(()=>sound('footstep'),[],at+.65).call(()=>sound('footstep'),[],at+1.45);
     if(target){t.to($('.welcome-exterior'),{autoAlpha:0,duration:.6},at+2.2)
      .call(()=>{scene.dataset.arrival='empty';$('#welcome-description').textContent='Ruangan masih kosong. Kamu melangkah masuk.';},[],at+2.8)
+     .call(()=>{sound('footstep');$('#welcome-description').textContent='Terdengar langkah kaki mendekat.';},[],at+2.95)
+     .call(()=>sound('footstep'),[],at+3.3)
+     .call(()=>sound('footstep'),[],at+3.65)
      .fromTo(scene.querySelectorAll('.welcome-character'),{xPercent:i=>i?-18:18},{xPercent:0,duration:.8,ease:'sine.out'},at+3.8)
      .to($('.welcome-couple'),{autoAlpha:1,duration:.65},at+3.8)
      .call(()=>{scene.dataset.arrival='hosts';},[],at+4.6);}

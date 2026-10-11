@@ -57,7 +57,7 @@
 
 /* Reserve a separate line for each time and title. */
 .vn-agenda .agenda-card{top:22%;height:49%;width:60%;padding:0;overflow:visible}
-.vn-agenda .agenda-list{display:grid;grid-template-rows:repeat(8,minmax(0,1fr));height:100%;gap:0}
+.vn-agenda .agenda-list{display:grid;grid-template-rows:repeat(var(--agenda-count,10),minmax(0,1fr));height:100%;gap:0}
 .vn-agenda .agenda-entry{height:auto;min-height:0;display:flex;flex-direction:column;padding:2px 0;gap:2px;justify-content:center}
 .visual-novel .agenda-card time{flex:none;font-size:clamp(10px,1.5cqh,13px);line-height:1.1;margin:0}
 .visual-novel .agenda-card h3{font-size:clamp(13px,1.9cqh,18px);line-height:1.08}
@@ -80,3 +80,7 @@
  #reservation-success strong{font-size:23px}
 }
 @media(max-height:500px) and (min-width:600px){.vn-agenda .agenda-card{left:25%;width:29%;height:69%;top:25%}.visual-novel .agenda-card h3{font-size:11px}.visual-novel .agenda-card time{font-size:9px}}
+.vn-agenda .agenda-list{margin:0;padding:0;list-style:none}
+.visual-novel .vn-agenda .agenda-card{width:45%;top:22%;height:54%}
+.visual-novel .vn-agenda .agenda-entry{display:grid;grid-template-columns:1.25em minmax(0,1fr);align-items:center;text-align:left;column-gap:6px;color:#4f3428}
+.agenda-order{font:italic clamp(10px,2.7cqw,16px)/1.2 var(--body);color:#79533d}

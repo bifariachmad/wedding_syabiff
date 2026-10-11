@@ -96,3 +96,24 @@ Full browser regression also passes: 45 mobile chapter screenshots, all 16 inter
 - Apps Script Version 2 aktif, URL tetap sama. Uji langsung menghasilkan kode enam angka dan dicocokkan dengan Sheet; baris uji dibersihkan. Data pengguna yang sudah ada dipertahankan.
 - Pemeriksaan visual terakhir memperbaiki jarak tepi kertas, baris rundown, proporsi tombol, dan segel sukses. Screenshot ada di `artifacts/portrait/`.
 - Website publik belum dipublikasikan ulang. Pemeriksaan kamera menggunakan simulasi; uji kamera tablet fisik dilakukan saat aplikasi buku tamu dibuat.
+
+## Reception update — 10 October 2026
+
+The earlier morning schedule above is historical. The reception now starts at 16:00 WIB, with ten untimed rundown items. `node tests/reception-invitation.mjs` verifies current countdown/location/calendar content, all ten rows on phone/tablet, four print faces, inside left/right placement, and the rendered cover QR. `node scripts/print-a5.mjs` exports four A5 pages and two A4 folding spreads. Local verification only; publishing remains deferred.
+
+## Digital invitation feedback — 11 October 2026
+
+- `node tests/invitation-feedback.mjs` passes: revised copy for Parts I–VIII, envelope without recipient text, one 4.65-second hinge effect, three footsteps before the hosts appear, and frame-by-frame countdown-to-location isolation with a successful return transition.
+- Screenshots at 360×640, 390×844, and 768×1024 verify the inset italic rundown, left-aligned reservation heading, form, and complete edit button. Existing reservations use “Update Kehadiran” and retain their ticket code when the guest count changes.
+- Downloaded 1080×1600 tickets decode successfully. The new layout puts the guest name first, QR on the left, and date/time/venue/full address on the right. Maximum-length unbroken names remain inside the border. Direct reservations use the same PNG renderer.
+- `npm test`: 18 tests pass. `npm run build` passes. Visual artifacts and focused results are in `artifacts/invitation-feedback/`. Browser reservation calls use the in-memory Apps Script adapter; no production Sheet writes or deployment were performed.
+- `node tests/browser.mjs` also passes: all nine scenes forward/back with normal and reduced motion, 24 screenshots, validation, reservation update/recall, network failure recovery, ticket download, QR decode, and simulated admin camera/check-in. No browser errors.
+- The copyediting pass was reverted at the user's request. Preserve their previous casual wording rather than making the dialogue formal.
+- Open-gate dialogue fix: the scene transition now preserves a hidden outgoing dialogue and respects the incoming scene's intended dialogue opacity. `node tests/gate-dialogue.mjs` reproduced empty-box flashes before the fix (92 normal-motion frames and 61 reduced-motion frames). After the fix, both forward/back paths record zero empty-box frames, and returning to a speaking gate step restores the dialogue. `node tests/invitation-feedback.mjs` and `npm run build` also pass. Changes remain local.
+- Walking follow-up: the opacity-only check above did not establish that the frame had left layout. Fresh screenshots did not reproduce a visible box, but the strengthened test found the gate panel still laid out in all 656 sampled walking frames. The courtyard now applies native `hidden` after fading out, throughout the open-gate walk, and when returning to the open gate; speaking steps restore it. The updated test passes with 537 walking frames, zero laid-out gate boxes, zero visible scene panels during walking, and successful back navigation in normal/reduced motion. Start/middle walking screenshots were inspected; `npm run build` passes. No copy changes or deployment.
+
+## Digital release verification — 11 October 2026
+
+The digital release includes the 16:00 reception, ten untimed rundown items, requested casual dialogue, sound and transition fixes, and the revised reservation ticket. The existing companion layouts retain their production behavior, with the displayed reception time synchronized. The tablet kiosk, its PIN-free endpoints, and unfinished print design changes remain local.
+
+The isolated release passes 12 backend/album tests, `npm run build`, all eight chapters in `tests/invitation-feedback.mjs`, and `tests/gate-dialogue.mjs` with normal/reduced motion (194 sampled walking frames, zero laid-out gate boxes or visible panels). Reservation checks use an in-memory backend and do not write to the production Google Sheet.
