@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
 import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -6,7 +7,7 @@ const lines=[['BIFARI',`Resepsi kami diadakan di ${CONFIG.EVENT.venue}.`],['SYAF
 export function initMaproom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#location'),$=s=>scene.querySelector(s);let step=0,busy=false;
  function controls(){scene.dataset.mapStep=String(step);root.dataset.mapBusy=String(busy);root.querySelector('#nav-next').disabled=busy;root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 02</small>`;gsap.set('#journey-progress',{scaleX:(step+1)/lines.length});}
- function speaker(at){const[name,line]=lines[at];$('.vn-speaker').textContent=name;scene.dataset.speaker=name;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===name));$('#maproom-description').textContent=`${name}: ${line}`;return line;}
+ function speaker(at){const[name,line]=lines[at];fitDialogue($('#maproom-line'),line);$('.vn-speaker').textContent=name;scene.dataset.speaker=name;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===name));$('#maproom-description').textContent=`${name}: ${line}`;return line;}
  function show(at=0){step=at;busy=false;scene.dataset.speaking='false';gsap.set($('.maproom-camera'),{scale:step?1.08:1,x:0,y:0});gsap.set($('.vn-dialogue'),{opacity:1,y:0});$('.maproom-venue').hidden=false;gsap.set($('.maproom-venue'),{opacity:1});$('#maproom-line').textContent=speaker(step);controls();}
  function move(target){if(busy||target<0||target>=lines.length)return false;busy=true;controls();return new Promise(resolve=>{
   const t=gsap.timeline({onComplete:()=>{step=target;busy=false;scene.dataset.speaking='false';$('#maproom-line').textContent=speaker(step);controls();resolve(true);}});

@@ -8,5 +8,6 @@ output
 tmp
 tests
 artwork
+source-art
 docs
 *.log

@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
@@ -18,7 +19,7 @@ export function initWelcome(){
   gsap.set('#journey-progress',{scaleX:(step+1)/dialogue.length});
  }
  function highlight(speaker){scene.dataset.speaker=speaker;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===speaker));}
- function copy(){const [speaker,line]=dialogue[step];highlight(speaker);$('.vn-speaker').textContent=speaker;$('#welcome-line').textContent=line;$('#welcome-description').textContent=`${speaker}: ${line}`;}
+ function copy(){const [speaker,line]=dialogue[step];fitDialogue($('#welcome-line'),line);highlight(speaker);$('.vn-speaker').textContent=speaker;$('#welcome-line').textContent=line;$('#welcome-description').textContent=`${speaker}: ${line}`;}
  function pose(){
   gsap.set(scene.querySelectorAll('.welcome-character'),{xPercent:0,y:0,scale:1});scene.dataset.speaking='false';
   gsap.set($('.welcome-camera'),{scale:step>=2?1.18:1,x:0,y:0,rotation:0});
@@ -62,7 +63,7 @@ export function initWelcome(){
     }
    }
    const [speaker,line]=dialogue[target],cursor={letters:0};
-   t.call(()=>{highlight(speaker);scene.dataset.speaking='true';$('.vn-speaker').textContent=speaker;$('#welcome-description').textContent=`${speaker}: ${line}`;$('#welcome-line').textContent='';})
+   t.call(()=>{fitDialogue($('#welcome-line'),line);highlight(speaker);scene.dataset.speaking='true';$('.vn-speaker').textContent=speaker;$('#welcome-description').textContent=`${speaker}: ${line}`;$('#welcome-line').textContent='';})
     .to($('.vn-dialogue'),{opacity:1,duration:.22})
     .to(cursor,{letters:line.length,duration:reduced()?0:line.length*.026,ease:'none',onUpdate:()=>{$('#welcome-line').textContent=line.slice(0,Math.ceil(cursor.letters));}});
   });

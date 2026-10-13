@@ -11,30 +11,14 @@ import './wardrobe.css';
 import './finale.css';
 import './guestbook.css';
 import './guest-friendly.css';
-const app=document.querySelector('#app');
-const route=location.pathname.replace(/\/$/,'');
-if(['/reservasi','/cetak','/kamera','/album-admin'].includes(route)){
-  await import('./companion.css');
-  if(route==='/kamera'||route==='/album-admin'){
-    const {renderCamera}=await import('./camera.js'); await renderCamera(app,route==='/album-admin');
-  }else{
-    const {renderReservation}=await import('./reservation.js'); await renderReservation(app,route==='/cetak');
-  }
-}else if(['/admin','/buku-tamu'].includes(route)){
-  await import('./admin.css');
-  await import('./companion.css');
-  await import('./reception.css');
-  document.body.className='companion guest-admin';
-  const {renderAdmin}=await import('./admin.js');
-  await renderAdmin(app);
-}else{
-  const {preparePortrait}=await import('./device.js');
-  await preparePortrait(app,async()=>{
-    const {renderInvitation}=await import('./invitation.js');
-    await renderInvitation(app);
-  });
-}
-app.dataset.ready='true';
-
 import './scene-refinements.css';
 import './portrait.css';
+import './invitation-refresh.css';
+import './cover-atmosphere.css';
+import './ui-artwork.css';
+import './angular-buttons.css';
+import {preparePortrait} from './device.js';
+import {renderInvitation} from './invitation.js';
+const app=document.querySelector('#app');
+await preparePortrait(app,()=>renderInvitation(app));
+app.dataset.ready='true';

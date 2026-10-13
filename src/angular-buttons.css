@@ -1,0 +1,47 @@
+/* Each button size uses its own illustrated silhouette at its native ratio. */
+#invitation {
+ --button-compact-ratio:960/259;
+ --button-wide-ratio:960/228;
+}
+#invitation button {
+ --button-art:url('/assets/png/ui-v2/button-wide-angular-v1.png');
+ --button-ratio:var(--button-wide-ratio);
+}
+#invitation button:is(button,#nav-back,#nav-next,#music-toggle,#minus,#plus,#submit-reservation,#recall-ticket,#edit-reservation,#save-ticket,#calendar,#save-summary,#chapter-close) {
+ background:transparent var(--button-art) center/contain no-repeat;
+ border:0;border-image:none;border-radius:0;box-shadow:none;
+ color:#f4dfc5;font-family:var(--body);line-height:1.2;
+ height:auto;aspect-ratio:var(--button-ratio);min-height:44px;
+ text-decoration:none;transform:none;
+ transition:filter .16s ease,opacity .16s ease;
+}
+#invitation button::before,#invitation button::after{content:none;}
+#invitation button:enabled:hover{filter:brightness(1.16);}
+#invitation button:enabled:active{filter:brightness(.88);}
+#invitation button:disabled{opacity:.45;cursor:not-allowed;filter:none;}
+#invitation button:focus-visible{outline:2px solid #ffe0aa;outline-offset:3px;}
+
+#invitation :is(#nav-back,#nav-next,.chapter-toggle,#chapter-close) {
+ --button-art:url('/assets/png/ui-v2/button-compact-angular-v1.png');
+ --button-ratio:var(--button-compact-ratio);
+ padding:8px 12%;font-size:clamp(14px,3.8cqw,23px);
+}
+#invitation #chapter-menu nav button{padding:8px 10%;text-align:center;}
+#invitation :is(#submit-reservation,#recall-ticket,#edit-reservation,#save-ticket,#calendar,#save-summary) {
+ display:flex;align-items:center;justify-content:center;
+ padding:8px 9%;font-size:clamp(14px,3.9cqw,22px);
+}
+#invitation #reservation :is(#save-ticket,#calendar){display:none;}
+#invitation #closing #save-summary{aspect-ratio:var(--button-wide-ratio);flex:0 0 auto;}
+
+#invitation #reservation :is(#minus,#plus) {
+ --button-ratio:1;width:clamp(44px,12cqw,60px);padding:0;
+}
+#invitation #reservation #minus{--button-art:url('/assets/png/ui-v2/button-minus-angular-v1.png');}
+#invitation #reservation #plus{--button-art:url('/assets/png/ui-v2/button-plus-angular-v1.png');}
+#invitation #music-toggle {
+ --button-art:none;--button-ratio:1;
+ width:clamp(44px,12cqw,60px);padding:0;
+}
+#invitation #music-toggle .icon{display:block;width:100%;height:100%;object-fit:contain;filter:none;}
+@media(prefers-reduced-motion:reduce){#invitation button{transition:none;}}

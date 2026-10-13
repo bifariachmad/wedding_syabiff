@@ -40,7 +40,7 @@
 .arrival-caption p{font:22px/1.4 var(--body);margin:0;min-height:31px;color:#f5dfc5;overflow-wrap:anywhere}
 .arrival-dialogue-cue{position:absolute;right:15px;bottom:9px;font-size:9px;color:#cc8590;animation:arrival-cue 1.7s ease-in-out infinite alternate}.arrival[data-speaking="true"] .arrival-dialogue-cue{visibility:hidden}
 @keyframes arrival-cue{to{opacity:.35;translate:0 2px}}
-.intro-active .vn-stage,.intro-active .vn-world{opacity:0;pointer-events:none}.intro-active .vn-header{display:none}.intro-active .vn-bottom{z-index:25;background:linear-gradient(0deg,#10070d 80%,transparent);width:min(calc(100% - 36px),820px)}
+.intro-active .vn-stage,.intro-active .vn-world{opacity:0;pointer-events:none}.intro-active .vn-header{display:none}.intro-active .vn-bottom{z-index:25;background:none;width:min(calc(100% - 36px),820px)}
 .intro-active .vn-nav{font-size:13px;min-height:48px;background:#230b16;border-color:#94505e}.intro-active .vn-next{background:#851c39;border-color:#c65d77}.intro-active .vn-next:hover{background:#a42548}.intro-active .vn-position{font-size:13px;color:#f0c5b3}.intro-active .vn-progress{background:#ab526540}.intro-active #journey-progress{background:#a93958}
 .visual-novel.intro-active .music-toggle{background:#2d0b19dd;border-color:#834554}
 .arrival[data-step="0"] .arrival-garden img,.arrival[data-step="1"] .arrival-garden img,.arrival[hidden] *{animation-play-state:paused}
@@ -60,10 +60,10 @@
 .arrival-paper-frame .arrival-card-copy{inset:13% 9%;width:auto;height:auto;transform:none}
 .arrival-holding-hands{z-index:2;filter:drop-shadow(0 7px 8px #0004)}
 /* Generated ink-cutout chrome, shared by the entire invitation. */
-.visual-novel .vn-nav{justify-content:center;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;filter:drop-shadow(0 3px 2px #0008);font-size:14px;min-height:51px;width:min(150px,100%);min-width:0;padding:12px 14px;gap:8px;transition:filter .2s,transform .2s}
-.visual-novel .vn-nav:hover{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;filter:brightness(1.2) drop-shadow(0 3px 2px #0008);transform:rotate(-1deg)}
+.visual-novel .vn-nav{justify-content:center;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;filter:none;font-size:14px;min-height:51px;width:min(150px,100%);min-width:0;padding:12px 14px;gap:8px;transition:filter .2s,transform .2s}
+.visual-novel .vn-nav:hover{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;filter:brightness(1.2);transform:rotate(-1deg)}
 .visual-novel .vn-nav:disabled{filter:saturate(.5);opacity:.42;transform:none}
-.visual-novel .vn-next{filter:brightness(1.15) drop-shadow(0 3px 2px #0008)}
+.visual-novel .vn-next{filter:brightness(1.15)}
 .visual-novel .vn-progress{height:7px;background:transparent url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;margin-bottom:10px}
 .visual-novel #journey-progress{height:100%;background:transparent url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;filter:brightness(1.65)}
 .visual-novel .music-toggle,.visual-novel.intro-active .music-toggle{width:48px;height:48px;background:none;border:0;border-radius:0;padding:0;box-shadow:none}

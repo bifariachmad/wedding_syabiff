@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import {fitDialogue} from './dialogue-artwork.js';
 import { sound } from './audio.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,7 +14,7 @@ export function initCourtyard(){
   root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 04</small>`;
   gsap.set('#journey-progress',{scaleX:(step+1)/4});
  }
- function caption(){ $('#courtyard-line').textContent=lines[step];$('#courtyard-description').textContent=lines[step]; }
+ function caption(){ fitDialogue($('#courtyard-line'),lines[step]);$('#courtyard-line').textContent=lines[step];$('#courtyard-description').textContent=lines[step]; }
  function pose(){
   gsap.set($('.courtyard-camera'),{scale:step?1.09:1,x:0,y:0,rotation:0,opacity:1});
   gsap.set($('.courtyard-heading'),{opacity:1});
@@ -35,16 +36,15 @@ export function initCourtyard(){
    }else if(target===2||step===2){
     const at=timeline.duration();
     timeline.call(()=>{sound('latch');sound('gate');},[],at)
-     .to($('.courtyard-left'),{rotationY:target===2?-82:0,duration:4.2,ease:'sine.inOut'},at+.2)
-     .to($('.courtyard-right'),{rotationY:target===2?82:0,duration:4.4,ease:'sine.inOut'},at+.28)
-     .to({}, {duration:.3});
+     .to($('.courtyard-left'),{rotationY:target===2?-82:0,duration:2.1,ease:'sine.inOut'},at+.1)
+     .to($('.courtyard-right'),{rotationY:target===2?82:0,duration:2.2,ease:'sine.inOut'},at+.16);
    }else{
     const at=timeline.duration();
     walk(timeline,target?[1.045,1.09]:[1.045,1],0,at);
    }
    const cursor={letters:0},text=lines[target];
-   timeline.call(()=>{step=target;$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';$('.vn-dialogue').hidden=!text;})
-    .to($('.vn-dialogue'),{opacity:target===2?0:1,duration:.25})
+   timeline.call(()=>{step=target;fitDialogue($('#courtyard-line'),text);$('#courtyard-description').textContent=text;$('#courtyard-line').textContent='';$('.vn-dialogue').hidden=!text;})
+    .to($('.vn-dialogue'),{opacity:target===2?0:1,duration:target===2?0:.25})
     .to(cursor,{letters:text.length,duration:reduced()?0:text.length*.027,ease:'none',onUpdate:()=>{$('#courtyard-line').textContent=text.slice(0,Math.ceil(cursor.letters));}});
   });
  }
@@ -64,13 +64,13 @@ export function initCourtyard(){
   gate.dataset.walk='walking';
   gsap.set($('.courtyard-crow'),{x:-root.clientWidth*.35,y:0,opacity:0});
   t.set($('.courtyard-crow'),{opacity:1},.25)
-   .to($('.courtyard-crow'),{x:root.clientWidth*1.15,y:-root.clientHeight*.12,duration:2.7,ease:'none'},.25)
-   .call(()=>sound('crow'),[],.7).set($('.courtyard-crow'),{opacity:0},3);
-  walk(t,[1.22,1.41,1.65,1.94,2.27,2.65],36);
+   .to($('.courtyard-crow'),{x:root.clientWidth*1.15,y:-root.clientHeight*.12,duration:1.35,ease:'none'},.1)
+   .call(()=>sound('crow'),[],.3).set($('.courtyard-crow'),{opacity:0},1.5);
+  walk(t,[1.4,1.95,2.65],36);
   t.to($('.courtyard-heading'),{opacity:0,duration:.3},0)
-   .to($('.courtyard-tree-left'),{xPercent:-85,duration:3.3,ease:'sine.inOut'},0)
-   .to($('.courtyard-tree-right'),{xPercent:85,duration:3.3,ease:'sine.inOut'},0)
-   .call(()=>{gate.dataset.walk='complete';sound('morning');},[],3.36);
+   .to($('.courtyard-tree-left'),{xPercent:-85,duration:1.6,ease:'sine.inOut'},0)
+   .to($('.courtyard-tree-right'),{xPercent:85,duration:1.6,ease:'sine.inOut'},0)
+   .call(()=>{gate.dataset.walk='complete';sound('morning');},[],1.65);
  }
  function resetTrees(){gsap.set(gate.querySelectorAll('.courtyard-tree'),{xPercent:0});gsap.set($('.courtyard-crow'),{opacity:0});gate.dataset.walk='idle';}
  return {get step(){return step;},get busy(){return busy;},controls,show:(at)=>{resetTrees();show(at);},next:()=>move(step+1),back:()=>move(step-1),pass};

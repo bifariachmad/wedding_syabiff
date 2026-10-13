@@ -1,0 +1,33 @@
+/* Foreground botanicals stay inside the title scene, behind the lettering. */
+.cover-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;isolation:isolate}
+.cover-edge-roots{position:absolute;left:-21%;width:142%;aspect-ratio:3/1;filter:brightness(.78) saturate(.95) drop-shadow(0 4px 4px #08030588)}
+.cover-edge-roots svg{display:block;width:100%;height:100%;overflow:visible}
+.cover-edge-roots--top{top:-5.5cqh;rotate:180deg}
+.cover-edge-roots--bottom{bottom:-5.5cqh;left:-17%;width:138%;filter:brightness(.65) saturate(.95) drop-shadow(0 4px 5px #080305)}
+.cover-petals{position:absolute;inset:0;opacity:0;transition:opacity .8s ease}
+#cover.is-active .cover-petals{opacity:1}
+.cover-petal{position:absolute;top:-10%;left:var(--petal-x);width:calc(var(--petal-size)*.25cqw);aspect-ratio:1;opacity:0;animation:cover-petal-fall var(--fall-duration) var(--fall-delay) linear infinite both}
+.cover-petal-sway,.cover-petal-face{display:block;width:100%;height:100%}
+.cover-petal-sway{animation:cover-petal-sway var(--sway-duration) var(--fall-delay) ease-in-out infinite alternate}
+.cover-petal-face{position:relative;animation:cover-petal-turn calc(var(--sway-duration)*2) var(--fall-delay) ease-in-out infinite;filter:drop-shadow(1px 2px 1px #08020555)}
+.cover-petal-face img{display:block;width:100%;height:100%;filter:saturate(1.15) contrast(1.08) brightness(.88)}
+.cover-petal-face:after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 18%,#33000c38 43%,#080207ed 92%);mask:url('/assets/png/petal.png') center/contain no-repeat}
+.cover-petal:nth-child(3n+2){filter:blur(.3px)}
+.cover-atmosphere .cover-petal,.cover-atmosphere .cover-petal-sway,.cover-atmosphere .cover-petal-face{animation-play-state:paused}
+#cover.is-active .cover-atmosphere:not([data-paused='true']) :is(.cover-petal,.cover-petal-sway,.cover-petal-face){animation-play-state:running}
+@keyframes cover-petal-fall{
+ 0%{transform:translate3d(0,-5cqh,0);opacity:0}
+ 9%{opacity:.85}
+ 75%{opacity:.72}
+ 100%{transform:translate3d(var(--petal-drift),108cqh,0);opacity:0}
+}
+@keyframes cover-petal-sway{from{transform:translateX(-2.6cqw) rotate(-13deg)}to{transform:translateX(2.6cqw) rotate(17deg)}}
+@keyframes cover-petal-turn{
+ 0%{transform:rotateZ(var(--petal-angle)) rotateY(0deg) rotateX(22deg)}
+ 50%{transform:rotateZ(calc(var(--petal-angle) + 100deg)) rotateY(160deg) rotateX(-18deg)}
+ 100%{transform:rotateZ(calc(var(--petal-angle) + 220deg)) rotateY(360deg) rotateX(22deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ .cover-petals{display:none}
+ .cover-root-growth{stroke-dashoffset:0!important}
+}

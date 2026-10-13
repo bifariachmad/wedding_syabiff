@@ -1,11 +1,27 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/(admin|buku-tamu|reservasi|cetak|kamera|album-admin)", "destination": "/index.html" }],
-  "headers": [{ "source": "/(.*)", "headers": [
-    { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-    { "key": "X-Content-Type-Options", "value": "nosniff" },
-    { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-    { "key": "Permissions-Policy", "value": "camera=(self), microphone=(), geolocation=()" }
-  ] }]
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(self), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ]
 }

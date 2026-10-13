@@ -7,7 +7,7 @@ import {clockroomArtwork,clockroomDialogue} from './clockroom-markup.js';
 import { CONFIG } from './config.js';
 import { art, icon } from './art.js';
 import { prologueMarkup } from './prologue-markup.js';
-import { courtyardArtwork, courtyardCover } from './courtyard-markup.js';
+import { courtyardArtwork, courtyardCover, courtyardTitle } from './courtyard-markup.js';
 import { welcomeArtwork, welcomeDialogue } from './welcome-markup.js';
 
 const sprite=(name,cls='hero',depth=0)=>`<div class="vn-layer ${cls}" data-depth="${depth}">${art(name)}</div>`;
@@ -22,13 +22,13 @@ export function invitationMarkup(){
  <button class="music-toggle" id="music-toggle" aria-label="Nyalakan musik">${icon('music-off')}</button>
  <div class="vn-stage">
  ${scene('gate','KAMU',courtyardArtwork(),`<p id="recipient" class="recipient" hidden></p><p id="courtyard-line" aria-hidden="true">Di mana ini…? Rasanya tidak asing.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Rasanya tidak asing.</span>`)}
- ${scene('cover','Part II · The Wedding',courtyardCover(),`<span class="courtyard-wedding">The Wedding</span><h1 id="cover-title"><span>Achmad Bifari</span><em>&</em><span>Syafira Aulia</span></h1>`)}
+ ${scene('cover','Part II',courtyardCover(),courtyardTitle())}
  ${scene('greeting','KAMU',welcomeArtwork(),welcomeDialogue())}
  ${scene('countdown','BIFARI',clockroomArtwork(),clockroomDialogue())}
  ${scene('location','SYAFIRA',maproomArtwork(),maproomDialogue())}
  ${scene('rundown-0',agendaSpeaker(0),agendaArtwork(0),agendaDialogue(0),'vn-agenda').replace('</section>',`${agendaCard(0)}</section>`)}
  ${scene('dresscode','SYAFIRA',wardrobeArtwork(),wardrobeDialogue())}
- ${scene('reservation','BIFARI',guestbookArtwork(),`<p class="guestbook-line">Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.</p><div class="book-writing-area"><h2 id="reservation-title">Reservasi</h2><div class="vn-form-content"><p class="reservation-intro">Tolong tuliskan nama kamu dan jumlah orang yang ikut hadir bersamamu ya... Kami ingin menyiapkan tempat yang spesial untuk kamu.</p>
+ ${scene('reservation','BIFARI',guestbookArtwork(),`<p class="guestbook-line" aria-hidden="true">Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.</p><span id="guestbook-description" class="sr-only" role="status" aria-live="polite"></span><div class="book-writing-area"><h2 id="reservation-title">Reservasi</h2><div class="vn-form-content"><p class="reservation-intro">Tolong tuliskan nama kamu dan jumlah orang yang ikut hadir bersamamu yah... Kami ingin menyiapkan tempat yang spesial untuk kamu.</p>
  <form id="reservation-form" novalidate><div class="form-field"><label for="guest-name">Nama tamu</label><input id="guest-name" name="name" type="text" required minlength="2" maxlength="60" autocomplete="name" aria-describedby="name-error"/><p class="field-error" id="name-error" aria-live="polite"></p></div><div class="form-field"><label for="guest-count">Jumlah tamu (termasuk kamu)</label><div class="stepper"><button type="button" id="minus" aria-label="Kurangi jumlah tamu">${icon('minus')}</button><input id="guest-count" name="guests" type="number" min="1" max="${CONFIG.MAX_GUESTS}" step="1" value="1" required inputmode="numeric" aria-describedby="count-error"/><button type="button" id="plus" aria-label="Tambah jumlah tamu">${icon('plus')}</button></div><p class="field-error" id="count-error" aria-live="polite"></p></div><div class="honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"/></div><button type="submit" class="button primary" id="submit-reservation" disabled>Simpan Kehadiran</button></form>
  <div id="reservation-success" role="status" hidden><img class="success-seal" src="/assets/png/wax-seal.png" alt="Segel Bifari dan Syafira"/><span class="success-kicker">BUKU TAMU</span><strong>Namamu sudah tercatat</strong><p class="success-guest"></p><p class="success-detail"></p></div><p id="reservation-status" role="status" aria-live="polite"></p><button class="vn-action" id="recall-ticket" hidden>Lihat Tiket</button><div id="ticket-host" hidden></div></div></div>`,'vn-form-scene')}
  ${scene('closing','BIFARI & SYAFIRA',farewellArtwork(),farewellDialogue())}

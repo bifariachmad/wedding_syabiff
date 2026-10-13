@@ -8,18 +8,24 @@ import { sound } from './audio.js';
 import { initPrologue } from './prologue.js';
 import { initCourtyard } from './courtyard.js';
 import { initWelcome } from './welcome.js';
+import { createTitleReveal } from './title-reveal.js';
+import { createCoverAtmosphere } from './cover-atmosphere.js';
+import { initDialogueArtwork } from './dialogue-artwork.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRestart=()=>{}}={}){
  const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
  const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
  let index=0,busy=false,ambient=[],prologue;
+ initDialogueArtwork(root);
  const courtyard=initCourtyard();
  const welcome=initWelcome();
  const clockroom=initClockroom();
  const maproom=initMaproom();
  const wardrobe=initWardrobe();
  const guestbook=initGuestbook(canOpenSummary);
+ const title=createTitleReveal(root.querySelector('.wedding-logo'));
+ const coverAtmosphere=createCoverAtmosphere(root.querySelector('#cover'));
  const controls=()=>{next.textContent='Lanjut';next.hidden=!prologue?.active&&index===scenes.length-1;root.dataset.scene=String(index);root.dataset.travelling=String(busy);root.classList.toggle('courtyard-active',!prologue?.active&&index<2);root.classList.toggle('welcome-active',!prologue?.active&&index===2);root.classList.toggle('clockroom-active',!prologue?.active&&index===3);root.classList.toggle('maproom-active',!prologue?.active&&index===4);root.classList.toggle('agenda-active',!prologue?.active&&index===5);root.classList.toggle('finale-active',!prologue?.active&&index>=7);root.classList.toggle('wardrobe-active',!prologue?.active&&index===6);if(prologue?.active){prologue.controls();return;}if(index===7&&!busy){guestbook.controls();return;}if(index===6&&!busy){wardrobe.controls();return;}if(index===0&&!busy){courtyard.controls();return;}if(index===2&&!busy){welcome.controls();return;}if(index===3&&!busy){clockroom.controls();return;}if(index===4&&!busy){maproom.controls();return;}back.disabled=busy;next.disabled=busy;if(index===5){root.querySelector('#journey-position').innerHTML='01 <small>/ 01</small>';gsap.set('#journey-progress',{scaleX:1});}if(index===1){root.querySelector('#journey-position').innerHTML='04 <small>/ 04</small>';gsap.set('#journey-progress',{scaleX:1});}};
  function resetToGate(){
   ambient.forEach(t=>t.kill());ambient=[];
@@ -55,6 +61,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   gsap.set(to.querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});
   index=target;busy=false;if(index===0)courtyard.show(2);
   root.querySelector('#journey-position').innerHTML=`${String(index+1).padStart(2,'0')} <small>/ ${scenes.length}</small>`;
+  if(index===7)guestbook.reveal();
   controls();
   root.querySelector('#journey-announcement').textContent=`${index+1} dari ${scenes.length}. ${to.querySelector('h1,h2').textContent}`;
   atmosphere();
@@ -73,7 +80,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   const from=scenes[index],to=scenes[target],direction=target>index?1:-1;
   ambient.forEach(t=>t.kill());ambient=[];
   await hydrateArt(to);
-  if(target===1)await document.fonts.load('40px GALVANIZED');
+  if(target===1){await title.prepare();coverAtmosphere.prepare();}
   from.inert=true;to.inert=true;to.classList.add('is-travelling');
   // Hide the entire incoming scene, including panels outside .vn-artwork.
   gsap.set(to,{opacity:0});
@@ -83,7 +90,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   // The outgoing scene may intentionally hide its dialogue, as at the open gate.
   gsap.set(oldText,{clearProps:'transform'});
   gsap.set(to.querySelectorAll('[data-depth]'),{z:0});
-  if(target===1){gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:1});gsap.set(to.querySelector('.courtyard-rose-frame'),{opacity:1});gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(0% 0% 0% 0%)'});}
+  if(target===1){gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:1});title.finish();coverAtmosphere.finish();}
   if(to.id==='gate'){courtyard.show(2);back.disabled=true;next.disabled=true;}
   if(to.id==='greeting'){welcome.show(direction>0?0:welcome.last);back.disabled=true;next.disabled=true;}
   if(to.id==='countdown'){clockroom.show(direction>0?0:clockroom.last);back.disabled=true;next.disabled=true;}
@@ -98,15 +105,14 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
     // Continue the gate camera through the garden before revealing the title.
     gsap.set([newArt,newText],{opacity:0});
     gsap.set(to.querySelector('.courtyard-title-shade'),{opacity:0});
-    gsap.set(to.querySelectorAll('.courtyard-vine img'),{clipPath:'inset(100% 0% 0% 0%)'});
     courtyard.pass(timeline);
     timeline.to(oldText,{opacity:0,duration:.15},0)
-     .set(from,{opacity:0},3.36).set(to,{opacity:1},3.36)
-     .set(newArt,{opacity:1},3.36).set(oldArt,{opacity:0},3.36)
-     .to(to.querySelector('.courtyard-title-shade'),{opacity:1,duration:.7,ease:'sine.inOut'},3.36)
-     .to(to.querySelector('.vine-left img'),{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'sine.inOut'},3.5)
-     .to(to.querySelector('.vine-right img'),{clipPath:'inset(0% 0% 0% 0%)',duration:1.5,ease:'sine.inOut'},3.6)
-     .to(newText,{opacity:incomingTextOpacity,duration:.65,ease:'sine.out'},3.8);
+     .set(from,{opacity:0},1.65).set(to,{opacity:1},1.65)
+     .set(newArt,{opacity:1},1.65).set(oldArt,{opacity:0},1.65)
+     .to(to.querySelector('.courtyard-title-shade'),{opacity:1,duration:.35,ease:'sine.inOut'},1.65)
+     .set(newText,{opacity:incomingTextOpacity},1.65);
+    title.reveal(timeline,1.7);
+    coverAtmosphere.reveal(timeline,1.7);
    }else{
    const duration=reduced()?0.1:0.25;
    gsap.set([newArt,newText],{opacity:0});
@@ -128,7 +134,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
    timeline.to('#journey-progress',{scaleX:target===0?.75:target===1?1:(target+1)/scenes.length,duration:.3},0);
   });
  }
- prologue=initPrologue(()=>{resetToGate();controls();hydrateArt(scenes[0]);hydrateArt(scenes[1]);sound('morning');atmosphere();});
+ prologue=initPrologue(()=>{resetToGate();controls();hydrateArt(scenes[0]);hydrateArt(scenes[1]).then(()=>{coverAtmosphere.prepare();return title.prepare();});sound('morning');atmosphere();});
  controls();
  document.addEventListener('reservation-updated',()=>{if(index===7&&!busy)guestbook.controls();});
  return {goTo,chapter:async id=>{if(busy||prologue.busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(id==='arrival')return restart();await goTo(id);if(id==='reservation')guestbook.show(2);else if(id==='gate')courtyard.show(0);else if(id==='greeting')welcome.show(0);else if(id==='countdown')clockroom.show(0);else if(id==='location')maproom.show(0);else if(id==='dresscode')wardrobe.show(0);gsap.set(scenes[index].querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});controls();return true;},next:()=>{if(prologue.active)return prologue.next();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===scenes.length-1)return false;if(index===0&&courtyard.step<2)return courtyard.next().then(()=>courtyard.step===2?goTo(1):true);if(index===2&&welcome.step<welcome.last)return welcome.next();if(index===3&&clockroom.step<clockroom.last)return clockroom.next();if(index===4&&maproom.step<maproom.last)return maproom.next();if(index===6&&wardrobe.step<wardrobe.last)return wardrobe.next();if(index===7&&guestbook.step<2)return guestbook.next();return goTo(index+1);},back:()=>{if(prologue.active)return prologue.back();if(busy||courtyard.busy||welcome.busy||clockroom.busy||maproom.busy||wardrobe.busy||guestbook.busy)return false;if(index===2&&welcome.step>0)return welcome.back();if(index===3&&clockroom.step>0)return clockroom.back();if(index===4&&maproom.step>0)return maproom.back();if(index===0){if(courtyard.step>0)return courtyard.back();ambient.forEach(t=>t.kill());root.classList.remove('courtyard-active');return prologue.show();}if(index===6&&wardrobe.step>0)return wardrobe.back();if(index===7&&guestbook.step>0)return guestbook.back();return goTo(index-1);}};

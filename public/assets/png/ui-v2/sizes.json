@@ -1,0 +1,74 @@
+{
+  "button-minus-square-v1": {
+    "width": 160,
+    "height": 156
+  },
+  "button-plus-square-v1": {
+    "width": 160,
+    "height": 157
+  },
+  "button-reservation-medium-v1": {
+    "width": 960,
+    "height": 187
+  },
+  "dialogue-compact-angular-v1": {
+    "width": 960,
+    "height": 331
+  },
+  "dialogue-long-angular-v1": {
+    "width": 960,
+    "height": 474
+  },
+  "label-pair-angular-v1": {
+    "width": 960,
+    "height": 194
+  },
+  "label-speaker-angular-v1": {
+    "width": 960,
+    "height": 210
+  },
+  "panel-countdown-angular-v1": {
+    "width": 960,
+    "height": 391
+  },
+  "panel-venue-angular-v1": {
+    "width": 960,
+    "height": 429
+  },
+  "dialogue-single-angular-v1": {
+    "width": 960,
+    "height": 156
+  },
+  "dialogue-double-angular-v1": {
+    "width": 960,
+    "height": 207
+  },
+  "dialogue-four-angular-v1": {
+    "width": 960,
+    "height": 276
+  },
+  "button-compact-angular-v1": {
+    "width": 960,
+    "height": 259
+  },
+  "button-wide-angular-v1": {
+    "width": 960,
+    "height": 228
+  },
+  "button-plus-angular-v1": {
+    "width": 192,
+    "height": 192
+  },
+  "button-minus-angular-v1": {
+    "width": 192,
+    "height": 187
+  },
+  "button-music-on-angular-v1": {
+    "width": 192,
+    "height": 195
+  },
+  "button-music-off-angular-v1": {
+    "width": 192,
+    "height": 192
+  }
+}

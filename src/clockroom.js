@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
 import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,7 +12,7 @@ export function initClockroom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#countdown'),$=s=>scene.querySelector(s);
  let step=0,busy=false;
  function controls(){scene.dataset.clockStep=String(step);root.dataset.clockBusy=String(busy);root.querySelector('#nav-back').disabled=busy;root.querySelector('#nav-next').disabled=busy;root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 03</small>`;gsap.set('#journey-progress',{scaleX:(step+1)/lines.length});}
- function speaker(at){const [name,line]=lines[at];scene.dataset.speaker=name;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===name));$('.vn-speaker').textContent=name;$('#clockroom-description').textContent=`${name}: ${line}`;return line;}
+ function speaker(at){const [name,line]=lines[at];fitDialogue($('#clockroom-line'),line);scene.dataset.speaker=name;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===name));$('.vn-speaker').textContent=name;$('#clockroom-description').textContent=`${name}: ${line}`;return line;}
  function pose(){gsap.set($('.clockroom-camera'),{scale:step?1.13:1,y:0,x:0});gsap.set($('.character-bifari'),{xPercent:step?6:0});gsap.set($('.character-syafira'),{xPercent:step?-6:0});gsap.set($('.clockroom-countdown'),{autoAlpha:1,y:0});$('#clockroom-line').textContent=speaker(step);scene.dataset.speaking='false';controls();}
  function show(at=0){step=at;busy=false;pose();}
  function move(target){if(busy||target<0||target>=lines.length)return false;busy=true;controls();return new Promise(resolve=>{

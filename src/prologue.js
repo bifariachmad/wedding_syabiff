@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import {fitDialogue} from './dialogue-artwork.js';
 import { hydrateArt } from './art.js';
 import { sound, startAudio } from './audio.js';
 import { burnPaper } from './paper-burn.js';
@@ -37,7 +38,7 @@ export function initPrologue(onExit){
  }
  function lineFor(target){return lines[target];}
  function describe(){
-  $('#arrival-line').textContent=lineFor(step);$('#arrival-description').textContent=`${descriptions[step]} ${lineFor(step)}`;
+  fitDialogue($('#arrival-line'),lineFor(step));$('#arrival-line').textContent=lineFor(step);$('#arrival-description').textContent=`${descriptions[step]} ${lineFor(step)}`;
   $('.arrival-sealed').setAttribute('aria-hidden',String(step!==5));
   $('.arrival-open').setAttribute('aria-hidden',String(step!==6));
  }
@@ -64,7 +65,7 @@ export function initPrologue(onExit){
  function dialogue(t,target){
   if(target>=5)return;
   const text=lineFor(target),cursor={letters:0};
-  t.call(()=>{$('#arrival-line').textContent='';$('#arrival-description').textContent=`${descriptions[target]} ${text}`;section.dataset.speaking='true';})
+  t.call(()=>{fitDialogue($('#arrival-line'),text);$('#arrival-line').textContent='';$('#arrival-description').textContent=`${descriptions[target]} ${text}`;section.dataset.speaking='true';})
    .to($('.arrival-caption'),{opacity:1,duration:.18})
    .to(cursor,{letters:text.length,duration:reduced()?0:Math.max(.6,text.length*.035),ease:'none',onUpdate:()=>{$('#arrival-line').textContent=text.slice(0,Math.ceil(cursor.letters));}})
    .call(()=>{section.dataset.speaking='false';});

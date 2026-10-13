@@ -1,6 +1,6 @@
 export const CONFIG = Object.freeze({
-  BASE_URL: 'https://diginvit.bifariachmad.com',
-  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycby6Q4_kxRQJ_l8Z8dpck1jXLT2v2dgq-9-V-Z4d6YjJeNE645GnrfMTkMWXfdNyXur1yA/exec',
+  BASE_URL: (import.meta.env?.VITE_DIGITAL_URL || 'https://wedding-syabiff-undangan.vercel.app').replace(/\/$/, ''),
+  APPS_SCRIPT_URL: import.meta.env?.VITE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycby6Q4_kxRQJ_l8Z8dpck1jXLT2v2dgq-9-V-Z4d6YjJeNE645GnrfMTkMWXfdNyXur1yA/exec',
   BGM_SRC: '/assets/audio/canon-in-d-piano.mp3',
   MAX_GUESTS: 5,
   EVENT: {
