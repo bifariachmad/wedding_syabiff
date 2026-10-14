@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { randomUUID } from 'node:crypto';
 export function createBackend(){
  const data=[['id','created_at','updated_at','name','name_key','guests','checked_in','checked_in_at']];
- const properties={SHEET_ID:'test-sheet',ADMIN_PIN:'test-only-pin'};let locked=false,writeCount=0,lockCount=0;
+ const properties={SHEET_ID:'test-sheet',ADMIN_PIN:'test-only-pin',KIOSK_PIN:'test-only-pin'};let locked=false,writeCount=0,lockCount=0;
  const requireLock=()=>{if(!locked)throw new Error('Write outside lock');writeCount++;};
  const range=(r,c,n=1,m=1)=>({getValues:()=>data.slice(r-1,r-1+n).map(row=>row.slice(c-1,c-1+m)),setValues:values=>{requireLock();values.forEach((row,i)=>row.forEach((v,j)=>{(data[r-1+i]??=[])[c-1+j]=v;}));},setNumberFormat:()=>{}});
  const sheet={getLastRow:()=>data.length,getMaxRows:()=>1000,getRange:range,appendRow:row=>{requireLock();data.push([...row]);}};

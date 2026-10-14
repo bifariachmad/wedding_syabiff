@@ -9,7 +9,7 @@ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chr
 try{
  const context=await browser.newContext({...devices['iPhone 13'],reducedMotion:'reduce',acceptDownloads:true});
  const backend=createBackend(),errors=[];
- await context.route(/\/src\/config\.js(?:\?.*)?$/,async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace(/APPS_SCRIPT_URL: '[^']*'/,`APPS_SCRIPT_URL: '${base}/__test-api'`)});});
+ await context.route(/\/src\/config\.js(?:\?.*)?$/,async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace(/APPS_SCRIPT_URL: [^\r\n]+/,`APPS_SCRIPT_URL: '${base}/__test-api',`)});});
  await context.route('**/__test-api',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(backend.call(route.request().postDataJSON()))}));
  await context.addInitScript(()=>{
   window.audioEvents=[];
@@ -67,8 +67,8 @@ try{
  assert.ok(new Set(bookTextFrames.filter(t=>t.length>0&&t.length<100)).size>5,'Book introduction types visibly, rather than appearing all at once');
  await copy('.guestbook-line','Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.');await shot('book-introduction');await page.emulateMedia({reducedMotion:'reduce'});await advance();
  assert.equal(await page.locator('#reservation-title').evaluate(el=>getComputedStyle(el).textAlign),'center');
- await copy('.reservation-intro','Tolong tuliskan nama kamu dan jumlah orang yang ikut hadir bersamamu yah... Kami ingin menyiapkan tempat yang spesial untuk kamu.');
- await page.locator('#guest-count').fill('2');
+ await copy('.reservation-intro','Bisa hadir atau sedang berhalangan? Beri kabar di sini, ya.');
+ await page.locator('[name="attendance"][value="attending"]').check();await page.locator('#guest-count').fill('2');
  for(const [width,height] of [[360,640],[390,844],[768,1024]]){await page.setViewportSize({width,height});await shot('form-'+width);}
  await page.locator('#submit-reservation').click();await page.waitForSelector('#reservation-success:visible');
  assert.ok(await page.locator('#reservation-title').isHidden());
@@ -77,7 +77,7 @@ try{
   assert.ok(await page.locator('#edit-reservation').evaluate(el=>{const b=el.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(el);const t=range.getBoundingClientRect(),p=el.closest('.vn-form-content').getBoundingClientRect();return t.left>=b.left&&t.right<=b.right&&b.left>=p.left&&b.right<=p.right+1&&b.bottom<=p.bottom+1;}),'Edit action fits its button and the book page at '+width);
  }
  const code=await page.locator('.ticket-code').textContent();
- await page.locator('#edit-reservation').click();await copy('#submit-reservation','Update Kehadiran');await page.locator('#guest-count').fill('3');await page.locator('#submit-reservation').click();await page.waitForFunction(()=>document.querySelector('.ticket-guests').textContent==='3');await copy('.ticket-code',code);
+ await page.locator('#edit-reservation').click();await copy('#submit-reservation','Update Kehadiran');await page.locator('[name="attendance"][value="attending"]').check();await page.locator('#guest-count').fill('3');await page.locator('#submit-reservation').click();await page.waitForFunction(()=>document.querySelector('.ticket-guests').textContent==='3');await copy('.ticket-code',code);
  await page.setViewportSize({width:390,height:844});await advance();await shot('ticket-preview');
  assert.equal(await page.locator('.ending-music-credit').count(),0);
  for(const [width,height] of [[360,640],[390,844],[768,1024]]){
@@ -100,7 +100,7 @@ try{
  assert.ok(long.drawn.some(t=>t.text.includes('20244')));await fs.writeFile(out+'/long-name-ticket.png',Buffer.from(long.data.split(',')[1],'base64'));
  assert.ok(long.drawn.some(t=>t.text==='Teruntuk'));
  assert.ok(long.drawn.some(t=>t.text==='Dresscode:'));
- assert.ok(long.drawn.some(t=>t.text==='Merah maroon atau Hitam'));
+ assert.ok(long.drawn.some(t=>t.text===CONFIG.EVENT.dresscode));
  assert.ok(!long.drawn.some(t=>t.text==='TIKET RESEPSI'||t.text==='KHUSUS UNTUK'||t.text.includes('Achmad Bifari')));
  assert.deepEqual(errors,[]);
  await fs.writeFile(out+'/results.json',JSON.stringify({copyParts:8,viewports:[360,390,768],hingeSound:true,footstepsBeforeHosts:3,transitionFrames:frames.length,returnTransition:true,reservationUpdated:true,ticketQrDecoded:decoded,addressComplete:true,longNameFits:true,browserErrors:errors},null,2));

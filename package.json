@@ -7,8 +7,8 @@
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
-    "test": "node --test tests/backend.test.mjs",
-    "verify": "node tests/invitation-feedback.mjs && node tests/gate-dialogue.mjs && node tests/title-reveal.mjs",
+    "test": "node --test tests/backend.test.mjs tests/rsvp.test.mjs",
+    "verify": "node tests/invitation-feedback.mjs && node tests/rsvp.mjs && node tests/gate-dialogue.mjs && node tests/title-reveal.mjs",
     "verify:ui": "node tests/ui-artwork.mjs"
   },
   "dependencies": {

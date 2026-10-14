@@ -17,6 +17,7 @@ import './invitation-refresh.css';
 import './cover-atmosphere.css';
 import './ui-artwork.css';
 import './angular-buttons.css';
+import './rsvp.css';
 import {preparePortrait} from './device.js';
 import {renderInvitation} from './invitation.js';
 const app=document.querySelector('#app');

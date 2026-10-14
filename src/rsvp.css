@@ -1,0 +1,57 @@
+/* Ink-cut frames and scratchy parchment checks follow the invitation's game UI. */
+#reservation .attendance-options{border:0;padding:0;margin:12px 0 8px;min-width:0;display:grid;gap:8px;color:#431d28;text-align:left}
+#reservation .attendance-options legend{width:100%;text-align:center;font:17px/1.3 var(--body);margin-bottom:8px}
+#reservation .attendance-options label{
+ position:relative;isolation:isolate;display:flex;align-items:center;gap:10px;min-height:54px;
+ padding:8px 15px;border:0;background:none;cursor:pointer;font:19px/1.2 var(--body);color:#e2cbaa;text-align:left;
+ -webkit-tap-highlight-color:transparent;transition:filter .15s ease;
+}
+#reservation .attendance-frame{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:drop-shadow(0 2px 0 #24120e44)}
+#reservation .attendance-frame svg{display:block;width:100%;height:100%;overflow:visible}
+#reservation .choice-paper{fill:#281c19;stroke:#160f0d;stroke-width:2}
+#reservation .choice-rim{fill:none;stroke:#c9b796;stroke-width:1.1}
+#reservation .choice-sketch{fill:none;stroke:#0d0908;stroke-width:1.15;stroke-linecap:square}
+#reservation .attendance-options label:has(:checked){color:#fff0ca}
+#reservation .attendance-options label:has(:checked) .choice-paper{fill:#4b1c28}
+#reservation .attendance-options label:has(:checked) .choice-rim{stroke:#f0d5a5;stroke-width:1.55}
+#reservation .attendance-options label:has(:focus-visible){outline:2px dashed #642139;outline-offset:4px}
+#reservation .attendance-options label:has(:disabled){cursor:wait;opacity:.6}
+#reservation[data-book-step='2'] .attendance-options input{
+ position:absolute;inset:0;z-index:1;width:100%;height:100%;min-width:0;min-height:0;padding:0;margin:0;
+ opacity:0;cursor:inherit;border:0;box-shadow:none;
+}
+#reservation .attendance-mark{display:block;flex:0 0 34px;width:34px;height:34px;transform:rotate(-4deg);filter:drop-shadow(1px 2px 0 #09060488)}
+#reservation .attendance-options label:last-of-type .attendance-mark{transform:rotate(3deg)}
+#reservation .attendance-mark svg{display:block;width:100%;height:100%;overflow:visible}
+#reservation .mark-paper{fill:#d7c5a3;stroke:#110d0b;stroke-width:2.1;stroke-linejoin:miter}
+#reservation .mark-rim{fill:none;stroke:#6f5a40;stroke-width:.8}
+#reservation .mark-sketch{fill:none;stroke:#231811;stroke-width:1;stroke-linecap:square}
+#reservation .mark-tick{fill:#231011;opacity:0;transform:scale(.75) rotate(-9deg);transform-origin:50% 55%;transition:transform .17s ease,opacity .12s ease}
+#reservation .mark-tick-scratch{fill:none;stroke:#f5dfb7;stroke-width:.65;opacity:0}
+#reservation .attendance-options input:checked + .attendance-mark .mark-paper{fill:#f0dcac}
+#reservation .attendance-options input:checked + .attendance-mark .mark-tick{transform:scale(1) rotate(0);opacity:1}
+#reservation .attendance-options input:checked + .attendance-mark .mark-tick-scratch{opacity:.65}
+#reservation .attendance-label{min-width:0;text-shadow:0 1px #10080688}
+@media(hover:hover){
+ #reservation .attendance-options label:not(:has(:disabled)):hover{filter:brightness(1.18)}
+}
+@media(prefers-reduced-motion:reduce){
+ #reservation .attendance-options label,#reservation .attendance-mark path{transition:none}
+}
+#reservation #guest-count-field[hidden]{display:none}
+@media(max-height:740px){
+ #reservation .attendance-options{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:6px;margin:8px 0}
+ #reservation .attendance-options legend{font-size:16px;margin-bottom:6px}
+ #reservation .attendance-options label{font-size:16px;gap:5px;padding:8px 7px;min-height:52px}
+ #reservation .attendance-mark{flex-basis:26px;width:26px;height:26px}
+}
+#closing-summary[data-attendance='declined']{justify-content:center;padding:18px 8%;overflow-y:auto}
+#closing #declined-summary{max-width:400px;padding:24px 20px;background:#29111eeb;border:1px solid #d4aa8077;color:#ffe3bd}
+#closing #declined-summary h3{font:clamp(25px,6cqw,36px)/1.15 GALVANIZED;margin:0 0 20px;color:#ffe3bd}
+#closing #declined-summary p{font:clamp(18px,4.6cqw,24px)/1.45 var(--body);margin:14px 0;overflow-wrap:anywhere}
+
+#invitation #summary-calendar{flex:0 0 auto;min-height:44px;max-width:90%;width:auto;padding:8px 22px;font:clamp(14px,3.5cqw,20px)/1.25 var(--body);background:transparent url('/assets/png/ui-v2/button-wide-angular-v1.png') center/100% 100% no-repeat;border:0;color:#f4dfc5}
+#invitation #closing-summary .summary-fallback{position:static!important;width:auto!important;height:auto!important;clip-path:none;overflow:visible!important;white-space:normal;display:grid;gap:10px;padding:25px;background:#eadfc8;color:#431d28;font-size:20px}
+#invitation #location .maproom-venue{aspect-ratio:960/565;background-size:100% 100%;padding-block:4cqw 2cqw}
+#invitation #location .venue-address{font:clamp(12px,3cqw,17px)/1.2 var(--body);color:#dcc4a5;text-align:center;margin:1cqw 0}
+#invitation #location .maproom-venue p{font-size:clamp(14px,3.7cqw,21px)}

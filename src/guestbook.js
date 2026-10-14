@@ -1,11 +1,11 @@
 import gsap from 'gsap';
 import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
-const captions=['Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.','','Silakan tuliskan nama dan jumlah tamu yang akan hadir.'];
+const captions=['Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.','','Silakan tuliskan nama dan konfirmasi kehadiranmu.'];
 export function initGuestbook(canContinue=()=>true){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#reservation'),book=scene.querySelector('.guestbook-spread'),leaf=scene.querySelector('.book-leaf'),dialogue=scene.querySelector('.vn-dialogue');let step=0,busy=false,typing;
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
- function controls(){scene.dataset.bookStep=String(step);root.dataset.bookBusy=String(busy);root.querySelector('#nav-next').disabled=busy||(step===2&&!canContinue());root.querySelector('#nav-next').textContent=['Buka Buku','Isi Buku Tamu',canContinue()?'Lihat Tiket':'Lanjut'][step];root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=String(step===0?1:2).padStart(2,'0')+' <small>/ 02</small>';gsap.set('#journey-progress',{scaleX:(step===0?1:2)/2});}
+ function controls(){scene.dataset.bookStep=String(step);root.dataset.bookBusy=String(busy);root.querySelector('#nav-next').disabled=busy||(step===2&&!canContinue());root.querySelector('#nav-next').textContent=['Buka Buku','Isi Buku Tamu',canContinue()?(scene.querySelector('[name="attendance"]:checked')?.value==='declined'?'Lanjut':'Lihat Tiket'):'Lanjut'][step];root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=String(step===0?1:2).padStart(2,'0')+' <small>/ 02</small>';gsap.set('#journey-progress',{scaleX:(step===0?1:2)/2});}
  const right=scene.querySelector('.book-right');
  function zoomPose(){
   const saved=scene.dataset.bookStep;scene.dataset.bookStep='2';

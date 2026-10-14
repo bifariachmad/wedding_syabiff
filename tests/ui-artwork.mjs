@@ -12,7 +12,7 @@ try{
  const context=await browser.newContext({...devices['iPhone 13'],reducedMotion:'reduce'});
  const backend=createBackend();
  await context.route(/\/src\/invitation\.js(?:\?.*)?$/,async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace('/* journey-ready */','window.auditJourney=journey;')});});
- await context.route(/\/src\/config\.js(?:\?.*)?$/,async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace(/APPS_SCRIPT_URL: '[^']*'/,`APPS_SCRIPT_URL: '${base}/__test-api'`)});});
+ await context.route(/\/src\/config\.js(?:\?.*)?$/,async route=>{const response=await route.fetch();await route.fulfill({response,body:(await response.text()).replace(/APPS_SCRIPT_URL: [^\r\n]+/,`APPS_SCRIPT_URL: '${base}/__test-api',`)});});
  await context.route('**/__test-api',route=>route.fulfill({contentType:'application/json',body:JSON.stringify(backend.call(route.request().postDataJSON()))}));
  const page=await context.newPage();
  page.on('pageerror',e=>failures.push('Browser: '+e.message));
@@ -81,6 +81,7 @@ try{
    }
   }
   await page.evaluate(()=>auditJourney.goTo('reservation'));await settled();await audit(width+'-book-intro',true);await next();
+  await page.locator('[name="attendance"][value="attending"]').check();
   await page.locator('#plus').click();assert.equal(await page.locator('#guest-count').inputValue(),'2');await page.locator('#minus').click();assert.equal(await page.locator('#guest-count').inputValue(),'1');assert.ok(await page.locator('#minus').isDisabled());
   await audit(width+'-form',true);
   await page.locator('#submit-reservation').click();await page.waitForSelector('#reservation-success:visible');await audit(width+'-success',true);
