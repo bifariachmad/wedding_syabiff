@@ -9,7 +9,7 @@ const escapeICS=value=>String(value).replaceAll('\\','\\\\').replaceAll('\n','\\
 const utc=value=>new Date(value).toISOString().replaceAll(/[-:]/g,'').replace('.000','');
 export function calendarFile(){
   const e=CONFIG.EVENT;
-  const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Dua Jiwa Satu Lentera//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:dua-jiwa-satu-lentera-20261031@invitation',`DTSTAMP:${utc(new Date())}`,`DTSTART:${utc(e.start)}`,...(e.end?[`DTEND:${utc(e.end)}`]:[]),`SUMMARY:${escapeICS(`Resepsi ${e.names.join(' & ')}`)}`,`LOCATION:${escapeICS([e.venue,...e.addressLines].join(', '))}`,`GEO:${e.geo.join(';')}`,`URL:${invitationUrl()}`,'END:VEVENT','END:VCALENDAR'];
+  const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pernikahan Bifari Syafira//ID','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:dua-jiwa-satu-lentera-20261031@invitation',`DTSTAMP:${utc(new Date())}`,`DTSTART:${utc(e.start)}`,...(e.end?[`DTEND:${utc(e.end)}`]:[]),`SUMMARY:${escapeICS(`Resepsi ${e.names.join(' & ')}`)}`,`LOCATION:${escapeICS([e.venue,...e.addressLines].join(', '))}`,`GEO:${e.geo.join(';')}`,`URL:${invitationUrl()}`,'END:VEVENT','END:VCALENDAR'];
   // RFC 5545 lines are folded at at most 75 UTF-8 octets, not UTF-16 units.
   return lines.map(line=>{let out='',part='';for(const c of line){if(new TextEncoder().encode(part+c).length>73){out+=part+'\r\n ';part='';}part+=c;}return out+part;}).join('\r\n')+'\r\n';
 }
@@ -22,7 +22,7 @@ export async function renderTicket(host,ticket,edit) {
   host.querySelector('.ticket-code').textContent=displayCode(ticket.id);
   host.querySelector('.ticket-qr').src=await qrData(ticket);
   host.querySelector('#save-ticket').onclick=()=>saveTicket(ticket);
-  host.querySelector('#calendar').onclick=()=>downloadBlob(new Blob([calendarFile()],{type:'text/calendar;charset=utf-8'}),'dua-jiwa-satu-lentera.ics');
+  host.querySelector('#calendar').onclick=()=>downloadBlob(new Blob([calendarFile()],{type:'text/calendar;charset=utf-8'}),'pernikahan-bifari-syafira.ics');
   host.querySelector('#edit-reservation').onclick=edit;
   await hydrateArt(host);
 }

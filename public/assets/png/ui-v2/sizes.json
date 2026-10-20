@@ -70,5 +70,9 @@
   "button-music-off-angular-v1": {
     "width": 192,
     "height": 192
+  },
+  "panel-venue-tall-angular-v1": {
+    "width": 960,
+    "height": 629
   }
 }

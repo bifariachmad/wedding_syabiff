@@ -1,5 +1,5 @@
 export const CONFIG = Object.freeze({
-  BASE_URL: (import.meta.env?.VITE_DIGITAL_URL || 'https://wedding-syabiff-undangan.vercel.app').replace(/\/$/, ''),
+  BASE_URL: (import.meta.env?.VITE_DIGITAL_URL || 'https://undangan.diginvit.bifariachmad.com').replace(/\/$/, ''),
   APPS_SCRIPT_URL: import.meta.env?.VITE_APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycby6Q4_kxRQJ_l8Z8dpck1jXLT2v2dgq-9-V-Z4d6YjJeNE645GnrfMTkMWXfdNyXur1yA/exec',
   BGM_SRC: '/assets/audio/canon-in-d-piano.mp3',
   MAX_GUESTS: 5,
@@ -27,15 +27,14 @@ export const CONFIG = Object.freeze({
   },
   RUNDOWN: [
     { title: 'Registrasi & Welcome Drink', description: 'Tunjukkan tiketmu, lalu nikmati minuman sambutan.' },
-    { title: 'Pembukaan MC', description: 'Sambutan hangat untuk memulai sore bersama.' },
+    { title: 'Pembukaan MC', description: 'MC membuka acara resepsi.' },
     { title: 'Sambutan Kedua Mempelai', description: 'Sepatah dua kata dari Bifari dan Syafira.' },
     { title: 'Video Perjalanan Kami', description: 'Melihat kembali cerita Bifari dan Syafira.' },
-    { title: 'Tukar Cincin', description: 'Satu momen untuk merayakan janji kami.' },
+    { title: 'Tukar Cincin', description: 'Bifari dan Syafira bertukar cincin.' },
     { title: 'Pesan dari Keluarga', description: 'Doa dan harapan dari orang-orang terdekat.' },
-    { title: 'Foto Bersama', description: 'Menyimpan kenangan bersama keluarga dan sahabat.' },
+    { title: 'Foto Bersama', description: 'Foto bersama keluarga dan sahabat.' },
     { title: 'Makan & Berbincang', description: 'Nikmati hidangan, kami akan menyapa mejamu.' },
-    { title: 'Mini Games', description: 'Bermain sebentar, tertawa bersama.' },
-    { title: 'Penutupan', description: 'Terima kasih sudah menjadi bagian dari hari kami.' },
+    { title: 'Penutupan', description: 'Terima kasih sudah hadir.' },
   ],
 });
 export const invitationUrl = () => CONFIG.BASE_URL || window.location.origin;

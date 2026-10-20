@@ -5,8 +5,8 @@ const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
  ['KAMU','Rumah ini... terasa tidak asing...'],
  ['BIFARI','Hai, selamat datang! Aku Bifari. Mari masuk.'],
- ['SYAFIRA','Aku Syafira. Senang sekali bisa menyambutmu.'],
- ['BIFARI','Kami ingin mengundangmu menjadi bagian dari hari bahagia kami.']
+ ['SYAFIRA','Aku Syafira. Terima kasih sudah membuka undangan kami.'],
+ ['BIFARI','Kami ingin mengundangmu ke resepsi pernikahan kami.']
 ];
 export function initWelcome(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#greeting');

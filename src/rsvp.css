@@ -52,6 +52,9 @@
 
 #invitation #summary-calendar{flex:0 0 auto;min-height:44px;max-width:90%;width:auto;padding:8px 22px;font:clamp(14px,3.5cqw,20px)/1.25 var(--body);background:transparent url('/assets/png/ui-v2/button-wide-angular-v1.png') center/100% 100% no-repeat;border:0;color:#f4dfc5}
 #invitation #closing-summary .summary-fallback{position:static!important;width:auto!important;height:auto!important;clip-path:none;overflow:visible!important;white-space:normal;display:grid;gap:10px;padding:25px;background:#eadfc8;color:#431d28;font-size:20px}
-#invitation #location .maproom-venue{aspect-ratio:960/565;background-size:100% 100%;padding-block:4cqw 2cqw}
+#invitation #location .maproom-venue{top:15%;width:90%;aspect-ratio:960/629;background-image:url('/assets/png/ui-v2/panel-venue-tall-angular-v1.png');background-size:contain;padding:6cqw 7cqw 4cqw;gap:.4cqw}
+/* The taller venue card needs the couple a little lower so their faces stay visible. */
+#invitation #location .welcome-couple{bottom:5%;height:45%}
+#invitation #location .maproom-venue h3{font-size:clamp(21px,5.6cqw,34px);line-height:1.05}
 #invitation #location .venue-address{font:clamp(12px,3cqw,17px)/1.2 var(--body);color:#dcc4a5;text-align:center;margin:1cqw 0}
 #invitation #location .maproom-venue p{font-size:clamp(14px,3.7cqw,21px)}

@@ -23,7 +23,7 @@ Sumber artwork adegan ada di `source-art/`, aset web di `public/assets/`.
 
 ## Produksi (13 Oktober 2026)
 
-- Aplikasi: https://wedding-syabiff-undangan.vercel.app/
+- Aplikasi: https://undangan.diginvit.bifariachmad.com/
 - Git: https://github.com/bifariachmad/wedding_syabiff
 - Proyek Vercel: `wedding-syabiff-undangan`.
 - Jalankan `npm run build` lalu `vercel --prod` dari folder ini. Kredensial server disimpan di Vercel, tidak di Git.

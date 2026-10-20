@@ -68,7 +68,8 @@ try{
   for(const item of result){if(item.error)failures.push(label+': '+item.id+': '+item.error);for(const error of item.errors||[])failures.push(label+': '+item.id+': '+error);}
   if(shot)await page.screenshot({path:out+'/'+label+'.png'});
  }
- for(const [width,height] of [[320,568],[390,844],[768,1024]]){
+ // Common phone viewports: iPhone SE 1st gen, small Android, iPhone SE 2/3, iPhone 13/14, Pixel/Galaxy, iPhone Pro Max, tablet.
+ for(const [width,height] of [[320,568],[360,740],[375,667],[390,844],[412,915],[430,932],[768,1024]]){
   await page.setViewportSize({width,height});await page.goto(base+'/?to=Nadia%20Utami');await page.waitForFunction(()=>document.querySelector('#app')?.dataset.ready==='true');await settled();
   await page.locator('#music-toggle').click();await audit(width+'-music-toggle');
   await page.locator('#music-toggle').click();

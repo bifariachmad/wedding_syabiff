@@ -2,9 +2,9 @@ import gsap from 'gsap';
 import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
 const lines=[
- ['SYAFIRA','Warna tema pernikahan kami adalah merah maroon dan hitam.'],
- ['SYAFIRA','Kamu bisa memakai pakaian berwarna merah maroon maupun hitam, kombinasi keduanya juga boleh!'],
- ['BIFARI','Jangan sampai salah warna ya! Merah maroon atau hitam, okay?']
+ ['SYAFIRA','Untuk dresscode, kami memilih maroon atau hitam.'],
+ ['SYAFIRA','Kamu boleh memilih salah satunya atau memadukan keduanya.'],
+ ['BIFARI','Pilih pakaian yang nyaman untuk menikmati acara.']
 ];
 export function initWardrobe(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#dresscode'),line=scene.querySelector('#wardrobe-line'),swatch=scene.querySelector('.wardrobe-swatch');let step=0,busy=false;

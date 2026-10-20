@@ -2,6 +2,7 @@ import {chromium,devices} from 'playwright';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {createBackend} from './gas-harness.mjs';
+import {CONFIG} from '../src/config.js';
 const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
 const backend=createBackend(),errors=[];
 await fs.mkdir('artifacts/portrait',{recursive:true});
@@ -18,7 +19,7 @@ try{
   await page.setViewportSize({width,height});
   const box=await page.locator('#app').boundingBox();assert.ok(Math.abs(box.width/box.height-9/16)<.002);
   await chapter('location');await shot(`location-${width}`);assert.equal(await page.locator('.maproom-venue').isVisible(),true);
-  await chapter('rundown-0');await shot(`agenda-${width}`);assert.equal(await page.locator('.agenda-entry').count(),8);
+  await chapter('rundown-0');await shot(`agenda-${width}`);assert.equal(await page.locator('.agenda-entry').count(),CONFIG.RUNDOWN.length);
   assert.ok(await page.locator('.agenda-entry').evaluateAll(rows=>rows.every((e,i)=>!i||rows[i-1].getBoundingClientRect().bottom<=e.getBoundingClientRect().top+1)));
   await chapter('dresscode');await page.evaluate(()=>window.testJourney.goTo('reservation'));await shot(`book-closed-${width}`);
   assert.equal(await page.locator('.book-right').evaluate(e=>getComputedStyle(e).opacity),'0');

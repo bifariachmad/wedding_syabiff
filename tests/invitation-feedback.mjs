@@ -36,9 +36,9 @@ try{
  await advance();await copy('#greeting-title','Sebuah pintu');await copy('#welcome-line','Rumah ini... terasa tidak asing...');await advance();
  await copy('#welcome-line','Hai, selamat datang! Aku Bifari. Mari masuk.');
  assert.equal((await page.evaluate(()=>audioEvents.filter(e=>e.scene==='greeting'&&e.arrival==='empty'&&e.coupleOpacity==='0'&&Math.abs(e.duration-.19)<.001))).length,3,'Three footsteps before hosts appear');
- await page.emulateMedia({reducedMotion:'reduce'});await advance();await copy('#welcome-line','Aku Syafira. Senang sekali bisa menyambutmu.');await advance();await advance();
- await copy('#countdown-title','Tanggal resepsi');await copy('#clockroom-line','Kami akan melaksanakan resepsi pernikahan kami pada Sabtu, 31 Oktober 2026.');
- await advance();await copy('#clockroom-line','Acaranya dimulai pukul 16:00 WIB ya, pastikan kamu datang tepat waktu!');await advance();await copy('#clockroom-line','Kami sangat berharap kehadiranmu lho.');
+ await page.emulateMedia({reducedMotion:'reduce'});await advance();await copy('#welcome-line','Aku Syafira. Terima kasih sudah membuka undangan kami.');await advance();await advance();
+ await copy('#countdown-title','Tanggal resepsi');await copy('#clockroom-line','Resepsi kami akan berlangsung pada Sabtu, 31 Oktober 2026.');
+ await advance();await copy('#clockroom-line','Acaranya dimulai pukul 16:00 WIB. Sampai bertemu di sana!');await advance();await copy('#clockroom-line','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.');
  await page.emulateMedia({reducedMotion:'no-preference'});
  await page.evaluate(()=>{
   window.transitionFrames=[];window.captureTransition=true;
@@ -50,7 +50,7 @@ try{
  assert.ok(frames.some(f=>f.next>.1));assert.ok(frames.every(f=>f.next<.01||f.old<.01),'Countdown must disappear before the map room appears');
  await page.locator('#nav-back').click();await settled();assert.ok(await page.evaluate(()=>effectiveOpacity(document.querySelector('.clockroom-countdown'))>.99));await advance();
  await page.emulateMedia({reducedMotion:'reduce'});
- await copy('#location-title','Lokasi resepsi');await copy('#maproom-line','Resepsi kami diadakan di Lumbung Kuliner.');await advance();await copy('#maproom-line','Kamu bisa membuka Google Maps untuk melihat rute dan alamat lengkapnya ya.');await advance();
+ await copy('#location-title','Lokasi resepsi');await copy('#maproom-line','Resepsi kami diadakan di Lumbung Kuliner.');await advance();await copy('#maproom-line','Buka Google Maps lewat tombol lokasi untuk melihat rutenya.');await advance();
  await copy('#rundown-0-title','Rundown acara');await copy('.agenda-line','Acara akan kami mulai pukul 16:00 WIB.');
  assert.deepEqual(await page.locator('.agenda-entry h3').allTextContents(),CONFIG.RUNDOWN.map(item=>item.title));assert.equal(await page.locator('.agenda-entry time').count(),0);
  assert.ok(await page.evaluate(()=>getComputedStyle(document.querySelector('.agenda-entry h3')).fontFamily===getComputedStyle(document.querySelector('.agenda-line')).fontFamily&&getComputedStyle(document.querySelector('.agenda-entry h3')).fontStyle==='normal'));
@@ -59,13 +59,13 @@ try{
   assert.deepEqual(await page.locator('.agenda-card').evaluate(card=>{const r=card.getBoundingClientRect();return [...card.querySelectorAll('h3')].filter(el=>{const b=el.getBoundingClientRect();return b.left<r.left||b.right>r.right+1||b.bottom>r.bottom+1;}).map(el=>el.textContent);}),[]);
  }
  await page.setViewportSize({width:390,height:844});await advance();await copy('#dresscode-title','Dresscode');
- await copy('#wardrobe-line','Warna tema pernikahan kami adalah merah maroon dan hitam.');await advance();await copy('#wardrobe-line','Kamu bisa memakai pakaian berwarna merah maroon maupun hitam, kombinasi keduanya juga boleh!');await advance();await copy('#wardrobe-line','Jangan sampai salah warna ya! Merah maroon atau hitam, okay?');
+ await copy('#wardrobe-line','Untuk dresscode, kami memilih maroon atau hitam.');await advance();await copy('#wardrobe-line','Kamu boleh memilih salah satunya atau memadukan keduanya.');await advance();await copy('#wardrobe-line','Pilih pakaian yang nyaman untuk menikmati acara.');
  await page.emulateMedia({reducedMotion:'no-preference'});
  await page.evaluate(()=>{window.bookTextFrames=[];window.captureBookText=true;function sample(){if(document.querySelector('#reservation').classList.contains('is-active'))bookTextFrames.push(document.querySelector('.guestbook-line').textContent);if(captureBookText)requestAnimationFrame(sample);}requestAnimationFrame(sample);});
  await advance();
  const bookTextFrames=await page.evaluate(()=>{captureBookText=false;return bookTextFrames;});
  assert.ok(new Set(bookTextFrames.filter(t=>t.length>0&&t.length<100)).size>5,'Book introduction types visibly, rather than appearing all at once');
- await copy('.guestbook-line','Setiap kehadiran sangat berarti bagi kami. Maka dari itu, izinkan kami untuk mencatat kehadiranmu.');await shot('book-introduction');await page.emulateMedia({reducedMotion:'reduce'});await advance();
+ await copy('.guestbook-line','Beri tahu kami apakah kamu bisa hadir, supaya kami bisa menyiapkan tempat untukmu.');await shot('book-introduction');await page.emulateMedia({reducedMotion:'reduce'});await advance();
  assert.equal(await page.locator('#reservation-title').evaluate(el=>getComputedStyle(el).textAlign),'center');
  await copy('.reservation-intro','Bisa hadir atau sedang berhalangan? Beri kabar di sini, ya.');
  await page.locator('[name="attendance"][value="attending"]').check();await page.locator('#guest-count').fill('2');

@@ -3,7 +3,7 @@ import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
 import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-const lines=[['BIFARI',`Resepsi kami diadakan di ${CONFIG.EVENT.venue}.`],['SYAFIRA',`Kamu bisa membuka Google Maps untuk melihat rute dan alamat lengkapnya ya.`]];
+const lines=[['BIFARI',`Resepsi kami diadakan di ${CONFIG.EVENT.venue}.`],['SYAFIRA',`Buka Google Maps lewat tombol lokasi untuk melihat rutenya.`]];
 export function initMaproom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#location'),$=s=>scene.querySelector(s);let step=0,busy=false;
  function controls(){scene.dataset.mapStep=String(step);root.dataset.mapBusy=String(busy);root.querySelector('#nav-next').disabled=busy;root.querySelector('#nav-back').disabled=busy;root.querySelector('#journey-position').innerHTML=`${String(step+1).padStart(2,'0')} <small>/ 02</small>`;gsap.set('#journey-progress',{scaleX:(step+1)/lines.length});}

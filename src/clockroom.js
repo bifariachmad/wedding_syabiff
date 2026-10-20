@@ -4,9 +4,9 @@ import {sound} from './audio.js';
 import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lines=[
- ['SYAFIRA',`Kami akan melaksanakan resepsi pernikahan kami pada ${CONFIG.EVENT.dateLabel}.`],
- ['BIFARI',`Acaranya dimulai pukul ${CONFIG.EVENT.arrival} ya, pastikan kamu datang tepat waktu!`],
- ['SYAFIRA','Kami sangat berharap kehadiranmu lho.']
+ ['SYAFIRA',`Resepsi kami akan berlangsung pada ${CONFIG.EVENT.dateLabel}.`],
+ ['BIFARI',`Acaranya dimulai pukul ${CONFIG.EVENT.arrival}. Sampai bertemu di sana!`],
+ ['SYAFIRA','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.']
 ];
 export function initClockroom(){
  const root=document.querySelector('#invitation'),scene=document.querySelector('#countdown'),$=s=>scene.querySelector(s);

@@ -14,7 +14,7 @@ export async function preparePortrait(app, mount) {
  async function sync(){
   const mobile=isMobile(),blocked=!mobile||innerWidth>innerHeight;
   notice.querySelector('h1').textContent=mobile?'Putar perangkatmu':'Buka undangan di HP atau tablet';
-  notice.querySelector('p').textContent=mobile?'Pegang HP atau tablet secara vertikal untuk melanjutkan kisahnya.':'Undangan ini dirancang untuk layar vertikal. Silakan buka tautan yang sama melalui HP atau tablet.';
+  notice.querySelector('p').textContent=mobile?'Pegang HP atau tablet secara vertikal untuk membuka undangan.':'Undangan ini dirancang untuk layar vertikal. Silakan buka tautan yang sama melalui HP atau tablet.';
   notice.hidden=!blocked;app.hidden=blocked;
   document.dispatchEvent(new CustomEvent('devicechange',{detail:{blocked}}));
   if(!blocked&&!mounting){app.dataset.ready='false';mounting=Promise.resolve().then(mount).then(()=>{app.dataset.ready='true';});}
