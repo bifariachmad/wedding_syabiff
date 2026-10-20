@@ -74,6 +74,8 @@ export async function renderInvitation(app) {
  form.addEventListener('submit',async event=>{
    event.preventDefault();touchedName=touchedCount=true;if(busy||!rsvpOpen||!validity())return;
    const payload={name:name.value.trim(),guests:guests(),attendance:attendance(),website:$('#website').value};
+   // Only the saved ticket code may change an existing reservation; the server ignores names alone.
+   if(ticket?.id&&normalizeName(ticket.name)===normalizeName(payload.name))payload.id=String(ticket.id);
    busy=true;validity();status.textContent='';
    try{
      const result=demoMode?{reservation:{id:ticket?.id||String(100000+crypto.getRandomValues(new Uint32Array(1))[0]%900000),name:payload.name,guests:payload.guests,attendance:payload.attendance,demo:true}}:await request('reserve',payload);

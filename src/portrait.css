@@ -2,6 +2,12 @@
 body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hidden;background:#10070c}
 .invitation-device #app{container-type:size;width:min(100vw,56.25svh);height:min(100svh,177.77778vw);position:relative;isolation:isolate;overflow:hidden}
 .invitation-device #invitation.visual-novel{height:100%;width:100%;--nav-height:78px}
+/* Wider than 9:16 (desktop, WhatsApp Web, landscape tablet): a centred full-height column over a dimmed, blurred room. */
+body.invitation-device.invitation-wide{--stage-width:min(100vw,56.25svh,760px);background:#10070c!important;overflow:hidden;isolation:isolate}
+.invitation-device.invitation-wide #app{width:var(--stage-width);height:calc(var(--stage-width)*16/9)}
+body.invitation-wide:before{content:'';position:fixed;inset:-40px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 70% 90% at center,#10070c00 40%,#10070c99 75%,#0a0407f2 100%),linear-gradient(#1a0a1099,#1a0a1099),url('/assets/png/arrival/room-open.png') center/cover no-repeat;filter:blur(14px) saturate(.85)}
+body.invitation-wide:after{content:'';position:fixed;top:0;bottom:0;left:50%;width:calc(var(--stage-width) + 28px);translate:-50% 0;z-index:-1;pointer-events:none;background:#10070c;border-inline:1px solid #b88a5c80;box-shadow:inset 6px 0 0 #10070c,inset -6px 0 0 #10070c,inset 7px 0 0 #b88a5c4d,inset -7px 0 0 #b88a5c4d,0 0 50px 12px #000c}
+.invitation-wide #app{box-shadow:0 0 0 1px #00000080,0 0 60px 10px #000000b3}
 .device-notice{width:min(480px,88vw);text-align:center;color:#f2d7ba;padding:32px;font:20px/1.6 var(--body)}
 .device-notice img{width:100px;margin:0 auto 25px}
 .device-notice h1{white-space:normal;font:38px/1.2 GALVANIZED;color:#f2d7ba;letter-spacing:0}

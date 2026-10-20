@@ -4,6 +4,9 @@ const COLUMNS = ['id', 'created_at', 'updated_at', 'name', 'name_key', 'guests',
 const SHEET_ID = '18MMsdmA47e9p3nhbQrhV-P4b8W9F4njlfvXiZEj6jsE';
 const HEADERS = ['Kode Reservasi','Dibuat pada','Diperbarui pada','Nama Tamu','Nama Normalisasi','Jumlah Tamu','Sudah Hadir','Waktu Kehadiran'];
 const ID_PATTERN = /^(?:[1-9][0-9]{5}|[A-HJ-NP-Z2-9]{8})$/;
+// Wrong PINs per credential allowed inside one window before every attempt is refused.
+const PIN_FAIL_LIMIT = 20;
+const PIN_FAIL_WINDOW_SECONDS = 600;
 
 function setup() {
   const props = PropertiesService.getScriptProperties();
@@ -37,7 +40,7 @@ function doPost(e) {
     const body = JSON.parse(raw);
     if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('Permintaan tidak valid.');
     const action = body.action;
-    if (!['reserve', 'list', 'checkin', 'stats', 'publicSettings', 'settings', 'saveSettings', 'changePin'].includes(action)) throw new Error('Permintaan tidak valid.');
+    if (!['reserve', 'list', 'checkin', 'stats', 'publicSettings', 'settings', 'saveSettings', 'changePin', 'remove'].includes(action)) throw new Error('Permintaan tidak valid.');
     if (action === 'publicSettings') return json_({ok:true,rsvpOpen:PropertiesService.getScriptProperties().getProperty('RSVP_OPEN') !== 'false'});
     if (action !== 'reserve') {
       if(body.service==='kiosk' && ['list','checkin','stats'].includes(action)) authenticate_(body.pin,'KIOSK_PIN');
@@ -47,6 +50,7 @@ function doPost(e) {
     if (action === 'saveSettings' || action === 'changePin') return json_(updateSettings_(body));
     if (action === 'reserve') return json_(reserve_(body));
     if (action === 'checkin') return json_(checkin_(body.id));
+    if (action === 'remove') return json_(remove_(body));
     const reservations = rows_(sheet_());
     if (action === 'stats') return json_({ ok: true, stats: stats_(reservations) });
     return json_({ ok: true, reservations: reservations.map(publicRow_), stats: stats_(reservations) });
@@ -79,12 +83,25 @@ function rows_(sheet) {
 function publicRow_(r) { return { id: r.id, name: r.name, guests: Number(r.guests), attendance: Number(r.guests) === 0 ? 'declined' : 'attending', checked_in: r.checked_in === true || r.checked_in === 'true', checked_in_at: r.checked_in_at || '' }; }
 function stats_(rows) { return { reservations: rows.filter(function (r) { return Number(r.guests) > 0; }).length, guests: rows.reduce(function (sum, r) { return sum + Number(r.guests); }, 0), checkedIn: rows.filter(function (r) { return r.checked_in === true || r.checked_in === 'true'; }).reduce(function (sum, r) { return sum + Number(r.guests); }, 0) }; }
 function authenticate_(pin,property) {
-  const expected = PropertiesService.getScriptProperties().getProperty(property||'ADMIN_PIN');
-  if (typeof pin !== 'string' || !expected || pin.length > 128) throw new Error('PIN tidak valid.');
+  const name = property || 'ADMIN_PIN';
+  const expected = PropertiesService.getScriptProperties().getProperty(name);
+  // Missing PINs (e.g. a guest RSVP after closing) are not guesses and do not count.
+  if (typeof pin !== 'string' || !pin || !expected || pin.length > 128) throw new Error('PIN tidak valid.');
+  // Each credential gets its own window, so guessing the organizer PIN cannot lock out the kiosk service.
+  const cache = CacheService.getScriptCache(), key = 'pin-fail:' + name;
+  const failures = Number(cache.get(key) || 0);
+  if (failures >= PIN_FAIL_LIMIT) throw new Error('Terlalu banyak percobaan. Coba lagi nanti.');
   // A constant-work comparison avoids early character-by-character exits.
   let mismatch = pin.length ^ expected.length;
   for (let i = 0; i < expected.length; i++) mismatch |= (pin.charCodeAt(i) || 0) ^ expected.charCodeAt(i);
-  if (mismatch !== 0) throw new Error('PIN tidak valid.');
+  if (mismatch !== 0) {
+    cache.put(key, String(failures + 1), PIN_FAIL_WINDOW_SECONDS);
+    throw new Error('PIN tidak valid.');
+  }
+}
+function isOrganizer_(pin) {
+  if (typeof pin !== 'string' || !pin) return false;
+  try { authenticate_(pin); return true; } catch (_) { return false; }
 }
 function validate_(body) {
   if (body.website !== undefined && body.website !== '') throw new Error('Permintaan tidak valid.');
@@ -105,14 +122,19 @@ function validate_(body) {
 }
 function reserve_(body) {
   const valid = validate_(body);
-  if (PropertiesService.getScriptProperties().getProperty('RSVP_OPEN') === 'false') {
-    try { authenticate_(body.pin); } catch (_) { throw new Error('Konfirmasi kehadiran sudah ditutup. Hubungi panitia untuk perubahan.'); }
-  }
+  const organizer = isOrganizer_(body.pin);
+  if (!organizer && PropertiesService.getScriptProperties().getProperty('RSVP_OPEN') === 'false') throw new Error('Konfirmasi kehadiran sudah ditutup. Hubungi panitia untuk perubahan.');
+  const ticketId = String(body.id || '').trim().toUpperCase();
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
     const sheet = sheet_(), rows = rows_(sheet), now = new Date().toISOString();
-    const match = rows.find(function (r) { return r.name_key === valid.name_key; });
+    // A guest may only change the reservation whose ticket code they already hold. Knowing a
+    // name alone creates a separate reservation, so nobody can rewrite or decline another guest.
+    // Organizers (valid PIN) keep the name-based update used by Tamu Organizer.
+    const match = ID_PATTERN.test(ticketId)
+      ? rows.find(function (r) { return r.id === ticketId && r.name_key === valid.name_key; })
+      : organizer ? rows.find(function (r) { return r.name_key === valid.name_key; }) : null;
     const safeName = /^[=+\-@']/.test(valid.name) ? "'" + valid.name : valid.name;
     const safeKey = /^[=+\-@']/.test(valid.name_key) ? "'" + valid.name_key : valid.name_key;
     if (match) {
@@ -166,5 +188,20 @@ function checkin_(value) {
       SpreadsheetApp.flush();
     }
     return { ok: true, reservation: publicRow_(record) };
+  } finally { lock.releaseLock(); }
+}
+// Only the organizer PIN may delete; the kiosk service credential is limited to list/stats/checkin.
+function remove_(body) {
+  const id = String(body.id || '').trim().toUpperCase();
+  if (!ID_PATTERN.test(id)) throw new Error('Kode tidak ditemukan.');
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    authenticate_(body.pin);
+    const sheet = sheet_(), record = rows_(sheet).find(function (r) { return r.id === id; });
+    if (!record) throw new Error('Kode tidak ditemukan.');
+    sheet.deleteRow(record.row);
+    SpreadsheetApp.flush();
+    return { ok: true, removed: publicRow_(record) };
   } finally { lock.releaseLock(); }
 }

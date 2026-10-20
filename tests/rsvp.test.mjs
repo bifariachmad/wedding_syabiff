@@ -18,16 +18,16 @@ test('Declined RSVPs persist, exclude people and reservations from totals, and c
 test('Changing either RSVP direction retains one record and invalidates the old ticket', () => {
   const b = createBackend();
   const first = b.call({ action: 'reserve', name: 'Ayu Putri', guests: 3 }).reservation;
-  const declined = b.call({ action: 'reserve', name: ' ayu  putri ', attendance: 'declined', guests: 0 }).reservation;
+  const declined = b.call({ action: 'reserve', name: ' ayu  putri ', attendance: 'declined', guests: 0, id: first.id }).reservation;
   assert.equal(declined.id, first.id);
   assert.equal(b.call({ action: 'checkin', pin: 'test-only-pin', id: first.id }).ok, false);
-  const attending = b.call({ action: 'reserve', name: 'Ayu Putri', attendance: 'attending', guests: 2 }).reservation;
+  const attending = b.call({ action: 'reserve', name: 'Ayu Putri', attendance: 'attending', guests: 2, id: first.id }).reservation;
   assert.equal(attending.id, first.id);
   assert.equal(attending.attendance, 'attending');
   assert.equal(b.data.length, 2);
   assert.deepEqual(b.call({ action: 'stats', pin: 'test-only-pin' }).stats, { reservations: 1, guests: 2, checkedIn: 0 });
   assert.equal(b.call({ action: 'checkin', pin: 'test-only-pin', id: first.id }).ok, true);
-  assert.match(b.call({ action: 'reserve', name: first.name, attendance: 'declined', guests: 0 }).error, /sudah check-in/);
+  assert.match(b.call({ action: 'reserve', name: first.name, attendance: 'declined', guests: 0, id: first.id }).error, /sudah check-in/);
   assert.equal(b.data[1][5], 2);
 });
 
