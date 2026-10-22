@@ -58,3 +58,9 @@
 #invitation #location .maproom-venue h3{font-size:clamp(21px,5.6cqw,34px);line-height:1.05}
 #invitation #location .venue-address{font:clamp(12px,3cqw,17px)/1.2 var(--body);color:#dcc4a5;text-align:center;margin:1cqw 0}
 #invitation #location .maproom-venue p{font-size:clamp(14px,3.7cqw,21px)}
+
+/* The guest name is a clearly drawn writing box, not a bare rule, so guests see where to type. */
+#invitation #reservation .form-field #guest-name{border:1.5px solid #6e3b45;border-radius:0;background:#fffaf0d9;padding:4px 12px;text-align:center;color:#431d28;box-shadow:inset 0 1px 4px #3b1a2033}
+#invitation #reservation #guest-name::placeholder{color:#8a6a62;opacity:1;font-style:italic}
+#invitation #reservation #guest-name:focus-visible{outline:2px solid #7a2b3a;outline-offset:2px}
+#invitation #submit-reservation[aria-disabled='true']{opacity:.78}

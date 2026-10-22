@@ -44,8 +44,8 @@
 .intro-active .vn-nav{font-size:13px;min-height:48px;background:#230b16;border-color:#94505e}.intro-active .vn-next{background:#851c39;border-color:#c65d77}.intro-active .vn-next:hover{background:#a42548}.intro-active .vn-position{font-size:13px;color:#f0c5b3}.intro-active .vn-progress{background:#ab526540}.intro-active #journey-progress{background:#a93958}
 .visual-novel.intro-active .music-toggle{background:#2d0b19dd;border-color:#834554}
 .arrival[data-step="0"] .arrival-garden img,.arrival[data-step="1"] .arrival-garden img,.arrival[hidden] *{animation-play-state:paused}
-@media(min-width:800px){.arrival-set{min-width:0;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}.arrival-view:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#10070d 0,transparent 30%,transparent 70%,#10070d 100%);pointer-events:none}.arrival-view:before{filter:blur(11px) brightness(.45)}}
-@media(max-width:600px){.arrival-heading{top:max(24px,env(safe-area-inset-top));left:48px;right:48px}.visual-novel .arrival-heading h1{font-size:25px}.arrival-chapter{font-size:9px;letter-spacing:3px}.arrival-caption{padding:24px 20px 21px;min-height:93px;bottom:calc(var(--nav-height) + 15px)}.arrival-caption p{font-size:19px;min-height:27px}.arrival-speaker{left:20px}.arrival-held{width:124cqw;bottom:calc(var(--nav-height) + 21cqh)}.arrival-address{top:25%;font-size:19px}.arrival-address small{font-size:12px}.arrival-card-copy strong{font-size:42px;margin:10px 0}.arrival-card-small{font-size:10px;letter-spacing:.2px}.arrival-portal{width:82cqw;top:43%}}
+@container stage (min-width:800px){.arrival-set{min-width:0;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}.arrival-view:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#10070d 0,transparent 30%,transparent 70%,#10070d 100%);pointer-events:none}.arrival-view:before{filter:blur(11px) brightness(.45)}}
+@container stage (max-width:600px){.arrival-heading{top:max(24px,env(safe-area-inset-top));left:48px;right:48px}.visual-novel .arrival-heading h1{font-size:25px}.arrival-chapter{font-size:9px;letter-spacing:3px}.arrival-caption{padding:24px 20px 21px;min-height:93px;bottom:calc(var(--nav-height) + 15px)}.arrival-caption p{font-size:19px;min-height:27px}.arrival-speaker{left:20px}.arrival-held{width:124cqw;bottom:calc(var(--nav-height) + 21cqh)}.arrival-address{top:25%;font-size:19px}.arrival-address small{font-size:12px}.arrival-card-copy strong{font-size:42px;margin:10px 0}.arrival-card-small{font-size:10px;letter-spacing:.2px}.arrival-portal{width:82cqw;top:43%}}
 @media(max-height:700px) and (max-width:600px){.arrival-heading{top:18px}.visual-novel .arrival-heading h1{font-size:22px}.arrival-held{bottom:calc(var(--nav-height) + 19cqh)}.arrival-caption{min-height:83px;padding-top:22px;padding-bottom:18px}}
 @media(max-height:500px) and (min-width:600px){.arrival-heading{top:12px}.visual-novel .arrival-heading h1{font-size:22px;margin:3px 0}.arrival-heading-rule{display:none}.arrival-held{width:68cqh;bottom:calc(var(--nav-height) + 52px)}.arrival-address{font-size:15px}.arrival-address small{font-size:10px}.arrival-card-copy strong{font-size:24px;margin:3px 0}.arrival-card-small{display:none}.arrival-caption{width:min(480px,70cqw);min-height:60px;padding:16px 22px 12px;bottom:calc(var(--nav-height) + 8px)}.arrival-caption p{font-size:17px;min-height:24px}}
 @media(prefers-reduced-motion:reduce){.arrival-dust i,.arrival-tree,.arrival-clouds,.arrival-dialogue-cue{animation:none}.arrival-camera,.arrival-door,.arrival-held,.arrival-portal{will-change:auto}}
@@ -53,7 +53,7 @@
 .arrival-burning-paper{position:absolute;inset:0;filter:drop-shadow(0 6px 10px #0005)}
 .arrival-paper{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
 .arrival-burn-edge{position:absolute;left:-3%;top:-12%;width:106%;height:26%;object-fit:fill;translate:0 -61%;opacity:0;filter:drop-shadow(0 0 5px #ef782d70)}
-@media(max-width:600px){.arrival-card-copy strong{font-size:clamp(24px,7cqw,34px);margin:12px 0}}
+@container stage (max-width:600px){.arrival-card-copy strong{font-size:clamp(24px,7cqw,34px);margin:12px 0}}
 @media(max-height:500px) and (min-width:600px){.arrival-card-copy strong{font-size:19px;margin:5px 0}}
 /* Paper burns inside the grip; only this layer is clipped. */
 .arrival-paper-frame{position:absolute;left:15%;top:10%;width:70%;height:56%;z-index:1;transform:rotate(-2deg)}
@@ -72,7 +72,7 @@
 .arrival-caption{background:none;border:18px solid transparent;border-image:url('/assets/png/arrival/ui-panel.png') 42 100 fill / 18px 24px / 0 stretch;box-shadow:none;padding:18px 24px;min-height:112px}
 .arrival-caption:before,.arrival-caption:after{display:none}
 .arrival-speaker{background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;padding:6px 16px;top:-14px;font-size:12px}
-@media(max-width:600px){.visual-novel .music-toggle{right:12px;top:12px;width:44px;height:44px}.visual-novel .vn-nav{font-size:13px;padding:10px 12px}.arrival-caption{padding:14px 12px;min-height:108px}}
+@container stage (max-width:600px){.visual-novel .music-toggle{right:12px;top:12px;width:44px;height:44px}.visual-novel .vn-nav{font-size:13px;padding:10px 12px}.arrival-caption{padding:14px 12px;min-height:108px}}
 .visual-novel .vn-progress{position:relative;background:none}
 .visual-novel .vn-progress:before{content:'';position:absolute;inset:0;background:url('/assets/png/arrival/ui-divider.png') center/100% 100% no-repeat;opacity:.3}
 .visual-novel #journey-progress{position:relative}

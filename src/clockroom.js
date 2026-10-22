@@ -5,7 +5,7 @@ import {CONFIG} from './config.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const lines=[
  ['SYAFIRA',`Resepsi kami akan berlangsung pada ${CONFIG.EVENT.dateLabel}.`],
- ['BIFARI',`Acaranya dimulai pukul ${CONFIG.EVENT.arrival}. Sampai bertemu di sana!`],
+ ['BIFARI','Tandai tanggalnya di kalendermu, ya. Hitung mundurnya sudah berjalan!'],
  ['SYAFIRA','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.']
 ];
 export function initClockroom(){

@@ -86,7 +86,7 @@ try{
   if(Math.abs(s.left-s.right)>1||Math.abs(s.top-s.bottom)>1)fail('stage is not centred');
   if(Math.abs(s.ratio-9/16)>.004)fail('stage is not 9:16');
   // Tall phones letterbox vertically; anything wider than 9:16 must use the full height (up to the 760px column cap).
-  if(s.width<s.vw-1&&s.height<Math.min(s.vh,760*16/9)-1)fail('stage does not use the full height');
+  if(s.width<s.vw-1&&s.height<Math.min(s.vh,599*16/9)-1)fail('stage does not use the full height');
   return s;
  }
  // RSVP writing area: every visible text line stays on the paper and inside the stage.

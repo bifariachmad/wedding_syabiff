@@ -4,6 +4,8 @@ import { createGateCreak } from './gate-creak.js';
 let context, master, ambient, music;
 let enabled = storage.get('djsl-music') !== false;
 let started = false;
+// Effects run through a compressor, so the louder gain stays clean on phone speakers.
+const EFFECTS_GAIN = 1.6, MUSIC_VOLUME = .4;
 function tone(freq,start,duration,volume=.04,type='sine',endFreq=freq) {
   const osc=context.createOscillator(), gain=context.createGain();
   osc.type=type; osc.frequency.setValueAtTime(freq,start); osc.frequency.exponentialRampToValueAtTime(Math.max(1,endFreq),start+duration);
@@ -33,18 +35,18 @@ function buildAmbient() {
 }
 function notify(){document.dispatchEvent(new CustomEvent('musicchange',{detail:{enabled}}));}
 export async function startAudio(enableOnStart=false) {
-  if(started){if(enabled&&music?.paused)void music.play().catch(()=>{});return;}
+  if(started){if(enabled){void context?.resume().catch(()=>{});if(music?.paused)void music.play().catch(()=>{});}return;}
   if(enableOnStart){enabled=true;storage.set('djsl-music',true);}
   started=true;
   try {
-    context=new (window.AudioContext||window.webkitAudioContext)();master=context.createGain();master.gain.value=enabled?.82:0;master.connect(context.destination);
+    context=new (window.AudioContext||window.webkitAudioContext)();master=context.createGain();master.gain.value=enabled?EFFECTS_GAIN:0;const limiter=context.createDynamicsCompressor();limiter.threshold.value=-10;limiter.ratio.value=6;master.connect(limiter).connect(context.destination);
     // Start media inside the click gesture, before any asynchronous boundary.
-    if(CONFIG.BGM_SRC){music=new Audio(CONFIG.BGM_SRC);music.loop=true;music.volume=.10;music.muted=!enabled;void music.play().catch(()=>{});}else buildAmbient();
+    if(CONFIG.BGM_SRC){music=new Audio(CONFIG.BGM_SRC);music.loop=true;music.volume=MUSIC_VOLUME;music.muted=!enabled;void music.play().catch(()=>{});}else buildAmbient();
     await context.resume();
     notify();
   } catch { if(context){enabled=true;notify();}else{enabled=false;started=false;notify();} }
 }
-export async function toggleAudio(){const next=!isMusicEnabled();await startAudio();enabled=next&&!!context;storage.set('djsl-music',enabled);if(master)master.gain.setTargetAtTime(enabled?.82:0,context.currentTime,.1);if(music){music.muted=!enabled;if(enabled)music.play().catch(()=>{});}notify();}
+export async function toggleAudio(){const next=!isMusicEnabled();await startAudio();enabled=next&&!!context;storage.set('djsl-music',enabled);if(master)master.gain.setTargetAtTime(enabled?EFFECTS_GAIN:0,context.currentTime,.1);if(music){music.muted=!enabled;if(enabled)music.play().catch(()=>{});}notify();}
 export function isMusicEnabled(){return started&&enabled;}
 export function sound(name){
   if(!context||!enabled) return;

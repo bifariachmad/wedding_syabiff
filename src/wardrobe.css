@@ -9,6 +9,6 @@
 #dresscode .vn-dialogue:before,#dresscode .vn-dialogue:after{display:none}
 #dresscode .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
 #dresscode .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
-@media(max-width:600px){#dresscode .vn-dialogue{padding:14px 12px}#dresscode .vn-dialogue p{font-size:19px;min-height:54px}}
+@container stage (max-width:600px){#dresscode .vn-dialogue{padding:14px 12px}#dresscode .vn-dialogue p{font-size:19px;min-height:54px}}
 @media(max-height:700px) and (max-width:600px){#dresscode .vn-dialogue p{font-size:18px}.wardrobe-swatch{top:24%;height:34%}.wardrobe-swatch span{font-size:18px}}
 @media(max-height:500px) and (min-width:600px){#dresscode .welcome-heading{left:25px;right:auto;top:12px}#dresscode .welcome-heading h2{font-size:24px}#dresscode .vn-dialogue{left:auto;right:18px;translate:0;transform:none!important;width:46%;bottom:24px;padding:12px}#dresscode .vn-dialogue p{font-size:18px}.wardrobe-swatch{left:7.5%;right:auto;top:30%;width:35%;height:56%}.wardrobe-background{object-position:center 40%}}

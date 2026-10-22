@@ -12,7 +12,7 @@
 #countdown .vn-dialogue:before,#countdown .vn-dialogue:after{display:none}
 #countdown .vn-speaker{top:-14px;left:16px;background:url('/assets/png/arrival/ui-panel.png') center/100% 100%;border:0;padding:7px 18px;color:#f4dfc5;font:12px var(--ui);letter-spacing:1px}
 #countdown .vn-dialogue p{color:#f4dfc5;margin:0;font:22px/1.4 var(--body);min-height:62px}
-@media(max-width:600px){#countdown .welcome-couple{top:25%;height:57%;width:100%}#countdown .welcome-character{width:44%}.clockroom-countdown{top:43%;width:76%;padding:8px 10px}.clockroom-countdown>p{font-size:18px}#countdown .digit{font-size:26px}#countdown .vn-dialogue{padding:14px 12px;min-height:122px}#countdown .vn-dialogue p{font-size:19px;min-height:54px}}
+@container stage (max-width:600px){#countdown .welcome-couple{top:25%;height:57%;width:100%}#countdown .welcome-character{width:44%}.clockroom-countdown{top:43%;width:76%;padding:8px 10px}.clockroom-countdown>p{font-size:18px}#countdown .digit{font-size:26px}#countdown .vn-dialogue{padding:14px 12px;min-height:122px}#countdown .vn-dialogue p{font-size:19px;min-height:54px}}
 @media(max-height:700px) and (max-width:600px){.clockroom-countdown{top:28%;padding:6px 8px}.clockroom-countdown>p{font-size:16px;margin:4px 0}#countdown .digit{font-size:22px}#countdown .countdown-grid>div{padding:2px 0}#countdown .welcome-couple{top:17%;height:58%}#countdown .vn-dialogue p{font-size:18px}}
 @media(max-height:500px) and (min-width:600px){#countdown .welcome-couple{top:14%;height:85%;width:55%;left:28%}#countdown .welcome-heading{left:25px;right:auto;top:12px}#countdown .welcome-heading h2{font-size:24px}#countdown .vn-dialogue{left:auto;right:18px;translate:0;width:43%;bottom:20px;padding:10px}#countdown .vn-dialogue p{font-size:18px}.clockroom-countdown{left:28%;top:28%;width:34%;padding:8px 14px}.clockroom-countdown>p{font-size:16px}#countdown .digit{font-size:22px}}
 
@@ -24,6 +24,6 @@
 #countdown .welcome-couple{top:auto;bottom:23%;height:48%;width:min(98%,860px)}
 #countdown .character-syafira{left:3%;right:auto}#countdown .character-bifari{right:3%;left:auto}
 .clockroom-countdown{top:17%}
-@media(max-width:600px){#countdown .welcome-couple{top:auto;bottom:23%;height:48%;width:100%}.clockroom-countdown{top:16%}}
+@container stage (max-width:600px){#countdown .welcome-couple{top:auto;bottom:23%;height:48%;width:100%}.clockroom-countdown{top:16%}}
 @media(max-height:700px) and (max-width:600px){#countdown .welcome-couple{top:auto;bottom:28%;height:44%}.clockroom-countdown{top:17%}}
 @media(max-height:500px) and (min-width:600px){#countdown .welcome-couple{top:auto;bottom:6%;height:75%;left:75%;width:42%}.clockroom-countdown{top:27%}}

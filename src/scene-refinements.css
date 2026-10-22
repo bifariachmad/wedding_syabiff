@@ -68,7 +68,7 @@
 #reservation-success .success-seal{width:clamp(90px,13cqh,125px);margin:0 0 6px}
 #reservation-success{gap:6px;padding:0 0 8px}
 #reservation #ticket-host .ticket-actions{margin-top:8px}
-@media(max-width:600px){.vn-agenda .agenda-card{width:60%;top:23%;height:49%}.visual-novel .agenda-card h3{font-size:13px}.visual-novel .agenda-card time{font-size:10px}#reservation[data-book-step='2'] .book-writing-area{inset:8% 20% 11% 13%}}
+@container stage (max-width:600px){.vn-agenda .agenda-card{width:60%;top:23%;height:49%}.visual-novel .agenda-card h3{font-size:13px}.visual-novel .agenda-card time{font-size:10px}#reservation[data-book-step='2'] .book-writing-area{inset:8% 20% 11% 13%}}
 @media(max-height:700px) and (max-width:600px){
  .vn-agenda .agenda-card{top:21%;height:52%}
  .visual-novel .agenda-card h3{font-size:12px}.visual-novel .agenda-card time{font-size:9px}

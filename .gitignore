@@ -10,3 +10,4 @@ tmp/
 .openai/
 *.log
 *.zip
+.vercel

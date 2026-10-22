@@ -1,9 +1,9 @@
 /* The invitation is a 9:16 stage. Tablet gutters preserve the same composition. */
 body.invitation-device{height:100svh;display:grid;place-items:center;overflow:hidden;background:#10070c}
-.invitation-device #app{container-type:size;width:min(100vw,56.25svh);height:min(100svh,177.77778vw);position:relative;isolation:isolate;overflow:hidden}
+.invitation-device #app{container:stage / size;width:min(100vw,56.25svh);height:min(100svh,177.77778vw);position:relative;isolation:isolate;overflow:hidden}
 .invitation-device #invitation.visual-novel{height:100%;width:100%;--nav-height:78px}
 /* Wider than 9:16 (desktop, WhatsApp Web, landscape tablet): a centred full-height column over a dimmed, blurred room. */
-body.invitation-device.invitation-wide{--stage-width:min(100vw,56.25svh,760px);background:#10070c!important;overflow:hidden;isolation:isolate}
+body.invitation-device.invitation-wide{--stage-width:min(100vw,56.25svh,599px);background:#10070c!important;overflow:hidden;isolation:isolate}
 .invitation-device.invitation-wide #app{width:var(--stage-width);height:calc(var(--stage-width)*16/9)}
 body.invitation-wide:before{content:'';position:fixed;inset:-40px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 70% 90% at center,#10070c00 40%,#10070c99 75%,#0a0407f2 100%),linear-gradient(#1a0a1099,#1a0a1099),url('/assets/png/arrival/room-open.png') center/cover no-repeat;filter:blur(14px) saturate(.85)}
 body.invitation-wide:after{content:'';position:fixed;top:0;bottom:0;left:50%;width:calc(var(--stage-width) + 28px);translate:-50% 0;z-index:-1;pointer-events:none;background:#10070c;border-inline:1px solid #b88a5c80;box-shadow:inset 6px 0 0 #10070c,inset -6px 0 0 #10070c,inset 7px 0 0 #b88a5c4d,inset -7px 0 0 #b88a5c4d,0 0 50px 12px #000c}
@@ -62,12 +62,12 @@ body.invitation-wide:after{content:'';position:fixed;top:0;bottom:0;left:50%;wid
 #reservation #edit-reservation{width:78%;margin:12px auto 0;aspect-ratio:2.48;background-image:url('/assets/png/buttons/button-edit-reservation.png')}
 #closing-summary .ticket-preview{height:calc(100% - 90px)}
 .music-credit{font:12px/1.5 Georgia!important;color:#dec2a2}
-@media(min-width:600px){.invitation-device #invitation{--nav-height:110px}.vn-dialogue p,.arrival-caption p{font-size:clamp(22px,4.5cqw,30px)}.vn-nav{min-height:64px}.chapter-toggle{width:110px;height:54px}}
+@container stage (min-width:600px){.invitation-device #invitation{--nav-height:110px}.vn-dialogue p,.arrival-caption p{font-size:clamp(22px,4.5cqw,30px)}.vn-nav{min-height:64px}.chapter-toggle{width:110px;height:54px}}
 .chapter-toggle{width:100px;height:auto;aspect-ratio:2.28;background-image:url('/assets/png/buttons/button-menu.png');background-size:contain;background-repeat:no-repeat}
 #chapter-close{width:90px;height:auto;aspect-ratio:2.31;padding:10px 12px;background:url('/assets/png/buttons/button-close.png') center/contain no-repeat;white-space:nowrap}
 #chapter-menu nav button{width:100%;aspect-ratio:5.13;min-height:48px;background:url('/assets/png/buttons/button-chapter.png') center/contain no-repeat;border:0;padding:10px 10%;font:18px var(--body)}
 #reservation #recall-ticket{width:85%;aspect-ratio:3.36;margin:8px auto;padding:10px 12%;background:url('/assets/png/buttons/button-recall-ticket.png') center/contain no-repeat;border:0;color:#ffe5c6;font:17px var(--body)}
-@media(min-width:600px){.chapter-toggle{width:110px;height:auto}}
+@container stage (min-width:600px){.chapter-toggle{width:110px;height:auto}}
 #reservation.is-demo #edit-reservation{color:#ffe5c6}
 
 /* Separate cutout layers: one stationary top and one moving lower roller. */

@@ -34,11 +34,11 @@ export async function renderInvitation(app) {
    const n=name.value.trim(),error=validateRSVP(n,guests(),attendance()),nameError=validate(n,1),countError=attending?validate('ok',g):'';
    $('#name-error').textContent=touchedName?nameError:'';$('#count-error').textContent=touchedCount?countError:'';
    name.setAttribute('aria-invalid',String(touchedName&&!!nameError));count.setAttribute('aria-invalid',String(touchedCount&&!!countError));
-   if(!rsvpOpen){status.textContent='Konfirmasi kehadiran sudah ditutup. Hubungi panitia untuk perubahan.';}submit.disabled=!!error||busy||!rsvpOpen;$('#minus').disabled=busy||!attending||g<=1;$('#plus').disabled=busy||!attending||g>=CONFIG.MAX_GUESTS;
+   if(!rsvpOpen){status.textContent='Konfirmasi kehadiran sudah ditutup. Hubungi panitia untuk perubahan.';}submit.disabled=busy||!rsvpOpen;submit.setAttribute('aria-disabled',String(!!error));$('#minus').disabled=busy||!attending||g<=1;$('#plus').disabled=busy||!attending||g>=CONFIG.MAX_GUESTS;
    document.dispatchEvent(new Event('reservation-updated'));
    return !error;
  }
- name.addEventListener('input',()=>{touchedName=true;validity();});name.addEventListener('blur',()=>{touchedName=true;validity();});
+ name.addEventListener('input',()=>{touchedName=true;if(status.textContent.startsWith('Tulis namamu'))status.textContent='';validity();});name.addEventListener('blur',()=>{touchedName=true;validity();});
  count.addEventListener('input',()=>{touchedCount=true;validity();});
  choices.forEach(choice=>choice.addEventListener('change',()=>{status.textContent='';validity();}));
  for(const [id,delta] of [['minus',-1],['plus',1]])$('#'+id).onclick=()=>{count.value=Math.max(1,Math.min(CONFIG.MAX_GUESTS,(Number(count.value)||1)+delta));touchedCount=true;validity();sound('tick');};
@@ -72,7 +72,9 @@ export async function renderInvitation(app) {
  if(ticket)fillResponse();
  await updateSummary(ticket);if(demoMode)$('#reservation').classList.add('is-demo');
  form.addEventListener('submit',async event=>{
-   event.preventDefault();touchedName=touchedCount=true;if(busy||!rsvpOpen||!validity())return;
+   event.preventDefault();touchedName=touchedCount=true;if(busy||!rsvpOpen)return;
+   // Explain what is missing instead of silently ignoring the tap.
+   if(!validity()){const missingName=!!validate(name.value.trim(),1);status.textContent=missingName?'Tulis namamu dulu, ya.':!attendance()?'Pilih dulu: akan hadir atau tidak dapat hadir.':'Periksa jumlah tamu, ya.';(missingName?name:!attendance()?choices[0]:count).focus({preventScroll:false});return;}
    const payload={name:name.value.trim(),guests:guests(),attendance:attendance(),website:$('#website').value};
    // Only the saved ticket code may change an existing reservation; the server ignores names alone.
    if(ticket?.id&&normalizeName(ticket.name)===normalizeName(payload.name))payload.id=String(ticket.id);
@@ -91,6 +93,10 @@ export async function renderInvitation(app) {
  tick();setInterval(tick,1000);
  await hydrateArt();const journey=initMotion({onRestart:()=>{if(ticket)edit();},canOpenSummary:hasCurrentResponse,onSummaryBlocked:()=>{status.textContent='Silakan isi nama dan pilih kehadiran, lalu tekan Simpan Kehadiran sebelum melanjutkan.';name.focus({preventScroll:true});}});/* journey-ready */
  $('#nav-next').onclick=()=>{void startAudio(true);void journey.next();};
+ // Try to start the music right away; browsers that block sound until a gesture start it on the first tap or key anywhere.
+ void startAudio();
+ const unlockAudio=()=>{void startAudio();['pointerdown','touchend','keydown'].forEach(type=>document.removeEventListener(type,unlockAudio,true));};
+ ['pointerdown','touchend','keydown'].forEach(type=>document.addEventListener(type,unlockAudio,true));
  $('#nav-back').onclick=()=>journey.back();
  if(!demoMode)void request('publicSettings').then(result=>{rsvpOpen=result.rsvpOpen!==false;validity();}).catch(()=>{});
  if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'stage_reservation',title:'Siapkan reservasi',description:'Fill the reservation form for review. Does not submit or reserve a seat.',inputSchema:{type:'object',properties:{name:{type:'string',minLength:2,maxLength:60},guests:{type:'integer',minimum:1,maximum:CONFIG.MAX_GUESTS}},required:['name','guests'],additionalProperties:false},annotations:{readOnlyHint:false},execute:async input=>{if(typeof input?.name!=='string'||typeof input?.guests!=='number'||validate(input.name,input.guests))throw new Error('Invalid reservation');if(ticket)edit();name.value=input.name.trim();count.value=input.guests;choices.forEach(choice=>choice.checked=choice.value==='attending');touchedName=touchedCount=true;validity();await journey.goTo('reservation');while($('#reservation').dataset.bookStep!=='2')await journey.next();return {staged:true,name:name.value,guests:Number(count.value),submitted:false};}});}catch{}}

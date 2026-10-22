@@ -38,7 +38,7 @@ try{
  assert.equal((await page.evaluate(()=>audioEvents.filter(e=>e.scene==='greeting'&&e.arrival==='empty'&&e.coupleOpacity==='0'&&Math.abs(e.duration-.19)<.001))).length,3,'Three footsteps before hosts appear');
  await page.emulateMedia({reducedMotion:'reduce'});await advance();await copy('#welcome-line','Aku Syafira. Terima kasih sudah membuka undangan kami.');await advance();await advance();
  await copy('#countdown-title','Tanggal resepsi');await copy('#clockroom-line','Resepsi kami akan berlangsung pada Sabtu, 31 Oktober 2026.');
- await advance();await copy('#clockroom-line','Acaranya dimulai pukul 16:00 WIB. Sampai bertemu di sana!');await advance();await copy('#clockroom-line','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.');
+ await advance();await copy('#clockroom-line','Tandai tanggalnya di kalendermu, ya. Hitung mundurnya sudah berjalan!');await advance();await copy('#clockroom-line','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.');
  await page.emulateMedia({reducedMotion:'no-preference'});
  await page.evaluate(()=>{
   window.transitionFrames=[];window.captureTransition=true;

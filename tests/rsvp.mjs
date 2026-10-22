@@ -47,7 +47,12 @@ try {
   }
   await openBook();
   assert.equal(await page.locator('[name="attendance"]:checked').count(), 0);
-  assert.equal(await page.locator('#submit-reservation').isDisabled(), true);
+  // An incomplete form stays tappable and explains what is missing instead of silently doing nothing.
+  assert.equal(await page.locator('#submit-reservation').evaluate(el => el.disabled), false);
+  assert.equal(await page.locator('#submit-reservation').getAttribute('aria-disabled'), 'true');
+  assert.equal(await page.locator('#guest-name').getAttribute('placeholder'), 'Tulis namamu di sini');
+  await page.locator('#submit-reservation').click({ force: true });
+  assert.match(await page.locator('#reservation-status').textContent(), /akan hadir atau tidak dapat hadir|Tulis namamu/);
   assert.equal(await page.locator('#guest-count-field').isHidden(), true);
   for (const [width,height] of [[360,640],[390,844],[768,1024]]) {
     await page.setViewportSize({ width,height });
