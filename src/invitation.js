@@ -11,7 +11,7 @@ import { startAudio, toggleAudio, isMusicEnabled, sound } from './audio.js';
 import { initMotion, stampTicket } from './motion.js';
 export async function renderInvitation(app) {
  const e=CONFIG.EVENT,to=new URLSearchParams(location.search).get('to')?.trim().slice(0,60)||'';
- const demoMode=!CONFIG.APPS_SCRIPT_URL,storageKey=demoMode?'djsl-demo-ticket':'djsl-ticket';
+ const demoMode=!CONFIG.APPS_SCRIPT_URL,storageKey=demoMode?'djsl-demo-ticket':'djsl-ticket',progressKey='djsl-progress';
  let ticket=storage.get(storageKey);
  if(!validResponse(ticket)||Boolean(ticket.demo)!==demoMode||(to&&normalizeName(ticket.name)!==normalizeName(to)))ticket=null;
  if(!app.querySelector('#invitation'))app.innerHTML=invitationMarkup();
@@ -48,7 +48,9 @@ export async function renderInvitation(app) {
  };
  const edit=()=>{
    if(busy||!ticket)return;
-   $('#reservation-title').hidden=false;$('#reservation').dataset.reservationView='form';$('#reservation-success').hidden=true;host.hidden=true;form.hidden=false;$('.reservation-intro').hidden=false;
+   $('#reservation-title').hidden=false;$('#reservation').dataset.reservationView='form';$('#reservation-success').hidden=true;host.hidden=true;form.hidden=false;
+   // Editing guests already know the prompt; dropping it keeps the form inside the page on short phones.
+   $('.reservation-intro').hidden=true;
    fillResponse();status.textContent='';validity();name.focus();
  };
  const showResponse=async()=>{
@@ -69,7 +71,8 @@ export async function renderInvitation(app) {
      : demoMode?'Ini pratinjau. Data baru tersimpan di perangkat ini. Tiket contohmu sudah siap.':'Terima kasih. Kami menantikan kehadiranmu. Tiketmu sudah siap untuk disimpan.';
  };
  $('#recall-ticket').onclick=()=>{if(hasCurrentResponse())void showResponse();};
- if(ticket)fillResponse();
+ // A returning guest sees their saved ticket first; the form opens only through Ubah Konfirmasi.
+ if(ticket){fillResponse();void showResponse();}
  await updateSummary(ticket);if(demoMode)$('#reservation').classList.add('is-demo');
  form.addEventListener('submit',async event=>{
    event.preventDefault();touchedName=touchedCount=true;if(busy||!rsvpOpen)return;
@@ -91,13 +94,32 @@ export async function renderInvitation(app) {
  validity();
  function tick(){const delta=Math.max(0,new Date(e.start).getTime()-Date.now());if(delta===0){$('#countdown-digits').hidden=true;$('#countdown-arrived').hidden=false;return;}const s=Math.floor(delta/1000),values=[Math.floor(s/86400),Math.floor(s/3600)%24,Math.floor(s/60)%60,s%60];values.forEach((v,i)=>{const d=$(`[data-digit="${i}"]`),text=String(v).padStart(2,'0');if(d.textContent!==text){d.textContent=text;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&$('#countdown').classList.contains('is-visible'))d.animate([{transform:'translateY(-12px)',opacity:.3},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});}});}
  tick();setInterval(tick,1000);
- await hydrateArt();const journey=initMotion({onRestart:()=>{if(ticket)edit();},canOpenSummary:hasCurrentResponse,onSummaryBlocked:()=>{status.textContent='Silakan isi nama dan pilih kehadiran, lalu tekan Simpan Kehadiran sebelum melanjutkan.';name.focus({preventScroll:true});}});/* journey-ready */
+ await hydrateArt();const journey=initMotion({onChapter:(id,title)=>storage.set(progressKey,{id,title,name:to||ticket?.name||'',at:Date.now()}),onRestart:()=>{if(ticket)edit();},canOpenSummary:hasCurrentResponse,onSummaryBlocked:()=>{status.textContent='Silakan isi nama dan pilih kehadiran, lalu tekan Simpan Kehadiran sebelum melanjutkan.';name.focus({preventScroll:true});}});/* journey-ready */
  $('#nav-next').onclick=()=>{void startAudio(true);void journey.next();};
  // Try to start the music right away; browsers that block sound until a gesture start it on the first tap or key anywhere.
  void startAudio();
  const unlockAudio=()=>{void startAudio();['pointerdown','touchend','keydown'].forEach(type=>document.removeEventListener(type,unlockAudio,true));};
  ['pointerdown','touchend','keydown'].forEach(type=>document.addEventListener(type,unlockAudio,true));
  $('#nav-back').onclick=()=>journey.back();
+ offerResume({journey,ticket,progress:storage.get(progressKey),name:to||ticket?.name||''});
  if(!demoMode)void request('publicSettings').then(result=>{rsvpOpen=result.rsvpOpen!==false;validity();}).catch(()=>{});
  if(document.modelContext?.registerTool){try{await document.modelContext.registerTool({name:'stage_reservation',title:'Siapkan reservasi',description:'Fill the reservation form for review. Does not submit or reserve a seat.',inputSchema:{type:'object',properties:{name:{type:'string',minLength:2,maxLength:60},guests:{type:'integer',minimum:1,maximum:CONFIG.MAX_GUESTS}},required:['name','guests'],additionalProperties:false},annotations:{readOnlyHint:false},execute:async input=>{if(typeof input?.name!=='string'||typeof input?.guests!=='number'||validate(input.name,input.guests))throw new Error('Invalid reservation');if(ticket)edit();name.value=input.name.trim();count.value=input.guests;choices.forEach(choice=>choice.checked=choice.value==='attending');touchedName=touchedCount=true;validity();await journey.goTo('reservation');while($('#reservation').dataset.bookStep!=='2')await journey.next();return {staged:true,name:name.value,guests:Number(count.value),submitted:false};}});}catch{}}
+}
+
+// Returning guests can jump back to their ticket or the last chapter instead of replaying the story.
+function offerResume({journey,ticket,progress,name}){
+ // Progress belongs to the invited name, so a shared phone opened with another guest's link starts fresh.
+ const resumable=progress&&typeof progress.id==='string'&&!['arrival','gate'].includes(progress.id)&&document.getElementById(progress.id)&&normalizeName(progress.name||'')===normalizeName(name);
+ if(!ticket&&!resumable)return;
+ const panel=document.createElement('section');panel.className='vn-resume';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','false');panel.setAttribute('aria-labelledby','resume-title');
+ const heading=document.createElement('h2');heading.id='resume-title';heading.textContent=name?`Selamat datang kembali, ${name}`:'Selamat datang kembali';
+ const note=document.createElement('p');note.textContent=ticket?(attendanceOf(ticket)==='declined'?'Konfirmasimu sudah kami terima.':'Tiketmu sudah tersimpan di perangkat ini.'):'Kamu bisa melanjutkan cerita dari bagian terakhir.';
+ const actions=document.createElement('div');actions.className='vn-resume-actions';
+ const close=()=>{panel.remove();};
+ const add=(label,run,primary)=>{const b=document.createElement('button');b.type='button';b.className='vn-action'+(primary?' is-primary':'');b.textContent=label;b.onclick=async()=>{void startAudio(true);close();await run();};actions.append(b);return b;};
+ if(ticket)add(attendanceOf(ticket)==='declined'?'Lihat Konfirmasiku':'Lihat Tiketku',()=>journey.chapter('reservation'),true);
+ if(resumable&&progress.id!=='reservation')add('Lanjut: '+(progress.title||'bagian terakhir'),()=>progress.id==='closing'?journey.goTo('closing'):journey.chapter(progress.id),!ticket);
+ add('Mulai dari awal',()=>{},false);
+ panel.append(heading,note,actions);
+ document.querySelector('#invitation').append(panel);
 }

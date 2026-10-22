@@ -85,3 +85,14 @@ body.invitation-device:not(.invitation-wide){background:#000}
 #closing #closing-summary #declined-summary .declined-name{color:#2c1218}
 /* The letter never overflows its column, so it stays centered without a sideways scrollbar. */
 #closing #closing-summary[data-attendance='declined']{overflow-x:hidden}
+
+/* Welcome-back panel for guests who already confirmed or left mid-story. */
+#invitation .vn-resume{position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:40;width:min(88cqw,440px);box-sizing:border-box;padding:11cqw 9cqw 8cqw;display:flex;flex-direction:column;align-items:center;gap:2.4cqw;text-align:center;color:#f4dfc5;background:url('/assets/png/ui-v2/panel-venue-tall-angular-v1.png') center/100% 100% no-repeat;box-shadow:0 0 0 100vmax #050203b8;filter:drop-shadow(0 10px 20px #000c)}
+#invitation .vn-resume h2{margin:0;font:clamp(21px,5.6cqw,32px)/1.15 var(--body);color:#fff0d5}
+#invitation .vn-resume p{margin:0;font:clamp(15px,4cqw,21px)/1.35 var(--body);color:#e6cba8}
+#invitation .vn-resume-actions{display:flex;flex-direction:column;gap:2cqw;width:100%;margin-top:1.5cqw}
+#invitation .vn-resume .vn-action{width:100%;min-height:46px;margin:0;padding:8px 12px;border:0;background:transparent url('/assets/png/ui-v2/button-wide-angular-v1.png') center/100% 100% no-repeat;color:#f4dfc5;font:clamp(15px,4.1cqw,21px)/1.2 var(--body);letter-spacing:0;text-transform:none;cursor:pointer}
+#invitation .vn-resume .vn-action.is-primary{color:#fff6e6;filter:brightness(1.25) saturate(1.1)}
+#invitation .vn-resume .vn-action:focus-visible{outline:2px solid #e4bf84;outline-offset:3px}
+/* The bottom navigation already offers "Lihat Tiket"; a second copy pushed the edit form off the page. */
+#invitation #reservation #recall-ticket{display:none}

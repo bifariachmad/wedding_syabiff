@@ -30,6 +30,12 @@ try {
   const page = await context.newPage();
   page.on('pageerror', error => errors.push(error.message));
   const settled = () => page.waitForFunction(() => !Object.entries(document.querySelector('#invitation').dataset).some(([key,value]) => (key.endsWith('Busy') || key === 'travelling') && value === 'true'));
+  // Returning guests land on their saved confirmation; open the form through Ubah Konfirmasi.
+  async function openSavedForm(query) {
+    await openBook(query);
+    await page.evaluate(() => document.querySelector('.vn-resume')?.remove());
+    if (await page.locator('#edit-reservation').isVisible()) await page.locator('#edit-reservation').click();
+  }
   async function openBook(query = '?to=Nadia%20Utami') {
     await page.goto(base + '/' + query);
     await page.waitForFunction(() => document.querySelector('#app')?.dataset.ready === 'true');
@@ -82,8 +88,15 @@ try {
   assert.equal(await page.locator('.ticket-preview').getAttribute('src'), null);
   await screenshot('closing-declined');
 
-  // Reload a persisted decline, then change to attending and preserve the record.
+  // Reload a persisted decline: the saved confirmation shows first with a welcome-back panel,
+  // and the form opens only through Ubah Konfirmasi.
   await openBook();
+  assert.equal(await page.locator('.vn-resume').isVisible(), true);
+  assert.deepEqual(await page.locator('.vn-resume button').allTextContents(), ['Lihat Konfirmasiku','Lanjut: Terima Kasih','Mulai dari awal']);
+  await page.evaluate(() => document.querySelector('.vn-resume')?.remove());
+  assert.equal(await page.locator('#reservation').getAttribute('data-reservation-view'), 'declined');
+  assert.equal(await page.locator('#reservation-form').isHidden(), true);
+  await page.locator('#edit-reservation').click();
   assert.equal(await page.getByRole('radio', { name:'Tidak dapat hadir', exact:true }).isChecked(), true);
   assert.equal(await page.locator('#recall-ticket').textContent(), 'Lihat Konfirmasi');
   await page.getByRole('radio', { name:'Akan hadir', exact:true }).check();
@@ -115,7 +128,7 @@ try {
   assert.match(calendar, /DTSTART:20261031T090000Z/);
 
   // A failed change leaves the last saved RSVP intact and allows a retry.
-  await openBook();
+  await openSavedForm();
   await page.getByRole('radio', { name:'Tidak dapat hadir', exact:true }).check();
   failSave = true;
   await page.locator('#submit-reservation').click();

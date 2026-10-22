@@ -13,7 +13,7 @@ import { createCoverAtmosphere } from './cover-atmosphere.js';
 import { initDialogueArtwork } from './dialogue-artwork.js';
 
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
-export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRestart=()=>{}}={}){
+export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRestart=()=>{},onChapter=()=>{}}={}){
  const root=document.querySelector('#invitation'),scenes=[...root.querySelectorAll('.vn-scene')];
  const back=root.querySelector('#nav-back'),next=root.querySelector('#nav-next');
  let index=0,busy=false,ambient=[],prologue;
@@ -60,6 +60,7 @@ export function initMotion({canOpenSummary=()=>true,onSummaryBlocked=()=>{},onRe
   // Restore percentage-based centering after GSAP resolves it to pixels.
   gsap.set(to.querySelector('.vn-dialogue'),{clearProps:'transform,translate,scale,rotate'});
   index=target;busy=false;if(index===0)courtyard.show(2);
+  onChapter(to.id,to.querySelector('h1,h2')?.textContent.trim()||'');
   root.querySelector('#journey-position').innerHTML=`${String(index+1).padStart(2,'0')} <small>/ ${scenes.length}</small>`;
   if(index===7)guestbook.reveal();
   controls();

@@ -122,7 +122,7 @@ try{
   await audit(name+'-form',true);await formFits(name+'-form');
   await page.locator('#submit-reservation').click();await page.waitForSelector('#reservation-success:visible');await audit(name+'-success',true);
   await page.locator('#edit-reservation').click();await audit(name+'-edit',true);
-  await page.locator('#recall-ticket').click();await next();await audit(name+'-ticket',true);
+  await next();await audit(name+'-ticket',true);
   await page.locator('#nav-back').hover();await audit(name+'-nav-hover');
   await stage(name+'-end');
   await context.clearCookies();await page.evaluate(()=>localStorage.clear());
