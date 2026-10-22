@@ -51,7 +51,7 @@ try{
  await page.locator('#nav-back').click();await settled();assert.ok(await page.evaluate(()=>effectiveOpacity(document.querySelector('.clockroom-countdown'))>.99));await advance();
  await page.emulateMedia({reducedMotion:'reduce'});
  await copy('#location-title','Lokasi resepsi');await copy('#maproom-line','Resepsi kami diadakan di Lumbung Kuliner.');await advance();await copy('#maproom-line','Buka Google Maps lewat tombol lokasi untuk melihat rutenya.');await advance();
- await copy('#rundown-0-title','Rundown acara');await copy('.agenda-line','Acara akan kami mulai pukul 16:00 WIB.');
+ await copy('#rundown-0-title','Rundown acara');await copy('.agenda-line','Acara akan kami mulai pukul 16.00 WIB.');
  assert.deepEqual(await page.locator('.agenda-entry h3').allTextContents(),CONFIG.RUNDOWN.map(item=>item.title));assert.equal(await page.locator('.agenda-entry time').count(),0);
  assert.ok(await page.evaluate(()=>getComputedStyle(document.querySelector('.agenda-entry h3')).fontFamily===getComputedStyle(document.querySelector('.agenda-line')).fontFamily&&getComputedStyle(document.querySelector('.agenda-entry h3')).fontStyle==='normal'));
  for(const [width,height] of [[360,640],[390,844],[768,1024]]){

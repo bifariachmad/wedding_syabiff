@@ -39,16 +39,15 @@ export async function renderSummaryCanvas(ticket){
 
  // Date and address define a shared top/bottom for both columns.
  g.textAlign='left';
- const [day,...date]=CONFIG.EVENT.dateLabel.split(',');
- const dayMetrics=text(day+',',535,792,36,'"IM Fell English"',muted,390);
- text(date.join(',').trim(),535,845,42,'"IM Fell English"',ink,390);
- text('Mulai '+CONFIG.EVENT.arrival,535,895,36,'"IM Fell English"',maroon,390);
+ // Day and date stay on one line; the time reads as a range ("16.00 WIB – Selesai").
+ const dayMetrics=text(CONFIG.EVENT.dateLabel,535,815,40,'"IM Fell English"',ink,390);
+ text(CONFIG.EVENT.timeLabel,535,872,36,'"IM Fell English"',maroon,390);
  text(CONFIG.EVENT.venue,535,979,44,'"IM Fell English"',ink,390);
  g.font='32px "IM Fell English"';
  const address=CONFIG.EVENT.addressLines.flatMap(line=>wrap(line,390));
  let columnBottom=0;
  address.forEach((line,i)=>{const y=1026+i*37;const m=text(line,535,y,32,'"IM Fell English"',muted,390);columnBottom=y+m.actualBoundingBoxDescent;});
- const columnTop=792-dayMetrics.actualBoundingBoxAscent,qrSize=330;
+ const columnTop=815-dayMetrics.actualBoundingBoxAscent,qrSize=330;
  g.imageSmoothingEnabled=false;g.drawImage(qr,155,columnTop,qrSize,qrSize);g.imageSmoothingEnabled=true;
  g.textAlign='center';
  g.font='22px Georgia';

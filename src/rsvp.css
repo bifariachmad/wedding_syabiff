@@ -63,7 +63,7 @@
 #invitation #submit-reservation[aria-disabled='true']{opacity:.78}
 
 /* "Tidak dapat hadir": a short letter on the same rose-and-thorn stationery as the ticket. */
-#closing #declined-summary{position:relative;width:min(86cqw,420px);aspect-ratio:1080/1600;max-height:100%;margin:0 auto;padding:15% 15% 13%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqh;background:url('/assets/png/ticket/stationery-no-lantern.png') center/contain no-repeat;border:0;color:#431d28;text-align:center;filter:drop-shadow(0 10px 18px #000a)}
+#closing #declined-summary{position:relative;width:min(100%,86cqw,420px);aspect-ratio:1080/1600;max-height:100%;margin:0 auto;padding:15% 15% 13%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2cqh;background:url('/assets/png/ticket/stationery-no-lantern.png') center/contain no-repeat;border:0;color:#431d28;text-align:center;filter:drop-shadow(0 10px 18px #000a)}
 #closing #declined-summary[hidden]{display:none}
 #closing #declined-summary .declined-seal{width:15%;height:auto;margin-bottom:.4cqh;filter:drop-shadow(0 2px 3px #3b0f1a66)}
 #closing #declined-summary h3{font:clamp(20px,5.4cqw,31px)/1.12 GALVANIZED;margin:0;color:#6b1f30;letter-spacing:.5px}
@@ -83,3 +83,5 @@ body.invitation-device:not(.invitation-wide){background:#000}
 #closing #closing-summary #declined-summary .declined-status{color:#7a2b3a}
 #closing #closing-summary #declined-summary .declined-signoff{color:#5a2a33}
 #closing #closing-summary #declined-summary .declined-name{color:#2c1218}
+/* The letter never overflows its column, so it stays centered without a sideways scrollbar. */
+#closing #closing-summary[data-attendance='declined']{overflow-x:hidden}
