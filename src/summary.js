@@ -65,7 +65,7 @@ export async function updateSummary(ticket){
  const declined=attendanceOf(ticket)==='declined';
  const calendar=host.querySelector('#summary-calendar');calendar.hidden=!ticket||declined;calendar.onclick=()=>downloadBlob(new Blob([calendarFile()],{type:'text/calendar;charset=utf-8'}),'resepsi-bifari-syafira.ics');
  const message=host.querySelector('#declined-summary');
- message.hidden=!declined;message.querySelector('.declined-name').textContent=declined?ticket.name+' · Tidak dapat hadir':'';
+ message.hidden=!declined;message.querySelector('.declined-name').textContent=declined?ticket.name:'';
  document.querySelector('#closing-title').textContent=declined?'Terima Kasih':'Tiket Undangan';
  host.dataset.attendance=declined?'declined':'attending';
  host.querySelector('.summary-name').textContent=ticket?.name||'Belum mengisi buku tamu';host.querySelector('.summary-guests').textContent=declined?'Tidak dapat hadir':ticket?ticket.guests+' tamu':'';host.querySelector('.summary-code').textContent=ticket&&!declined?ticketPayload(ticket):'';host.querySelector('.summary-mode').textContent=ticket?.demo?'CONTOH · BELUM TERDAFTAR':declined?'KONFIRMASI TERCATAT':ticket?'RESERVASI TERCATAT':'';
