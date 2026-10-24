@@ -36,9 +36,7 @@ export function fitDialogue(line,text){
   return probe.getBoundingClientRect().height+parseFloat(css.marginTop)+parseFloat(css.marginBottom);
  }
  const textHeight=measure(line,text);
- const recipient=panel.querySelector('.recipient');
- const recipientHeight=recipient&&!recipient.hidden&&getComputedStyle(recipient).display!=='none'?measure(recipient,recipient.textContent):0;
- const needed=textHeight+recipientHeight+paddingY;
+ const needed=textHeight+paddingY;
  const frame=frames.find(frame=>width*frame.height/frame.width>=needed)||frames.at(-1);
  panel.style.setProperty('--panel-image',`url('/assets/png/ui-v2/${frame.name}.png')`);
  panel.style.setProperty('--panel-ratio',`${frame.width}/${frame.height}`);

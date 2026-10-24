@@ -19,7 +19,7 @@ export async function renderInvitation(app) {
  const choices=[...form.querySelectorAll('[name="attendance"]')];
  const attendance=()=>choices.find(choice=>choice.checked)?.value||'';
  const guests=()=>attendance()==='declined'?0:Number(count.value);
- if(to){$('#recipient').hidden=false;$('#recipient').textContent='Untuk '+to;name.value=to;}
+ if(to){$('#recipient').hidden=false;$('#recipient').textContent='untuk '+to;name.value=to;}
  const updateMusic=()=>{const playing=isMusicEnabled();$('#music-toggle').innerHTML=icon(playing?'music-on':'music-off');$('#music-toggle').setAttribute('aria-label',playing?'Matikan musik':'Nyalakan musik');};
  $('#music-toggle').onclick=toggleAudio;document.addEventListener('musicchange',updateMusic);
  let touchedName=false,touchedCount=false,busy=false,rsvpOpen=true;

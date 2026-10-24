@@ -21,7 +21,7 @@ export function invitationMarkup(){
  <header class="vn-header"><span>Undangan Pernikahan</span><span class="vn-date">31 . 10 . 2026</span></header>
  <button class="music-toggle" id="music-toggle" aria-label="Nyalakan musik">${icon('music-off')}</button>
  <div class="vn-stage">
- ${scene('gate','KAMU',courtyardArtwork(),`<p id="recipient" class="recipient" hidden></p><p id="courtyard-line" aria-hidden="true">Di mana ini…? Rasanya tidak asing.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Rasanya tidak asing.</span>`)}
+ ${scene('gate','KAMU',courtyardArtwork(),`<p id="courtyard-line" aria-hidden="true">Di mana ini…? Rasanya tidak asing.</p><span id="courtyard-description" class="sr-only" role="status" aria-live="polite">Di mana ini…? Rasanya tidak asing.</span>`)}
  ${scene('cover','Part II',courtyardCover(),courtyardTitle())}
  ${scene('greeting','KAMU',welcomeArtwork(),welcomeDialogue())}
  ${scene('countdown','BIFARI',clockroomArtwork(),clockroomDialogue())}
