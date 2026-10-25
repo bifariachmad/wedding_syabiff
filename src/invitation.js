@@ -7,6 +7,7 @@ import { validate, request, normalizeName } from './api.js';
 import { storage } from './storage.js';
 import { renderTicket } from './ticket.js';
 import { attendanceOf, validateRSVP, validResponse } from './rsvp.js';
+import { speakerName } from './guest.js';
 import { startAudio, toggleAudio, isMusicEnabled, sound } from './audio.js';
 import { initMotion, stampTicket } from './motion.js';
 export async function renderInvitation(app) {
@@ -19,7 +20,7 @@ export async function renderInvitation(app) {
  const choices=[...form.querySelectorAll('[name="attendance"]')];
  const attendance=()=>choices.find(choice=>choice.checked)?.value||'';
  const guests=()=>attendance()==='declined'?0:Number(count.value);
- if(to){$('#recipient').hidden=false;$('#recipient').textContent='untuk '+to;name.value=to;}
+ if(to){$('#recipient').hidden=false;$('#recipient').textContent='Teruntuk '+to;name.value=to;for(const tag of app.querySelectorAll('.arrival-speaker,.vn-speaker'))if(tag.textContent==='KAMU')tag.textContent=speakerName('KAMU');}
  const updateMusic=()=>{const playing=isMusicEnabled();$('#music-toggle').innerHTML=icon(playing?'music-on':'music-off');$('#music-toggle').setAttribute('aria-label',playing?'Matikan musik':'Nyalakan musik');};
  $('#music-toggle').onclick=toggleAudio;document.addEventListener('musicchange',updateMusic);
  let touchedName=false,touchedCount=false,busy=false,rsvpOpen=true;

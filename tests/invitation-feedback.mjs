@@ -25,7 +25,7 @@ try{
  await page.goto(base+'/?to=Nadia%20Utami');await ready();
  const prologue=['Hari ini rasanya ada yang berbeda...','Wah... sepertinya ada tamu yang datang.','Lho... ke mana tamunya?','Undangan?','Dari siapa ya…','','Kamu diundang.'];
  for(let i=0;i<prologue.length;i++){await copy('#arrival-line',prologue[i]);if(i===5){assert.equal(await page.locator('.arrival-address').count(),0);assert.equal(await page.locator('.arrival-caption').evaluate(e=>getComputedStyle(e).opacity),'0');await shot('envelope');}if(i<6)await advance();}
- await copy('.arrival-card-copy strong','Kamu diundang');
+ await copy('.arrival-card-copy strong','Kamu diundang');await copy('#recipient','Teruntuk Nadia Utami');await copy('.arrival-speaker','Nadia Utam...');
  await page.locator('#nav-back').click();await settled();assert.equal(await page.locator('.arrival-caption').evaluate(e=>getComputedStyle(e).opacity),'0');await advance();await advance();
  await copy('#courtyard-line','Di mana ini…? Rasanya tidak asing.');
  await page.emulateMedia({reducedMotion:'no-preference'});await advance();await copy('#courtyard-line','Aku penasaran...');const gateStart=Date.now();await advance();const gateElapsed=Date.now()-gateStart;assert.ok(gateElapsed<6500,`Gate and logo transition completes in under 6.5 seconds (was ${gateElapsed}ms)`);
@@ -33,10 +33,10 @@ try{
  assert.equal(await page.locator('.wedding-logo').getAttribute('data-logo-state'),'complete');
  assert.ok(await page.locator('.logo-original').evaluate(el=>el.naturalWidth===1891));await shot('animated-logo');
  assert.equal((await page.evaluate(()=>audioEvents.filter(e=>Math.abs(e.duration-4.65)<.001))).length,1,'One full hinge creak per gate swing');
- await advance();await copy('#greeting-title','Sebuah pintu');await copy('#welcome-line','Rumah ini... terasa tidak asing...');await advance();
- await copy('#welcome-line','Hai, selamat datang! Aku Bifari. Mari masuk.');
+ await advance();await copy('#greeting-title','Sebuah pintu');await copy('#welcome-line','Rumah ini... terasa tidak asing...');await copy('#greeting .vn-speaker','Nadia Utam...');await advance();
+ await copy('#welcome-line','Hai.. Nadia Utami, selamat datang! Aku Bifari. Mari masuk.');await copy('#greeting .vn-speaker','BIFARI');
  assert.equal((await page.evaluate(()=>audioEvents.filter(e=>e.scene==='greeting'&&e.arrival==='empty'&&e.coupleOpacity==='0'&&Math.abs(e.duration-.19)<.001))).length,3,'Three footsteps before hosts appear');
- await page.emulateMedia({reducedMotion:'reduce'});await advance();await copy('#welcome-line','Aku Syafira. Terima kasih sudah membuka undangan kami.');await advance();await advance();
+ await page.emulateMedia({reducedMotion:'reduce'});await advance();await copy('#welcome-line','Terima kasih sudah membuka undangan kami.');await advance();await advance();
  await copy('#countdown-title','Tanggal resepsi');await copy('#clockroom-line','Resepsi kami akan berlangsung pada Sabtu, 31 Oktober 2026.');
  await advance();await copy('#clockroom-line','Tandai tanggalnya di kalendermu, ya. Hitung mundurnya sudah berjalan!');await advance();await copy('#clockroom-line','Kabari kami lewat konfirmasi kehadiran di undangan ini, ya.');
  await page.emulateMedia({reducedMotion:'no-preference'});

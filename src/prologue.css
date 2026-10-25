@@ -59,9 +59,9 @@
 .arrival-paper-frame{position:absolute;left:15%;top:10%;width:70%;height:56%;z-index:1;transform:rotate(-2deg)}
 .arrival-paper-frame .arrival-card-copy{inset:13% 9%;width:auto;height:auto;transform:none}
 /* The guest's name from ?to= sits on the card itself, not in a character's speech. */
-.arrival-card-name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:10px;padding:0 7%;font:italic clamp(16px,2.6cqw,28px)/1.2 var(--body);color:#5a1a28;overflow-wrap:anywhere}
-@container stage (max-width:600px){.arrival-card-name{font-size:clamp(14px,4.4cqw,20px);margin-top:6px}}
-@media(max-height:500px) and (min-width:600px){.arrival-card-name{font-size:13px;margin-top:2px}}
+.arrival-card-name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-bottom:6px;padding:0 7%;font:italic clamp(16px,2.6cqw,28px)/1.2 var(--body);color:#5a1a28;overflow-wrap:anywhere}
+@container stage (max-width:600px){.arrival-card-name{font-size:clamp(14px,4.4cqw,20px);margin-bottom:2px}}
+@media(max-height:500px) and (min-width:600px){.arrival-card-name{font-size:13px;margin-bottom:0}}
 .arrival-holding-hands{z-index:2;filter:drop-shadow(0 7px 8px #0004)}
 /* Generated ink-cutout chrome, shared by the entire invitation. */
 .visual-novel .vn-nav{justify-content:center;background:transparent url('/assets/png/arrival/ui-panel.png') center/100% 100% no-repeat;border:0;box-shadow:none;filter:none;font-size:14px;min-height:51px;width:min(150px,100%);min-width:0;padding:12px 14px;gap:8px;transition:filter .2s,transform .2s}

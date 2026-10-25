@@ -1,11 +1,12 @@
 import gsap from 'gsap';
 import {fitDialogue} from './dialogue-artwork.js';
 import {sound} from './audio.js';
+import {guestName,speakerName} from './guest.js';
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 const dialogue=[
  ['KAMU','Rumah ini... terasa tidak asing...'],
- ['BIFARI','Hai, selamat datang! Aku Bifari. Mari masuk.'],
- ['SYAFIRA','Aku Syafira. Terima kasih sudah membuka undangan kami.'],
+ ['BIFARI',guestName?`Hai.. ${guestName}, selamat datang! Aku Bifari. Mari masuk.`:'Hai, selamat datang! Aku Bifari. Mari masuk.'],
+ ['SYAFIRA','Terima kasih sudah membuka undangan kami.'],
  ['BIFARI','Kami ingin mengundangmu ke resepsi pernikahan kami.']
 ];
 export function initWelcome(){
@@ -19,7 +20,7 @@ export function initWelcome(){
   gsap.set('#journey-progress',{scaleX:(step+1)/dialogue.length});
  }
  function highlight(speaker){scene.dataset.speaker=speaker;scene.querySelectorAll('.welcome-character').forEach(el=>el.classList.toggle('is-speaking',el.dataset.character===speaker));}
- function copy(){const [speaker,line]=dialogue[step];fitDialogue($('#welcome-line'),line);highlight(speaker);$('.vn-speaker').textContent=speaker;$('#welcome-line').textContent=line;$('#welcome-description').textContent=`${speaker}: ${line}`;}
+ function copy(){const [speaker,line]=dialogue[step];fitDialogue($('#welcome-line'),line);highlight(speaker);$('.vn-speaker').textContent=speakerName(speaker);$('#welcome-line').textContent=line;$('#welcome-description').textContent=`${speakerName(speaker)}: ${line}`;}
  function pose(){
   gsap.set(scene.querySelectorAll('.welcome-character'),{xPercent:0,y:0,scale:1});scene.dataset.speaking='false';
   gsap.set($('.welcome-camera'),{scale:step>=2?1.18:1,x:0,y:0,rotation:0});
